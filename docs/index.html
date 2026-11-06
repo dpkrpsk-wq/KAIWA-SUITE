@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>KAIWA 26.01, wersja robocza: jak zacząć</title>
+<meta name="description" content="KAIWA (Kit for Academic Inquiry With AI), produkt 26.01, wersja 0.2.0, wersja robocza. Pakiet do przetestowania metody pracy z AI w naukach humanistycznych i społecznych.">
+<link rel="icon" id="favicon" type="image/svg+xml" href="assets/kaiwa-icon-neutral.svg">
+<!-- Schriften: Google Fonts, wie in SUITE vorgesehen. Fällt das Laden aus, greifen system-ui und Georgia. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+/* Tokens aus SUITE (tokens.json, Stand 2026-11-06). Themes hell und dunkel folgen dem System. */
+:root {
+  color-scheme: light dark;
+  --tinte: #14171F; --papier: #F1EFE9;
+  --flaeche: #F1EFE9; --text: #14171F; --text-gedaempft: #4A4F5A;
+  --linie: #7C796F; --flaeche-hinweis: #E6E2D4; --entwurf: #8A3B12;
+  --font-kopf: "Space Grotesk", system-ui, Arial, sans-serif;
+  --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px;
+  --radius-klein: 4px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --flaeche: #14171F; --text: #F1EFE9; --text-gedaempft: #B9B6AD;
+    --linie: #6F737E; --flaeche-hinweis: #222631; --entwurf: #F0A070;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--space-6); }
+body {
+  margin: 0; background: var(--flaeche); color: var(--text);
+  font: 400 16px/25px var(--font-text);
+}
+/* Zweisprachigkeit: jeder Textblock steht je Sprache einmal im Dokument, mit eigenem lang-Attribut. */
+html[data-lang="pl"] [data-l]:not([data-l="pl"]), html[data-lang="en"] [data-l]:not([data-l="en"]), html[data-lang="de"] [data-l]:not([data-l="de"]) { display: none; }
+.wrap { max-width: 46rem; margin: 0 auto; padding: var(--space-6) var(--space-4) var(--space-12); }
+@media (min-width: 40rem) { .wrap { padding: var(--space-8) var(--space-8) var(--space-12); } }
+a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 3px; }
+:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+code { font: 400 .86em/1 ui-monospace, Consolas, "Courier New", monospace; background: var(--flaeche-hinweis); padding: 1px 5px; overflow-wrap: anywhere; }
+.skip { position: absolute; left: var(--space-4); top: -4rem; background: var(--tinte); color: var(--papier); padding: var(--space-2) var(--space-4); font: 500 14px/20px var(--font-kopf); z-index: 10; }
+.skip:focus { top: var(--space-2); outline: 2px solid var(--papier); outline-offset: 2px; }
+
+/* Werkzeugleiste: Sprache und Personalisierung */
+.leiste { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); align-items: center; justify-content: space-between; margin-bottom: var(--space-6); }
+.etikett { font: 500 11px/16px var(--font-kopf); letter-spacing: .06em; text-transform: uppercase; color: var(--text-gedaempft); }
+.etikett .en, .en-gegen { color: var(--text-gedaempft); text-transform: none; letter-spacing: 0; font-family: var(--font-text); font-weight: 400; }
+.gruppe { display: inline-flex; align-items: center; gap: var(--space-2); }
+.btn {
+  font: 500 13px/16px var(--font-kopf); letter-spacing: .06em; text-transform: uppercase;
+  min-height: 40px; min-width: 44px; padding: var(--space-2) var(--space-3);
+  background: var(--flaeche); color: var(--text); border: 1px solid var(--linie); border-radius: 0; cursor: pointer;
+}
+.btn:hover { border-color: var(--text); }
+.btn[aria-pressed="true"] { background: var(--tinte); color: var(--papier); border-color: var(--tinte); }
+@media (prefers-color-scheme: dark) { .btn[aria-pressed="true"] { background: var(--papier); color: var(--tinte); border-color: var(--papier); } }
+.btn[aria-pressed="true"]:focus-visible { outline-offset: 3px; }
+
+/* Dokumentkopf */
+.kopf { display: grid; grid-template-columns: 64px 1fr auto; column-gap: var(--space-6); row-gap: var(--space-3); align-items: center; padding-bottom: var(--space-4); border-bottom: 2px solid var(--text); }
+.logo { width: 64px; height: 64px; display: block; border-radius: 15%; }
+@media (prefers-color-scheme: dark) { .logo { outline: 1px solid var(--linie); } }
+.titel { font: 500 32px/38px var(--font-kopf); letter-spacing: -.5px; margin: 0; }
+.marke { font: 500 11px/16px var(--font-kopf); letter-spacing: .06em; text-transform: uppercase; color: var(--entwurf); border: 1px dashed var(--entwurf); border-radius: var(--radius-klein); padding: var(--space-1) var(--space-3); }
+@media (max-width: 34rem) { .kopf { grid-template-columns: 64px 1fr; } .marke { grid-column: 1 / -1; justify-self: start; } }
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: var(--space-4) var(--space-6); margin: 0; padding-top: var(--space-4); }
+.meta dt { margin-bottom: var(--space-1); }
+.meta dd { margin: 0; font: 500 20px/26px var(--font-kopf); font-variant-numeric: tabular-nums; }
+.meta dd .en-gegen { font-size: 14px; }
+
+/* Navigation */
+.nav { margin: var(--space-6) 0 0; padding: var(--space-3) 0; border-top: 1px solid var(--linie); border-bottom: 1px solid var(--linie); }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); font: 500 13px/20px var(--font-kopf); letter-spacing: .02em; }
+
+/* Überschriften */
+h1 { font: 500 28px/34px var(--font-kopf); letter-spacing: -.3px; margin: var(--space-8) 0 var(--space-3); }
+h2 { font: 500 22px/28px var(--font-kopf); margin: var(--space-12) 0 var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--linie); }
+h3 { font: 500 17px/24px var(--font-kopf); margin: var(--space-6) 0 var(--space-2); }
+p { margin: 0 0 var(--space-4); max-width: 40rem; }
+ul, ol { margin: 0 0 var(--space-4); padding-left: 1.4rem; max-width: 40rem; }
+li { margin-bottom: var(--space-2); }
+.lede { font-size: 18px; line-height: 28px; }
+.klein { font-size: 13px; line-height: 19px; color: var(--text-gedaempft); }
+
+/* Hinweisfeld */
+.hinweis { background: var(--flaeche-hinweis); border: 1px solid var(--linie); padding: var(--space-4); margin: 0 0 var(--space-6); font-size: 14px; line-height: 21px; max-width: 40rem; }
+.hinweis.pruefen { border: 2px solid var(--text); }
+.hinweis.entwurf { border: 1px dashed var(--entwurf); }
+.hinweis .e { display: block; margin-bottom: var(--space-1); font: 500 11px/16px var(--font-kopf); letter-spacing: .06em; text-transform: uppercase; }
+.hinweis .e .en { color: var(--text-gedaempft); text-transform: none; letter-spacing: 0; font: 400 12px/16px var(--font-text); }
+.hinweis.pruefen .e, .hinweis.entwurf .e, .hinweis.pruefen .e .en, .hinweis.entwurf .e .en { color: var(--entwurf); }
+.hinweis p:last-child, .hinweis ul:last-child { margin-bottom: 0; }
+
+/* Module */
+.module { display: grid; gap: var(--space-4); grid-template-columns: 1fr; margin: 0 0 var(--space-6); padding: 0; list-style: none; max-width: none; }
+@media (min-width: 40rem) { .module { grid-template-columns: 1fr 1fr; } }
+.modul { border: 1px solid var(--linie); padding: var(--space-4); margin: 0; font-size: 15px; line-height: 23px; }
+.modul h3 { margin-top: var(--space-1); }
+.modul p { font-size: inherit; line-height: inherit; max-width: none; }
+.modul .stand { font: 500 11px/16px var(--font-kopf); letter-spacing: .06em; text-transform: uppercase; color: var(--entwurf); border-top: 1px dashed var(--entwurf); padding-top: var(--space-2); margin: var(--space-3) 0 0; }
+.modul .stand.bereit { color: var(--text); border-top-style: solid; }
+
+/* Schritte */
+ol.schritte { list-style: none; counter-reset: s; padding: 0; }
+ol.schritte > li { counter-increment: s; position: relative; padding-left: 2.6rem; margin-bottom: var(--space-3); }
+ol.schritte > li::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 1.8rem; height: 1.8rem; display: grid; place-items: center; border: 1px solid var(--text); font: 500 14px/1 var(--font-kopf); font-variant-numeric: tabular-nums; }
+.plattform { border-left: 2px solid var(--text); padding-left: var(--space-4); margin: 0 0 var(--space-8); }
+.plattform > h3:first-child { margin-top: 0; }
+
+/* Personalisierung */
+.persona { border: 1px solid var(--linie); margin: 0 0 var(--space-6); }
+.persona > summary { cursor: pointer; padding: var(--space-3) var(--space-4); font: 500 13px/20px var(--font-kopf); letter-spacing: .06em; text-transform: uppercase; list-style-position: inside; min-height: 44px; }
+.persona[open] > summary { border-bottom: 1px solid var(--linie); }
+.persona-inhalt { padding: var(--space-4); }
+.persona-inhalt p { font-size: 14px; line-height: 21px; }
+.modi { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 var(--space-6); }
+.modus { display: flex; align-items: center; gap: var(--space-2); padding-right: var(--space-4); text-transform: none; letter-spacing: 0; font: 400 15px/20px var(--font-text); }
+.modus img { width: 32px; height: 32px; border-radius: 15%; display: block; }
+.felder { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: var(--space-2); margin: var(--space-2) 0; }
+.feld { display: grid; grid-template-columns: 48px 1fr; gap: var(--space-3); align-items: center; text-align: left; padding: var(--space-2); text-transform: none; letter-spacing: 0; font: 400 14px/18px var(--font-text); }
+.feld[aria-pressed="true"] { outline: 2px solid var(--text); outline-offset: 1px; background: var(--flaeche-hinweis); color: var(--text); }
+.feld svg { display: block; }
+.feld b { display: block; font-weight: 600; }
+.feld .en-gegen { display: block; }
+.feld .form { display: block; font-size: 12px; line-height: 16px; color: var(--text-gedaempft); }
+.melde { min-height: 21px; }
+
+/* Fußzeile */
+.fuss { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-6); margin-top: var(--space-12); border-top: 1px solid var(--linie); padding-top: var(--space-2); font-size: 11px; line-height: 16px; color: var(--text-gedaempft); font-variant-numeric: tabular-nums; }
+.fuss b { font-family: var(--font-kopf); font-weight: 500; color: var(--text); }
+.ph { color: var(--entwurf); border-bottom: 1px dashed var(--entwurf); }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+@media print { .leiste, .persona, .nav, .skip { display: none; } }
+</style>
+<noscript><style>html[data-lang="pl"] [data-l]:not([data-l="pl"]), html[data-lang="en"] [data-l]:not([data-l="en"]), html[data-lang="de"] [data-l]:not([data-l="de"]) { display: revert !important; } .persona { display: none; }</style></noscript>
+</head>
+<body>
+<a class="skip" href="#tresc"><span data-l="pl" lang="pl">Przejdź do treści</span><span data-l="en" lang="en">Skip to content</span><span data-l="de" lang="de">Zum Inhalt springen</span></a>
+
+<div class="wrap">
+
+<div class="leiste">
+  <div class="gruppe" role="group" aria-label="Język / Language / Sprache">
+    <span class="etikett" aria-hidden="true">Język <span class="en" lang="en">/ Language / <span lang="de">Sprache</span></span></span>
+    <button type="button" class="btn" data-set-lang="pl" lang="pl" aria-pressed="true" title="Polski">PL</button>
+    <button type="button" class="btn" data-set-lang="en" lang="en" aria-pressed="false" title="English">EN</button>
+    <button type="button" class="btn" data-set-lang="de" lang="de" aria-pressed="false" title="Deutsch">DE</button>
+  </div>
+  <p class="klein" style="margin:0" data-l="pl" lang="pl">Wybór języka dotyczy całej strony.</p>
+  <p class="klein" style="margin:0" data-l="en" lang="en">The choice of language applies to the whole page.</p><p class="klein" style="margin:0" data-l="de" lang="de">Die Sprachwahl gilt für die ganze Seite.</p>
+</div>
+
+<header class="kopf">
+  <img class="logo" id="logo" src="assets/kaiwa-icon-neutral.svg" width="64" height="64" alt="Logo KAIWA, tryb czarno-biały, stan neutralny">
+  <div>
+    <h1 class="titel">KAIWA</h1>
+    <div class="etikett">Kit for Academic Inquiry With AI</div>
+  </div>
+  <div class="marke"><span data-l="pl" lang="pl">wersja robocza</span><span data-l="en" lang="en">draft</span><span data-l="de" lang="de">Entwurf</span></div>
+</header>
+<dl class="meta">
+  <div><dt class="etikett"><span data-l="pl" lang="pl">Numer produktu</span><span data-l="en" lang="en">Product no.</span><span data-l="de" lang="de">Produktnummer</span></dt><dd>26.01</dd></div>
+  <div><dt class="etikett"><span data-l="pl" lang="pl">Wersja</span><span data-l="en" lang="en">Version</span><span data-l="de" lang="de">Version</span></dt><dd>0.2.0</dd></div>
+  <div><dt class="etikett"><span data-l="pl" lang="pl">Stan</span><span data-l="en" lang="en">Status</span><span data-l="de" lang="de">Stand</span></dt><dd><span data-l="pl" lang="pl">wersja robocza</span><span data-l="en" lang="en">draft</span><span data-l="de" lang="de">Entwurf</span></dd></div>
+  <div><dt class="etikett"><span data-l="pl" lang="pl">Data</span><span data-l="en" lang="en">Date</span><span data-l="de" lang="de">Datum</span></dt><dd>05.11.2026</dd></div>
+</dl>
+
+<nav class="nav" aria-label="Spis treści / Contents">
+  <ul data-l="pl" lang="pl">
+    <li><a href="#cel">Do czego</a></li>
+    <li><a href="#moduly">Cztery moduły</a></li>
+    <li><a href="#start">Jak zacząć</a></li>
+    <li><a href="#granice">Granice</a></li>
+    <li><a href="#uczelnia">Zasady uczelni</a></li>
+    <li><a href="#kontakt">Stan i kontakt</a></li>
+  </ul>
+  <ul data-l="en" lang="en">
+    <li><a href="#cel">Purpose</a></li>
+    <li><a href="#moduly">Four modules</a></li>
+    <li><a href="#start">Getting started</a></li>
+    <li><a href="#granice">Limits</a></li>
+    <li><a href="#uczelnia">University rules</a></li>
+    <li><a href="#kontakt">Status and contact</a></li>
+  </ul><ul data-l="de" lang="de">
+    <li><a href="#cel">Wofür</a></li>
+    <li><a href="#moduly">Vier Module</a></li>
+    <li><a href="#start">Einstieg</a></li>
+    <li><a href="#granice">Grenzen</a></li>
+    <li><a href="#uczelnia">Regeln der Hochschule</a></li>
+    <li><a href="#kontakt">Stand und Kontakt</a></li>
+  </ul>
+</nav>
+
+<main id="tresc">
+
+<!-- ============ Wstęp / Intro ============ -->
+<div data-l="pl" lang="pl">
+  <p class="lede" style="margin-top:var(--space-8)">Pakiet do przetestowania metody pracy z AI w naukach humanistycznych i społecznych. Po japońsku <em>kaiwa</em> znaczy rozmowa.</p>
+  <p>Myśli mówione na głos zapisuje się dosłownie ze skrótem SHA-256. Tematy z dyktatów tworzą mapę kontekstu. Artefakty analizuje się po triażu według deklarowanych ram. Literaturę szuka się w otwartym dostępie, z poziomem weryfikacji każdego trafienia.</p>
+  <div class="hinweis entwurf">
+    <span class="e">Wersja robocza <span class="en" lang="en">/ Draft</span></span>
+    <p>Pakiet nie jest wydany. Jest propozycją, żeby przetestować metodę. Przed wydaniem zostają: sprawdzenie polskiego tekstu przez autora, test agentów w Copilot, licencja reszty pakietu i kontrola przed publikacją.</p>
+  </div>
+</div>
+<div data-l="en" lang="en">
+  <p class="lede" style="margin-top:var(--space-8)">A package to test a method of working with AI in the humanities and social sciences. In Japanese, <em>kaiwa</em> means conversation.</p>
+  <p>Thoughts spoken aloud are recorded word for word with a SHA-256 hash. The topics from the dictations form a context map. Artefacts are analysed after triage, according to declared frameworks. Literature is searched in open access, with a verification level for every hit.</p>
+  <div class="hinweis entwurf">
+    <span class="e">Draft <span class="en" lang="pl">/ Wersja robocza</span></span>
+    <p>The package is not released. It is a proposal to test a method. Before release remain: the author's check of the Polish text, a test of the agents in Copilot, the licence of the rest of the package, and a check before publication.</p>
+  </div>
+</div><div data-l="de" lang="de">
+  <p class="lede" style="margin-top:var(--space-8)">Ein Paket, mit dem sich eine Methode für die Arbeit mit KI in den Geistes- und Sozialwissenschaften testen lässt. Auf Japanisch heißt <em>kaiwa</em> Gespräch.</p>
+  <p>Laut gesprochene Gedanken werden wörtlich festgehalten, mit einem SHA-256-Prüfwert. Die Themen der Diktate bilden eine Kontextkarte. Artefakte werden nach einer Einordnung (Triage) anhand erklärter Rahmen analysiert. Literatur wird im offenen Zugang gesucht, mit einer Prüftiefe für jeden Treffer.</p>
+  <div class="hinweis entwurf">
+    <span class="e">Entwurf <span class="en" lang="pl">/ Wersja robocza</span></span>
+    <p>Das Paket ist nicht veröffentlicht. Es ist ein Vorschlag, eine Methode zu testen. Vor der Veröffentlichung bleiben: die Prüfung des polnischen Textes durch den Autor, ein Test der Agenten in Copilot, die Lizenz für den Rest des Pakets und eine Kontrolle vor der Veröffentlichung.</p>
+  </div>
+</div>
+
+<!-- ============ Personalizacja ============ -->
+<details class="persona" id="persona">
+  <summary><span data-l="pl" lang="pl">Personalizacja</span><span data-l="en" lang="en">Personalisation</span><span data-l="de" lang="de">Personalisierung</span></summary>
+  <div class="persona-inhalt">
+    <div data-l="pl" lang="pl">
+      <p>Logo ma trzy tryby. Domyślny jest czarno-biały. Tryby spectrum i SHIFT są do wyboru. Wybór zmienia tylko logo i ikonę karty. Treść strony zostaje taka sama.</p>
+    </div>
+    <div data-l="en" lang="en">
+      <p>The logo has three modes. The default is black and white. The modes spectrum and SHIFT are optional. The choice changes only the logo and the tab icon. The content of the page stays the same.</p>
+    </div><div data-l="de" lang="de">
+      <p>Das Logo hat drei Modi. Voreingestellt ist Schwarzweiß. Die Modi spectrum und SHIFT sind wählbar. Die Wahl ändert nur das Logo und das Symbol im Browser-Tab. Der Inhalt der Seite bleibt gleich.</p>
+    </div>
+    <h3 class="etikett" style="margin:var(--space-4) 0 0" id="h-tryb"><span data-l="pl" lang="pl">Tryb logo</span><span data-l="en" lang="en">Logo mode</span><span data-l="de" lang="de">Logo-Modus</span></h3>
+    <div class="modi" role="group" aria-labelledby="h-tryb">
+      <button type="button" class="btn modus" data-set-mode="bw" aria-pressed="true"><img src="assets/kaiwa-icon-neutral.svg" alt=""><span><span data-l="pl" lang="pl">czarno-biały</span><span data-l="en" lang="en">black and white</span><span data-l="de" lang="de">Schwarzweiß</span></span></button>
+      <button type="button" class="btn modus" data-set-mode="spectrum" aria-pressed="false"><img src="assets/kaiwa-icon-spectrum.svg" alt=""><span lang="en">spectrum</span></button>
+      <button type="button" class="btn modus" data-set-mode="shift" aria-pressed="false"><img src="assets/kaiwa-icon-shift.svg" alt=""><span lang="en">SHIFT</span></button>
+    </div>
+
+    <h3 class="etikett" style="margin:var(--space-4) 0 0" id="h-stan"><span data-l="pl" lang="pl">Wskaźnik stanu</span><span data-l="en" lang="en">Status indicator</span><span data-l="de" lang="de">Statusanzeige</span></h3>
+    <div data-l="pl" lang="pl">
+      <p style="margin-top:var(--space-2)">Kwadrat w prawym dolnym rogu logo pokazuje jeden z siedmiu stanów. Kolor sam nic nie znaczy. Znaczenie niesie forma i nazwa. Każdy stan ma własną formę. Wskaźnik pokazuje, co zlicza program, a nie czy to jest prawdziwe. Wybór poniżej to tylko podgląd, strona nie ma stanu programu.</p>
+    </div>
+    <div data-l="en" lang="en">
+      <p style="margin-top:var(--space-2)">The square at the bottom right of the logo shows one of seven states. Colour alone means nothing. Shape and name carry the meaning. Each state has its own shape. The indicator shows what the program counts, not whether it is true. The choice below is a preview only, the page has no program state.</p>
+    </div><div data-l="de" lang="de">
+      <p style="margin-top:var(--space-2)">Das Quadrat unten rechts im Logo zeigt einen von sieben Zuständen. Farbe allein bedeutet nichts. Form und Name tragen die Bedeutung. Jeder Zustand hat eine eigene Form. Die Anzeige zeigt, was das Programm zählt, und nicht, ob es stimmt. Die Auswahl unten ist nur eine Vorschau, die Seite hat keinen Programmzustand.</p>
+    </div>
+    <div class="felder" role="group" aria-labelledby="h-stan" id="felder">
+      <button type="button" class="btn feld" data-set-state="aktiv" aria-pressed="false">
+        <svg viewBox="246 246 38 38" width="48" height="48" aria-hidden="true" focusable="false"><rect x="246" y="246" width="38" height="38" fill="#14171F"/><rect x="254" y="254" width="22" height="22" fill="#3FB97A"/><path d="M258.5 265.5L263 270L271.5 259.5" fill="none" stroke="#14171F" stroke-width="3"/></svg>
+        <span><b lang="pl">aktywny</b><span class="en-gegen" lang="en">active</span><span class="form"><span data-l="pl" lang="pl">kwadrat z haczykiem</span><span data-l="en" lang="en">square with check mark</span><span data-l="de" lang="de">Quadrat mit Haken</span></span></span>
+      </button>
+      <button type="button" class="btn feld" data-set-state="laeuft" aria-pressed="false">
+        <svg viewBox="246 246 38 38" width="48" height="48" aria-hidden="true" focusable="false"><rect x="246" y="246" width="38" height="38" fill="#14171F"/><rect x="255.5" y="255.5" width="19" height="19" fill="none" stroke="#5B9BF0" stroke-width="3"/><rect x="261" y="261" width="8" height="8" fill="#5B9BF0"/></svg>
+        <span><b lang="pl">w toku</b><span class="en-gegen" lang="en">running</span><span class="form"><span data-l="pl" lang="pl">ramka z kropką</span><span data-l="en" lang="en">frame with dot</span><span data-l="de" lang="de">Rahmen mit Punkt</span></span></span>
+      </button>
+      <button type="button" class="btn feld" data-set-state="pausiert" aria-pressed="false">
+        <svg viewBox="246 246 38 38" width="48" height="48" aria-hidden="true" focusable="false"><rect x="246" y="246" width="38" height="38" fill="#14171F"/><rect x="254" y="254" width="8" height="22" fill="#E6B84A"/><rect x="268" y="254" width="8" height="22" fill="#E6B84A"/></svg>
+        <span><b lang="pl">wstrzymany</b><span class="en-gegen" lang="en">paused</span><span class="form"><span data-l="pl" lang="pl">dwie belki</span><span data-l="en" lang="en">two bars</span><span data-l="de" lang="de">zwei Balken</span></span></span>
+      </button>
+      <button type="button" class="btn feld" data-set-state="warnung" aria-pressed="false">
+        <svg viewBox="246 246 38 38" width="48" height="48" aria-hidden="true" focusable="false"><rect x="246" y="246" width="38" height="38" fill="#14171F"/><rect x="254" y="254" width="22" height="22" fill="#F0883E"/><rect x="263.5" y="257.5" width="3" height="10" fill="#14171F"/><rect x="263.5" y="269.5" width="3" height="3" fill="#14171F"/></svg>
+        <span><b lang="pl">ostrzeżenie</b><span class="en-gegen" lang="en">warning</span><span class="form"><span data-l="pl" lang="pl">kwadrat z wykrzyknikiem</span><span data-l="en" lang="en">square with exclamation mark</span><span data-l="de" lang="de">Quadrat mit Ausrufezeichen</span></span></span>
+      </button>
+      <button type="button" class="btn feld" data-set-state="fehler" aria-pressed="false">
+        <svg viewBox="246 246 38 38" width="48" height="48" aria-hidden="true" focusable="false"><rect x="246" y="246" width="38" height="38" fill="#14171F"/><rect x="254" y="254" width="22" height="22" fill="#EF5A52"/><path d="M259 259L271 271M271 259L259 271" stroke="#14171F" stroke-width="3" stroke-linecap="square"/></svg>
+        <span><b lang="pl">błąd</b><span class="en-gegen" lang="en">error</span><span class="form"><span data-l="pl" lang="pl">kwadrat z krzyżykiem</span><span data-l="en" lang="en">square with cross</span><span data-l="de" lang="de">Quadrat mit Kreuz</span></span></span>
+      </button>
+      <button type="button" class="btn feld" data-set-state="aus" aria-pressed="false">
+        <svg viewBox="246 246 38 38" width="48" height="48" aria-hidden="true" focusable="false"><rect x="246" y="246" width="38" height="38" fill="#14171F"/><rect x="255.5" y="255.5" width="19" height="19" fill="none" stroke="#8A919B" stroke-width="3"/></svg>
+        <span><b lang="pl">wyłączony</b><span class="en-gegen" lang="en">off</span><span class="form"><span data-l="pl" lang="pl">sama ramka</span><span data-l="en" lang="en">frame only</span><span data-l="de" lang="de">nur Rahmen</span></span></span>
+      </button>
+      <button type="button" class="btn feld" data-set-state="neutral" aria-pressed="true">
+        <svg viewBox="246 246 38 38" width="48" height="48" aria-hidden="true" focusable="false"><rect x="246" y="246" width="38" height="38" fill="#14171F"/><rect x="254" y="254" width="22" height="22" fill="#F1EFE9"/></svg>
+        <span><b lang="pl">neutralny</b><span class="en-gegen" lang="en">neutral</span><span class="form"><span data-l="pl" lang="pl">pełny kwadrat</span><span data-l="en" lang="en">full square</span><span data-l="de" lang="de">volles Quadrat</span></span></span>
+      </button>
+    </div>
+    <p class="klein melde" id="melde" role="status" aria-live="polite"></p>
+    <div data-l="pl" lang="pl"><p class="klein">Kolory stanów leżą tylko na ciemnej kafelce. Wskaźnik w logo nagłówka zmienia się tylko w trybie czarno-białym, bo pliki trybów spectrum i SHIFT nie mają wariantów stanu.</p></div>
+    <div data-l="en" lang="en"><p class="klein">The state colours appear only on the dark tile. The indicator in the header logo changes only in black and white mode, because the files of the modes spectrum and SHIFT have no state variants.</p></div><div data-l="de" lang="de"><p class="klein">Die Zustandsfarben erscheinen nur auf der dunklen Kachel. Die Anzeige im Kopf-Logo wechselt nur im Schwarzweiß-Modus, weil die Dateien der Modi spectrum und SHIFT keine Zustandsvarianten haben.</p></div>
+  </div>
+</details>
+
+<!-- ============ 1. Cel ============ -->
+<section id="cel">
+<div data-l="pl" lang="pl">
+  <h2>Do czego służy pakiet</h2>
+  <p>Pakiet jest dla studentów i prowadzących, którzy pracują z AI naukowo i chcą, żeby ta praca dała się prześledzić. Działa z kontem uczelnianym w Microsoft 365 Copilot, bez dodatkowej licencji, a dla każdego kroku ma drogę bez AI w Word i Excel.</p>
+  <h3>Punkt wyjścia autora</h3>
+  <p>AI działa na wzorcach statystycznych. Model pozostaje czarną skrzynką i popełnia błędy, których człowiek nie widzi od razu. Autor wnioskuje z tego, że możliwość prześledzenia i sprawdzenia wyniku jest mocniejszym argumentem niż poprawność.</p>
+  <h3>Trzy pytania, z których wyrosła metoda</h3>
+  <ol>
+    <li>Kto co pomyślał? Autor chciał dziennika, który zapisuje, które myśli wypowiedział autor, a które AI sparafrazowała.</li>
+    <li>Czy prompt robi to, co obiecuje? Autor zanotował, że potrzebna jest procedura sprawdzająca, czy prompt w ogóle wpływa na wynik.</li>
+    <li>Jak wygląda to w nauczaniu? To pytanie otwarte: czy można dać prowadzącym narzędzie, które pomaga im poradzić sobie z rosnącą liczbą prac studenckich wygenerowanych przez AI, i co może tu wnieść analiza automatyczna.</li>
+  </ol>
+  <h3>Założenia dla nauczania</h3>
+  <p>Autor opisuje pięć założeń. To są założenia, nie wyniki badań. Test agentów w Copilot nie jest zakończony.</p>
+  <ol>
+    <li>Pochodzenie myśli ma być widoczne w chwili, gdy powstaje. Student zapisuje, co sam powiedział, a co wniosła AI. Prowadzący nie muszą zgadywać po fakcie.</li>
+    <li>Droga pracy ma dać się ocenić. Dyktat, mapa i rejestr źródeł pokazują, jak myśl rosła i co sprawdzono w oryginale.</li>
+    <li>Kompetencja metodologiczna ma być ćwiczona. Analiza zaczyna się od zaklasyfikowania materiału. Potem asystent pyta, czy sformułować problem badawczy: temat, problem, cel, tezę, hipotezy i pytania badawcze, ze sprawdzeniem według pięciu kryteriów. AI tego nie przejmuje, tylko o to pyta.</li>
+    <li>Praca ze źródłami ma pozostać uczciwa. Trafienie z wyszukiwarki nie jest przeczytanym źródłem. Pusty wynik nie dowodzi, że na dany temat nic nie ma. Czy źródło niesie argument, rozstrzyga dopiero własna lektura.</li>
+    <li>Próg ma być niski. Kto nie może albo nie chce używać Copilot, pracuje z tymi samymi szablonami w innym asystencie albo bez AI w Excel.</li>
+  </ol>
+  <h3>Co autor chce sprawdzić w teście</h3>
+  <ul>
+    <li>Czy sesje dyktowania pomagają innym tak samo zapisywać i porządkować myśli.</li>
+    <li>Czy mapa pokazuje luki, które inaczej łatwo przeoczyć.</li>
+    <li>Czy prowadzący mogą po dyktacie, mapie i rejestrze źródeł rozpoznać, jak powstała praca studenta.</li>
+  </ul>
+</div>
+<div data-l="en" lang="en">
+  <h2>What the package is for</h2>
+  <p>The package is for students and teachers who work scientifically with AI and want that work to stay traceable. It runs with the university account in Microsoft 365 Copilot, without an extra licence, and for every step it has a route without AI in Word and Excel.</p>
+  <h3>The author's starting point</h3>
+  <p>AI works with statistical patterns. The model remains a black box and makes errors that a person cannot see at once. The author concludes that traceability and checkability of the output are a stronger argument than correctness.</p>
+  <h3>Three questions the method grew from</h3>
+  <ol>
+    <li>Who thought what? The author wanted a log that records which thoughts the author spoke and which the AI paraphrased.</li>
+    <li>Does a prompt do what it promises? The author noted that a procedure is needed to establish whether the prompt influences the output at all.</li>
+    <li>What about teaching? This question is open: can teachers be given an instrument that helps them cope with the growing number of student papers generated by AI, and what can automated analysis contribute.</li>
+  </ol>
+  <h3>Assumptions for teaching</h3>
+  <p>The author describes five assumptions. They are assumptions, not research results. The test of the agents in Copilot is not finished.</p>
+  <ol>
+    <li>The origin of a thought should become visible at the moment it arises. Students record what they said themselves and what the AI contributed. Teachers need not guess afterwards.</li>
+    <li>The path of the work should be assessable. Dictation, map and source register show how a thought grew and what was checked against the original.</li>
+    <li>Methodological competence should be practised. An analysis starts by classifying the material. Then the assistant asks whether a research problem should be formulated: topic, problem, aim, thesis, hypotheses and research questions, checked against five criteria. The AI does not take this over, it asks for it.</li>
+    <li>Work with sources should stay honest. A search engine hit is not a source that has been read. An empty result does not prove that nothing exists on a topic. Whether a source carries an argument is decided only by your own reading.</li>
+    <li>The threshold should be low. Whoever cannot or does not want to use Copilot works with the same templates in another assistant or without AI in Excel.</li>
+  </ol>
+  <h3>What the author wants to find out in the test</h3>
+  <ul>
+    <li>Whether dictation sessions help others in the same way to record and order their thoughts.</li>
+    <li>Whether the map shows gaps that are otherwise easy to overlook.</li>
+    <li>Whether teachers can tell from dictation, map and source register how a student's work came about.</li>
+  </ul>
+</div><div data-l="de" lang="de">
+  <h2>Wofür das Paket da ist</h2>
+  <p>Das Paket ist für Studierende und Lehrende, die mit KI wissenschaftlich arbeiten und dabei nachvollziehbar bleiben wollen. Es läuft mit dem Konto der Universität in Microsoft 365 Copilot, ohne zusätzliche Lizenz, und hat für jeden Schritt einen Weg ohne KI in Word und Excel.</p>
+  <h3>Ausgangspunkt des Autors</h3>
+  <p>KI arbeitet mit statistischen Mustern. Das Modell bleibt eine Blackbox und macht Fehler, die der Mensch nicht sofort erkennt. Der Autor schließt daraus, dass Nachvollziehbarkeit und Prüfbarkeit des Outputs ein stärkeres Argument sind als Korrektheit.</p>
+  <h3>Drei Fragen, aus denen die Methode gewachsen ist</h3>
+  <ol>
+    <li>Wer hat was gedacht? Der Autor wollte ein Log, das festhält, welche Gedanken der Autor geäußert und welche die KI paraphrasiert hat.</li>
+    <li>Tut ein Prompt, was er verspricht? Der Autor hat notiert, dass es ein Prüfverfahren braucht, das feststellt, ob der Prompt den Output überhaupt beeinflusst.</li>
+    <li>Wie sieht es in der Lehre aus? Diese Frage ist offen: Lässt sich Lehrenden ein Instrument in die Hand geben, mit dem sie die wachsende Zahl KI-generierter Studienarbeiten bewältigen, und was kann automatisierte Analyse dazu beitragen.</li>
+  </ol>
+  <h3>Annahmen für die Lehre</h3>
+  <p>Der Autor beschreibt fünf Annahmen. Es sind Annahmen und keine Forschungsergebnisse. Der Test der Agenten in Copilot ist nicht abgeschlossen.</p>
+  <ol>
+    <li>Die Herkunft eines Gedankens soll in dem Moment sichtbar werden, in dem er entsteht. Studierende halten fest, was sie selbst gesagt haben und was die KI beigetragen hat. Lehrende müssen die Herkunft nicht im Nachhinein erraten.</li>
+    <li>Der Weg soll bewertbar werden. Diktat, Karte und Quellenregister zeigen, wie ein Gedanke gewachsen ist und was am Original geprüft wurde.</li>
+    <li>Methodenkompetenz soll geübt werden. Jede Analyse beginnt mit einer Einordnung des Materials. Danach fragt der Assistent, ob ein Forschungsproblem formuliert werden soll: Thema, Problem, Ziel, These, Hypothesen und Forschungsfragen, mit einer Prüfung an fünf Kriterien. Die KI übernimmt das nicht, sie fragt es ab.</li>
+    <li>Quellenarbeit soll ehrlich bleiben. Ein Treffer aus einer Suchmaschine gilt nicht als gelesene Quelle. Ein leeres Suchergebnis gilt nicht als Beweis, dass es zu einem Thema nichts gibt. Ob eine Quelle eine Argumentation trägt, entscheidet erst die eigene Lektüre.</li>
+    <li>Die Schwelle soll niedrig sein. Wer Copilot nicht nutzen kann oder will, arbeitet mit denselben Vorlagen in einem anderen Assistenten oder ohne KI in Excel.</li>
+  </ol>
+  <h3>Was der Autor im Test herausfinden will</h3>
+  <ul>
+    <li>Ob Diktatsitzungen anderen ebenso helfen, ihre Gedanken festzuhalten und zu ordnen.</li>
+    <li>Ob die Karte Lücken sichtbar macht, die man sonst leicht übersieht.</li>
+    <li>Ob Lehrende an Diktat, Karte und Quellenregister erkennen können, wie eine studentische Arbeit entstanden ist.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============ 2. Moduły ============ -->
+<section id="moduly">
+<div data-l="pl" lang="pl">
+  <h2>Cztery moduły</h2>
+  <p>Każdy moduł działa jako agent w Microsoft 365 Copilot. Każdy ma w instrukcjach drogi zapasowe. Kolejność: agenci Copilot, potem dowolny asystent AI z plikami pakietu, potem Word i Excel bez AI.</p>
+  <ul class="module">
+    <li class="modul">
+      <span class="etikett">Moduł 1 <span class="en" lang="en">/ Module 1</span></span>
+      <h3>Strumień świadomości</h3>
+      <p>Agent zapisuje każdą wypowiedź dosłownie, bez poprawiania, skracania i tłumaczenia, i nie zadaje pytań. Po słowie „koniec” pokazuje listę tematów i nazwę pliku Excel. Plik ma arkusze „entries” (wpisy z tekstem) i „register” (skróty SHA-256, liczba znaków i słów, bez tekstu).</p>
+      <p class="stand bereit">gotowy, test w Copilot w toku</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Moduł 2 <span class="en" lang="en">/ Module 2</span></span>
+      <h3>Mapa kontekstu</h3>
+      <p>Agent proponuje temat do każdego wpisu i zapisuje tylko to, co zatwierdzisz numerami. Każdy temat ma pochodzenie: własne, własne z asystentem, asystent, sesja albo niejasne. Połączenia i cele (horyzont krótki, średni, długi) dopełniają mapę. Mapa to kontekst, nie reguły.</p>
+      <p class="stand">roboczy, nieprzetestowany</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Moduł 3 <span class="en" lang="en">/ Module 3</span></span>
+      <h3>Analiza</h3>
+      <p>Najpierw triaż materiału. Potem agent pyta o dalszy krok, o język wyniku i o kontekst kulturowy artefaktu. Ramy kulturoznawcze i nauk społecznych leżą w pakiecie jako pełne pliki. Wynik kończy się blokiem „Kontrola kulturowa”, który wymienia założenia modelu.</p>
+      <p class="stand">roboczy, nieprzetestowany</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Moduł 4 <span class="en" lang="en">/ Module 4</span></span>
+      <h3>Źródła</h3>
+      <p>Agent szuka na stronach z otwartym dostępem. Przy każdym trafieniu podaje, czy przeczytano fragment, streszczenie czy pełny tekst, i którą cechę sprawdzono: istnienie, brzmienie, datę, status albo liczbę. Gdy nic nie znajdzie, mówi, gdzie, jakim hasłem i kiedy.</p>
+      <p class="stand">roboczy, nieprzetestowany</p>
+    </li>
+  </ul>
+  <h3>Pole ujawnienia narzędzia</h3>
+  <p>Plik sesji ma trzeci arkusz „tool”. Zapisuje narzędzie, model (tak, jak podaje czat), liczbę uruchomień kodu i nakład. Czego nie wiadomo, oznacza „unknown”. Szablon i lista kontrolna: <code>szablony/ujawnienie-narzedzia.pl.md</code>.</p>
+</div>
+<div data-l="en" lang="en">
+  <h2>Four modules</h2>
+  <p>Each module runs as an agent in Microsoft 365 Copilot. Each has fallbacks in its instructions. The order: Copilot agents, then any AI assistant with the package files, then Word and Excel without AI.</p>
+  <ul class="module">
+    <li class="modul">
+      <span class="etikett">Module 1 <span class="en" lang="pl">/ Moduł 1</span></span>
+      <h3>Stream of consciousness</h3>
+      <p>The agent records every utterance word for word, without correcting, shortening or translating, and asks no questions. After the word "end" it shows a list of topics and the name of the Excel file. The file has the sheets "entries" (the entries with text) and "register" (SHA-256 hashes, numbers of characters and words, no text).</p>
+      <p class="stand bereit">ready, Copilot test pending</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Module 2 <span class="en" lang="pl">/ Moduł 2</span></span>
+      <h3>Context map</h3>
+      <p>The agent proposes a topic for each entry and records only what you confirm with numbers. Each topic has an origin: own, own with assistant, assistant, session or unclear. Connections and goals (short, medium and long horizon) complete the map. The map is context, not rules.</p>
+      <p class="stand">draft, untested</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Module 3 <span class="en" lang="pl">/ Moduł 3</span></span>
+      <h3>Analysis</h3>
+      <p>Triage of the material comes first. Then the agent asks about the next step, the output language and the cultural context of the artefact. The frameworks from cultural studies and social sciences are included as complete files. The result ends with a block "Kontrola kulturowa" (cultural check) that lists the assumptions the model made.</p>
+      <p class="stand">draft, untested</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Module 4 <span class="en" lang="pl">/ Moduł 4</span></span>
+      <h3>Sources</h3>
+      <p>The agent searches on open access sites. For each hit it states whether a snippet, a summary or the full text was read, and which property was checked: existence, wording, date, status or number. When it finds nothing, it says where, with which search term and when.</p>
+      <p class="stand">draft, untested</p>
+    </li>
+  </ul>
+  <h3>Tool disclosure field</h3>
+  <p>The session file has a third sheet "tool". It records the tool, the model (as the chat states it), the number of code runs and the computational effort. Where nothing is known, it says "unknown". Template and checklist (Polish): <code>szablony/ujawnienie-narzedzia.pl.md</code>.</p>
+</div><div data-l="de" lang="de">
+  <h2>Vier Module</h2>
+  <p>Jedes Modul läuft als Agent in Microsoft 365 Copilot. Jeder hat in seinen Anweisungen Ausweichwege. Die Reihenfolge: Copilot-Agenten, dann ein beliebiger KI-Assistent mit den Paketdateien, dann Word und Excel ohne KI.</p>
+  <ul class="module">
+    <li class="modul">
+      <span class="etikett">Modul 1 <span class="en" lang="pl">/ Moduł 1</span></span>
+      <h3>Strom der Gedanken</h3>
+      <p>Der Agent schreibt jede Äußerung wörtlich mit, ohne zu korrigieren, zu kürzen oder zu übersetzen, und stellt keine Fragen. Nach dem Schlusswort („koniec“ auf Polnisch, „end“ auf Englisch) zeigt er eine Themenliste und den Namen der Excel-Datei. Die Datei hat die Blätter „entries“ (Einträge mit Text) und „register“ (SHA-256-Prüfwerte, Zahl der Zeichen und Wörter, kein Text).</p>
+      <p class="stand bereit">fertig, Copilot-Test läuft</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Modul 2 <span class="en" lang="pl">/ Moduł 2</span></span>
+      <h3>Karte des Kontexts</h3>
+      <p>Der Agent schlägt zu jedem Eintrag ein Thema vor und trägt nur ein, was du mit Nummern bestätigst. Jedes Thema hat eine Herkunft: eigen, eigen mit Assistent, Assistent, Sitzung oder unklar. Verbindungen und Ziele (kurzer, mittlerer und langer Horizont) vervollständigen die Karte. Die Karte ist Kontext, keine Regel.</p>
+      <p class="stand">Entwurf, ungetestet</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Modul 3 <span class="en" lang="pl">/ Moduł 3</span></span>
+      <h3>Analyse</h3>
+      <p>Zuerst kommt die Einordnung (Triage) des Materials. Dann fragt der Agent nach dem nächsten Schritt, nach der Sprache des Ergebnisses und nach dem kulturellen Kontext des Artefakts. Die Rahmen aus Kulturwissenschaft und Sozialwissenschaft liegen als vollständige Dateien bei. Das Ergebnis endet mit einem Block „Kontrola kulturowa“ (Kulturkontrolle), der die Annahmen des Modells auflistet.</p>
+      <p class="stand">Entwurf, ungetestet</p>
+    </li>
+    <li class="modul">
+      <span class="etikett">Modul 4 <span class="en" lang="pl">/ Moduł 4</span></span>
+      <h3>Quellen</h3>
+      <p>Der Agent sucht auf Seiten mit offenem Zugang. Bei jedem Treffer gibt er an, ob ein Ausschnitt, eine Zusammenfassung oder der volle Text gelesen wurde und welche Eigenschaft geprüft ist: Existenz, Wortlaut, Datum, Status oder Zahl. Findet er nichts, sagt er, wo, mit welchem Suchbegriff und wann.</p>
+      <p class="stand">Entwurf, ungetestet</p>
+    </li>
+  </ul>
+  <h3>Feld zur Offenlegung des Werkzeugs</h3>
+  <p>Die Sitzungsdatei hat ein drittes Blatt „tool“. Es hält Werkzeug, Modell (so, wie der Chat es nennt), Zahl der Code-Läufe und Rechenaufwand fest. Was nicht bekannt ist, steht als „unknown“. Vorlage und Checkliste (polnisch): <code>szablony/ujawnienie-narzedzia.pl.md</code>.</p>
+</div>
+</section>
+
+<!-- ============ 3. Start ============ -->
+<section id="start">
+<div data-l="pl" lang="pl">
+  <h2>Jak zacząć</h2>
+  <p>Instrukcja konfiguracji istnieje na razie dla Microsoft 365 Copilot. Pełny tekst: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/SETUP.pl.md"><code>SETUP.pl.md</code></a>.</p>
+
+  <div class="plattform">
+    <h3>Microsoft 365 Copilot (agent „strumień świadomości”)</h3>
+    <p><strong>Czego potrzebujesz</strong></p>
+    <ol>
+      <li>Konto uczelniane z dostępem do Microsoft 365 Copilot Chat. Licencja Copilot nie jest potrzebna.</li>
+      <li>Około dziesięciu minut na konfigurację.</li>
+      <li>Python 3.8 lub nowszy, tylko jeśli chcesz sprawdzać pliki na własnym komputerze. To jest opcjonalne.</li>
+    </ol>
+    <p><strong>Konfiguracja agenta</strong></p>
+    <div class="hinweis"><span class="e">Uwaga <span class="en" lang="en">/ Note</span></span><p>Nazwy przycisków mogą się różnić w zależności od języka interfejsu. Poniżej są nazwy angielskie z dokumentacji Microsoft.</p></div>
+    <ol class="schritte">
+      <li>Otwórz Copilot w przeglądarce i wybierz po lewej stronie „Agents”, a potem „New agent”.</li>
+      <li>Wybierz konfigurację ręczną („Configure”, „Skip to configure”).</li>
+      <li>Wklej nazwę, opis i podpowiedzi startowe z pliku <code>copilot/strumien/AGENT.md</code>.</li>
+      <li>Wklej do pola instrukcji całą zawartość pliku <code>copilot/strumien/INSTRUCTIONS.txt</code>.</li>
+      <li>W sekcji wiedzy nic nie dodawaj.</li>
+      <li>Zapisz agenta („Create”).</li>
+    </ol>
+    <p><strong>Pierwszy test</strong></p>
+    <ol class="schritte">
+      <li>Otwórz agenta i napisz „start”.</li>
+      <li>Agent powinien pokazać krótki kod i wynik „OK”. To znaczy, że naprawdę wykonuje kod i potrafi liczyć skróty.</li>
+      <li>Jeśli zamiast tego pojawi się ostrzeżenie, że skróty nie są możliwe, sesja zostanie zapisana bez nich. Agent nie może wtedy wymyślać skrótów.</li>
+      <li>Powiedz albo napisz dwa zdania, potem „koniec”. Agent pokaże listę tematów i nazwę pliku Excel.</li>
+    </ol>
+    <p><strong>Gdzie są pliki</strong></p>
+    <p>Każda sesja daje jeden plik <code>dictation-RRRR-MM-DD-GGMM.xlsx</code>. Agent zawsze proponuje też pobranie pliku. Pliki Excel z interpretera kodu trafiają zwykle same do OneDrive, do folderu Copilot. Tak było w teście na koncie UWr 17.10.2026, ale Microsoft tego nie gwarantuje.</p>
+    <p><strong>Sprawdzanie</strong></p>
+    <ol>
+      <li>W Copilot dołącz plik sesji do rozmowy z agentem i napisz „sprawdź ten plik”. Agent policzy skróty jeszcze raz i poda przy każdym wpisie, czy tekst się zmienił.</li>
+      <li>Na własnym komputerze, jeśli prowadzisz dziennik w plikach Markdown: <code>python tools/diktat_ledger.py init &lt;folder&gt;</code>, potem <code>scan</code> i <code>verify</code>.</li>
+    </ol>
+    <p><strong>Dalsze moduły (opcjonalnie)</strong></p>
+    <div class="hinweis pruefen"><span class="e">Do sprawdzenia <span class="en" lang="en">/ To be checked</span></span><p>Moduły 2, 3 i 4 nie były jeszcze testowane w Copilot.</p></div>
+    <ul>
+      <li><strong>Mapa kontekstu:</strong> nowy agent z <code>copilot/mapa/AGENT.md</code> i <code>INSTRUCTIONS.txt</code>, w sekcji wiedzy nic. Plik dyktatu dołączasz do rozmowy. Na „start” agent powinien odpowiedzieć „Mapa gotowa. Skróty działają.” Opis metody: <code>KONTEKST.pl.md</code>.</li>
+      <li><strong>Analiza:</strong> agent z <code>copilot/analiza/</code>. W rozmowie dołącz artefakt oraz pliki <code>prompts/core/artifact-triage.md</code> i <code>prompts/framework-catalog.md</code>. Bez nich agent użyje triażu minimalnego i nie poleci ram. Gdy poleci ramy, dołącz ich pliki z <code>prompts/cultural-scientific/</code> albo <code>prompts/social-science/</code>.</li>
+      <li><strong>Źródła:</strong> agent z <code>copilot/zrodla/</code>. W sekcji wiedzy dodaj cztery strony z <code>AGENT.md</code>. Bez nich agent szuka w całej sieci, a wyniki wymagają ostrożniejszej oceny. Na własnym komputerze: <code>python tools/szukaj.py "hasło" --csv wynik.csv</code> (OpenAlex, Crossref, DOAJ).</li>
+    </ul>
+  </div>
+
+  <div class="plattform">
+    <h3>Inny asystent AI</h3>
+    <p>Prompty i protokoły z folderów <code>prompts/</code> i <code>protokoly/</code> działają w każdym asystencie AI. Dołącz pliki pakietu do rozmowy. Osobnej instrukcji konfiguracji dla innych platform pakiet jeszcze nie ma.</p>
+  </div>
+
+  <div class="plattform">
+    <h3>Word i Excel bez AI</h3>
+    <p>Protokoły działają także w Word i Excel. Pięć rejestrów w Excel obejmuje: źródła, pochodzenie, decyzje przy kodowaniu, kontrolę przed publikacją i pytania do falsyfikacji. Plik <code>office/rejestry.xlsx</code> i opis w <code>office/README.pl.md</code>.</p>
+  </div>
+</div>
+
+<div data-l="en" lang="en">
+  <h2>Getting started</h2>
+  <p>The setup guide exists so far for Microsoft 365 Copilot. Full text: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/SETUP.en.md"><code>SETUP.en.md</code></a> (stream agent) and <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/SETUP.pl.md"><code>SETUP.pl.md</code></a> (all agents, Polish).</p>
+
+  <div class="plattform">
+    <h3>Microsoft 365 Copilot (agent "stream of consciousness")</h3>
+    <p><strong>What you need</strong></p>
+    <ol>
+      <li>A university account with access to Microsoft 365 Copilot Chat. No Copilot licence is needed.</li>
+      <li>About ten minutes for the setup.</li>
+      <li>Python 3.8 or newer, only if you want to check files on your own computer. This is optional.</li>
+    </ol>
+    <p><strong>Set up the agent</strong></p>
+    <div class="hinweis"><span class="e">Note <span class="en" lang="pl">/ Uwaga</span></span><p>Button labels can differ with the language of the interface. The labels below are the English ones from the Microsoft documentation.</p></div>
+    <ol class="schritte">
+      <li>Open Copilot in the browser, choose "Agents" on the left, then "New agent".</li>
+      <li>Choose the manual setup ("Configure", "Skip to configure").</li>
+      <li>Paste name, description and starter prompts from <code>copilot/strumien/AGENT.md</code>.</li>
+      <li>Paste the whole content of <code>copilot/strumien/INSTRUCTIONS.txt</code> into the instructions field.</li>
+      <li>Add nothing under knowledge.</li>
+      <li>Save the agent ("Create").</li>
+    </ol>
+    <p><strong>First test</strong></p>
+    <ol class="schritte">
+      <li>Open the agent and write "start".</li>
+      <li>The agent should show a short piece of code and the result "OK". This means it really runs code and can compute hashes.</li>
+      <li>If you see a warning that hashes are not possible instead, the session is saved without them. The agent must not invent hashes then.</li>
+      <li>Say or type two sentences, then "end". The agent shows a list of topics and the name of the Excel file.</li>
+    </ol>
+    <p><strong>Where the files are</strong></p>
+    <p>Each session gives one file <code>dictation-YYYY-MM-DD-HHMM.xlsx</code>. The agent always offers the file as a download too. Excel files from the code interpreter usually land in your OneDrive by themselves, in the Copilot folder. This happened in a test on a University of Wrocław account on 17 October 2026, but Microsoft does not guarantee it.</p>
+    <p><strong>Checking</strong></p>
+    <ol>
+      <li>In Copilot, attach a session file to a conversation with the agent and write "verify this file". The agent computes the hashes again and reports for each entry whether the text changed.</li>
+      <li>On your own computer, if you keep a journal in Markdown files: <code>python tools/diktat_ledger.py init &lt;folder&gt;</code>, then <code>scan</code> and <code>verify</code>.</li>
+    </ol>
+    <p><strong>Further modules (optional)</strong></p>
+    <div class="hinweis pruefen"><span class="e">To be checked <span class="en" lang="pl">/ Do sprawdzenia</span></span><p>Modules 2, 3 and 4 have not been tested in Copilot yet.</p></div>
+    <ul>
+      <li><strong>Context map:</strong> a new agent from <code>copilot/mapa/AGENT.md</code> and <code>INSTRUCTIONS.txt</code>, nothing under knowledge. You attach the dictation file to the conversation. On "start" the agent should answer "Mapa gotowa. Skróty działają." Method description (Polish): <code>KONTEKST.pl.md</code>.</li>
+      <li><strong>Analysis:</strong> an agent from <code>copilot/analiza/</code>. In the conversation, attach the artefact and the files <code>prompts/core/artifact-triage.md</code> and <code>prompts/framework-catalog.md</code>. Without them the agent uses minimal triage and recommends no frameworks. When it recommends frameworks, attach their files from <code>prompts/cultural-scientific/</code> or <code>prompts/social-science/</code>.</li>
+      <li><strong>Sources:</strong> an agent from <code>copilot/zrodla/</code>. Under knowledge, add the four pages from <code>AGENT.md</code>. Without them the agent searches the whole web and the results need more careful judgement. On your own computer: <code>python tools/szukaj.py "term" --csv result.csv</code> (OpenAlex, Crossref, DOAJ).</li>
+    </ul>
+  </div>
+
+  <div class="plattform">
+    <h3>Another AI assistant</h3>
+    <p>The prompts and protocols in the folders <code>prompts/</code> and <code>protokoly/</code> work in any AI assistant. Attach the package files to the conversation. The package has no separate setup guide for other platforms yet.</p>
+  </div>
+
+  <div class="plattform">
+    <h3>Word and Excel without AI</h3>
+    <p>The protocols also work in Word and Excel. Five registers in Excel cover: sources, provenance, coding decisions, the check before publication and falsification questions. The file <code>office/rejestry.xlsx</code> and a description in <code>office/README.pl.md</code> (Polish).</p>
+  </div>
+</div><div data-l="de" lang="de">
+  <h2>Einstieg</h2>
+  <p>Die Einrichtungsanleitung gibt es bisher für Microsoft 365 Copilot. Volltext: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/SETUP.en.md"><code>SETUP.en.md</code></a> (Strom-Agent, englisch) und <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/SETUP.pl.md"><code>SETUP.pl.md</code></a> (alle Agenten, polnisch).</p>
+
+  <div class="plattform">
+    <h3>Microsoft 365 Copilot (Agent „Strom der Gedanken“)</h3>
+    <p><strong>Was du brauchst</strong></p>
+    <ol>
+      <li>Ein Konto der Universität mit Zugang zu Microsoft 365 Copilot Chat. Eine Copilot-Lizenz ist nicht nötig.</li>
+      <li>Etwa zehn Minuten für die Einrichtung.</li>
+      <li>Python 3.8 oder neuer, nur wenn du Dateien auf dem eigenen Rechner prüfen willst. Das ist optional.</li>
+    </ol>
+    <p><strong>Agent einrichten</strong></p>
+    <div class="hinweis"><span class="e">Hinweis <span class="en" lang="pl">/ Uwaga</span></span><p>Die Namen der Schaltflächen können je nach Sprache der Oberfläche abweichen. Unten stehen die englischen Namen aus der Microsoft-Dokumentation.</p></div>
+    <ol class="schritte">
+      <li>Öffne Copilot im Browser, wähle links „Agents“, dann „New agent“.</li>
+      <li>Wähle die manuelle Einrichtung („Configure“, „Skip to configure“).</li>
+      <li>Füge Name, Beschreibung und Startvorschläge aus <code>copilot/strumien/AGENT.md</code> ein.</li>
+      <li>Füge den gesamten Inhalt von <code>copilot/strumien/INSTRUCTIONS.txt</code> in das Anweisungsfeld ein.</li>
+      <li>Füge unter „Wissen“ nichts hinzu.</li>
+      <li>Speichere den Agenten („Create“).</li>
+    </ol>
+    <p><strong>Erster Test</strong></p>
+    <ol class="schritte">
+      <li>Öffne den Agenten und schreibe „start“.</li>
+      <li>Der Agent sollte ein kurzes Stück Code und das Ergebnis „OK“ zeigen. Das heißt, er führt wirklich Code aus und kann Prüfwerte berechnen.</li>
+      <li>Erscheint stattdessen eine Warnung, dass Prüfwerte nicht möglich sind, wird die Sitzung ohne sie gespeichert. Der Agent darf dann keine Prüfwerte erfinden.</li>
+      <li>Sprich oder schreibe zwei Sätze, dann das Schlusswort („koniec“ auf Polnisch, „end“ auf Englisch). Der Agent zeigt eine Themenliste und den Namen der Excel-Datei.</li>
+    </ol>
+    <p><strong>Wo die Dateien liegen</strong></p>
+    <p>Jede Sitzung ergibt eine Datei <code>dictation-JJJJ-MM-TT-HHMM.xlsx</code>. Der Agent bietet die Datei immer auch zum Download an. Excel-Dateien aus dem Code-Interpreter landen meist von selbst in deinem OneDrive, im Ordner Copilot. Das war in einem Test mit einem Konto der Universität Wrocław am 17. Oktober 2026 so, doch Microsoft garantiert es nicht.</p>
+    <p><strong>Prüfen</strong></p>
+    <ol>
+      <li>In Copilot hängst du eine Sitzungsdatei an ein Gespräch mit dem Agenten an und schreibst „sprawdź ten plik“ (englisch: „verify this file“). Der Agent berechnet die Prüfwerte erneut und meldet bei jedem Eintrag, ob sich der Text verändert hat.</li>
+      <li>Auf dem eigenen Rechner, wenn du ein Journal in Markdown-Dateien führst: <code>python tools/diktat_ledger.py init &lt;Ordner&gt;</code>, dann <code>scan</code> und <code>verify</code>.</li>
+    </ol>
+    <p><strong>Weitere Module (optional)</strong></p>
+    <div class="hinweis pruefen"><span class="e">Zu prüfen <span class="en" lang="pl">/ Do sprawdzenia</span></span><p>Die Module 2, 3 und 4 wurden in Copilot noch nicht getestet.</p></div>
+    <ul>
+      <li><strong>Karte des Kontexts:</strong> ein neuer Agent aus <code>copilot/mapa/AGENT.md</code> und <code>INSTRUCTIONS.txt</code>, unter „Wissen“ nichts. Die Diktatdatei hängst du an das Gespräch an. Auf „start“ sollte der Agent mit „Mapa gotowa. Skróty działają.“ antworten. Methodenbeschreibung (polnisch): <code>KONTEKST.pl.md</code>.</li>
+      <li><strong>Analyse:</strong> ein Agent aus <code>copilot/analiza/</code>. Hänge im Gespräch das Artefakt und die Dateien <code>prompts/core/artifact-triage.md</code> und <code>prompts/framework-catalog.md</code> an. Ohne sie nutzt der Agent eine minimale Triage und empfiehlt keine Rahmen. Empfiehlt er Rahmen, hänge deren Dateien aus <code>prompts/cultural-scientific/</code> oder <code>prompts/social-science/</code> an.</li>
+      <li><strong>Quellen:</strong> ein Agent aus <code>copilot/zrodla/</code>. Füge unter „Wissen“ die vier Seiten aus <code>AGENT.md</code> hinzu. Ohne sie sucht der Agent im ganzen Netz, und die Ergebnisse verlangen ein vorsichtigeres Urteil. Auf dem eigenen Rechner: <code>python tools/szukaj.py "Suchbegriff" --csv ergebnis.csv</code> (OpenAlex, Crossref, DOAJ).</li>
+    </ul>
+  </div>
+
+  <div class="plattform">
+    <h3>Anderer KI-Assistent</h3>
+    <p>Die Prompts und Protokolle in den Ordnern <code>prompts/</code> und <code>protokoly/</code> funktionieren in jedem KI-Assistenten. Hänge die Paketdateien an das Gespräch an. Eine eigene Einrichtungsanleitung für andere Plattformen hat das Paket noch nicht.</p>
+  </div>
+
+  <div class="plattform">
+    <h3>Word und Excel ohne KI</h3>
+    <p>Die Protokolle funktionieren auch in Word und Excel. Fünf Register in Excel tragen sie: Quellen, Herkunft, Entscheidungen beim Kodieren, Prüfung vor der Veröffentlichung und Fragen zur Falsifikation. Die Datei <code>office/rejestry.xlsx</code> und eine Beschreibung in <code>office/README.pl.md</code> (polnisch).</p>
+  </div>
+</div>
+</section>
+
+<!-- ============ 4. Granice ============ -->
+<section id="granice">
+<div data-l="pl" lang="pl">
+  <h2>Czego pakiet nie robi</h2>
+  <div class="hinweis pruefen">
+    <span class="e">Do sprawdzenia <span class="en" lang="en">/ To be checked</span></span>
+    <p>Skrót SHA-256 pokazuje, że tekst w pliku nie zmienił się od końca sesji. Nie pokazuje, że model zapisał Twoje słowa dokładnie. Przeczytaj plik raz po zakończeniu sesji.</p>
+  </div>
+  <h3>Co skrót potwierdza, a co zostaje po Twojej stronie</h3>
+  <ul>
+    <li>Arkusz „tool” nie ma skrótu. Przeczytaj go raz.</li>
+    <li>Skrót wiersza mapy pokazuje tylko, że wiersz nie zmienił się od zapisu. Nie pokazuje, że temat jest dobrze nazwany ani że pochodzenie jest prawdziwe. Pochodzenie ustalasz Ty, technika tylko je zapisuje.</li>
+    <li>Mapa mówi, nad czym myślisz. Nie mówi, co masz robić. Asystent nie ocenia Twoich tematów i nie dopisuje ich sam.</li>
+    <li>Trafienie z wyszukiwarki nie jest przeczytanym źródłem. Pusty wynik nie dowodzi, że niczego nie ma.</li>
+    <li>Bez tekstu ramy agent analizy nie analizuje według tej ramy.</li>
+  </ul>
+  <h3>Ograniczenia użycia</h3>
+  <ul>
+    <li>Copilot Chat bez licencji ma limity użycia. Microsoft pisze w dokumentacji „Usage limits apply to all included features” i nie podaje liczb. Agent uruchamia kod tylko dwa razy na sesję, na początku i na końcu.</li>
+    <li>Długa sesja jest mniej pewna. Po dwudziestu wpisach agent proponuje zakończenie. Zakończ wtedy i zacznij nową sesję.</li>
+    <li>Nie dodawaj plików z OneDrive ani SharePoint jako wiedzy agenta. Bez licencji Copilot to nie działa albo jest rozliczane jako płatne użycie.</li>
+    <li>Mapa zawiera Twoje myśli i cele. Zostaje w Twoim OneDrive. Nie udostępniaj jej bez namysłu.</li>
+    <li>Co Copilot wolno na Twojej uczelni, rozstrzyga jej administracja.</li>
+  </ul>
+</div>
+<div data-l="en" lang="en">
+  <h2>What the package does not do</h2>
+  <div class="hinweis pruefen">
+    <span class="e">To be checked <span class="en" lang="pl">/ Do sprawdzenia</span></span>
+    <p>The SHA-256 hash shows that the text in the file has not changed since the end of the session. It does not show that the model copied your words exactly. Read the file once after the session.</p>
+  </div>
+  <h3>What the hash confirms and what stays with you</h3>
+  <ul>
+    <li>The sheet "tool" carries no hash. Read it once.</li>
+    <li>The hash of a map row shows only that the row has not changed since it was saved. It does not show that the topic is well named or that the origin is true. You decide the origin, the technology only records it.</li>
+    <li>The map says what you are thinking about. It does not say what you should do. The assistant does not judge your topics and does not add any on its own.</li>
+    <li>A search hit is not a source that has been read. An empty result does not prove that nothing exists.</li>
+    <li>Without the text of a framework, the analysis agent does not analyse according to that framework.</li>
+  </ul>
+  <h3>Usage limits</h3>
+  <ul>
+    <li>Copilot Chat without a licence has usage limits. The Microsoft documentation says "Usage limits apply to all included features" and gives no numbers. The agent runs code only twice per session, at the start and at the end.</li>
+    <li>A long session is less reliable. After twenty entries the agent suggests ending. End the session then and start a new one.</li>
+    <li>Do not add OneDrive or SharePoint files as knowledge. Without a Copilot licence this does not work or is billed as metered usage.</li>
+    <li>The map contains your thoughts and goals. It stays in your OneDrive. Do not share it without thought.</li>
+    <li>What Copilot is allowed to do at your university is decided by its administration.</li>
+  </ul>
+</div><div data-l="de" lang="de">
+  <h2>Was das Paket nicht leistet</h2>
+  <div class="hinweis pruefen">
+    <span class="e">Zu prüfen <span class="en" lang="pl">/ Do sprawdzenia</span></span>
+    <p>Der SHA-256-Prüfwert zeigt, dass sich der Text in der Datei seit dem Ende der Sitzung nicht verändert hat. Er zeigt nicht, dass das Modell deine Worte richtig erfasst hat. Lies die Datei nach der Sitzung einmal durch.</p>
+  </div>
+  <h3>Was der Prüfwert bestätigt und was bei dir bleibt</h3>
+  <ul>
+    <li>Das Blatt „tool“ trägt keinen Prüfwert. Lies es einmal durch.</li>
+    <li>Der Prüfwert einer Kartenzeile zeigt nur, dass sich die Zeile seit dem Speichern nicht verändert hat. Er zeigt nicht, dass das Thema gut benannt oder die Herkunft wahr ist. Die Herkunft legst du fest, die Technik hält sie nur fest.</li>
+    <li>Die Karte sagt, worüber du nachdenkst. Sie sagt nicht, was du tun sollst. Der Assistent bewertet deine Themen nicht und ergänzt keine von sich aus.</li>
+    <li>Ein Treffer aus einer Suchmaschine gilt nicht als gelesene Quelle. Ein leeres Suchergebnis ist kein Beweis, dass es nichts gibt.</li>
+    <li>Ohne den Text eines Rahmens analysiert der Analyse-Agent nicht nach diesem Rahmen.</li>
+  </ul>
+  <h3>Nutzungsgrenzen</h3>
+  <ul>
+    <li>Copilot Chat ohne Lizenz hat Nutzungsgrenzen. Die Microsoft-Dokumentation sagt „Usage limits apply to all included features“ und nennt keine Zahlen. Der Agent führt Code nur zweimal pro Sitzung aus, am Anfang und am Ende.</li>
+    <li>Eine lange Sitzung ist weniger zuverlässig. Nach zwanzig Einträgen schlägt der Agent das Ende vor. Beende die Sitzung dann und beginne eine neue.</li>
+    <li>Füge keine OneDrive- oder SharePoint-Dateien als Wissen hinzu. Ohne Copilot-Lizenz funktioniert das nicht oder wird als bezahlte Nutzung abgerechnet.</li>
+    <li>Die Karte enthält deine Gedanken und Ziele. Sie bleibt in deinem OneDrive. Gib sie nicht unbedacht weiter.</li>
+    <li>Was Copilot an deiner Hochschule erlaubt, entscheidet deren Verwaltung.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============ 5. Zasady uczelni ============ -->
+<section id="uczelnia">
+<div data-l="pl" lang="pl">
+  <h2>Zasady uczelni</h2>
+  <div class="hinweis">
+    <span class="e">Uwaga <span class="en" lang="en">/ Note</span></span>
+    <p>Zanim użyjesz zapisanych tekstów w pracy zaliczeniowej, sprawdź zasady swojej uczelni i prowadzącego dotyczące korzystania z AI.</p>
+  </div>
+</div>
+<div data-l="en" lang="en">
+  <h2>University rules</h2>
+  <div class="hinweis">
+    <span class="e">Note <span class="en" lang="pl">/ Uwaga</span></span>
+    <p>Before you use recorded texts in coursework, check the rules of your university and your teacher on the use of AI.</p>
+  </div>
+</div><div data-l="de" lang="de">
+  <h2>Regeln der Hochschule</h2>
+  <div class="hinweis">
+    <span class="e">Hinweis <span class="en" lang="pl">/ Uwaga</span></span>
+    <p>Bevor du aufgezeichnete Texte in einer Studienleistung verwendest, prüfe die Regeln deiner Universität und deiner Lehrperson zur Nutzung von KI.</p>
+  </div>
+</div>
+</section>
+
+<!-- ============ 6. Stan, licencja, kontakt ============ -->
+<section id="kontakt">
+<div data-l="pl" lang="pl">
+  <h2>Stan, licencja i kontakt</h2>
+  <h3>Stan</h3>
+  <p>Produkt 26.01, wersja 0.2.0 (robocza), 05.11.2026, nie wydana. Przed wydaniem: sprawdzenie polskiego tekstu przez autora, test agentów w Copilot, licencja reszty pakietu, kontrola przed publikacją. Tryby „sprint” i „przekład na polski” dojdą po decyzjach autora.</p>
+  <h3>Licencja</h3>
+  <p>Foldery <code>prompts/</code> i <code>protokoly/</code> są na licencji CC BY-SA 4.0 (szczegóły w <code>LICENSE.md</code> w każdym z nich). Licencja reszty pakietu zostanie ustalona przed wydaniem.</p>
+  <div class="hinweis entwurf">
+    <span class="e">Planowane <span class="en" lang="en">/ Planned</span></span>
+    <p>Planowane jest podwójne licencjonowanie: otwarta CC BY-SA 4.0 oraz komercyjna po uzgodnieniu. To plan, nie obowiązująca licencja. W repozytorium nie ma jeszcze pliku licencji dla całego pakietu.</p>
+  </div>
+  <h3>Kontakt i uwagi do testu</h3>
+  <p>Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo.</p>
+  <p>Uwagi: <a href="mailto:285421@student.uwr.edu.pl">285421@student.uwr.edu.pl</a>. Każda uwaga trafia do następnej wersji.</p>
+  <p>Pliki pakietu: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE">repozytorium KAIWA-SUITE</a>. Uzasadnienie metody (esej po niemiecku): <code>esej/uzasadnienie-metody.de.md</code>.</p>
+</div>
+<div data-l="en" lang="en">
+  <h2>Status, licence and contact</h2>
+  <h3>Status</h3>
+  <p>Product 26.01, version 0.2.0 (draft), 5 November 2026, not released. Before release: the author's check of the Polish text, a test of the agents in Copilot, the licence of the rest of the package, a check before publication. The modes "sprint" and "transfer into Polish" follow after the author's decisions.</p>
+  <h3>Licence</h3>
+  <p>The folders <code>prompts/</code> and <code>protokoly/</code> are CC BY-SA 4.0 (details in <code>LICENSE.md</code> in each of them). The licence of the rest of the package is set before release.</p>
+  <div class="hinweis entwurf">
+    <span class="e">Planned <span class="en" lang="pl">/ Planowane</span></span>
+    <p>Dual licensing is planned: open under CC BY-SA 4.0 and commercial by agreement. This is a plan, not a licence in force. The repository does not yet contain a licence file for the whole package.</p>
+  </div>
+  <h3>Contact and feedback on the test</h3>
+  <p>Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (KMSI), University of Wrocław, leading programme image communication, second discipline cultural studies.</p>
+  <p>Feedback: <a href="mailto:285421@student.uwr.edu.pl">285421@student.uwr.edu.pl</a>. Every piece of feedback flows into the next version.</p>
+  <p>Package files: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE">repository KAIWA-SUITE</a>. Rationale of the method (essay in German): <code>esej/uzasadnienie-metody.de.md</code>.</p>
+</div><div data-l="de" lang="de">
+  <h2>Stand, Lizenz und Kontakt</h2>
+  <h3>Stand</h3>
+  <p>Produkt 26.01, Version 0.2.0 (Entwurf), 5. November 2026, nicht veröffentlicht. Vor der Veröffentlichung: Prüfung des polnischen Textes durch den Autor, Test der Agenten in Copilot, Lizenz für den Rest des Pakets, Kontrolle vor der Veröffentlichung. Die Modi „sprint“ und „Übertragung ins Polnische“ folgen nach Entscheidungen des Autors.</p>
+  <h3>Lizenz</h3>
+  <p>Die Ordner <code>prompts/</code> und <code>protokoly/</code> stehen unter CC BY-SA 4.0 (Einzelheiten in <code>LICENSE.md</code> in jedem von ihnen). Die Lizenz für den Rest des Pakets wird vor der Veröffentlichung festgelegt.</p>
+  <div class="hinweis entwurf">
+    <span class="e">Geplant <span class="en" lang="pl">/ Planowane</span></span>
+    <p>Geplant ist eine Doppellizenz: offen unter CC BY-SA 4.0 und kommerziell nach Vereinbarung. Das ist ein Plan und keine geltende Lizenz. Im Repository liegt noch keine Lizenzdatei für das gesamte Paket.</p>
+  </div>
+  <h3>Kontakt und Rückmeldungen zum Test</h3>
+  <p>Herausgeber: Denis Pokropski, Bachelor in Philosophie (lic. filozofii, Universität Wrocław, 2019), im Masterstudium am Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI) der Universität Wrocław, Leitfach komunikacja wizerunkowa (englisch: image communication), zweite Disziplin Kulturwissenschaft (kulturoznawstwo).</p>
+  <p>Rückmeldungen: <a href="mailto:285421@student.uwr.edu.pl">285421@student.uwr.edu.pl</a>. Jede Rückmeldung fließt in die nächste Fassung ein.</p>
+  <p>Paketdateien: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE">Repository KAIWA-SUITE</a>. Begründung der Methode (Essay auf Deutsch): <code>esej/uzasadnienie-metody.de.md</code>.</p>
+</div>
+</section>
+
+</main>
+
+<footer class="fuss">
+  <span><b>KAIWA</b> · 26.01 · <span data-l="pl" lang="pl">wersja</span><span data-l="en" lang="en">version</span><span data-l="de" lang="de">Version</span> 0.2.0 · commit <span class="ph">⟨commit⟩</span></span>
+  <span><span data-l="pl" lang="pl">wersja robocza, 05.11.2026</span><span data-l="en" lang="en">draft, 5 November 2026</span><span data-l="de" lang="de">Entwurf, 5. November 2026</span></span>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var logo = document.getElementById('logo');
+  var fav = document.getElementById('favicon');
+  var melde = document.getElementById('melde');
+  var dark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : { matches: false };
+  var S = { lang: 'pl', mode: 'bw', state: 'neutral' };
+
+  var T = {
+    pl: {
+      title: 'KAIWA 26.01, wersja robocza: jak zacząć',
+      modes: { bw: 'czarno-biały', spectrum: 'spectrum', shift: 'SHIFT' },
+      states: { aktiv: 'aktywny', laeuft: 'w toku', pausiert: 'wstrzymany', warnung: 'ostrzeżenie', fehler: 'błąd', aus: 'wyłączony', neutral: 'neutralny' },
+      alt: 'Logo KAIWA, tryb %m, stan %s',
+      altModus: 'Logo KAIWA, tryb %m',
+      wskaz: 'Podgląd wskaźnika stanu: %s.',
+      wskazBlok: 'Podgląd wskaźnika stanu: %s. W trybie %m logo w nagłówku zostaje bez wariantu stanu.'
+    },
+    en: {
+      title: 'KAIWA 26.01, draft: getting started',
+      modes: { bw: 'black and white', spectrum: 'spectrum', shift: 'SHIFT' },
+      states: { aktiv: 'active', laeuft: 'running', pausiert: 'paused', warnung: 'warning', fehler: 'error', aus: 'off', neutral: 'neutral' },
+      alt: 'KAIWA logo, %m mode, %s state',
+      altModus: 'KAIWA logo, %m mode',
+      wskaz: 'Status indicator preview: %s.',
+      wskazBlok: 'Status indicator preview: %s. In %m mode the header logo stays without a state variant.'
+    },
+    de: {
+      title: 'KAIWA 26.01, Entwurf: so beginnst du',
+      modes: { bw: 'Schwarzweiß', spectrum: 'spectrum', shift: 'SHIFT' },
+      states: { aktiv: 'aktiv', laeuft: 'läuft', pausiert: 'pausiert', warnung: 'Warnung', fehler: 'Fehler', aus: 'aus', neutral: 'neutral' },
+      alt: 'KAIWA-Logo, Modus %m, Zustand %s',
+      altModus: 'KAIWA-Logo, Modus %m',
+      wskaz: 'Vorschau der Statusanzeige: %s.',
+      wskazBlok: 'Vorschau der Statusanzeige: %s. Im Modus %m bleibt das Logo im Kopf ohne Zustandsvariante.'
+    }
+  };
+
+  function load() {
+    try {
+      var l = localStorage.getItem('kaiwa-lang'), m = localStorage.getItem('kaiwa-mode'), s = localStorage.getItem('kaiwa-state');
+      if (l === 'pl' || l === 'en' || l === 'de') S.lang = l;
+      if (m === 'bw' || m === 'spectrum' || m === 'shift') S.mode = m;
+      if (s && T.pl.states[s]) S.state = s;
+    } catch (e) {}
+  }
+  function save() {
+    try { localStorage.setItem('kaiwa-lang', S.lang); localStorage.setItem('kaiwa-mode', S.mode); localStorage.setItem('kaiwa-state', S.state); } catch (e) {}
+  }
+  function iconFor() {
+    if (S.mode === 'spectrum') return 'assets/kaiwa-icon-spectrum.svg';
+    if (S.mode === 'shift') return 'assets/kaiwa-icon-shift.svg';
+    if (S.state === 'neutral') return dark.matches ? 'assets/kaiwa-icon-hell.svg' : 'assets/kaiwa-icon-neutral.svg';
+    return 'assets/kaiwa-icon-' + S.state + '.svg';
+  }
+  function fill(str, m, s) { return str.replace('%m', m).replace('%s', s); }
+  function render(fromUser) {
+    var t = T[S.lang];
+    root.setAttribute('data-lang', S.lang);
+    root.setAttribute('lang', S.lang);
+    document.title = t.title;
+    var src = iconFor();
+    logo.setAttribute('src', src);
+    fav.setAttribute('href', src);
+    logo.setAttribute('alt', S.mode === 'bw' ? fill(t.alt, t.modes.bw, t.states[S.state]) : fill(t.altModus, t.modes[S.mode], ''));
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === S.lang)); });
+    document.querySelectorAll('[data-set-mode]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-mode') === S.mode)); });
+    document.querySelectorAll('[data-set-state]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-state') === S.state)); });
+    var name = t.states[S.state];
+    melde.textContent = fromUser ? (S.mode === 'bw' ? fill(t.wskaz, '', name) : fill(t.wskazBlok, t.modes[S.mode], name)) : '';
+    melde.setAttribute('lang', S.lang);
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.hasAttribute('data-set-lang')) { S.lang = b.getAttribute('data-set-lang'); }
+    else if (b.hasAttribute('data-set-mode')) { S.mode = b.getAttribute('data-set-mode'); }
+    else if (b.hasAttribute('data-set-state')) { S.state = b.getAttribute('data-set-state'); }
+    else return;
+    save(); render(b.hasAttribute('data-set-state'));
+  });
+  if (dark.addEventListener) dark.addEventListener('change', function () { render(false); });
+
+  load(); render(false);
+})();
+</script>
+</body>
+</html>
