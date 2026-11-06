@@ -515,6 +515,8 @@ class TextTest(unittest.TestCase):
                 continue
             if p.relative_to(ROOT).parts[0] in COPIES and p.name != "LICENSE.md":
                 continue
+            if p.relative_to(ROOT).parts[0].startswith("."):  # lokale Werkzeugordner wie .remember, nicht Teil des Pakets
+                continue
             text = FENCE.sub("", p.read_text(encoding="utf-8"))
             text = re.sub(r"`[^`]*`", "", text)
             for nr, line in enumerate(text.splitlines(), 1):
