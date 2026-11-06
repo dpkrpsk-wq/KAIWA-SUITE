@@ -1,0 +1,13 @@
+{
+  "hinweis": "Zustände des Leuchtquadrats im KAIWA-Logo. Farbe allein trägt keine Bedeutung, jede Stufe hat eine eigene Form (WCAG 1.4.1). Farbbedeutung angelehnt an die übliche Ampel-Logik für Anzeigeleuchten (grün normal, gelb Abweichung, rot Fehler, blau Hinweis oder laufend, grau aus), nicht am Normtext geprüft.",
+  "hintergrund": "#14171F",
+  "zustaende": [
+    {"id": "aktiv",    "pl": "aktywny",      "en": "active",  "farbe": "#3FB97A", "form": "haken"},
+    {"id": "laeuft",   "pl": "w toku",       "en": "running", "farbe": "#5B9BF0", "form": "punkt"},
+    {"id": "pausiert", "pl": "wstrzymany",   "en": "paused",  "farbe": "#E6B84A", "form": "pause"},
+    {"id": "warnung",  "pl": "ostrzeżenie",  "en": "warning", "farbe": "#F0883E", "form": "ausruf"},
+    {"id": "fehler",   "pl": "błąd",         "en": "error",   "farbe": "#EF5A52", "form": "kreuz"},
+    {"id": "aus",      "pl": "wyłączony",    "en": "off",     "farbe": "#8A919B", "form": "rahmen"},
+    {"id": "neutral",  "pl": "neutralny",    "en": "neutral", "farbe": "#F1EFE9", "form": "voll"}
+  ]
+}

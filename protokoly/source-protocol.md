@@ -1,0 +1,142 @@
+---
+name: Source Protocol
+version: 0.4.0
+status: draft
+last_changed: 2026-10-13
+---
+
+# Source Protocol
+
+*Methodology module. Audience: humanities scholar.*
+
+---
+
+## 1. Position
+
+In AI-assisted humanities research, most source encounters happen through tools that return *snippets*, *abstracts*, *aggregated summaries*, or *search-agent reports*. These are not sources. They are *pointers to sources*. A methodology that aims to meet humanities-scholarly standards cannot treat the distinction between the tool-filtered representation and the source itself as an after-the-fact conscience correction. It must operate as a working protocol — visible in the workflow, checkable in the output, auditable after publication.
+
+Three patterns are robust enough across documented failure modes to be named separately. Together they constitute the Source Protocol.
+
+---
+
+## 2. The Three Patterns
+
+### 2.1 Snippets ≠ Primary
+
+**Rule.** Search snippets — from Google, Consensus, Semantic Scholar, Perplexity, an AI assistant's web-search tool, or any equivalent — are not primary-source attestations. Before a snippet becomes load-bearing (cited, used in an argument, presented to others), the full text must be opened and the quoted passage verified verbatim.
+
+**Why.** Snippets are algorithmically generated from indexed representations. They can:
+- come from older or non-final versions
+- come from marketing material or secondary descriptions rather than the original
+- be syntactically truncated in ways that flip the polarity of the claim
+- come from cache snapshots that are stale relative to the live source
+
+These failure modes recur across tool generations. An AI-agnostic methodology cannot rely on better models to fix the problem — the snippet layer itself is the source of imprecision.
+
+**Scope: an extract you built yourself is a snippet too.** "Any equivalent" includes the reduced views a workflow makes of its own material: the first lines of each file, an output cut off at a display limit, a list filtered before anyone read it, a return shortened by the worker that produced it. These come from the author's own tooling, which is why nobody suspects them, and they fail in the ways listed above — truncated, filtered, stale. Documented cases (the maintainer's practice, October 2026): a two-month chronicle was compiled from the head of each session record — its stated goal and its first five completed items — and written up with dates, counts and statuses as if from the records; checked against the projects it described, seven of thirty-two entries needed correction. A search output that displayed 45 of 176 hits was read as complete and reported as "there is none". Delegated readers returned at most six text passages per page; two discrepancy reports were built on those returns before anyone had looked at the pages, and both were wrong. **Before an extract becomes load-bearing, open what it was extracted from.**
+
+**How to apply.**
+- Before use, retrieve the full text (publisher, paywall, repository, Wayback Machine).
+- Compare the verbatim passage against the snippet.
+- If they diverge, discard the snippet and anchor on the full text.
+- If the full text is unreachable, tag the snippet as *"pointer, unverified"* — do not treat as attestation.
+- When you build an extract yourself, write into it what it leaves out (which lines, how many of how many hits), so that the reduction travels with the extract.
+
+### 2.2 Secondary ≠ Primary
+
+**Rule.** A secondary source (a description of a primary source) is not the primary source. Every source tag must declare the level: primary (the original), secondary (a description), tertiary (a description of a description).
+
+**Why.** A specific failure class is *promoter amplification*: marketing, promotional, or intermediary material circulates a modified version of an original verbatim quote and stabilises the modification through repetition. A scholar who consumes the circulated secondary text and treats it as original attestation absorbs the modification invisibly — and, by citation, passes it on to others.
+
+Empirical case: marketing material for a travelling exhibition attributed to a church-affiliated daily newspaper the phrase *"wspaniały hymn" (great hymn)*. The original daily had written *"hołd dla ciała" (tribute to the body)*. *"Hymn"* is the promoter amplification; *"hołd"* is the original. A scholar who cites the promotional text as primary, without flagging it as secondary, propagates the amplification as if it were the original claim.
+
+**How to apply.**
+- Make the source level (primary / secondary / tertiary) a required field of the source tag.
+- For secondary sources: what is the claimed primary, and is it independently accessible?
+- When promoter amplification is plausible: locate original language, original publication venue, original date.
+- If the original cannot be verified, do not use the text as primary attestation; mark the secondary status explicitly in the output.
+
+### 2.3 Search-Absence ≠ Proof-of-Absence
+
+**Rule.** A negative search result does not mean *"does not exist"*. It means *"not found in [tool] with [query] on [date]"*. This distinction must remain visible in source tags and in argument structures alike.
+
+**Why.** Search tools have indexing gaps, operator mismatches, paywall barriers, language-corpus limits, version caches, and regional filters. An unsuccessful search may reflect any of these. Inferring *"does not exist"* from *"not found"* promotes the search tool from a pointer-giver to a complete index — a status no available tool legitimately fulfils.
+
+**Scope: any search, not only bibliographic search.** The rule was written for source discovery, but the inference it forbids is not specific to catalogues. It applies wherever a query returns nothing and the emptiness is read as a fact about the material: a local file search whose pattern matches the wrong thing, a grep whose expression is narrower than the author assumed, a working set that a tool never reached. Documented cases (the maintainer's practice, August 2026): a channel reported as absent held twenty-eight files — the pattern matched filenames while the material sat in directory names, and a second worker reproduced the same reading independently, which is what identifies it as tool-shaped rather than careless. A related case shifts the failure one level further: three search strands returned thirty-two candidate findings and *none* verified, because a fourth strand had taken every verification slot — in the output, unexamined is indistinguishable from unfound. **Absence is a claim about the search until someone has checked the search**, and a local query is exactly where that check is skipped, because nobody mistakes a `grep` for research. A third reason has since been documented beside the wrong unit and the unreached part (October 2026): the search ran on a derivative of the material rather than on the artefact. A text extraction that had dropped diacritics returned 22 of 46 quotations where 32 could be found. A checking script rejected a finding as "not in the artefact" because the term stood in an image on the page and was absent from the file's text layer.
+
+**How to apply.**
+- Record the negative result verbatim: tool, full query (operators included), date, hit count.
+- Make the possible reasons explicit: indexing gap / operator mismatch / paywall / language corpus / cache staleness. For local search, add the three that dominate there: the pattern matched a different unit than intended (name vs. content, file vs. directory); the search never reached part of the material; the search ran on a derivative of the material (a text extraction, a text layer, a summary) rather than on the artefact.
+- For load-bearing use, run ≥ 2 independent search tools, ideally with different corpora. For local search, the cheap equivalent is a **positive control**: run the same query against material known to contain a hit. A pattern that finds nothing where something is has been falsified as an instrument, not as a finding.
+- Where a procedure distributes limited attention across candidates, state the distribution: an unexamined candidate is not a negative result, and must not be reported as one.
+- Give the third state a name. Between *found* and *not found* stands *unexamined*: the search did not reach the material, or reached only a derivative of it. A report that has two states forces the third into one of them, and it lands in *not found*. Where a script produces the result, the script emits the third state.
+- For residual uncertainty, hedge: *"not demonstrable in the available indices"* rather than *"does not exist"*.
+- **When the search was for an origin and it failed, say so in the output.** Where an idea, result, or formulation cannot be attributed to the prior work it rests on, state that explicitly rather than leaving the attribution silent. To a reader, an unattributed claim and an independently originated one are indistinguishable, and the reader has no way to tell which one they are looking at. *External anchor: Leiden Declaration on Artificial Intelligence and Mathematics, 2 June 2026 (DOI 10.5281/zenodo.20302944), Recommendations for individual mathematicians — "Where a satisfactory attribution is not possible, state this explicitly in the publication." The Declaration ties this obligation to the known weakness of automated tools at attributing ideas; where such tools were used, the obligation is therefore heavier, not lighter.*
+
+---
+
+## 3. Verification Levels
+
+Every source-tagged claim carries an additional *verification level*. This is not a separate protocol but the operational consequence of the three patterns:
+
+| Level | Meaning | Source trust |
+|---|---|---|
+| **deep-read** | full text read; relevant passages verified verbatim | high |
+| **abstract** | abstract or summary read; full text not opened | medium |
+| **agent-reported** | AI/agent synthesis from the full text; not personally cross-read | low (provisional) |
+| **aggregator-only** | snippet or aggregator hit only; no full text | not load-bearing |
+
+Verification levels apply **not only** at the brief or research stage but **also at later synthesis stages**. When an agent report enters a publication later, its `agent-reported` status remains until full-text cross-reading occurs. A synthesis of multiple `agent-reported` findings does not aggregate into `deep-read`.
+
+**A verification verdict names the attribute it verified.** The levels above say *how* a source was read. They do not say *what about the claim* the reading covered, and a claim usually asserts several things at once: that a document exists, what it says, when it is from, what status it has, how many there are. A verdict that is right for one of these is readily taken for the whole. Documented cases (the maintainer's practice, October 2026): a catalogue was reported to list two lecturers for a given academic year — the page existed, the names were on it, the year was wrong. A decision record was cited with a date and the status "accepted": file, date and status were each correct, but the date was the draft's and the status came from a later acceptance; the same happened with a second record on the same day. "All 46 quotations confirmed" covered 40 found verbatim and 6 matched only through catalogue fields. "8 of 8 successful outputs" came from a report that itself defined success as an output being present, and the next retelling dropped the definition. "48 of 64 confirmed" meant read by two agents. **A verdict that does not say what it verified is passed on as a pointer, not as a confirmation.**
+
+A number is a verdict of the same kind, and its attribute is the set it counts and the reading it counts under. Documented cases (September 2026, three test runs): an early guard counted transport failures only and reported 10 of 160 cells invalid, comfortably inside a threshold of 25 per cent; the scoring step, which counted transport or contract failures, reached 41 of 160 and crossed the threshold by one cell. A run record then cited 8 of 32 for one judge, "at the edge, not over"; that was again the guard's count, and the scorer's was 12 of 32. A threshold of "at most 3 of 15 invalid" came to 0 of 15 under a tolerant reading and 5 of 15 under a strict one, and which reading governed was stated only in a comment in the program. **A number in a report names the set it counts and the reading it counts under; where two places count against one threshold, the narrower labels itself a partial count.** A figure that lands exactly on the limit of a rule is a reason to recount from the authoritative source, not a reason for relief.
+
+---
+
+## 4. Failure-Mode Gallery
+
+The protocol is grounded in documented failure modes, not prophylactic abstraction. Three cases:
+
+- **Snippet-cascade failure** (administrative-document forensic-analysis case study). A search snippet from an administrative secondary source was treated as primary attestation; downstream synthesis stabilised the inaccuracy through several editorial stages. Methodology lift: an explicit cascade-risk audit step — declared here, not codified as a pattern in this repository.
+
+- **Promoter amplification *hymn* vs. *hołd*** (a travelling anatomical exhibition). Promotional secondary text treated as original attestation by the institution it quoted. Direct lift to Pattern 2.2.
+
+- **Agent-report synthesis drift** (retrieval lab). Aggregated agent searches were synthesised without per-source verification level; the synthesis stage must re-check verification level, not assume it carries through. Methodology lift: Pattern 3 plus a dedicated verification-level rule.
+
+Each case shows: source protocol addresses dated, observable failure modes — not generic best practice.
+
+---
+
+## 5. Operationalisation in the Workflow
+
+Source protocol is not a source-tag collection alone. It is a workflow position:
+
+- **Before research starts:** declare the tool set (search engines, aggregators, AI search agents) and the verification plan.
+- **During research:** classify every hit per Pattern 2.1 / 2.2 / 2.3; tag the verification level, and with it the attribute the verification covered (existence, wording, date, status, count).
+- **When a check is delegated:** name in the commission the attribute that matters — the year, the status, the exact wording — rather than asking whether "the statement is correct". A returned "confirmed" that does not say what it confirmed stays `agent-reported`.
+- **Before synthesis:** every hit tagged `agent-reported` or `aggregator-only` must either be upgraded (deep-read) or removed from load-bearing arguments.
+- **Before publication:** pre-publication re-check against the original source, not against a later composition stage (see `writing-protocol.md` §Composition Drift).
+- **After publication:** preserve the audit trail — which source tags were set at which stage, which verification levels were load-bearing.
+
+---
+
+## 6. What This Protocol Does **Not** Provide
+
+- It makes no claim about the *intellectual quality* of a primary source. A verbatim-verified source can still be wrong, biased, or methodologically problematic. Source protocol guarantees only that the source is what it appears to be — not that it is fit for purpose.
+
+- It does not replace **writing protocol** (descriptive accuracy when describing artefacts, composition drift in longer texts). Source protocol protects the source intake; writing protocol protects the text output. Both are required.
+
+- It does not replace **actant self-check** (the analyst's own positionality in the reading act). Source protocol makes *sources* checkable, not the *reading act* itself.
+
+---
+
+## 7. Cross-Refs
+
+- [writing protocol](writing-protocol.md) — descriptive accuracy plus composition drift; observation fidelity at text output.
+- [actant self-check](actant-self-check.md) — verb audit, addressee audit, CMF inoculation; positionality of the analytical act.
+- [tool protocol](tool-protocol.md) — empirical tool validation as a methodology extension.
+
+---
+
+*Versioning: working-draft. Substantial structural re-articulation (e.g., after additional case-study evidence or reader feedback) triggers a status update. Inline patch edits do not trigger a version bump.*
