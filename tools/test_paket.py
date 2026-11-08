@@ -75,7 +75,7 @@ class LedgerTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(L.main(["init", tmp]), 0)
             day = Path(tmp, "journal", "2026-11-05.md")
-            day.write_text("### Dictation stream 08:00, 10 min, goal essay-x, session abc12345\n\n"
+            day.write_text("### Dictation Stream of Consciousness 08:00, 10 min, goal essay-x, session abc12345\n\n"
                            "**Freedom (08:01)**\n\nVerbatim (dictated): “Freedom first.”\n\n"
                            "Addendum (08:05)\n\nVerbatim (dictated): “And always.”\n\n"
                            "**Wolność (08:07)**\n\nDosłownie (dyktowane): „Wolność jest warunkiem.”\n\n"
@@ -85,7 +85,7 @@ class LedgerTest(unittest.TestCase):
             self.assertEqual([(r["form"], r["time"]) for r in recs],
                              [("verbatim", "08:01"), ("addendum", "08:05"), ("verbatim", "08:07")])
             self.assertEqual((recs[0]["mode"], recs[0]["minutes"], recs[0]["goal"], recs[0]["session"]),
-                             ("stream", 10, "essay-x", "abc12345"))
+                             ("stream-of-consciousness", 10, "essay-x", "abc12345"))
             self.assertNotIn("Freedom", Path(tmp, "ledger.jsonl").read_text(encoding="utf-8"))
             self.assertEqual(L.main(["scan", tmp, "--now", "2026-11-05T08:11:00Z"]), 0)
             self.assertEqual(len(L.read_ledger(tmp)), 3)          # nothing added twice
@@ -93,6 +93,17 @@ class LedgerTest(unittest.TestCase):
             day.write_text(day.read_text(encoding="utf-8").replace("And always.", "And sometimes."), encoding="utf-8")
             self.assertEqual(L.main(["verify", tmp]), 1)
             self.assertEqual(L.main(["probe"]), 0)
+
+    def test_mode_names_old_and_new(self):
+        """Headings before 2026-11-08 (stream, strumień, Strom) read as the same mode as the full name."""
+        for heading, mode in (("### Dictation Stream of Consciousness 08:00", "stream-of-consciousness"),
+                              ("### Dyktowanie strumień świadomości 08:00", "stream-of-consciousness"),
+                              ("### Dictation stream 08:00", "stream-of-consciousness"),
+                              ("### Dyktowanie strumień 08:00", "stream-of-consciousness"),
+                              ("### Diktat-Strom 08:00, Sitzung abc12345", "stream-of-consciousness"),
+                              ("### Dictation sprint 08:00, 10 min", "sprint")):
+            found, _ = L.read_day("2026-11-05", heading + "\n\n**a (08:01)**\n\nVerbatim (dictated): \"x\"\n", "d.md")
+            self.assertEqual((found[0]["mode"], found[0]["session_start"]), (mode, "08:00"), heading)
 
     def test_same_bytes(self):
         outs = []
@@ -301,9 +312,9 @@ class InterculturalTest(unittest.TestCase):
 
 
 class ToolDisclosureTest(unittest.TestCase):
-    """Tool, model and effort are recorded where the work is recorded: a sheet "tool" in the stream file, a line
+    """Tool, model and effort are recorded where the work is recorded: a sheet "tool" in the stream of consciousness file, a line
     "Narzędzie" at the end of the analysis and source results, a sheet "narzedzie" in the Excel register. The test
-    reads the instructions and runs the stream code. It cannot show that a model reports its own version truly."""
+    reads the instructions and runs the stream of consciousness code. It cannot show that a model reports its own version truly."""
     TOOL_HEAD = ["date", "tool", "model", "model_source", "code_runs", "session_minutes", "compute"]
 
     def read(self, *parts):

@@ -21,8 +21,10 @@ What counts as a contribution: a line with a verbatim marker followed by a quote
   Verbatim (dictated): "..."       Dosłownie (dyktowane): „...”       Wortlaut (diktiert): „...“
 A verbatim line after "Addendum (HH:MM)" (or "Uzupełnienie", "Nachtrag") in the same entry is an addendum with that
 time. An entry starts with a bold heading that carries the time, for example **Freedom and critique (23:41)**.
-A session starts with a heading such as "### Dictation stream 23:40, session abc123" and may name
-"10 min", "goal <id>", "level <id>". Polish and German keywords work too (see SECTION_WORDS).
+A session starts with a heading such as "### Dictation Stream of Consciousness 23:40, session abc123" and may
+name "10 min", "goal <id>", "level <id>". Polish and German keywords work too (see SECTION_WORDS). The mode
+"stream-of-consciousness" was called "stream" (also "strumień", "Strom") until 2026-11-08; old headings still read
+as the same mode.
 
 What the ledger stores: date, time, file, line, form, SHA-256 of the text, number of characters and words, and the
 session fields. It never stores the text itself. The text stays in your journal. The hash shows later that it is
@@ -46,9 +48,12 @@ TIME = re.compile(r"\((?:[^)]*?\b)?(\d\d):(\d[\dx])\b")
 VERBATIM = re.compile(r"(?:Verbatim \(dictated|Dosłownie \(dyktowane|Wortlaut \(diktiert)[^)]*\):\s*[„“\"«](.*)$")
 CLOSE = re.compile(r"[“”\"»]")
 ADDENDUM = re.compile(r"^(?:Addendum|Uzupełnienie|Nachtrag) \((\d\d:\d\d)")
-SECTION = re.compile(r"^### (?:Dictation|Dyktowanie|Diktat)[ -](\S+) (\d\d:\d\d)\b(.*)$", re.IGNORECASE)
+SECTION = re.compile(r"^### (?:Dictation|Dyktowanie|Diktat)[ -](.+?) (\d\d:\d\d)\b(.*)$", re.IGNORECASE)
+SOC = "stream-of-consciousness"
 SECTION_WORDS = {
-    "mode": {"stream": "stream", "strumień": "stream", "strom": "stream", "sprint": "sprint",
+    "mode": {"stream of consciousness": SOC, "strumień świadomości": SOC,
+             "stream": SOC, "strumień": SOC, "strom": SOC,          # names until 2026-11-08
+             "sprint": "sprint",
              "transfer": "transfer", "przekład": "transfer", "übertragung": "transfer"},
     "goal": ("goal", "cel", "ziel"),
     "level": ("level", "poziom", "stufe"),

@@ -18,7 +18,7 @@ Pakiet do przetestowania metody pracy z AI w naukach humanistycznych i społeczn
 | `copilot/analiza/` | KAIWA: analiza (triaż, dalszy krok, język wyniku i kontekst kulturowy, ramy, blok kontroli kulturowej) | roboczy, nieprzetestowany / draft, untested |
 | `copilot/zrodla/` | KAIWA: źródła (otwarty dostęp) | roboczy, nieprzetestowany / draft, untested |
 
-Konfiguracja: `SETUP.pl.md` (wszyscy agenci) i `SETUP.en.md` (strumień świadomości i jedna uwaga o agencie analizy). Setup: `SETUP.pl.md` covers all agents, `SETUP.en.md` the stream agent and one note on the analysis agent.
+Konfiguracja: `SETUP.pl.md` (wszyscy agenci) i `SETUP.en.md` (strumień świadomości i jedna uwaga o agencie analizy). Setup: `SETUP.pl.md` covers all agents, `SETUP.en.md` the stream of consciousness agent and one note on the analysis agent.
 
 ## Pozostałe pliki / other files
 

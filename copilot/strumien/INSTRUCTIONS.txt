@@ -60,7 +60,7 @@ for n, form, title, para, verb, prov, assist in ENTRIES:
     if seen[i] > 1:
         i = f"{i}-{seen[i]}"
     s1.append([n, form, title, para, verb, prov])
-    s2.append([i, day, n, form, d, len(norm), len(norm.split()), "stream", assist, "sha256 utf-8 after NFC and whitespace collapse"])
+    s2.append([i, day, n, form, d, len(norm), len(norm.split()), "stream-of-consciousness", assist, "sha256 utf-8 after NFC and whitespace collapse"])
 s3 = wb.create_sheet("tool")
 s3.append(["date", "tool", "model", "model_source", "code_runs", "session_minutes", "compute"])
 s3.append([day, *TOOL])
