@@ -1,7 +1,6 @@
 """Mapa kontekstu, format kontekst-1: sprawdza plik mapy z agenta "KAIWA: mapa kontekstu".
 
-Czesc pakietu KAIWA (Denis Pokropski, student, Uniwersytet Wroclawski, nr indeksu 285421,
-kontakt 285421@student.uwr.edu.pl). Wersja robocza, nie wydana.
+Czesc pakietu KAIWA (Denis Pokropski, student, Uniwersytet Wroclawski, kontakt 285421@student.uwr.edu.pl). Wersja robocza, nie wydana.
 
 Uzycie:  python tools/kontekst.py sprawdz <mapa.xlsx>
 Wynik 0 = mapa zgodna z regulami i niezmieniona od zapisu, 1 = bledy (lista na ekranie),

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Dictation ledger: a hashed record of every dictated contribution in a local journal folder.
 
-Part of the KAIWA package by Denis Pokropski (BA in philosophy, University of Wrocław 2019, master's student, College of Interdisciplinary Individual Studies KMSI, University of Wrocław, student number 285421, contact 285421@student.uwr.edu.pl). Draft, not yet released.
+Part of the KAIWA package by Denis Pokropski (BA in philosophy, University of Wrocław 2019, master's student, College of Interdisciplinary Individual Studies KMSI, University of Wrocław, contact 285421@student.uwr.edu.pl). Draft, not yet released.
 Needs only the Python standard library (3.8 or newer). Nothing leaves your computer.
 
 Commands

@@ -2,7 +2,7 @@
 
 <img src="logo/kaiwa-logo.svg" alt="KAIWA" width="96">
 
-Product 26.01, version 0.2.0 (draft), 5 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, student number 285421, contact: 285421@student.uwr.edu.pl. The package invites you to test a method: thoughts spoken aloud are recorded word for word, and every entry gets a SHA-256 hash that later shows the text has not changed.
+Product 26.01, version 0.2.0 (draft), 5 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, contact: 285421@student.uwr.edu.pl. The package invites you to test a method: thoughts spoken aloud are recorded word for word, and every entry gets a SHA-256 hash that later shows the text has not changed.
 
 ## What you need
 
@@ -54,4 +54,4 @@ Before you use recorded texts in coursework, check the rules of your university 
 
 ## Feedback
 
-Contact for feedback: Denis Pokropski, student number 285421, 285421@student.uwr.edu.pl.
+Contact for feedback: Denis Pokropski, 285421@student.uwr.edu.pl.

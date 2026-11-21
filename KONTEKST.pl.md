@@ -1,6 +1,6 @@
 # Mapa kontekstu
 
-Dodatek roboczy do pakietu KAIWA (Kit for Academic Inquiry With AI), 05.11.2026. Nie wydany. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, nr indeksu 285421, kontakt: 285421@student.uwr.edu.pl.
+Dodatek roboczy do pakietu KAIWA (Kit for Academic Inquiry With AI), 05.11.2026. Nie wydany. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl.
 
 ## Po co
 
@@ -66,4 +66,4 @@ Autor prowadzi taką mapę dla własnych notatek badawczych i używa jej jako ko
 
 ## Stan
 
-Wersja robocza. Agent mapy nie był jeszcze testowany w Copilot. Uwagi: Denis Pokropski, nr indeksu 285421, 285421@student.uwr.edu.pl.
+Wersja robocza. Agent mapy nie był jeszcze testowany w Copilot. Uwagi: Denis Pokropski, 285421@student.uwr.edu.pl.

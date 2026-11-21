@@ -1,7 +1,6 @@
 """Builds office/rejestry.xlsx: the protocols of the package as Excel registers, usable without AI.
 
-Part of the KAIWA package by Denis Pokropski (student, University of Wroclaw, student number 285421,
-contact 285421@student.uwr.edu.pl). Draft, not yet released.
+Part of the KAIWA package by Denis Pokropski (student, University of Wroclaw, contact 285421@student.uwr.edu.pl). Draft, not yet released.
 
 Each sheet operationalises one protocol from protokoly/ (CC BY-SA 4.0, author Denis Pokropski):
   zrodla          source-protocol.md  sections 2, 3, 5 (source kind, verification level, verified attribute)

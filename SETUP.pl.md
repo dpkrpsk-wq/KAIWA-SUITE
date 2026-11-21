@@ -2,7 +2,7 @@
 
 <img src="logo/kaiwa-logo.svg" alt="KAIWA" width="96">
 
-Produkt 26.01, wersja 0.2.0 (robocza), 05.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, nr indeksu 285421, kontakt: 285421@student.uwr.edu.pl. Pakiet jest propozycją, żeby przetestować metodę: myśli mówione na głos zapisuje się dosłownie, a każdy wpis dostaje skrót SHA-256, który później pokazuje, że tekst się nie zmienił.
+Produkt 26.01, wersja 0.2.0 (robocza), 05.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl. Pakiet jest propozycją, żeby przetestować metodę: myśli mówione na głos zapisuje się dosłownie, a każdy wpis dostaje skrót SHA-256, który później pokazuje, że tekst się nie zmienił.
 
 ## Czego potrzebujesz
 
@@ -82,4 +82,4 @@ Zanim użyjesz zapisanych tekstów w pracy zaliczeniowej, sprawdź zasady swojej
 
 ## Uwagi do testu
 
-Kontakt do zgłaszania uwag: Denis Pokropski, nr indeksu 285421, 285421@student.uwr.edu.pl.
+Kontakt do zgłaszania uwag: Denis Pokropski, 285421@student.uwr.edu.pl.

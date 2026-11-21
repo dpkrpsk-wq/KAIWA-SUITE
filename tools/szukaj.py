@@ -1,7 +1,6 @@
 """Szukanie literatury w otwartych katalogach: OpenAlex, Crossref, DOAJ. Tylko biblioteka standardowa Pythona.
 
-Czesc pakietu KAIWA (Denis Pokropski, student, Uniwersytet Wroclawski, nr indeksu 285421,
-kontakt 285421@student.uwr.edu.pl). Wersja robocza, nie wydana.
+Czesc pakietu KAIWA (Denis Pokropski, student, Uniwersytet Wroclawski, kontakt 285421@student.uwr.edu.pl). Wersja robocza, nie wydana.
 
 Uzycie:  python tools/szukaj.py "zapytanie" [--zrodla openalex,crossref,doaj] [--ile 10] [--csv wynik.csv]
 Zasady (source-protocol.md):
