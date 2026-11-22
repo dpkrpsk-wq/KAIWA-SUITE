@@ -24,6 +24,18 @@ sys.path.insert(0, str(HERE))
 import dictation_ledger as L  # noqa: E402
 
 INSTRUCTIONS = ROOT / "2-agents/copilot" / "stream" / "INSTRUCTIONS.txt"
+# Ein ZIP je Anbieter von der Paketseite ist ein Teilpaket: es traegt ZIP-CONTENTS.md und enthaelt nur die Ordner eines Anbieters.
+# Dort werden Tests fuer fehlende Teile uebersprungen, im vollen Repo bleibt jeder Test streng (Review 22.11.2026, P0).
+TEILPAKET = (ROOT / "ZIP-CONTENTS.md").exists()
+
+
+def fehlt(name):
+    return TEILPAKET and not (ROOT / name).exists()
+
+
+def braucht(*pfade):
+    weg = [p for p in pfade if fehlt(p)]
+    return unittest.skipIf(bool(weg), "nie w tym pakiecie / not in this package: " + ", ".join(weg))
 CODE = re.compile(r"```python\n(.*?)```", re.S)
 VERB = ["Freiheit ist   die Bedingung der Kritik.", "Wolność jest warunkiem krytyki.", "Freiheit ist die Bedingung der Kritik."]
 
@@ -32,6 +44,7 @@ def code_blocks():
     return CODE.findall(INSTRUCTIONS.read_text(encoding="utf-8"))
 
 
+@braucht("2-agents/copilot")
 class InstructionsTest(unittest.TestCase):
     def test_limit(self):
         self.assertLessEqual(len(INSTRUCTIONS.read_text(encoding="utf-8")), 8000)
@@ -143,6 +156,7 @@ def run(code, cwd=None):
                           env=UTF8, cwd=cwd)
 
 
+@braucht("2-agents/copilot")
 class MapaTest(unittest.TestCase):
     def test_limit(self):
         self.assertLessEqual(len(MAPA.read_text(encoding="utf-8")), 8000)
@@ -235,12 +249,15 @@ class CopiesTest(unittest.TestCase):
         src = (ROOT / "method/prompts" / "core" / "artifact-triage.md").read_text(encoding="utf-8")
         self.assertIn("### 2. Artifact Triage", src)
         for platform in ("copilot", "gemini"):
+            if fehlt("2-agents/" + platform):
+                continue
             agent = (ROOT / "2-agents" / platform / "analysis" / "INSTRUCTIONS.txt").read_text(encoding="utf-8")
             self.assertIn("method/prompts/core/artifact-triage.md", agent, platform)
             self.assertNotIn("You are an artifact triage analyst", agent, platform)
         self.assertNotIn("Wyjątek / exception", (ROOT / "LICENSE").read_text(encoding="utf-8"))
 
 
+@braucht("2-agents/copilot")
 class AgentsTest(unittest.TestCase):
     def test_limits_and_fields(self):
         for name in ("stream", "map", "analysis", "sources"):
@@ -264,6 +281,7 @@ class AgentsTest(unittest.TestCase):
             self.assertTrue(list((ROOT / "method/prompts").rglob(f + ".md")), f)
 
 
+@braucht("2-agents/copilot")
 class InterculturalTest(unittest.TestCase):
     """The cultural check is a step in the analysis agent, not only a wish: the instructions, the template and the
     files that point to it must carry the same marks. The test reads the text of the instructions. It cannot show
@@ -314,6 +332,7 @@ class InterculturalTest(unittest.TestCase):
         self.assertIn("cultural-check.pl.md", (ROOT / "3-templates" / "after-triage.pl.md").read_text(encoding="utf-8"))
 
 
+@braucht("2-agents/copilot", "1-start/setup.pl.md")
 class ToolDisclosureTest(unittest.TestCase):
     """Tool, model and effort are recorded where the work is recorded: a sheet "tool" in the stream of consciousness file, a line
     "Narzędzie" at the end of the analysis and source results, a sheet "narzedzie" in the Excel register. The test
@@ -397,6 +416,8 @@ class ProductIdentityTest(unittest.TestCase):
     def test_heads_match_product_file(self):
         data = json.loads((ROOT / "product.json").read_text(encoding="utf-8"))
         for name in self.KOEPFE:
+            if fehlt(name):
+                continue
             text = (ROOT / name).read_text(encoding="utf-8")
             with self.subTest(datei=name):
                 self.assertIn(data["nummer"], text)
@@ -405,10 +426,13 @@ class ProductIdentityTest(unittest.TestCase):
     def test_logo_present(self):
         self.assertTrue((ROOT / "design/logo" / "kaiwa-logo.svg").exists())
         for name in ("README.md", "1-start/setup.pl.md", "1-start/setup.en.md"):
+            if fehlt(name):
+                continue
             with self.subTest(datei=name):
                 self.assertIn("design/logo/kaiwa-logo.svg", (ROOT / name).read_text(encoding="utf-8"))
 
 
+@braucht("design/logo/status.json", "tools/logo_status.py")
 class LogoStatusTest(unittest.TestCase):
     """Statusfassungen und Farbthemen des Logos: vollständig, gleiche Bytes bei erneutem Bau, Kontrast mindestens 3:1."""
 
@@ -543,6 +567,7 @@ class TextTest(unittest.TestCase):
         self.assertEqual(findings, [])
 
 
+@braucht("2-agents/chatgpt")
 class ChatGPTTest(unittest.TestCase):
     """ChatGPT-Weg (F-0045, F-0021): Projects auf einem Go-Konto, 25 Dateien je Project, 10 je Upload
     (OpenAI-Hilfe „Projects in ChatGPT“, geprüft 22.11.2026). Kein OneDrive, kein Agent Builder."""
@@ -575,6 +600,7 @@ class ChatGPTTest(unittest.TestCase):
                 self.assertTrue((self.BASE / a / n).is_file(), "%s/%s" % (a, n))
 
 
+@braucht("2-agents/claude")
 class ClaudeTest(unittest.TestCase):
     """Claude-Weg (studium F-0069): Projekte in claude.ai (Browser, Desktop-App) und Skills in Claude Code.
     Skill-Regeln nach platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
