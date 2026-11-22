@@ -18,7 +18,7 @@ Stan: wersja robocza, nieprzetestowana w ChatGPT. Opis dotyczy konta ChatGPT Go.
 |---|---|---|---|
 | KAIWA: strumień świadomości | `2-agents/chatgpt/stream/` | 1 | roboczy, nieprzetestowany w ChatGPT |
 | KAIWA: mapa kontekstu | `2-agents/chatgpt/map/` | 2 | roboczy, nieprzetestowany w ChatGPT |
-| KAIWA: analiza | `2-agents/chatgpt/analysis/` | 6 | roboczy, nieprzetestowany w ChatGPT |
+| KAIWA: analiza | `2-agents/chatgpt/analysis/` | 8 | roboczy, nieprzetestowany w ChatGPT |
 | KAIWA: źródła | `2-agents/chatgpt/sources/` | 2 | roboczy, nieprzetestowany w ChatGPT |
 
 W każdym folderze: `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTIONS.txt` (instrukcje projektu) i `files.txt` (pliki projektu).
@@ -31,6 +31,10 @@ W każdym folderze: `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTI
 4. Zacznij nową rozmowę w projekcie od pierwszej wiadomości z `PROJECT.md`.
 
 Długość instrukcji: pomoc OpenAI „Projects in ChatGPT” (sprawdzona 22.11.2026) nie podaje granicy, a granica 8000 znaków pochodzi z Copilot. Instrukcje w tym folderze jej nie przekraczają. Po zapisaniu sprawdź, czy instrukcje są całe (niesprawdzone w ChatGPT).
+
+## Menu startowe (analiza)
+
+W projekcie „KAIWA: analiza” dołącz plik i napisz „start” (także po angielsku albo niemiecku, lista w `analysis/SUIT-START-MENU.md`). ChatGPT powinien najpierw pokazać obraz `kaiwa-start-menu.png` i menu tekstowe: triaż, analiza ramą, problem badawczy, inne moduły. Przed twoim wyborem nie powinien analizować pliku. Nieprzetestowane w ChatGPT.
 
 ## Pierwszy test
 

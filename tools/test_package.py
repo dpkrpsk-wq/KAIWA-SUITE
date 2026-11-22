@@ -584,7 +584,7 @@ class ChatGPTTest(unittest.TestCase):
 
     def test_no_copilot_platform(self):
         for p in self.BASE.rglob("*"):
-            if p.is_file():
+            if p.is_file() and p.suffix != ".png":
                 t = p.read_text(encoding="utf-8").lower()
                 for w in ("onedrive", "sharepoint", "agent builder"):
                     self.assertNotIn(w, t, "%s: %s" % (p.name, w))
@@ -593,6 +593,20 @@ class ChatGPTTest(unittest.TestCase):
         for a in self.AGENTS:
             t = (self.BASE / a / "INSTRUCTIONS.txt").read_text(encoding="utf-8")
             self.assertLessEqual(len(t), 8000, a)  # Copilot-Grenze als tragbare Obergrenze, ChatGPT nennt keine
+
+    def test_start_menu(self):
+        """Start-Protokoll (studium F-0071): Menue vor jeder Analyse, Spezifikation und Bild als Projektdateien."""
+        d = self.BASE / "analysis"
+        files = (d / "files.txt").read_text(encoding="utf-8")
+        for n in ("SUIT-START-MENU.md", "kaiwa-start-menu.png"):
+            self.assertIn("2-agents/chatgpt/analysis/" + n, files)
+            self.assertTrue((d / n).is_file(), n)
+        t = (d / "INSTRUCTIONS.txt").read_text(encoding="utf-8")
+        self.assertLess(t.index("# Start: menu"), t.index("# Krok 1"))
+        spec = (d / "SUIT-START-MENU.md").read_text(encoding="utf-8")
+        for w in ("rozpocznij", "zaczynamy", "let's begin", "lass uns beginnen", "Triaż", "Analiza ramą", "Problem badawczy", "Inne moduły KAIWA"):
+            self.assertIn(w, spec)
+        self.assertLess((d / "kaiwa-start-menu.png").stat().st_size, 600 * 1024)
 
     def test_project_files_complete(self):
         for a in self.AGENTS:

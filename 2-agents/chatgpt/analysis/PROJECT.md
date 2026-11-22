@@ -14,7 +14,7 @@ Analiza artefaktu metodą deklarowanych ram: najpierw triaż, potem wybór dalsz
 
 Cała zawartość pliku `2-agents/chatgpt/analysis/INSTRUCTIONS.txt`.
 
-## Pliki projektu (6, jedno wgranie)
+## Pliki projektu (8, jedno wgranie)
 
 1. `method/prompts/core/artifact-triage.md`
 2. `method/prompts/framework-catalog.md`
@@ -22,14 +22,20 @@ Cała zawartość pliku `2-agents/chatgpt/analysis/INSTRUCTIONS.txt`.
 4. `3-templates/cultural-check.pl.md`
 5. `3-templates/research-problem-card.pl.md`
 6. `3-templates/tool-disclosure.pl.md`
+7. `2-agents/chatgpt/analysis/SUIT-START-MENU.md` (menu startowe / start menu)
+8. `2-agents/chatgpt/analysis/kaiwa-start-menu.png` (obraz menu / menu picture)
 
 Ta sama lista w `files.txt`.
 
 ## Pierwsza wiadomość w nowej rozmowie
 
+Dołącz artefakt (plik) i napisz:
+
 ```text
-start. Dołączam artefakt: <plik albo tekst>.
+start
 ```
+
+ChatGPT pokazuje najpierw menu startowe (obraz i menu tekstowe) i czeka na twój wybór. Słowa startu po polsku, angielsku i niemiecku: `SUIT-START-MENU.md`.
 
 ## Co dołączasz w rozmowie
 

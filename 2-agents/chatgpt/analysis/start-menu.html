@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>KAIWA: analiza, menu startowe</title>
+<link rel="stylesheet" href="../../../design/design-system/tokens.css">
+<link rel="stylesheet" href="../../../design/fonts/fonts.css">
+<style>
+/* Quelle der Gestaltung: design/design-system (tokens.css, Dokumentkopf, Hinweisfeld, Fusszeile),
+   Streifen und Karten wie in index.html, Kopf wie in der angenommenen Mail-Kopfgrafik. */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--flaeche);color:var(--text);
+  font-family:"Space Grotesk",system-ui,Arial,sans-serif;font-variant-numeric:tabular-nums}
+.wrap{width:1200px;padding:40px 48px 36px;display:grid;gap:32px}
+.en{color:var(--text-gedaempft);font-weight:400}
+
+/* Dokumentkopf */
+.k{position:relative;overflow:hidden;display:grid;grid-template-columns:112px 1fr auto;column-gap:32px;align-items:center;
+  background:var(--tinte);color:var(--papier);padding:32px;box-shadow:var(--schatten-hart)}
+.band{position:absolute;right:0;top:0;bottom:0;width:36%;
+  background:repeating-linear-gradient(-35deg,var(--signal) 0 18px,transparent 18px 44px)}
+.k>*:not(.band){position:relative}
+.logo{width:112px;height:112px;display:block}
+.wm{font:700 60px/56px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:-2px;text-transform:uppercase}
+.wm span{display:block}
+.sub{margin-top:14px;font:500 30px/36px "Space Grotesk",system-ui,Arial,sans-serif}
+.sub .en{color:#b9b6ad}
+.marke{background:var(--signal);color:var(--tinte);border:3px solid var(--tinte);padding:8px 16px;
+  font:700 17px/22px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  transform:rotate(-3deg);white-space:nowrap}
+
+/* Begruessung */
+.hello{display:grid;gap:4px}
+.hello .pl{font:700 34px/42px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:-.5px}
+.hello .en{font:400 26px/34px "Space Grotesk",system-ui,Arial,sans-serif}
+
+/* Karten */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+.card{position:relative;display:flex;flex-direction:column;background:var(--flaeche);color:var(--text);
+  border:3px solid var(--tinte);box-shadow:var(--schatten-hart);padding:0}
+.card .strip{height:12px;background:var(--signal);border-bottom:3px solid var(--tinte)}
+.card .in{padding:20px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.no{font:700 112px/100px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:-4px}
+.card h2{margin:0;font:700 32px/40px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:-.5px}
+.card h2 .en{display:block;font:500 26px/32px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:0;margin-top:2px}
+.card p{margin:0;font:400 25px/32px "Space Grotesk",system-ui,Arial,sans-serif}
+.card p .en{display:block;font-size:22px;line-height:29px;margin-top:4px}
+/* Karte 1: Signalflaeche, Text immer tinte */
+.card.sig{background:var(--signal);color:var(--tinte)}
+.card.sig .strip{background:var(--tinte)}
+.card.sig .en{color:#2b2f38}
+.rec{align-self:flex-start;margin-top:auto;background:var(--papier);color:var(--tinte);border:3px solid var(--tinte);
+  padding:6px 14px;font:700 20px/26px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+.rec .en{display:block;color:#2b2f38;text-transform:none;letter-spacing:0;font-weight:500}
+.card .spacer{margin-top:auto}
+
+/* Leiste: andere Module (Hinweisfeld Uwaga / Note) */
+.note{background:var(--flaeche-hinweis);border:3px solid var(--text);box-shadow:var(--schatten-hart);padding:20px 24px;
+  display:grid;gap:6px}
+.note .lab{font:700 17px/22px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.note .t{font:500 26px/34px "Space Grotesk",system-ui,Arial,sans-serif}
+.note .t .en{font-size:22px}
+.note .list{font:700 28px/36px "Space Grotesk",system-ui,Arial,sans-serif}
+.dot{display:inline-block;margin:0 8px;font-weight:400}
+
+/* Schlusszeile und Fusszeile */
+.cta{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;margin-top:4px}
+.cta .pl{font:700 38px/46px "Space Grotesk",system-ui,Arial,sans-serif;letter-spacing:-.5px}
+.cta .en{font:400 28px/36px "Space Grotesk",system-ui,Arial,sans-serif}
+.foot{border-top:6px solid var(--text);padding-top:10px;font:400 18px/24px "Space Grotesk",system-ui,Arial,sans-serif;color:var(--text-gedaempft)}
+.foot b{font-weight:500;color:var(--text)}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+
+<header class="k">
+  <div class="band"></div>
+  <img class="logo" src="../../../design/design-system/assets/Logos/kaiwa-icon-hell.svg" alt="KAIWA">
+  <div>
+    <div class="wm"><span>KAIWA</span><span>SUITE</span></div>
+    <div class="sub">analiza <span class="en">/ analysis</span></div>
+  </div>
+  <div class="marke">wersja robocza / draft</div>
+</header>
+
+<div class="hello">
+  <div class="pl">Witaj. Plik jest w rozmowie. Nic jeszcze nie analizuję.</div>
+  <div class="en">Welcome. Your file is in the chat. Nothing is analysed yet.</div>
+</div>
+
+<section class="cards">
+  <article class="card sig">
+    <div class="strip"></div>
+    <div class="in">
+      <div class="no">1</div>
+      <h2>Triaż<span class="en">triage</span></h2>
+      <p>które ramy pasują do artefaktu<span class="en">which frameworks fit the artefact</span></p>
+      <div class="rec">zalecany start <span class="en">recommended start</span></div>
+    </div>
+  </article>
+  <article class="card">
+    <div class="strip"></div>
+    <div class="in">
+      <div class="no">2</div>
+      <h2>Analiza ramą<span class="en">framework analysis</span></h2>
+      <p>rama z katalogu pakietu<span class="en">a framework from the package catalogue</span></p>
+    </div>
+  </article>
+  <article class="card">
+    <div class="strip"></div>
+    <div class="in">
+      <div class="no">3</div>
+      <h2>Problem badawczy<span class="en">research problem</span></h2>
+      <p>karta problemu badawczego<span class="en">research problem card</span></p>
+    </div>
+  </article>
+</section>
+
+<section class="note">
+  <div class="lab">Uwaga / Note</div>
+  <div class="t">Inne moduły KAIWA, osobne projekty <span class="en">/ other KAIWA modules, separate projects:</span></div>
+  <div class="list">strumień świadomości<span class="dot">·</span>mapa kontekstu<span class="dot">·</span>źródła</div>
+</section>
+
+<div class="cta">
+  <span class="pl">Wpisz numer albo nazwę.</span>
+  <span class="en">Type the number or the name.</span>
+</div>
+
+<footer class="foot"><b>KAIWA SUITE</b> · 26.01 · wersja 0.2.0</footer>
+
+</div>
+</body>
+</html>

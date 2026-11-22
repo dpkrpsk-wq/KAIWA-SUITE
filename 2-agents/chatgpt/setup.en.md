@@ -18,7 +18,7 @@ Status: draft, untested in ChatGPT. This guide covers a ChatGPT Go account. The 
 |---|---|---|---|
 | KAIWA: stream of consciousness (`strumień świadomości`) | `2-agents/chatgpt/stream/` | 1 | draft, untested in ChatGPT |
 | KAIWA: context map (`mapa kontekstu`) | `2-agents/chatgpt/map/` | 2 | draft, untested in ChatGPT |
-| KAIWA: analysis (`analiza`) | `2-agents/chatgpt/analysis/` | 6 | draft, untested in ChatGPT |
+| KAIWA: analysis (`analiza`) | `2-agents/chatgpt/analysis/` | 8 | draft, untested in ChatGPT |
 | KAIWA: sources (`źródła`) | `2-agents/chatgpt/sources/` | 2 | draft, untested in ChatGPT |
 
 Each folder holds `PROJECT.md` (name, description, first message, in Polish), `INSTRUCTIONS.txt` (project instructions) and `files.txt` (project files).
@@ -31,6 +31,10 @@ Each folder holds `PROJECT.md` (name, description, first message, in Polish), `I
 4. Start a new chat in the project with the first message from `PROJECT.md`.
 
 Length of the instructions: the OpenAI help "Projects in ChatGPT" (checked 22 November 2026) states no limit, the limit of 8,000 characters comes from Copilot. The instructions in this folder stay within it. After saving, check that the instructions are complete (unverified in ChatGPT).
+
+## Start menu (analysis)
+
+In the project "KAIWA: analiza" attach a file and write "start" (also in Polish or German, list in `analysis/SUIT-START-MENU.md`). ChatGPT should first show the picture `kaiwa-start-menu.png` and a text menu: triage, framework analysis, research problem, other modules. It should not analyse the file before you choose. Untested in ChatGPT.
 
 ## First test
 
