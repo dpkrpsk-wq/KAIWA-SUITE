@@ -286,7 +286,9 @@ function contents(v, files){
   return [`# KAIWA SUITE: pakiet ${name} / package for ${name}`, "",
     `Ten plik ZIP zawiera tylko pliki dla dostawcy ${name}, pliki bez dostawcy, licencje i skrypty. README.md opisuje cały pakiet, foldery innych dostawców są w repozytorium ${REPO}.`, "",
     `This ZIP holds only the files for ${name}, the files without vendor, the licences and the scripts. README.md describes the whole package, the folders of the other vendors are in the repository ${REPO}.`, "",
+    v === "any" ? "Zacznij od / start with: 4-without-ai/README.pl.md." : `Zacznij od / start with: ${v === "copilot" ? "1-start/setup.pl.md" : "2-agents/" + v + "/setup.pl.md"} (EN: setup.en.md).`, "",
     `Testy / tests: python tools/test_package.py (pomija części, których nie ma w tym pakiecie / skips parts not in this package).`, "",
+    "tools/pdf.py i tools/logo_status.py potrzebują plików z design/, które są tylko w pełnym pakiecie. / tools/pdf.py and tools/logo_status.py need files from design/ that are only in the full package.", "",
     `Pobrano / downloaded: ${new Date().toISOString().slice(0, 10)}, gałąź / branch ${BRANCH}, ${files.length} plików / files.`, "",
     ...files.map(p => "- `" + p + "`"), ""].join("\n");
 }

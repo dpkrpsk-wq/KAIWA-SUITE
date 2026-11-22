@@ -6,3 +6,5 @@ method/prompts/framework-catalog.md
 3-templates/tool-disclosure.pl.md
 2-agents/chatgpt/analysis/SUIT-START-MENU.md
 2-agents/chatgpt/analysis/kaiwa-start-menu.png
+method/protocols/interpretive-frame-protocol.md
+method/protocols/actant-self-check.md

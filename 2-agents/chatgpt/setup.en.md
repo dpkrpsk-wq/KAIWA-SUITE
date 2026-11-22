@@ -18,7 +18,7 @@ Status: draft, untested in ChatGPT. This guide covers a ChatGPT Go account. The 
 |---|---|---|---|
 | KAIWA: stream of consciousness (`strumień świadomości`) | `2-agents/chatgpt/stream/` | 1 | draft, untested in ChatGPT |
 | KAIWA: context map (`mapa kontekstu`) | `2-agents/chatgpt/map/` | 3 | draft, untested in ChatGPT |
-| KAIWA: analysis (`analiza`) | `2-agents/chatgpt/analysis/` | 8 | draft, untested in ChatGPT |
+| KAIWA: analysis (`analiza`) | `2-agents/chatgpt/analysis/` | 10 | draft, untested in ChatGPT |
 | KAIWA: sources (`źródła`) | `2-agents/chatgpt/sources/` | 2 | draft, untested in ChatGPT |
 
 Each folder holds `PROJECT.md` (name, description, first message, in Polish), `INSTRUCTIONS.txt` (project instructions) and `files.txt` (project files).

@@ -18,7 +18,7 @@ Stan: wersja robocza, nieprzetestowana w ChatGPT. Opis dotyczy konta ChatGPT Go.
 |---|---|---|---|
 | KAIWA: strumień świadomości | `2-agents/chatgpt/stream/` | 1 | roboczy, nieprzetestowany w ChatGPT |
 | KAIWA: mapa kontekstu | `2-agents/chatgpt/map/` | 3 | roboczy, nieprzetestowany w ChatGPT |
-| KAIWA: analiza | `2-agents/chatgpt/analysis/` | 8 | roboczy, nieprzetestowany w ChatGPT |
+| KAIWA: analiza | `2-agents/chatgpt/analysis/` | 10 | roboczy, nieprzetestowany w ChatGPT |
 | KAIWA: źródła | `2-agents/chatgpt/sources/` | 2 | roboczy, nieprzetestowany w ChatGPT |
 
 W każdym folderze: `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTIONS.txt` (instrukcje projektu) i `files.txt` (pliki projektu).

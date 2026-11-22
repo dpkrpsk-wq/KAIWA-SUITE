@@ -4,3 +4,5 @@ method/prompts/framework-catalog.md
 3-templates/cultural-check.pl.md
 3-templates/research-problem-card.pl.md
 3-templates/tool-disclosure.pl.md
+method/protocols/interpretive-frame-protocol.md
+method/protocols/actant-self-check.md

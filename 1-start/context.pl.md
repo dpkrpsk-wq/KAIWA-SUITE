@@ -48,7 +48,7 @@ Horyzont celu: krótki, średni albo długi, według twojej oceny. Połączenie 
 3. Na pytanie „co dalej“ agent porządkuje zadania, które wymienisz, najpierw według celów, z którymi się łączą, potem według liczby połączeń ich tematu. Zadanie bez połączenia z mapą stoi na końcu, z takim opisem. Bez arkusza celów agent nie ustala kolejności.
 4. Plik mapy możesz dołączyć także do innych rozmów z asystentem AI jako kontekst.
 
-Konfiguracja drugiego agenta: `1-start/setup.pl.md`, część „Drugi agent: mapa kontekstu“.
+Konfiguracja drugiego agenta: dla Copilot `1-start/setup.pl.md`, część „Drugi agent: mapa kontekstu“. Inni dostawcy: moduł „mapa kontekstu” w konfiguracji dostawcy (Copilot `1-start/setup.pl.md`, Gemini `2-agents/gemini/setup.pl.md`, ChatGPT `2-agents/chatgpt/setup.pl.md`, Claude `2-agents/claude/setup.pl.md`).
 
 ## Sprawdzanie
 

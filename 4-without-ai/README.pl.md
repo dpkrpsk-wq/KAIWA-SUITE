@@ -6,7 +6,7 @@ Protokoły z folderu `method/protocols/` (po angielsku, CC BY-SA 4.0) opisują, 
 
 ## Kolejność dróg
 
-1. **Agenci Copilot z pakietu.** Pełna droga, opisana w `1-start/setup.pl.md`.
+1. **Agenci z pakietu.** Pełna droga, opisana w konfiguracji twojego dostawcy: Copilot `1-start/setup.pl.md`, Gemini `2-agents/gemini/setup.pl.md`, ChatGPT `2-agents/chatgpt/setup.pl.md`, Claude `2-agents/claude/setup.pl.md`.
 2. **Dowolny asystent AI.** Prompty i protokoły są niezależne od modelu. Wklej albo dołącz plik i tekst z `3-templates/after-triage.pl.md`.
 3. **Word i Excel bez AI.** Rejestry poniżej i protokoły do czytania w `method/protocols/`.
 

@@ -24,7 +24,7 @@ Która droga do ciebie pasuje: droga A wymaga tylko przeglądarki i pasuje więk
 |---|---|---|---|---|
 | KAIWA: strumień świadomości | `2-agents/claude/stream/` | `2-agents/claude/code/kaiwa-stream/` | 1 | wersja robocza, nieprzetestowana w Claude |
 | KAIWA: mapa kontekstu | `2-agents/claude/map/` | `2-agents/claude/code/kaiwa-map/` | 3 | wersja robocza, nieprzetestowana w Claude |
-| KAIWA: analiza | `2-agents/claude/analysis/` | `2-agents/claude/code/kaiwa-analysis/` | 6 | wersja robocza, nieprzetestowana w Claude |
+| KAIWA: analiza | `2-agents/claude/analysis/` | `2-agents/claude/code/kaiwa-analysis/` | 8 | wersja robocza, nieprzetestowana w Claude |
 | KAIWA: źródła | `2-agents/claude/sources/` | `2-agents/claude/code/kaiwa-sources/` | 2 | wersja robocza, nieprzetestowana w Claude |
 
 Każdy folder projektu zawiera `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTIONS.txt` (instrukcje projektu) i `files.txt` (pliki projektu). Każdy folder skilla zawiera jeden plik `SKILL.md` z tymi samymi instrukcjami i krótkim wstępem dla Claude Code. Skill to folder z instrukcjami, które Claude Code wczytuje, gdy go wywołasz. Wiedza projektu w claude.ai to pliki, które Claude czyta w każdej rozmowie tego projektu.

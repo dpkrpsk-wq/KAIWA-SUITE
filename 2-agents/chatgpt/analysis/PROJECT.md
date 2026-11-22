@@ -14,7 +14,7 @@ Analiza artefaktu metodą deklarowanych ram: najpierw triaż, potem wybór dalsz
 
 Cała zawartość pliku `2-agents/chatgpt/analysis/INSTRUCTIONS.txt`.
 
-## Pliki projektu (8, jedno wgranie)
+## Pliki projektu (10, jedno wgranie)
 
 1. `method/prompts/core/artifact-triage.md`
 2. `method/prompts/framework-catalog.md`
@@ -24,6 +24,8 @@ Cała zawartość pliku `2-agents/chatgpt/analysis/INSTRUCTIONS.txt`.
 6. `3-templates/tool-disclosure.pl.md`
 7. `2-agents/chatgpt/analysis/SUIT-START-MENU.md` (menu startowe / start menu)
 8. `2-agents/chatgpt/analysis/kaiwa-start-menu.png` (obraz menu / menu picture)
+9. `method/protocols/interpretive-frame-protocol.md` (do kontroli kulturowej / for the cultural check)
+10. `method/protocols/actant-self-check.md` (do kontroli kulturowej / for the cultural check)
 
 Ta sama lista w `files.txt`.
 

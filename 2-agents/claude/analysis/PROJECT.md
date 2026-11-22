@@ -14,7 +14,7 @@ Analiza artefaktu metodą deklarowanych ram: najpierw triaż, potem wybór dalsz
 
 Cała zawartość pliku `2-agents/claude/analysis/INSTRUCTIONS.txt`.
 
-## Pliki projektu (6, wiedza projektu / project knowledge)
+## Pliki projektu (8, wiedza projektu / project knowledge)
 
 1. `method/prompts/core/artifact-triage.md`
 2. `method/prompts/framework-catalog.md`
@@ -22,6 +22,8 @@ Cała zawartość pliku `2-agents/claude/analysis/INSTRUCTIONS.txt`.
 4. `3-templates/cultural-check.pl.md`
 5. `3-templates/research-problem-card.pl.md`
 6. `3-templates/tool-disclosure.pl.md`
+7. `method/protocols/interpretive-frame-protocol.md` (do kontroli kulturowej / for the cultural check)
+8. `method/protocols/actant-self-check.md` (do kontroli kulturowej / for the cultural check)
 
 Ta sama lista w `files.txt`.
 

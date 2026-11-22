@@ -24,7 +24,7 @@ Which way fits you: way A needs only a browser and suits most users. Way B is fo
 |---|---|---|---|---|
 | KAIWA: stream of consciousness (`strumień świadomości`) | `2-agents/claude/stream/` | `2-agents/claude/code/kaiwa-stream/` | 1 | draft, untested in Claude |
 | KAIWA: context map (`mapa kontekstu`) | `2-agents/claude/map/` | `2-agents/claude/code/kaiwa-map/` | 3 | draft, untested in Claude |
-| KAIWA: analysis (`analiza`) | `2-agents/claude/analysis/` | `2-agents/claude/code/kaiwa-analysis/` | 6 | draft, untested in Claude |
+| KAIWA: analysis (`analiza`) | `2-agents/claude/analysis/` | `2-agents/claude/code/kaiwa-analysis/` | 8 | draft, untested in Claude |
 | KAIWA: sources (`źródła`) | `2-agents/claude/sources/` | `2-agents/claude/code/kaiwa-sources/` | 2 | draft, untested in Claude |
 
 Each project folder holds `PROJECT.md` (name, description, first message, in Polish), `INSTRUCTIONS.txt` (project instructions) and `files.txt` (project files). Each skill folder holds one `SKILL.md` with the same instructions and a short preface for Claude Code. A skill is a folder with instructions that Claude Code loads when you call it. The project knowledge of a claude.ai project is the set of files that Claude reads in every chat of that project.
