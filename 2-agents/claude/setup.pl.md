@@ -62,7 +62,7 @@ Skille są napisane dla Claude Code. W claude.ai używaj projektów z drogi A.
 ## Ostrzeżenia
 
 1. Wiadomość podyktowana głosem liczy się jako twoje oryginalne słowa. Transkrypcja może jednak różnić się od tego, co powiedziałeś, więc po sesji przeczytaj plik.
-2. Skrót SHA-256 pokazuje, czy tekst w pliku zgadza się ze skrótem. Nie pokazuje, że model przepisał twoje słowa dokładnie. Skrót „sha256” jest liczony po normalizacji Unicode (NFC) i scaleniu spacji i podziałów wiersza. Drugi skrót „sha256_raw” jest liczony z dokładnych bajtów tekstu.
+2. Skrót SHA-256 pokazuje, czy tekst w pliku zgadza się ze skrótem. Nie pokazuje, że model przepisał twoje słowa dokładnie. Skrót „sha256” jest liczony po normalizacji Unicode (NFC) i scaleniu spacji i podziałów wiersza. Drugi skrót „sha256_raw” jest liczony z dokładnych bajtów tekstu. Porównany ręcznie z tekstem pokazuje też zmiany odstępów, sprawdzenie w agencie porównuje tylko „sha256”. Oba skróty chronią tekst w postaci przejętej przez model, nie to, co powiedziałeś.
 3. Wiersz „tool” (arkusz „tool”, wiersz „Narzędzie”) prowadź osobno dla każdej rozmowy albo sesji. Nazwa modelu pochodzi z rozmowy i nie jest niezależnym dowodem.
 4. Blok „Kontrola kulturowa” w analizie to samoopis modelu, nie niezależna kontrola.
 5. Strony otwartego dostępu w module źródeł są preferencją wyszukiwania, nie ograniczeniem technicznym. Wyszukiwanie w sieci w claude.ai zależy od konta i jego ustawień (niesprawdzone dla tego pakietu).

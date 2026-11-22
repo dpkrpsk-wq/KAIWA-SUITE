@@ -5,8 +5,9 @@ Czesc pakietu KAIWA (Denis Pokropski, student, Uniwersytet Wroclawski, kontakt 2
 Uzycie:  python tools/context.py sprawdz <mapa.xlsx>
 Wynik 0 = mapa zgodna z regulami i niezmieniona od zapisu, 1 = bledy (lista na ekranie),
 2 = brak pliku albo pakietu openpyxl.
-Reguly miedzy znacznikami sa slowo w slowo te same co w 2-agents/copilot/map/INSTRUCTIONS.txt.
-Test pakietu (tools/test_package.py) pilnuje, zeby sie nie rozjechaly.
+Reguly miedzy znacznikami sa slowo w slowo te same co w 2-agents/<dostawca>/map/INSTRUCTIONS.txt
+(copilot, gemini, chatgpt, claude) i w skillu 2-agents/claude/code/kaiwa-map/SKILL.md.
+Test pakietu (tools/test_package.py, MapRulesTest) pilnuje, zeby sie nie rozjechaly.
 """
 import argparse
 import hashlib

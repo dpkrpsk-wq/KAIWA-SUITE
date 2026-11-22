@@ -6,8 +6,8 @@ Needs only the Python standard library (3.8 or newer). Nothing leaves your compu
 
 Commands
   python dictation_ledger.py probe
-      Prints the SHA-256 of the text "abc" and checks it against the known value. If an AI model runs this for you
-      and reports OK, it really executed code. A model that cannot run code must not invent hashes.
+      Prints the SHA-256 of the text "abc" and checks it against the known value. Run it yourself to know that it ran.
+      An AI model that reports OK has not proven that it executed code. A model that cannot run code must not invent hashes.
   python dictation_ledger.py init ARCHIVE
       Creates ARCHIVE/journal/ and an empty ARCHIVE/ledger.jsonl. Safe to run twice.
   python dictation_ledger.py scan ARCHIVE [--now 2026-11-05T08:00:00Z]

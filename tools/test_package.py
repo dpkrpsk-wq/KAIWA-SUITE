@@ -549,6 +549,26 @@ class OfficeTest(unittest.TestCase):
             self.assertIn("`%s`" % m, prov)
 
 
+class MapRulesTest(unittest.TestCase):
+    """Eine Regelquelle fuer die Kontextkarte: der Block in tools/context.py, woertlich in jeder Map-Anweisung (Bericht 22.11.2026, P0 4)."""
+
+    def test_every_vendor_same_rules(self):
+        lokal = RULES.search((HERE / "context.py").read_text(encoding="utf-8")).group(0)
+        orte = [ROOT / "2-agents" / v / "map" / "INSTRUCTIONS.txt" for v in ("copilot", "gemini", "chatgpt", "claude")]
+        orte.append(ROOT / "2-agents/claude/code/kaiwa-map/SKILL.md")
+        geprueft = 0
+        for p in orte:
+            if fehlt(str(p.relative_to(ROOT))):
+                continue
+            with self.subTest(datei=str(p.relative_to(ROOT))):
+                m = RULES.search(p.read_text(encoding="utf-8"))
+                self.assertIsNotNone(m)
+                self.assertEqual(m.group(0), lokal)
+                geprueft += 1
+        if not TEILPAKET:
+            self.assertGreater(geprueft, 0)
+
+
 class TextTest(unittest.TestCase):
     def test_no_semicolon_or_dash_in_prose(self):
         findings = []
