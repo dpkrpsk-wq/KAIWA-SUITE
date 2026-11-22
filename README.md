@@ -65,7 +65,7 @@ Każdy agent ma w instrukcjach drogi zapasowe. Kolejność: agenci Copilot, pote
 
 ## Licencje / licences
 
-Treść własna pakietu jest na licencji CC BY-NC-SA 4.0 (Creative Commons Uznanie autorstwa, Użycie niekomercyjne, Na tych samych warunkach). Licencja komercyjna na zapytanie: mentalpingoperator@gmail.com. `method/prompts/` i `method/protocols/` pozostają na licencji CC BY-SA 4.0, czcionka w `design/fonts/` na licencji SIL Open Font License 1.1. Zakres według folderów i pełny tekst: `LICENSE`. The package's own content is CC BY-NC-SA 4.0, a commercial licence is available on request. `method/prompts/` and `method/protocols/` stay CC BY-SA 4.0, the font in `design/fonts/` is under the SIL Open Font License 1.1. Scope by folder and full text: `LICENSE`.
+Treść własna pakietu jest na licencji CC BY-NC-SA 4.0 (Creative Commons Uznanie autorstwa, Użycie niekomercyjne, Na tych samych warunkach). Pakiet ma dwie licencje (dual licence): licencja komercyjna na zapytanie, mentalpingoperator@gmail.com, warunki w [`LICENSE-COMMERCIAL.md`](LICENSE-COMMERCIAL.md). `method/prompts/` i `method/protocols/` pozostają na licencji CC BY-SA 4.0, czcionka w `design/fonts/` na licencji SIL Open Font License 1.1. Zakres według folderów i pełny tekst: `LICENSE`. The package's own content is CC BY-NC-SA 4.0, a commercial licence is available on request. `method/prompts/` and `method/protocols/` stay CC BY-SA 4.0, the font in `design/fonts/` is under the SIL Open Font License 1.1. Scope by folder and full text: `LICENSE`.
 
 Tryby „sprint“ i „przekład na polski“ dojdą po decyzjach autora. Sprint and transfer into Polish follow after the author's decisions.
 
