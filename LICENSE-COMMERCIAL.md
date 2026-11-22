@@ -1,26 +1,28 @@
-# Licencja komercyjna / Commercial Licence — KAIWA SUITE
+# Licencja komercyjna / Commercial Licence: KAIWA SUITE
+
+KAIWA SUITE 26.01, wersja 0.2.0 (robocza / draft), 22.11.2026.
 
 **Copyright © 2026 Denis Pokropski. Wszelkie prawa zastrzeżone poza zakresem licencji publicznej / all rights reserved outside the scope of the public licence.**
 
-Po polsku w skrócie: pakiet ma dwie licencje. Domyślnie treść własna jest dostępna na licencji CC BY-NC-SA 4.0 (plik [`LICENSE`](LICENSE)): do nauki, badań i użytku niekomercyjnego bez pytania. Użycie komercyjne wymaga osobnej licencji komercyjnej, udzielanej na piśmie po zapytaniu: mentalpingoperator@gmail.com. Wiążący jest tekst angielski poniżej.
+Po polsku w skrócie: treść własna pakietu ma dwie licencje. Domyślnie jest dostępna na licencji CC BY-NC-SA 4.0 (plik [`LICENSE`](LICENSE)): do nauki, badań i innego użytku niekomercyjnego bez pytania, z podaniem autora i na tych samych warunkach. Użycie komercyjne treści własnej wymaga osobnej licencji komercyjnej, udzielanej na piśmie po zapytaniu: mentalpingoperator@gmail.com. Foldery `method/prompts/`, `method/protocols/` i `design/fonts/` mają własne licencje i nie są objęte tym dokumentem. Skrót nie zastępuje tekstu poniżej.
 
 ---
 
 ## 1. Overview
 
-This repository is dual-licensed. By default, the package's own content is made available under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** licence. See [`LICENSE`](LICENSE) for the scope by folder and the full licence text.
+The package's own content is dual-licensed. By default it is made available under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** licence. See [`LICENSE`](LICENSE) for the scope by folder and the full licence text. The terms NonCommercial, ShareAlike, and Adapted Material are used here as defined in Section 1 of that licence.
 
-This document describes the **Commercial Licence**, a separate, proprietary licence available by arrangement with the copyright holder. The Commercial Licence is not self-service. It must be explicitly granted.
+This document describes the **Commercial Licence**, a separate, proprietary licence available on request from the copyright holder. The Commercial Licence is not self-service. It must be explicitly granted.
 
 ---
 
 ## 2. Scope
 
-The Commercial Licence covers only the material that `LICENSE` lists under CC BY-NC-SA 4.0 (licensor: Denis Pokropski). It does not cover:
+The Commercial Licence covers only the material that `LICENSE` lists under CC BY-NC-SA 4.0 (copyright holder and licensor: Denis Pokropski). It does not cover:
 
-- `method/prompts/` — CC BY-SA 4.0, licensor mentalpinG-Ops. Commercial terms for this material are those of the source repository `mentalpinG-Ops/prompt-library` (see `method/prompts/LICENSE.md`).
-- `method/protocols/` — CC BY-SA 4.0 (see `method/protocols/LICENSE.md`).
-- `design/fonts/` — SIL Open Font License 1.1 (see `design/fonts/OFL.txt`).
+- `method/prompts/`: CC BY-SA 4.0, licensor mentalpinG-Ops. That licence already permits commercial use under its own conditions. Other commercial terms for this material are offered by the source repository `mentalpinG-Ops/prompt-library` in its file `LICENSE-COMMERCIAL.md`.
+- `method/protocols/`: CC BY-SA 4.0 (see `method/protocols/LICENSE.md`). That licence already permits commercial use under its own conditions.
+- `design/fonts/`: SIL Open Font License 1.1 (see `design/fonts/OFL.txt`).
 
 Nothing in this document restricts rights already granted under those licences.
 
@@ -28,18 +30,19 @@ Nothing in this document restricts rights already granted under those licences.
 
 ## 3. Who Needs a Commercial Licence
 
-You need a Commercial Licence if you intend to use, adapt, or deploy the covered material in a way that is **primarily intended for or directed towards commercial advantage or monetary compensation**, for example:
+You need a Commercial Licence if you intend to use, adapt, or deploy the covered material in a way that is **primarily intended for or directed towards commercial advantage or monetary compensation**. This is the wording of the NonCommercial definition in CC BY-NC-SA 4.0, Section 1. Examples:
 
-- paid courses, trainings, or workshops built on the package,
-- commercial consulting deliverables,
-- proprietary products or services, including SaaS platforms and closed-source applications,
-- any adaptation that you are unable or unwilling to release under CC BY-NC-SA 4.0.
+- courses, trainings, or workshops built on the package and offered commercially,
+- commercial consulting deliverables that contain or adapt the covered material,
+- proprietary products or services, including SaaS platforms and closed-source applications.
 
 You do **not** need a Commercial Licence for:
 
-- study, teaching, and research at universities and other non-commercial institutions,
+- study, teaching, and research that is not primarily directed towards commercial advantage,
 - personal or other non-commercial projects,
 - sharing and adapting the material under the terms of CC BY-NC-SA 4.0.
+
+The purpose of the use decides, not the type of institution. Both lists are examples. In case of doubt, the definition in CC BY-NC-SA 4.0 applies, and you are welcome to ask.
 
 ---
 
@@ -72,7 +75,7 @@ The Commercial Licence does **not** permit:
 Attribution remains required under the Commercial Licence in all works, products, or services that incorporate or are substantially based on the covered material. Attribution must include:
 
 - the name **KAIWA SUITE** and the author **Denis Pokropski**,
-- a reference to the source repository.
+- a reference to the source repository: `https://github.com/dpkrpsk-wq/KAIWA-SUITE`.
 
 Attribution may appear in documentation, an about page, a credits file, or another reasonably visible location.
 
@@ -80,7 +83,7 @@ Attribution may appear in documentation, an about page, a credits file, or anoth
 
 ## 7. How to Obtain a Commercial Licence
 
-Commercial licences are granted case by case. To enquire, write to **mentalpingoperator@gmail.com** with the subject "Commercial Licence Enquiry". Please describe the intended use, the material you wish to use, and whether the licence is for a single project or ongoing use.
+Commercial licences are granted on request, case by case. To enquire, write to **mentalpingoperator@gmail.com** with the subject "Commercial Licence Enquiry". Please describe the intended use, the material you wish to use, and whether the licence is for a single project or ongoing use.
 
 A Commercial Licence takes effect only when explicitly confirmed in writing by the copyright holder.
 
@@ -88,7 +91,7 @@ A Commercial Licence takes effect only when explicitly confirmed in writing by t
 
 ## 8. Default Licence Applies Without Explicit Grant
 
-Without an explicit written confirmation of a Commercial Licence, the terms of **CC BY-NC-SA 4.0** apply to the covered material. Commercial use without a Commercial Licence is outside the scope of that public licence.
+Without an explicit written confirmation of a Commercial Licence, only the terms of **CC BY-NC-SA 4.0** apply to the covered material. Commercial use without a Commercial Licence is outside the scope of that public licence.
 
 ---
 
@@ -100,4 +103,8 @@ The covered material is provided **"as is"**, without warranty of any kind, expr
 
 ## 10. Governing Terms
 
-A Commercial Licence is governed by the terms agreed in writing between the copyright holder and the licensee at the time of grant. In the absence of such an agreement, CC BY-NC-SA 4.0 governs all use of the covered material.
+A Commercial Licence is governed by the terms agreed in writing between the copyright holder and the licensee at the time of grant. In the absence of such an agreement, Section 8 applies.
+
+---
+
+This document follows the structure of the commercial licence file of `mentalpinG-Ops/prompt-library`. It was drafted with an AI tool and is listed in `DISCLOSURE.md`.

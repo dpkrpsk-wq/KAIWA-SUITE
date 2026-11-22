@@ -1,6 +1,6 @@
 # Mapa kontekstu
 
-Dodatek roboczy do pakietu KAIWA (Kit for Academic Inquiry With AI), 05.11.2026. Nie wydany. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl.
+Dodatek roboczy do pakietu KAIWA (Kit for Academic Inquiry With AI), 22.11.2026. Nie wydany. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl.
 
 ## Po co
 

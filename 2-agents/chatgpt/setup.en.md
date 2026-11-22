@@ -2,7 +2,7 @@
 
 <img src="../../design/logo/kaiwa-logo.svg" alt="KAIWA" width="96">
 
-Product 26.01, version 0.2.0 (draft), 5 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, contact: 285421@student.uwr.edu.pl. The package brings the KAIWA method to ChatGPT. Each of the four agents is a separate project (Projects), a folder in ChatGPT with its own instructions, files and chats.
+Product 26.01, version 0.2.0 (draft), 22 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, contact: 285421@student.uwr.edu.pl. The package brings the KAIWA method to ChatGPT. Each of the four agents is a separate project (Projects), a folder in ChatGPT with its own instructions, files and chats.
 
 Status: draft, untested in ChatGPT. This guide covers a ChatGPT Go account. The package does not use Custom GPTs.
 

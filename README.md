@@ -4,7 +4,7 @@
 
 Kit for Academic Inquiry With AI. Po japońsku *kaiwa* znaczy rozmowa. In Japanese, *kaiwa* means conversation.
 
-Produkt 26.01, wersja 0.2.0 (robocza), 05.11.2026, nie wydana. Product 26.01, version 0.2.0 (draft), not released.
+Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026, nie wydana. Product 26.01, version 0.2.0 (draft), not released.
 Wydawca / publisher: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo / BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (KMSI), University of Wrocław, leading programme image communication, second discipline cultural studies. Kontakt / contact: 285421@student.uwr.edu.pl.
 
 Pakiet do przetestowania metody pracy z AI w naukach humanistycznych i społecznych: myśli mówione na głos zapisuje się dosłownie ze skrótem SHA-256 (skrót nie dowodzi wierności przepisania, zob. setup), tematy z dyktatów tworzą mapę kontekstu, artefakty analizuje się po triażu (wstępnym rozpoznaniu, czym jest artefakt i które ramy do niego pasują) według deklarowanych ram (opisanych z góry sposobów analizy), literaturę szuka się w otwartym dostępie z poziomem weryfikacji każdego trafienia. A package to test a method of AI-assisted work in the humanities and social sciences: verbatim dictation with SHA-256 hashes, a context map, triage-first framework analysis, and open access search with a verification level for every hit.
@@ -24,7 +24,7 @@ Konfiguracja: `1-start/setup.pl.md` (wszyscy agenci) i `1-start/setup.en.md` (st
 
 | Folder | Moduł / module | Stan / status |
 |---|---|---|
-| `2-agents/gemini/` | Te same cztery moduły dla Google Gemini, z `2-agents/gemini/setup.pl.md`, `2-agents/gemini/setup.en.md`, `setup-dialog.md` i `SKILL.md`, stan 20.11.2026 / the same four modules for Google Gemini, as of 20 November 2026 | roboczy, nieprzetestowany w Gemini / draft, untested in Gemini |
+| `2-agents/gemini/` | Te same cztery moduły dla Google Gemini, z `2-agents/gemini/setup.pl.md`, `2-agents/gemini/setup.en.md`, `setup-dialog.md` i `SKILL.md`, stan 22.11.2026 / the same four modules for Google Gemini, as of 22 November 2026 | roboczy, nieprzetestowany w Gemini / draft, untested in Gemini |
 
 ## Projekty ChatGPT / ChatGPT projects
 
@@ -65,7 +65,7 @@ Każdy agent ma w instrukcjach drogi zapasowe. Kolejność: agenci Copilot, pote
 
 ## Licencje / licences
 
-Treść własna pakietu jest na licencji CC BY-NC-SA 4.0 (Creative Commons Uznanie autorstwa, Użycie niekomercyjne, Na tych samych warunkach). Pakiet ma dwie licencje (dual licence): licencja komercyjna na zapytanie, mentalpingoperator@gmail.com, warunki w [`LICENSE-COMMERCIAL.md`](LICENSE-COMMERCIAL.md). `method/prompts/` i `method/protocols/` pozostają na licencji CC BY-SA 4.0, czcionka w `design/fonts/` na licencji SIL Open Font License 1.1. Zakres według folderów i pełny tekst: `LICENSE`. The package's own content is CC BY-NC-SA 4.0, a commercial licence is available on request. `method/prompts/` and `method/protocols/` stay CC BY-SA 4.0, the font in `design/fonts/` is under the SIL Open Font License 1.1. Scope by folder and full text: `LICENSE`.
+Treść własna pakietu jest na licencji CC BY-NC-SA 4.0 (Creative Commons Uznanie autorstwa, Użycie niekomercyjne, Na tych samych warunkach). Treść własna ma dwie licencje (dual licence): licencja komercyjna na zapytanie, mentalpingoperator@gmail.com, warunki w [`LICENSE-COMMERCIAL.md`](LICENSE-COMMERCIAL.md). `method/prompts/` i `method/protocols/` pozostają na licencji CC BY-SA 4.0, czcionka w `design/fonts/` na licencji SIL Open Font License 1.1. Zakres według folderów i pełny tekst: `LICENSE`. The package's own content is dual-licensed: CC BY-NC-SA 4.0, and a commercial licence on request, terms in [`LICENSE-COMMERCIAL.md`](LICENSE-COMMERCIAL.md). `method/prompts/` and `method/protocols/` stay CC BY-SA 4.0, the font in `design/fonts/` is under the SIL Open Font License 1.1. Scope by folder and full text: `LICENSE`.
 
 Tryby „sprint“ i „przekład na polski“ dojdą po decyzjach autora. Sprint and transfer into Polish follow after the author's decisions.
 

@@ -1,6 +1,6 @@
 # KAIWA: przewodnik startowy w rozmowie / Guided Chat Setup (Google Gemini)
 
-Produkt 26.01, wersja 0.2.0 (robocza), 20.11.2026. Nie wydana. Wydawca: Denis Pokropski, KMSI, Uniwersytet Wrocławski.
+Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, KMSI, Uniwersytet Wrocławski.
 
 ## Instrukcja dla asystenta Gemini (gdy użytkownik dołączy ten plik do czatu)
 

@@ -1,6 +1,6 @@
 # Ujawnienie narzędzia: platforma, model, nakład
 
-Szablon z pakietu KAIWA, produkt 26.01, wersja 0.2.0 (robocza), 05.11.2026.
+Szablon z pakietu KAIWA, produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026.
 
 Znacznik pochodzenia (`method/protocols/provenance-protocol.md`) mówi, czy myśl pochodzi od człowieka czy od AI. Nie mówi, jakie narzędzie i jaki model brały udział ani jaki był nakład obliczeniowy. Ten szablon dodaje te dane. Jest analogią do Leiden Declaration (Zenodo 20302944, 02.06.2026), rekomendacja „Disclose tool use“ (https://leidendeclaration.ai/, dostęp 22.11.2026). Deklaracja dotyczy matematyki, dla pakietu to tylko wzór.
 

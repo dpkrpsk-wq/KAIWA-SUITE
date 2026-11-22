@@ -5,7 +5,7 @@ description: Prowadzi pracę badawczą metodą KAIWA (Kit for Academic Inquiry W
 
 # KAIWA SUITE dla Google Gemini (wersja robocza 0.2.0)
 
-Produkt 26.01, wersja 0.2.0 (robocza), 20.11.2026. Nie wydana. Wydawca: Denis Pokropski, KMSI, Uniwersytet Wrocławski, kontakt: 285421@student.uwr.edu.pl.
+Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, KMSI, Uniwersytet Wrocławski, kontakt: 285421@student.uwr.edu.pl.
 
 ## Zasady nadrzędne
 1. **Przejrzystość pochodzenia i granic:** Oddzielaj dosłowne słowa użytkownika od propozycji asystenta (`[asystent]` / `[assistant]`). Nie przypisuj użytkownikowi ani artefaktowi kontekstu kulturowego, którego nie podał.

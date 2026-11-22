@@ -2,7 +2,7 @@
 
 <img src="../../design/logo/kaiwa-logo.svg" alt="KAIWA" width="96">
 
-Produkt 26.01, wersja 0.2.0 (robocza), 05.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl. Pakiet przenosi metodę KAIWA do ChatGPT. Każdy z czterech agentów to osobny projekt (Projects), czyli folder w ChatGPT z własnymi instrukcjami, plikami i rozmowami.
+Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl. Pakiet przenosi metodę KAIWA do ChatGPT. Każdy z czterech agentów to osobny projekt (Projects), czyli folder w ChatGPT z własnymi instrukcjami, plikami i rozmowami.
 
 Stan: wersja robocza, nieprzetestowana w ChatGPT. Opis dotyczy konta ChatGPT Go. Własnych GPT (Custom GPTs) pakiet nie używa.
 

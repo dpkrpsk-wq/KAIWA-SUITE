@@ -1,6 +1,6 @@
 # Moduł „KAIWA: mapa kontekstu”, pola do wklejenia (Google Gemini)
 
-Pola do utworzenia pojedynczego Skillu (Gemini web/app) albo Gemu (Google Workspace). Opis metody: `1-start/context.pl.md`. Wersja robocza 0.2.0 (20.11.2026), nieprzetestowana w Gemini.
+Pola do utworzenia pojedynczego Skillu (Gemini web/app) albo Gemu (Google Workspace). Opis metody: `1-start/context.pl.md`. Wersja robocza 0.2.0 (22.11.2026), nieprzetestowana w Gemini.
 
 ## Nazwa (Name)
 
