@@ -10,7 +10,7 @@ Po polsku w skrócie: treść własna pakietu ma dwie licencje. Domyślnie jest 
 
 ## 1. Overview
 
-The package's own content is dual-licensed. By default it is made available under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** licence. See [`LICENSE`](LICENSE) for the scope by folder and the full licence text. The terms NonCommercial, ShareAlike, and Adapted Material are used here as defined in Section 1 of that licence.
+The package's own content is dual-licensed. By default it is made available under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** licence. See [`LICENSE`](LICENSE) for the scope by folder and the full licence text. The terms NonCommercial and Adapted Material are used here as defined in Section 1 of that licence, ShareAlike as set out in its Section 3(b).
 
 This document describes the **Commercial Licence**, a separate, proprietary licence available on request from the copyright holder. The Commercial Licence is not self-service. It must be explicitly granted.
 
@@ -20,8 +20,8 @@ This document describes the **Commercial Licence**, a separate, proprietary lice
 
 The Commercial Licence covers only the material that `LICENSE` lists under CC BY-NC-SA 4.0 (copyright holder and licensor: Denis Pokropski). It does not cover:
 
-- `method/prompts/`: CC BY-SA 4.0, licensor mentalpinG-Ops. That licence already permits commercial use under its own conditions. Other commercial terms for this material are offered by the source repository `mentalpinG-Ops/prompt-library` in its file `LICENSE-COMMERCIAL.md`.
-- `method/protocols/`: CC BY-SA 4.0 (see `method/protocols/LICENSE.md`). That licence already permits commercial use under its own conditions.
+- `method/prompts/`: CC BY-SA 4.0, licensor mentalpinG-Ops. That licence already permits commercial use under its own conditions. mentalpinG-Ops offers other commercial terms for this material in the file `LICENSE-COMMERCIAL.md` of its source repository `https://github.com/mentalpinG-Ops/prompt-library`.
+- `method/protocols/`: CC BY-SA 4.0 (see `method/protocols/LICENSE.md`). That licence already permits commercial use under its own conditions. Other commercial terms for this material are set out in the file `LICENSE-COMMERCIAL.md` of the source repository `https://github.com/mentalpinG-Ops/humanities-ai-methodology`.
 - `design/fonts/`: SIL Open Font License 1.1 (see `design/fonts/OFL.txt`).
 
 Nothing in this document restricts rights already granted under those licences.
@@ -34,7 +34,7 @@ You need a Commercial Licence if you intend to use, adapt, or deploy the covered
 
 - courses, trainings, or workshops built on the package and offered commercially,
 - commercial consulting deliverables that contain or adapt the covered material,
-- proprietary products or services, including SaaS platforms and closed-source applications.
+- proprietary products or services offered commercially, including SaaS platforms and closed-source applications.
 
 You do **not** need a Commercial Licence for:
 
