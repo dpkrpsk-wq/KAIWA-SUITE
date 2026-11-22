@@ -202,6 +202,19 @@ html, body {
   transform-origin: center;
   animation: craftGlide 3.2s ease-in-out infinite;
 }
+/* Intro (plays once on load and on "Odtwórz intro / Replay"), then the loop continues. */
+@keyframes introRing {
+  0%   { transform: scale(0.15); opacity: 0; }
+  100% { transform: scale(0.88); opacity: 0.45; }
+}
+@keyframes introCraft {
+  0%   { transform: translate(-70px, 28px); opacity: 0; }
+  100% { transform: translate(0px, 0px); opacity: 1; }
+}
+.intro-play .anim-ring-a { animation: introRing 1.4s ease-out both, tunnelPulse 4.2s ease-in-out 1.4s infinite; }
+.intro-play .anim-ring-b { animation: introRing 1.4s ease-out 0.3s both, tunnelPulse 4.2s ease-in-out 2s infinite; }
+.intro-play .anim-craft { animation: introCraft 1.6s cubic-bezier(.2,.7,.2,1) 0.5s both, craftGlide 3.2s ease-in-out 2.1s infinite; }
+
 /* Reduced motion: system setting or the page button (class .reduced-motion on the stage). Two rules, a selector list cannot sit inside a media query. */
 @media (prefers-reduced-motion: reduce) {
   .anim-ring-a, .anim-ring-b, .anim-craft { animation: none !important; }
@@ -557,13 +570,14 @@ document.getElementById("btn-motion").addEventListener("click", (e) => {
   e.currentTarget.textContent = reduced ? "Animacja: wstrzymana / Motion off" : "Animacja: włączona / Motion on";
 });
 
-document.getElementById("btn-replay").addEventListener("click", () => {
-  document.querySelectorAll(".anim-ring-a, .anim-ring-b, .anim-craft").forEach((el) => {
-    el.style.animation = "none";
-    void el.offsetWidth;
-    el.style.animation = "";
-  });
-});
+function playIntro() {
+  const stage = document.querySelector(".intro-stage");
+  stage.classList.remove("intro-play");
+  void stage.offsetWidth;
+  stage.classList.add("intro-play");
+}
+document.getElementById("btn-replay").addEventListener("click", playIntro);
+playIntro();
 
 renderTier("chat");
 </script>
