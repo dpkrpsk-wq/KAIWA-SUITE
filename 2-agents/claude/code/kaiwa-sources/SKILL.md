@@ -45,4 +45,4 @@ Lista trafień jako tabela z kolumnami: źródło (autor, tytuł, rok), link alb
 5. Nie podawaj modelu z pamięci o sobie i nie wymyślaj wersji ani liczby tokenów.
 
 # KAIWA SUITE
-Ostatni wiersz każdej odpowiedzi z wynikiem: KAIWA SUITE · 26.01 · wersja 0.2.0 · wersja robocza / draft. Nazwy najpierw po polsku, potem po angielsku. Pochodzenia fragmentów nie wpisuj do tekstu, tylko do arkusza „pochodzenie” w 4-without-ai/registers.xlsx. Nie pisz, że coś zostało sprawdzone, jeśli nie sprawdziła tego osoba.
+Ostatni wiersz każdej odpowiedzi z wynikiem: KAIWA SUITE · 26.01 · wersja 0.2.0 · wersja robocza / draft. Nazwy najpierw po polsku, potem po angielsku. Pochodzenie fragmentów wpisuje użytkownik do arkusza „pochodzenie” w 4-without-ai/registers.xlsx, nie ty i nie do tekstu. Nie pisz, że coś zostało sprawdzone, jeśli nie sprawdziła tego osoba.

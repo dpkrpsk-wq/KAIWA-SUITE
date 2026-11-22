@@ -31,7 +31,7 @@ Nazwy przycisków mogą się różnić w zależności od języka interfejsu. Pon
 
 ## Ostrzeżenia dotyczące użycia
 
-1. Copilot Chat bez licencji ma limity użycia. Microsoft pisze w dokumentacji „Usage limits apply to all included features“ (cytat niesprawdzony) i nie podaje liczb. Agent uruchamia kod tylko dwa razy na sesję, na początku i na końcu, żeby zużycie było małe.
+1. Copilot Chat bez licencji ma limity użycia. Microsoft pisze w dokumentacji „Usage limits apply to all included features“ (cytat niesprawdzony) i nie podaje liczb. Agent strumienia uruchamia kod tylko dwa razy na sesję, na początku i na końcu, żeby zużycie było małe. Agent mapy uruchamia go przy starcie, odczycie plików, zapisie i sprawdzaniu, sprawdzenie pliku dyktatu też uruchamia kod.
 2. Nie dodawaj plików z OneDrive ani SharePoint jako wiedzy agenta. Bez licencji Copilot to nie działa albo jest rozliczane jako płatne użycie.
 3. Długa sesja jest mniej pewna. Po dwudziestu wpisach agent proponuje zakończenie. Zakończ wtedy i zacznij nową sesję.
 4. Skrót pokazuje, że tekst w pliku nie zmienił się od końca sesji. Nie pokazuje, że model przepisał twoje słowa dokładnie. Skrót „sha256” liczony jest po ujednoliceniu znaków (NFC), odstępów i podziałów wierszy, więc nie wykrywa zmian samych odstępów ani podziałów wierszy. Drugi skrót „sha256_raw” liczony jest z dokładnych bajtów tekstu. Porównany ręcznie z tekstem pokazuje także takie zmiany, sprawdzenie w agencie porównuje tylko „sha256”. Przeczytaj plik raz po zakończeniu sesji.
@@ -54,7 +54,7 @@ Opcjonalnie. Opis metody: `1-start/context.pl.md`. Ta część nie była jeszcze
 3. W sekcji wiedzy nic nie dodawaj. Pliki dołączasz do rozmowy.
 4. Napisz „start“. Agent powinien odpowiedzieć „Mapa gotowa. Skróty działają.“
 5. Dołącz plik dyktatu z pierwszego agenta i napisz „dodaj dołączone dyktaty do mapy“. Zatwierdź propozycje numerami, potem napisz „zapisz“.
-6. Na własnym komputerze możesz sprawdzić plik mapy: `python tools/context.py sprawdz <plik mapy>` (wymaga pakietu openpyxl).
+6. Sprawdzenie w Copilot: dołącz plik mapy i plik `2-agents/copilot/map/sprawdz-mape.md`, napisz „sprawdź mapę”. Na własnym komputerze: `python tools/context.py sprawdz <plik mapy>` (wymaga pakietu openpyxl).
 
 ## Trzeci agent: analiza
 
@@ -71,7 +71,8 @@ Opcjonalnie. Ta część nie była jeszcze testowana w Copilot.
 
 1. Utwórz agenta z pól w `2-agents/copilot/sources/AGENT.md` i instrukcji z `2-agents/copilot/sources/INSTRUCTIONS.txt`.
 2. W sekcji wiedzy dodaj cztery strony z `AGENT.md`. Bez nich agent szuka w całej sieci, a wyniki wymagają ostrożniejszej oceny.
-3. Na własnym komputerze możesz szukać bez Copilot: `python tools/search.py "hasło" --csv wynik.csv`. Plik ma kolumny arkusza „zrodla“ z `4-without-ai/registers.xlsx`.
+3. Instrukcje zawierają skrót protokołu źródeł. Pełny plik `method/protocols/source-protocol.md` możesz dołączyć do rozmowy.
+4. Na własnym komputerze możesz szukać bez Copilot: `python tools/search.py "hasło" --csv wynik.csv`. Plik ma kolumny arkusza „zrodla“ z `4-without-ai/registers.xlsx`.
 
 ## Bez Copilot
 
@@ -88,6 +89,8 @@ Sprawdzone 22.11.2026 w dokumentacji Microsoft Learn:
 1. Pola agenta i ikona (nazwa 30 znaków, opis 1000, instrukcje 8000, PNG do 192 × 192 pikseli i 1 MB): https://learn.microsoft.com/plugins/agent-builder-build-agents
 2. Bez licencji Copilot działają agenci z instrukcjami i stronami publicznymi, inni tylko w płatnym rozliczeniu: https://learn.microsoft.com/copilot/plan/copilot-overview
 3. Microsoft nie publikuje liczbowych limitów użycia: https://learn.microsoft.com/partner-center/announcements/2026-november
+
+Długość instrukcji agentów (znaki, granica 8000): strumień 6018, mapa 7495, analiza 6496, źródła 4198. Wklejaj z pliku bez zmian, edytor z końcami wierszy CRLF może dodać znaki.
 
 ## Uwagi do testu
 

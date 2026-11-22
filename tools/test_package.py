@@ -196,7 +196,9 @@ class MapaTest(unittest.TestCase):
         except ImportError:
             self.skipTest("openpyxl missing")
         import context as K
-        start, write, verify = mapa_blocks()
+        start, write = mapa_blocks()[:2]
+        # Pruefcode liegt seit 22.11.2026 in sprawdz-mape.md (Laengenreserve der Anweisung, Befund V1)
+        verify = CODE.findall((MAPA.parent / "sprawdz-mape.md").read_text(encoding="utf-8"))[0]
         with tempfile.TemporaryDirectory() as tmp:
             out = run(start + "\n" + fill(write, TEMATY_F, POL_F, CELE_F), tmp)
             self.assertEqual(out.returncode, 0, out.stderr)
@@ -217,7 +219,7 @@ class MapaTest(unittest.TestCase):
                 self.assertEqual(K.main(["sprawdz", path]), 1)
 
     def test_errors_save_nothing(self):
-        start, write, _ = mapa_blocks()
+        start, write = mapa_blocks()[:2]
         with tempfile.TemporaryDirectory() as tmp:
             out = run(start + "\n" + fill(write, TEMATY_F, [("A1", "A2", "rozmowa", "bez daty", "")], CELE_F), tmp)
             self.assertIn("BŁĘDY", out.stdout, out.stderr)

@@ -31,7 +31,7 @@ Button labels can differ with the language of the interface. The labels below ar
 
 ## Usage warnings
 
-1. Copilot Chat without a license has usage limits. The Microsoft documentation says "Usage limits apply to all included features" (quote unverified) and gives no numbers. The agent runs code only twice per session, at the start and at the end, to keep usage low.
+1. Copilot Chat without a license has usage limits. The Microsoft documentation says "Usage limits apply to all included features" (quote unverified) and gives no numbers. The stream agent runs code only twice per session, at the start and at the end, to keep usage low. The map agent runs it at the start, when reading files, saving and checking, and checking a dictation file runs code too.
 2. Do not add OneDrive or SharePoint files as knowledge. Without a Copilot license this does not work or is billed as metered usage.
 3. A long session is less reliable. After twenty entries the agent suggests ending. End the session then and start a new one.
 4. The hash shows that the text in the file has not changed since the end of the session. It does not show that the model copied your words exactly. The hash "sha256" is computed after Unicode normalisation (NFC) and collapsing whitespace and line breaks, so changes in whitespace or line breaks alone go undetected. The second hash "sha256_raw" is computed from the exact bytes of the text. Compared by hand with the text it shows such changes too, the check in the agent compares only "sha256". Read the file once after the session.
@@ -45,9 +45,36 @@ Each session gives one file `dictation-YYYY-MM-DD-HHMM.xlsx` with three sheets: 
 1. In Copilot, attach a session file to a conversation with the agent and write "verify this file". The agent computes the hashes again and reports for each entry whether the text changed.
 2. On your own computer, if you keep a journal in Markdown files: `python tools/dictation_ledger.py init <folder>`, then `scan <folder>` and `verify <folder>`. The script uses the same hash rule as the agent.
 
-## Analysis agent: cultural check
+## Second agent: context map
 
-The optional analysis agent (set-up in `1-start/setup.pl.md`, "Trzeci agent") asks after the triage for the output language and for the cultural context of the artefact, and ends every result with a fixed block "Kontrola kulturowa" (cultural check) that lists the assumptions the model made. Description and checklist (Polish): `3-templates/cultural-check.pl.md`.
+Optional. Method: `1-start/context.pl.md` (Polish). This part has not been tested in Copilot yet.
+
+1. Create a second agent the same way as the first.
+2. Take name, description and starter prompts from `2-agents/copilot/map/AGENT.md`, the instructions from `2-agents/copilot/map/INSTRUCTIONS.txt`.
+3. Add nothing as knowledge. You attach files to the conversation.
+4. Write "start". The agent should answer "Mapa gotowa. Skróty działają." (map ready, hashes work).
+5. Attach a dictation file from the first agent and write "dodaj dołączone dyktaty do mapy" (add the attached dictations to the map). Approve the proposals by number, then write "zapisz" (save).
+6. Check in Copilot: attach the map file and `2-agents/copilot/map/sprawdz-mape.md` and write "sprawdź mapę" (check the map). On your own computer: `python tools/context.py sprawdz <map file>` (needs openpyxl).
+
+## Third agent: analysis
+
+Optional. This part has not been tested in Copilot yet.
+
+1. Create an agent from the fields in `2-agents/copilot/analysis/AGENT.md` and the instructions in `2-agents/copilot/analysis/INSTRUCTIONS.txt`.
+2. In the conversation attach the artefact and the files `method/prompts/core/artifact-triage.md` and `method/prompts/framework-catalog.md`. Without the triage file the agent asks for it and neither does the triage nor recommends frameworks.
+3. After the triage the agent asks for the next step (1 continue, 2 comment or task, 3 research problem), then for the output language and the cultural context of the artefact. Every result ends with the block "Kontrola kulturowa" (cultural check), which lists the assumptions the model made. Flow: `3-templates/after-triage.pl.md`, checklist: `3-templates/cultural-check.pl.md` (both Polish).
+4. When the agent recommends frameworks, attach their files from `method/prompts/cultural-scientific/` or `method/prompts/social-science/`.
+
+## Fourth agent: sources
+
+Optional. This part has not been tested in Copilot yet.
+
+1. Create an agent from the fields in `2-agents/copilot/sources/AGENT.md` and the instructions in `2-agents/copilot/sources/INSTRUCTIONS.txt`.
+2. Add the four websites from `AGENT.md` as knowledge. Without them the agent searches the whole web and the results need a more careful assessment.
+3. The instructions hold a short form of the source protocol. You can attach the full file `method/protocols/source-protocol.md` to the conversation.
+4. On your own computer you can search without Copilot: `python tools/search.py "term" --csv result.csv`. The file has the columns of the sheet "zrodla" in `4-without-ai/registers.xlsx`.
+
+Length of the agent instructions (characters, limit 8,000): stream 6018, map 7495, analysis 6496, sources 4198. Paste them from the file unchanged, an editor with CRLF line endings can add characters.
 
 ## Other platforms
 
