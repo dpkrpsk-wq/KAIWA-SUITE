@@ -593,6 +593,9 @@ class ChatGPTTest(unittest.TestCase):
         for a in self.AGENTS:
             t = (self.BASE / a / "INSTRUCTIONS.txt").read_text(encoding="utf-8")
             self.assertLessEqual(len(t), 8000, a)  # Copilot-Grenze als tragbare Obergrenze, ChatGPT nennt keine
+            # Abstand zur gemeldeten Grenze, auch wenn ein Feld Bytes statt Zeichen zaehlt (Bericht 22.11.2026)
+            self.assertLessEqual(len(t), 7500, a)
+            self.assertLessEqual(len(t.encode("utf-8")), 8000, a)
 
     def test_start_menu(self):
         """Start-Protokoll (studium F-0071): Menue vor jeder Analyse, Spezifikation und Bild als Projektdateien."""
@@ -640,6 +643,9 @@ class ClaudeTest(unittest.TestCase):
         for a in self.AGENTS:
             t = (self.BASE / a / "INSTRUCTIONS.txt").read_text(encoding="utf-8")
             self.assertLessEqual(len(t), 8000, a)  # gleiche Obergrenze wie bei ChatGPT und Copilot
+            # Abstand zur gemeldeten Grenze, auch wenn ein Feld Bytes statt Zeichen zaehlt (Bericht 22.11.2026)
+            self.assertLessEqual(len(t), 7500, a)
+            self.assertLessEqual(len(t.encode("utf-8")), 8000, a)
 
     def test_no_other_vendor(self):
         # Die Setup-Texte nennen die Herkunft aus dem ChatGPT-Weg, geprüft werden die Texte für das Modell.

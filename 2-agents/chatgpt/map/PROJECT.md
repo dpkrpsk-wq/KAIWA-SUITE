@@ -14,10 +14,11 @@ Prowadzi mapę kontekstu: tematy z twoich dyktatów i notatek, ich pochodzenie, 
 
 Cała zawartość pliku `2-agents/chatgpt/map/INSTRUCTIONS.txt`.
 
-## Pliki projektu (2, jedno wgranie)
+## Pliki projektu (3, jedno wgranie)
 
 1. `1-start/context.pl.md`
 2. `3-templates/tool-disclosure.pl.md`
+3. `2-agents/chatgpt/map/sprawdz-mape.md` (kod sprawdzenia mapy / map check code)
 
 Ta sama lista w `files.txt`.
 

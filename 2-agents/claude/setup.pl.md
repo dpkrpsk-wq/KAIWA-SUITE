@@ -23,7 +23,7 @@ Która droga do ciebie pasuje: droga A wymaga tylko przeglądarki i pasuje więk
 | Moduł | Droga A: folder projektu | Droga B: skill | Pliki projektu | Status |
 |---|---|---|---|---|
 | KAIWA: strumień świadomości | `2-agents/claude/stream/` | `2-agents/claude/code/kaiwa-stream/` | 1 | wersja robocza, nieprzetestowana w Claude |
-| KAIWA: mapa kontekstu | `2-agents/claude/map/` | `2-agents/claude/code/kaiwa-map/` | 2 | wersja robocza, nieprzetestowana w Claude |
+| KAIWA: mapa kontekstu | `2-agents/claude/map/` | `2-agents/claude/code/kaiwa-map/` | 3 | wersja robocza, nieprzetestowana w Claude |
 | KAIWA: analiza | `2-agents/claude/analysis/` | `2-agents/claude/code/kaiwa-analysis/` | 6 | wersja robocza, nieprzetestowana w Claude |
 | KAIWA: źródła | `2-agents/claude/sources/` | `2-agents/claude/code/kaiwa-sources/` | 2 | wersja robocza, nieprzetestowana w Claude |
 

@@ -17,7 +17,7 @@ Status: draft, untested in ChatGPT. This guide covers a ChatGPT Go account. The 
 | Project | Folder | Project files | Status |
 |---|---|---|---|
 | KAIWA: stream of consciousness (`strumień świadomości`) | `2-agents/chatgpt/stream/` | 1 | draft, untested in ChatGPT |
-| KAIWA: context map (`mapa kontekstu`) | `2-agents/chatgpt/map/` | 2 | draft, untested in ChatGPT |
+| KAIWA: context map (`mapa kontekstu`) | `2-agents/chatgpt/map/` | 3 | draft, untested in ChatGPT |
 | KAIWA: analysis (`analiza`) | `2-agents/chatgpt/analysis/` | 8 | draft, untested in ChatGPT |
 | KAIWA: sources (`źródła`) | `2-agents/chatgpt/sources/` | 2 | draft, untested in ChatGPT |
 
@@ -30,7 +30,7 @@ Each folder holds `PROJECT.md` (name, description, first message, in Polish), `I
 3. Add the files listed in `files.txt` to the project. Each list has at most 10 files, so one upload is enough.
 4. Start a new chat in the project with the first message from `PROJECT.md`.
 
-Length of the instructions: the OpenAI help "Projects in ChatGPT" (checked 22 November 2026) states no limit, the limit of 8,000 characters comes from Copilot. The instructions in this folder stay within it. After saving, check that the instructions are complete (unverified in ChatGPT).
+Length of the instructions: the OpenAI help "Projects in ChatGPT" (checked 22 November 2026) names no limit. User reports mention about 8,000 characters (unverified), Copilot has this limit. The instructions in this folder have stream 6,356, map 7,466, analysis 7,285 and sources 4,159 characters, at most 7,466. After saving, check that the instructions are complete (unverified in ChatGPT).
 
 ## Start menu (analysis)
 
