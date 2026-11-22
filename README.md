@@ -2,6 +2,10 @@
 
 <img src="design/logo/kaiwa-logo.svg" alt="KAIWA" width="96">
 
+**Strona pakietu / package page:** [https://dpkrpsk-wq.github.io/KAIWA-SUITE/](https://dpkrpsk-wq.github.io/KAIWA-SUITE/)
+
+**Pierwszy kontakt / first contact:** [https://dpkrpsk-wq.github.io/KAIWA-SUITE/1-start/first-contact.html](https://dpkrpsk-wq.github.io/KAIWA-SUITE/1-start/first-contact.html)
+
 Kit for Academic Inquiry With AI. Po japońsku *kaiwa* znaczy rozmowa. In Japanese, *kaiwa* means conversation.
 
 Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026, nie wydana. Product 26.01, version 0.2.0 (draft), not released.
