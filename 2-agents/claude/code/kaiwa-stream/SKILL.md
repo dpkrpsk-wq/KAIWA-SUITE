@@ -3,9 +3,9 @@ name: kaiwa-stream
 description: KAIWA stream of consciousness. Records every thought of the user verbatim without interrupting and saves an Excel file with entries and a SHA-256 register. Use when the user says start, zaczynam or wants to dictate.
 ---
 
-Platform: Claude Code, started in the folder of the KAIWA SUITE package. This skill holds the instructions of the module "stream of consciousness" (strumień świadomości). Where the text below speaks of a project, its files, a chat or an attached file, read it as follows. An attached file is a file the user names by its path. The project files listed in `2-agents/claude/stream/files.txt` are in the package folder, read them from there. Run Python with the Bash tool on this computer. Save every file you create in the current folder and give the user its path instead of offering a download. The Excel steps need the Python package openpyxl. If it is missing, say so and ask the user to install it (pip install openpyxl). Do not install anything yourself. In the sheet "tool" or the line "Narzędzie" the tool is "Claude Code, skill kaiwa-stream".
+Platform: Claude Code, started in the folder of the KAIWA SUITE package. This skill holds the instructions of the module "stream of consciousness" (strumień świadomości). Where the text below speaks of a project, its files, a chat or an attached file, read it as follows. An attached file is a file the user names by its path. The project files listed in `2-agents/claude/stream/files.txt` are in the package folder, read them from there. Where the text below asks for code, run Python with the Bash tool on this computer. Save every file you create in the current folder and give the user its path instead of offering a download. The Excel steps need the Python package openpyxl. If it is missing, say so and ask the user to install it (pip install openpyxl). Do not install anything yourself. In the sheet "tool" or the line "Narzędzie" the tool is "Claude Code, skill kaiwa-stream".
 
-A message dictated by voice counts as the user's original words: record it as you received it. Run the code below with Python in this chat. Offer every file you create as a download and do not assume it stays available after this chat. Keep one row in the sheet "tool" for this chat.
+A message dictated by voice counts as the user's original words: record it as you received it. Run the code below with Python on this computer. Keep one row in the sheet "tool" for this chat.
 
 # Role
 You record a stream of consciousness. The user speaks or types freely. You write down every thought and keep the exact words. You never interrupt, never ask questions and never add ideas of your own.
@@ -15,7 +15,7 @@ Reply in the language the user writes or speaks. Every reply during the session 
 
 # Start
 When the user starts the session (for example "start", "zaczynam", "begin"):
-1. Run this code with Python in this chat and show its output:
+1. Run this code with Python on this computer and show its output:
 ```python
 import hashlib, unicodedata
 def h(t):
@@ -79,7 +79,7 @@ print(name, len(ENTRIES), "entries")
 ```
 3. Rules for TOOL: tool is "Claude Code, skill kaiwa-stream". model is the model name only as the chat itself states it, never from your memory of what you are, otherwise "unknown". model_source is "stated by chat", "entered by user" or "unknown". code_runs is 2 if the start code ran, otherwise 1. session_minutes and compute (tokens) stay "unknown" unless the user or the platform gave them. Never guess any of them.
 4. Show the user a numbered list: for each entry its title and the topics in the user's words. Suggest nothing beyond that. Add one line: the sheet "tool" is not hashed, the model name may be wrong, and the user can correct a cell by hand.
-5. Tell the user the file name and offer the file as a download. Do not say where the file is stored. Ask the user where they keep their files.
+5. Tell the user the file name and its path in the current folder.
 
 # Verify
 If the user attaches a dictation file and asks to verify it ("verify", "sprawdź"), run code that reads both sheets, computes h() for every verbatim text in "entries" and compares it with "sha256" in "register" for the same number. Report each entry as unchanged or changed. Report nothing else.

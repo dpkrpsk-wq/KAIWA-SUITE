@@ -4,11 +4,17 @@
 
 Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski.
 
-Status: wersja robocza, nieprzetestowana w Claude. Instrukcja opisuje dwie drogi: projekty w claude.ai (w przeglądarce albo w aplikacji desktop Claude) i skille w Claude Code. Instrukcje powstały na podstawie drogi ChatGPT w tym pakiecie.
+Status: wersja robocza, nieprzetestowana w Claude. Instrukcja opisuje dwie drogi: projekty w claude.ai (w przeglądarce, aplikacja desktop Claude niesprawdzona) i skille w Claude Code. Instrukcje powstały na podstawie drogi ChatGPT w tym pakiecie.
+
+## Pobranie pakietu
+
+Otwórz stronę pakietu https://dpkrpsk-wq.github.io/KAIWA-SUITE/, wybierz dostawcę „Claude” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
+
+Która droga do ciebie pasuje: droga A wymaga tylko przeglądarki i pasuje większości osób. Droga B jest dla osób, które już używają Claude Code, programu uruchamiającego Claude w terminalu na własnym komputerze.
 
 ## Czego potrzebujesz
 
-1. Droga A, claude.ai: konto Claude. Projekty są dostępne we wszystkich planach, konto bezpłatne może utworzyć do pięciu projektów. Ustawienie „Code execution and file creation” musi być włączone (Settings, Capabilities), inaczej nie powstaną pliki Excel.
+1. Droga A, claude.ai: konto Claude. Projekty są dostępne we wszystkich planach, konto bezpłatne może utworzyć do pięciu projektów. Ustawienie „Code execution and file creation” (w nowszym układzie ustawień „Create and edit files”) musi być włączone (Settings, Capabilities), inaczej nie powstaną pliki Excel.
 2. Droga B, Claude Code: Claude Code na twoim komputerze, Python 3.8 lub nowszy i pakiet Pythona openpyxl (`pip install openpyxl`).
 3. Około dziesięciu minut na cztery moduły.
 
@@ -21,26 +27,26 @@ Status: wersja robocza, nieprzetestowana w Claude. Instrukcja opisuje dwie drogi
 | KAIWA: analiza | `2-agents/claude/analysis/` | `2-agents/claude/code/kaiwa-analysis/` | 6 | wersja robocza, nieprzetestowana w Claude |
 | KAIWA: źródła | `2-agents/claude/sources/` | `2-agents/claude/code/kaiwa-sources/` | 2 | wersja robocza, nieprzetestowana w Claude |
 
-Każdy folder projektu zawiera `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTIONS.txt` (instrukcje projektu) i `files.txt` (pliki projektu). Każdy folder skilla zawiera jeden plik `SKILL.md` z tymi samymi instrukcjami i krótkim wstępem dla Claude Code.
+Każdy folder projektu zawiera `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTIONS.txt` (instrukcje projektu) i `files.txt` (pliki projektu). Każdy folder skilla zawiera jeden plik `SKILL.md` z tymi samymi instrukcjami i krótkim wstępem dla Claude Code. Skill to folder z instrukcjami, które Claude Code wczytuje, gdy go wywołasz. Wiedza projektu w claude.ai to pliki, które Claude czyta w każdej rozmowie tego projektu.
 
 ## Droga A: jeden projekt w claude.ai
 
-1. W claude.ai albo w aplikacji desktop utwórz nowy projekt i nadaj mu nazwę z `PROJECT.md`.
+1. W claude.ai utwórz nowy projekt i nadaj mu nazwę z `PROJECT.md`. Aplikacja desktop powinna oferować te same projekty, to jest niesprawdzone.
 2. Wybierz „Set project instructions” i wklej całą zawartość `INSTRUCTIONS.txt`. Instrukcje strumienia świadomości (`stream/INSTRUCTIONS.txt`) są po angielsku i tak zostają, bo to tekst dla modelu (prompt), nie dla czytelnika.
 3. Dodaj pliki z listy `files.txt` do wiedzy projektu („+” w obszarze wiedzy projektu).
 4. W projekcie zacznij nową rozmowę pierwszą wiadomością z `PROJECT.md`.
 
-Strony pomocy nie podają limitu długości instrukcji projektu. Instrukcje w tym folderze mieszczą się w 8000 znaków, limicie Copilot.
+W sprawdzonych stronach pomocy nie znaleźliśmy limitu długości instrukcji projektu. Instrukcje w tym folderze mieszczą się w 8000 znaków, limicie Copilot.
 
 ## Droga B: skille w Claude Code
 
 1. Otwórz terminal w folderze pakietu KAIWA (folder z `README.md`).
-2. Skopiuj cztery foldery z `2-agents/claude/code/` do `.claude/skills/` w tym folderze, tak aby istniał na przykład `.claude/skills/kaiwa-stream/SKILL.md`. Dla wszystkich twoich projektów użyj zamiast tego `~/.claude/skills/`.
+2. Skopiuj cztery foldery z `2-agents/claude/code/` do folderu `.claude/skills/` w folderze pakietu, tak aby istniał na przykład `.claude/skills/kaiwa-stream/SKILL.md`. Folder, którego nazwa zaczyna się od kropki, może być ukryty w menedżerze plików. W Windows (PowerShell): `New-Item -ItemType Directory -Force .claude/skills; Copy-Item -Recurse 2-agents/claude/code/* .claude/skills/`. W macOS i Linux: `mkdir -p .claude/skills && cp -r 2-agents/claude/code/* .claude/skills/`.
 3. Uruchom Claude Code w folderze pakietu i napisz na przykład `/kaiwa-stream` albo „start” z krótką informacją, o który moduł chodzi.
 
 Skille czytają pliki projektu z folderu pakietu i zapisują pliki Excel w bieżącym folderze. Niczego nie instalują. Gdy brakuje openpyxl, skill to mówi.
 
-Te same pliki `SKILL.md` można wgrać do claude.ai jako skille (Customize, Skills, wgranie pliku ZIP z folderem skilla). Wymaga to wykonywania kodu i nie zostało sprawdzone dla tego pakietu. Skille nie synchronizują się między claude.ai a Claude Code.
+Skille są napisane dla Claude Code. W claude.ai używaj projektów z drogi A.
 
 ## Pierwszy test
 
@@ -51,7 +57,7 @@ Te same pliki `SKILL.md` można wgrać do claude.ai jako skille (Customize, Skil
 
 1. Droga A: pliki, które Claude tworzy w rozmowie, pobieraj od razu. Nie zakładaj, że zostaną dostępne po zakończeniu rozmowy (niesprawdzone w Claude).
 2. Mapa kontekstu: na początku każdej sesji ustal z Claude, który plik mapy obowiązuje w tej sesji. W claude.ai dołącz go do rozmowy, w Claude Code podaj jego ścieżkę. Po każdej zmianie zachowaj nowy plik.
-3. Projekt może korzystać ze swoich rozmów i plików jako kontekstu. To nie jest dowód pochodzenia. Pochodzenie stoi tylko w kolumnach pliku mapy.
+3. To, co Claude pamięta z wcześniejszych rozmów, nie jest dowodem pochodzenia. Pochodzenie stoi tylko w kolumnach pliku mapy.
 
 ## Ostrzeżenia
 
@@ -69,8 +75,7 @@ Sprawdzone 22.11.2026:
 1. „What are projects?”, https://support.claude.com/en/articles/9517075-what-are-projects: projekty we wszystkich planach, konta bezpłatne do pięciu projektów.
 2. „How can I create and manage projects?”, https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects: instrukcje projektu i wiedza projektu.
 3. „Create and edit files with Claude”, https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude: wykonywanie kodu i tworzenie plików, w przeglądarce i w aplikacji desktop, Settings, Capabilities.
-4. „Using Skills in Claude”, https://support.claude.com/en/articles/12512180-using-skills-in-claude: wgranie skilla jako ZIP, wymagane wykonywanie kodu.
-5. Dokumentacja Claude Code, https://code.claude.com/docs/en/skills: skille w `.claude/skills/<nazwa>/SKILL.md` i `~/.claude/skills/`.
+4. Dokumentacja Claude Code, https://code.claude.com/docs/en/skills: skille w `.claude/skills/<nazwa>/SKILL.md` i `~/.claude/skills/`.
 
 Strony pomocy opisują aplikację desktop tylko dla wykonywania kodu i tworzenia plików. To, że projekty działają tam tak samo, jest niesprawdzone.
 

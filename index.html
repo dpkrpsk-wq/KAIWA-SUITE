@@ -257,7 +257,7 @@ const ALWAYS = ["README.md", "LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md"
 const JSZIP_URL = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
 function loadJSZip(){
   if (window.JSZip) return Promise.resolve(window.JSZip);
-  return new Promise((ok, fail) => { const s = document.createElement("script"); s.src = JSZIP_URL;
+  return new Promise((ok, fail) => { const s = document.createElement("script"); s.src = JSZIP_URL; s.integrity = "sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="; s.crossOrigin = "anonymous";
     s.onload = () => ok(window.JSZip); s.onerror = () => fail(new Error("JSZip")); document.head.appendChild(s); });
 }
 function vendorFiles(paths, v){

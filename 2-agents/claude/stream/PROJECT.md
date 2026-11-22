@@ -1,6 +1,6 @@
 # Projekt „KAIWA: strumień świadomości”, pola do wklejenia (Claude)
 
-Projekt w Claude (Projects, claude.ai w przeglądarce albo w aplikacji desktop). Wersja robocza, nieprzetestowana w Claude. Konfiguracja: `2-agents/claude/setup.pl.md`.
+Projekt w Claude (Projects, claude.ai, aplikacja desktop niesprawdzona). Wersja robocza, nieprzetestowana w Claude. Konfiguracja: `2-agents/claude/setup.pl.md`.
 
 ## Nazwa projektu
 

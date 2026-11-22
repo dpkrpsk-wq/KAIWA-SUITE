@@ -4,11 +4,17 @@
 
 Product 26.01, version 0.2.0 (draft), 22 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław.
 
-Status: draft, untested in Claude. This guide covers two ways: projects in claude.ai (in the browser or in the Claude desktop app) and skills in Claude Code. The instructions were derived from the ChatGPT way of this package.
+Status: draft, untested in Claude. This guide covers two ways: projects in claude.ai (in the browser, the Claude desktop app is untested) and skills in Claude Code. The instructions were derived from the ChatGPT way of this package.
+
+## Get the package
+
+Open the package page https://dpkrpsk-wq.github.io/KAIWA-SUITE/, choose the vendor "Claude" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
+
+Which way fits you: way A needs only a browser and suits most users. Way B is for people who already use Claude Code, a program that runs Claude in a terminal on your own computer.
 
 ## What you need
 
-1. Way A, claude.ai: a Claude account. Projects exist on all plans, a free account can create up to five projects. The setting "Code execution and file creation" must be on (Settings, Capabilities), otherwise the Excel files cannot be created.
+1. Way A, claude.ai: a Claude account. Projects exist on all plans, a free account can create up to five projects. The setting "Code execution and file creation" (called "Create and edit files" in the newer settings layout) must be on (Settings, Capabilities), otherwise the Excel files cannot be created.
 2. Way B, Claude Code: Claude Code on your computer, Python 3.8 or newer and the Python package openpyxl (`pip install openpyxl`).
 3. About ten minutes for the four modules.
 
@@ -21,26 +27,26 @@ Status: draft, untested in Claude. This guide covers two ways: projects in claud
 | KAIWA: analysis (`analiza`) | `2-agents/claude/analysis/` | `2-agents/claude/code/kaiwa-analysis/` | 6 | draft, untested in Claude |
 | KAIWA: sources (`źródła`) | `2-agents/claude/sources/` | `2-agents/claude/code/kaiwa-sources/` | 2 | draft, untested in Claude |
 
-Each project folder holds `PROJECT.md` (name, description, first message, in Polish), `INSTRUCTIONS.txt` (project instructions) and `files.txt` (project files). Each skill folder holds one `SKILL.md` with the same instructions and a short preface for Claude Code.
+Each project folder holds `PROJECT.md` (name, description, first message, in Polish), `INSTRUCTIONS.txt` (project instructions) and `files.txt` (project files). Each skill folder holds one `SKILL.md` with the same instructions and a short preface for Claude Code. A skill is a folder with instructions that Claude Code loads when you call it. The project knowledge of a claude.ai project is the set of files that Claude reads in every chat of that project.
 
 ## Way A: set up one project in claude.ai
 
-1. In claude.ai or in the desktop app create a new project and give it the name from `PROJECT.md`.
+1. In claude.ai create a new project and give it the name from `PROJECT.md`. The desktop app should offer the same projects, this is unverified.
 2. Choose "Set project instructions" and paste the whole content of `INSTRUCTIONS.txt`. The stream of consciousness instructions (`stream/INSTRUCTIONS.txt`) are in English and stay so, because they are text for the model (a prompt), not for the reader.
 3. Add the files listed in `files.txt` to the project knowledge ("+" in the knowledge area of the project).
 4. Start a new chat in the project with the first message from `PROJECT.md`.
 
-The help pages name no length limit for project instructions. The instructions in this folder stay within 8,000 characters, the limit of Copilot.
+In the help pages checked we found no length limit for project instructions. The instructions in this folder stay within 8,000 characters, the limit of Copilot.
 
 ## Way B: install the skills in Claude Code
 
 1. Open a terminal in the folder of the KAIWA package (the folder with `README.md`).
-2. Copy the four folders from `2-agents/claude/code/` into `.claude/skills/` of this folder, so that for example `.claude/skills/kaiwa-stream/SKILL.md` exists. For all your projects use `~/.claude/skills/` instead.
+2. Copy the four folders from `2-agents/claude/code/` into the folder `.claude/skills/` of the package folder, so that for example `.claude/skills/kaiwa-stream/SKILL.md` exists. A folder whose name starts with a dot may be hidden in your file manager. On Windows (PowerShell): `New-Item -ItemType Directory -Force .claude/skills; Copy-Item -Recurse 2-agents/claude/code/* .claude/skills/`. On macOS and Linux: `mkdir -p .claude/skills && cp -r 2-agents/claude/code/* .claude/skills/`.
 3. Start Claude Code in the package folder and write for example `/kaiwa-stream` or "start" with a short note which module you want.
 
 The skills read the project files from the package folder and save the Excel files in the current folder. They do not install anything. If openpyxl is missing, the skill says so.
 
-The same `SKILL.md` files can be uploaded to claude.ai as skills (Customize, Skills, upload of a ZIP with the skill folder). This needs code execution and is untested for this package. Skills do not sync between claude.ai and Claude Code.
+The skills are written for Claude Code. In claude.ai use the projects of way A.
 
 ## First test
 
@@ -51,7 +57,7 @@ The same `SKILL.md` files can be uploaded to claude.ai as skills (Customize, Ski
 
 1. Way A: download the files Claude creates in a chat right away. Do not assume they stay available after the chat ends (unverified in Claude).
 2. Context map: at the start of each session agree with Claude which map file applies in this session. In claude.ai attach it to the chat, in Claude Code name its path. Keep the new file after every change.
-3. A project can use its chats and files as context. That is no proof of provenance. Provenance stands only in the columns of the map file.
+3. What Claude remembers from earlier chats is no proof of provenance. Provenance stands only in the columns of the map file.
 
 ## Usage warnings
 
@@ -69,8 +75,7 @@ Checked on 22 November 2026:
 1. "What are projects?", https://support.claude.com/en/articles/9517075-what-are-projects: projects on all plans, free accounts up to five projects.
 2. "How can I create and manage projects?", https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects: project instructions and project knowledge.
 3. "Create and edit files with Claude", https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude: code execution and file creation, on web and desktop, Settings, Capabilities.
-4. "Using Skills in Claude", https://support.claude.com/en/articles/12512180-using-skills-in-claude: upload of a skill as ZIP, code execution required.
-5. Claude Code documentation, https://code.claude.com/docs/en/skills: skills in `.claude/skills/<name>/SKILL.md` and `~/.claude/skills/`.
+4. Claude Code documentation, https://code.claude.com/docs/en/skills: skills in `.claude/skills/<name>/SKILL.md` and `~/.claude/skills/`.
 
 The help pages describe the desktop app only for code execution and file creation. That projects work the same there is unverified.
 

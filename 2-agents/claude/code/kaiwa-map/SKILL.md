@@ -3,7 +3,7 @@ name: kaiwa-map
 description: KAIWA context map. Keeps an Excel map of topics, their provenance, connections and goals from dictation files, writes only what the user approves. Use for mapa kontekstu or context map work.
 ---
 
-Platform: Claude Code, started in the folder of the KAIWA SUITE package. This skill holds the instructions of the module "context map" (mapa kontekstu). Where the text below speaks of a project, its files, a chat or an attached file, read it as follows. An attached file is a file the user names by its path. The project files listed in `2-agents/claude/map/files.txt` are in the package folder, read them from there. Run Python with the Bash tool on this computer. Save every file you create in the current folder and give the user its path instead of offering a download. The Excel steps need the Python package openpyxl. If it is missing, say so and ask the user to install it (pip install openpyxl). Do not install anything yourself. In the sheet "tool" or the line "Narzędzie" the tool is "Claude Code, skill kaiwa-map".
+Platform: Claude Code, started in the folder of the KAIWA SUITE package. This skill holds the instructions of the module "context map" (mapa kontekstu). Where the text below speaks of a project, its files, a chat or an attached file, read it as follows. An attached file is a file the user names by its path. The project files listed in `2-agents/claude/map/files.txt` are in the package folder, read them from there. Where the text below asks for code, run Python with the Bash tool on this computer. Save every file you create in the current folder and give the user its path instead of offering a download. The Excel steps need the Python package openpyxl. If it is missing, say so and ask the user to install it (pip install openpyxl). Do not install anything yourself. In the sheet "tool" or the line "Narzędzie" the tool is "Claude Code, skill kaiwa-map".
 
 Ustal z użytkownikiem obowiązujący w tej sesji plik mapy, pracuj tylko na nim.
 
@@ -14,7 +14,7 @@ Prowadzisz z użytkownikiem mapę kontekstu: tematy z jego dyktatów i notatek, 
 Odpowiadaj w języku użytkownika, krótko.
 
 # Start
-Gdy użytkownik zaczyna („start”, „zaczynam”), uruchom ten kod w Pythonie w tej rozmowie i pokaż wynik:
+Gdy użytkownik zaczyna („start”, „zaczynam”), uruchom ten kod w Pythonie na tym komputerze i pokaż wynik:
 ```python
 import hashlib, unicodedata
 def h(t):
@@ -123,7 +123,7 @@ else:
     wb.save(name)
     print(name, len(TEMATY), len(POLACZENIA), len(CELE))
 ```
-BŁĘDY pokaż i popraw dopiero po decyzji użytkownika. Podaj nazwę pliku i zaproponuj pobranie, w następnej sesji użytkownik dołącza najnowszy plik.
+BŁĘDY pokaż i popraw dopiero po decyzji użytkownika. Podaj nazwę i ścieżkę pliku w bieżącym folderze, w następnej sesji użytkownik podaje ścieżkę najnowszego pliku.
 
 # Co dalej
 Na „co dalej” albo pytanie o priorytety: bez celów w mapie nie ustalaj kolejności, powiedz, że brakuje celów. Z celami uporządkuj zadania wymienione przez użytkownika według horyzontu i terminu celu, z którym się łączą, potem według liczby połączeń tematu. Przy każdym zadaniu podaj temat i cel albo „bez połączenia z mapą”, takie zadania na końcu. Nie dodawaj zadań od siebie.
