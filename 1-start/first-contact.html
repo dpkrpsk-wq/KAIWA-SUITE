@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="pl" data-theme="hell">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAIWA SUITE · 26.01 — Pierwszy kontakt / First Contact</title>
+<link rel="stylesheet" href="../design/fonts/fonts.css">
+<link rel="stylesheet" href="../design/design-system/tokens.css">
+<style>
+
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--flaeche, #f1efe9);
+  color: var(--text, #14171f);
+  font-family: var(--font-text, "Space Grotesk", system-ui, -apple-system, Arial, sans-serif);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--space-6, 24px) var(--space-6, 24px) var(--space-12, 48px);
+}
+
+/* Dokumentkopf */
+.doc-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: var(--space-6, 24px);
+  align-items: center;
+  background: var(--text, #14171f);
+  color: var(--flaeche, #f1efe9);
+  padding: var(--space-6, 24px);
+  border-radius: var(--radius-0, 0px);
+  box-shadow: var(--schatten-hart, 6px 6px 0 #14171f);
+  overflow: hidden;
+}
+.doc-head-band {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 38%;
+  background: repeating-linear-gradient(
+    -35deg,
+    var(--signal, #ffed00) 0 18px,
+    transparent 18px 44px
+  );
+  opacity: 0.92;
+  pointer-events: none;
+}
+.doc-head > *:not(.doc-head-band) {
+  position: relative;
+  z-index: 1;
+}
+#header-icon svg { display: block; width: 100%; height: auto; }
+.wordmark {
+  font-family: var(--font-kopf, "Space Grotesk", system-ui, Arial, sans-serif);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.wordmark span {
+  display: block;
+}
+.draft-sticker {
+  background: var(--signal, #ffed00);
+  color: var(--tinte, #14171f);
+  border: 3px solid var(--tinte, #14171f);
+  padding: 6px 12px;
+  font-family: var(--font-kopf, "Space Grotesk", system-ui, Arial, sans-serif);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
+
+/* Animated warp-tunnel intro banner */
+.intro-stage {
+  margin-top: var(--space-6, 24px);
+  background: var(--flaeche-hinweis, #e6e2d4);
+  border: 3px solid var(--text, #14171f);
+  box-shadow: var(--schatten-hart, 6px 6px 0 #14171f);
+  padding: var(--space-6, 24px);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-6, 24px);
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .intro-stage { grid-template-columns: 1fr; }
+  .doc-head { grid-template-columns: 64px 1fr; }
+  .draft-sticker { grid-column: 1 / -1; justify-self: start; }
+}
+
+.intro-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2, 8px);
+}
+.intro-kicker .en {
+  color: var(--text-gedaempft, #4a4f5a);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.intro-title {
+  margin: 0 0 var(--space-3, 12px);
+  font-family: var(--font-kopf, "Space Grotesk", system-ui, Arial, sans-serif);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 34px;
+}
+.intro-sub {
+  margin: 0 0 var(--space-4, 16px);
+  color: var(--text, #14171f);
+}
+.intro-sub .en {
+  color: var(--text-gedaempft, #4a4f5a);
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 8px);
+  align-items: center;
+}
+.btn {
+  appearance: none;
+  border: 3px solid var(--text, #14171f);
+  background: var(--flaeche, #f1efe9);
+  color: var(--text, #14171f);
+  padding: 8px 14px;
+  font-family: var(--font-kopf, "Space Grotesk", system-ui, Arial, sans-serif);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.btn.primary {
+  background: var(--signal, #ffed00);
+  color: var(--tinte, #14171f);
+}
+.btn[aria-pressed="true"] {
+  background: var(--tinte, #14171f);
+  color: var(--papier, #f1efe9);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--text, #14171f);
+  outline-offset: 2px;
+}
+
+/* Tunnel animation SVG */
+.tunnel-box {
+  border: 3px solid var(--text, #14171f);
+  background: var(--tinte, #14171f);
+  padding: var(--space-3, 12px);
+}
+.tunnel-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@keyframes tunnelPulse {
+  0%   { transform: scale(0.88); opacity: 0.45; }
+  50%  { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(0.88); opacity: 0.45; }
+}
+@keyframes craftGlide {
+  0%   { transform: translate(0px, 0px); }
+  50%  { transform: translate(10px, -6px); }
+  100% { transform: translate(0px, 0px); }
+}
+.anim-ring-a {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tunnelPulse 4.2s ease-in-out infinite;
+}
+.anim-ring-b {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tunnelPulse 4.2s ease-in-out 0.6s infinite;
+}
+.anim-craft {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: craftGlide 3.2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce), .reduced-motion .anim-ring-a, .reduced-motion .anim-ring-b, .reduced-motion .anim-craft {
+  animation: none !important;
+}
+
+/* Target-group selector */
+.section-head {
+  margin-top: var(--space-8, 32px);
+  border-bottom: 6px solid var(--text, #14171f);
+  padding-bottom: var(--space-2, 8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2, 8px);
+}
+.section-head h2 {
+  margin: 0;
+  font-family: var(--font-kopf, "Space Grotesk", system-ui, Arial, sans-serif);
+  font-weight: 700;
+  font-size: 22px;
+}
+.section-head .en {
+  color: var(--text-gedaempft, #4a4f5a);
+  font-size: 14px;
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4, 16px);
+  margin-top: var(--space-4, 16px);
+}
+@media (max-width: 960px) {
+  .persona-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .persona-grid { grid-template-columns: 1fr; }
+}
+
+.persona-card {
+  text-align: left;
+  background: var(--flaeche, #f1efe9);
+  border: 3px solid var(--text, #14171f);
+  padding: var(--space-4, 16px);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2, 8px);
+}
+.persona-card.active {
+  background: var(--signal, #ffed00);
+  color: var(--tinte, #14171f);
+  box-shadow: var(--schatten-hart, 6px 6px 0 #14171f);
+}
+.persona-step {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.persona-name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+}
+.persona-desc {
+  font-size: 14px;
+  line-height: 20px;
+}
+.persona-card.active .en {
+  color: var(--tinte, #14171f);
+}
+.en {
+  color: var(--text-gedaempft, #4a4f5a);
+}
+
+/* Recommended path box */
+.recommendation-box {
+  margin-top: var(--space-6, 24px);
+  background: var(--flaeche-hinweis, #e6e2d4);
+  border: 3px solid var(--text, #14171f);
+  box-shadow: var(--schatten-hart, 6px 6px 0 #14171f);
+  padding: var(--space-6, 24px);
+}
+.rec-badge {
+  display: inline-block;
+  background: var(--signal, #ffed00);
+  color: var(--tinte, #14171f);
+  border: 2px solid var(--tinte, #14171f);
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2, 8px);
+}
+.rec-list {
+  margin: var(--space-3, 12px) 0 0;
+  padding-left: 20px;
+}
+.rec-list li {
+  margin-bottom: 6px;
+}
+
+/* Hinweisfeld do sprawdzenia */
+.check-notice {
+  margin-top: var(--space-6, 24px);
+  background: var(--signal, #ffed00);
+  color: var(--tinte, #14171f);
+  border: 3px solid var(--tinte, #14171f);
+  box-shadow: var(--schatten-hart, 6px 6px 0 #14171f);
+  padding: var(--space-4, 16px);
+  font-size: 14px;
+  line-height: 20px;
+}
+.check-notice strong {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Fusszeile */
+.doc-foot {
+  margin-top: var(--space-8, 32px);
+  border-top: 6px solid var(--text, #14171f);
+  padding-top: var(--space-2, 8px);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4, 16px);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-gedaempft, #4a4f5a);
+  font-variant-numeric: tabular-nums;
+}
+.doc-foot b {
+  color: var(--text, #14171f);
+}
+.commit-ph {
+  background: var(--signal, #ffed00);
+  color: var(--tinte, #14171f);
+  border: 2px dashed var(--tinte, #14171f);
+  padding: 0 6px;
+}
+</style>
+</head>
+<body>
+<div class="page" id="app">
+  <header class="doc-head">
+    <div class="doc-head-band" aria-hidden="true"></div>
+    <div id="header-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="KAIWA">
+<title>KAIWA</title>
+<rect width="320" height="320" rx="48" fill="#F1EFE9"></rect>
+<ellipse cx="211.2" cy="137.7" rx="18.7" ry="52.0" transform="rotate(-35 211.2 137.7)" fill="none" stroke="#14171F" stroke-width="3.4" opacity="1.00"></ellipse>
+<ellipse cx="216.9" cy="133.6" rx="14.2" ry="39.5" transform="rotate(-35 216.9 133.6)" fill="none" stroke="#14171F" stroke-width="1.4" opacity="0.87"></ellipse>
+<ellipse cx="220.3" cy="131.2" rx="10.8" ry="30.0" transform="rotate(-35 220.3 131.2)" fill="none" stroke="#14171F" stroke-width="2.6" opacity="0.74"></ellipse>
+<ellipse cx="228.4" cy="125.6" rx="8.2" ry="22.8" transform="rotate(-35 228.4 125.6)" fill="none" stroke="#14171F" stroke-width="1.3" opacity="0.61"></ellipse>
+<ellipse cx="231.8" cy="123.2" rx="6.2" ry="17.3" transform="rotate(-35 231.8 123.2)" fill="none" stroke="#14171F" stroke-width="2.2" opacity="0.48"></ellipse>
+<ellipse cx="239.8" cy="117.6" rx="4.7" ry="13.2" transform="rotate(-35 239.8 117.6)" fill="none" stroke="#14171F" stroke-width="1.1" opacity="0.35"></ellipse>
+<ellipse cx="243.9" cy="114.7" rx="3.2" ry="8.5" transform="rotate(-35 243.9 114.7)" fill="#07080C"></ellipse>
+<g transform="translate(5.4 137.2) scale(1.7) rotate(-35 50 50)"><path fill="#14171F" fill-opacity="0.06" d="M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z"></path></g><g transform="translate(17.7 128.6) scale(1.7) rotate(-35 50 50)"><path fill="#14171F" fill-opacity="0.13" d="M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z"></path></g>
+<g transform="translate(30.0 120.0) scale(1.7) rotate(-35 50 50)" opacity="1"><path fill="#14171F" d="M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z"></path></g>
+<rect x="254" y="254" width="22" height="22" fill="#14171F"></rect>
+</svg></div>
+    <div class="wordmark"><span>KAIWA</span><span>SUITE</span></div>
+    <div class="draft-sticker">wersja robocza / draft</div>
+  </header>
+
+  <section class="intro-stage" aria-label="Animowane intro / Animated intro">
+    <div>
+      <div class="intro-kicker">Pierwszy kontakt <span class="en">/ First contact · produkt 26.01</span></div>
+      <h1 class="intro-title">Wybierz drogę według własnej praktyki pracy</h1>
+      <p class="intro-sub">
+        KAIWA łączy zapis dyktatu ze skrótem SHA-256, mapę kontekstu, analizę według deklarowanych ram oraz wyszukiwanie w otwartym dostępie.
+        <span class="en">Choose your starting setup by how you already work with AI and files — no single tool or subscription is forced.</span>
+      </p>
+      <div class="controls-row">
+        <button type="button" class="btn primary" id="btn-replay">Odtwórz intro / Replay</button>
+        <button type="button" class="btn" id="btn-motion" aria-pressed="false">Animacja: włączona / Motion on</button>
+        <button type="button" class="btn" id="btn-theme" aria-pressed="false">Motyw: jasny / Light</button>
+      </div>
+    </div>
+
+    <div class="tunnel-box">
+      <svg class="tunnel-svg" viewBox="0 0 420 220" role="img" aria-label="Animowany tunel KAIWA warp mode">
+        <rect x="0" y="0" width="420" height="220" fill="#14171f"/>
+        <g class="anim-ring-a">
+          <ellipse cx="225" cy="110" rx="155" ry="74" fill="none" stroke="#f1efe9" stroke-width="3"/>
+          <ellipse cx="225" cy="110" rx="125" ry="58" fill="none" stroke="#ffed00" stroke-width="2.5"/>
+        </g>
+        <g class="anim-ring-b">
+          <ellipse cx="225" cy="110" rx="95" ry="43" fill="none" stroke="#f1efe9" stroke-width="2"/>
+          <ellipse cx="225" cy="110" rx="66" ry="29" fill="none" stroke="#f1efe9" stroke-width="1.5"/>
+          <ellipse cx="225" cy="110" rx="38" ry="16" fill="none" stroke="#f1efe9" stroke-width="1.2"/>
+        </g>
+        <ellipse cx="225" cy="110" rx="18" ry="8" fill="#07080c"/>
+        <g class="anim-craft">
+          <path transform="translate(86 126) rotate(-11.6) scale(1.7) translate(-6 -50)" d="M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z" fill="#f1efe9"/>
+        </g>
+        <rect x="376" y="176" width="22" height="22" fill="#3fb97a" stroke="#14171f" stroke-width="2"/>
+        <path d="M380 186 L385 191 L394 180" fill="none" stroke="#14171f" stroke-width="2.5"/>
+      </svg>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2>1. Stopnie dopasowane do odbiorcy <span class="en">/ Target-group tiers</span></h2>
+    <span class="en">Kliknij kartę, aby zobaczyć zalecany pakiet i kroki</span>
+  </div>
+
+  <div class="persona-grid" role="group" aria-label="Wybór grupy odbiorców / Audience tier selection">
+    <button type="button" class="persona-card active" data-tier="chat" aria-pressed="true">
+      <div>
+        <div class="persona-step">Poziom 1 · Bez konfiguracji</div>
+        <div class="persona-name">Rozmowa w czacie <span class="en">/ Chat &amp; attach</span></div>
+        <div class="persona-desc">Dla osób zaczynających w przeglądarce: dołączasz plik i zaczynasz od razu. <span class="en">No setup, untested in Gemini.</span></div>
+      </div>
+      <div class="en">Pakiet: setup-dialog.md + instrukcje modułu</div>
+    </button>
+
+    <button type="button" class="persona-card" data-tier="agent" aria-pressed="false">
+      <div>
+        <div class="persona-step">Poziom 2 · Stały moduł</div>
+        <div class="persona-name">Agent / Skill / Gem <span class="en">/ Configured assistant</span></div>
+        <div class="persona-desc">Dla stałej pracy w Copilot, Gemini (Skills/Gems) lub projektach z gotowymi rolami. <span class="en">Persistent instructions per task.</span></div>
+      </div>
+      <div class="en">Pakiet: 2-agents/copilot/*, 2-agents/gemini/* oraz 2-agents/chatgpt/* (Gemini, ChatGPT oraz agenci Copilot mapa, analiza, źródła: nieprzetestowane / untested)</div>
+    </button>
+
+    <button type="button" class="persona-card" data-tier="drive" aria-pressed="false">
+      <div>
+        <div class="persona-step">Poziom 3 · Pliki i rejestry</div>
+        <div class="persona-name">Dysk i arkusze <span class="en">/ Drive &amp; registers</span></div>
+        <div class="persona-desc">Dla pracy z arkuszami `.xlsx`, dyktatami, mapą kontekstu i protokołami w folderze. <span class="en">Structured files &amp; provenance logs.</span></div>
+      </div>
+      <div class="en">Pakiet: method/protocols/, method/prompts/, 3-templates/, 4-without-ai/</div>
+    </button>
+
+    <button type="button" class="persona-card" data-tier="cli" aria-pressed="false">
+      <div>
+        <div class="persona-step">Poziom 4 · Skrypty i testy</div>
+        <div class="persona-name">Lokalny Python i CLI <span class="en">/ Scripts &amp; verification</span></div>
+        <div class="persona-desc">Dla weryfikacji skrótów SHA-256, walidacji mapy i testów pakietu w terminalu. <span class="en">Local reproducibility &amp; checks.</span></div>
+      </div>
+      <div class="en">Pakiet: tools/*.py + test_package.py</div>
+    </button>
+  </div>
+
+  <section class="recommendation-box" id="rec-box" aria-live="polite">
+    <div class="rec-badge" id="rec-badge">Wybrano: Poziom 1 · Rozmowa w czacie</div>
+    <h3 id="rec-title" style="margin:0 0 8px;">Szybki start bez konfiguracji konta</h3>
+    <p id="rec-summary" style="margin:0;"></p>
+    <ol class="rec-list" id="rec-steps"></ol>
+  </section>
+
+  <aside class="check-notice" role="note">
+    <strong>Do sprawdzenia / To be checked:</strong> Dostępność funkcji w konkretnym koncie (np. wykonywanie kodu, Skills, Gems lub rozszerzenia Dysku) zależy od regionu i ustawień administratora. Skrót SHA-256 potwierdza integralność zapisu, nie zastępuje własnej lektury pliku ani oceny merytorycznej.
+  </aside>
+
+  <footer class="doc-foot">
+    <span><b>KAIWA</b> · 26.01 · wersja 0.2.0 · commit <span class="commit-ph">⟨commit⟩</span></span>
+    <span>strona 1 z 1 <span class="en">/ page 1 of 1</span></span>
+  </footer>
+</div>
+
+<script>
+const TIERS = {
+  chat: {
+    badge: "Wybrano: Poziom 1 · Rozmowa w czacie / Chat & attach",
+    title: "Start w jednej rozmowie bez zakładania stałych agentów",
+    summary: "Odpowiednie na start lub gdy w danym koncie nie ma dostępu do własnych agentów, Skillów albo Gemów.",
+    steps: [
+      "Dołącz plik startowy z pakietu (np. 2-agents/gemini/setup-dialog.md lub odpowiedni szablon z 3-templates/).",
+      "Wpisz „start” i wybierz moduł: strumień świadomości, mapa kontekstu, analiza albo źródła (wybór modułu prowadzi setup-dialog dla Gemini, dla Copilot i ChatGPT zob. ich setup).",
+      "Po zakończeniu sesji pobierz wygenerowany plik .xlsx i zapisz go w swoim folderze roboczym."
+    ]
+  },
+  agent: {
+    badge: "Wybrano: Poziom 2 · Agent / Skill / Gem",
+    title: "Stała konfiguracja modułów dla wybranego produktu AI",
+    summary: "Odpowiednie, gdy chcesz mieć cztery moduły (strumień, mapa, analiza, źródła) gotowe bez wklejania zasad w każdym czacie.",
+    steps: [
+      "Wybierz folder pakietu docelowego (np. 2-agents/copilot/* dla Microsoft 365 Copilot lub 2-agents/gemini/* dla Google Gemini, 2-agents/chatgpt/* dla projektów ChatGPT).",
+      "Skopiuj pola nazwy/opisu oraz pełne instrukcje dla wybranego modułu.",
+      "Przetestuj komendą „start” i sprawdź, czy wymagany interpreter kodu działa na Twoim koncie."
+    ]
+  },
+  drive: {
+    badge: "Wybrano: Poziom 3 · Dysk i rejestry / Drive & registers",
+    title: "Praca na plikach dyktatów, mapie kontekstu i protokołach",
+    summary: "Odpowiednie dla systematycznego prowadzenia notatek, celów, pochodzenia twierdzeń oraz kontroli przed publikacją.",
+    steps: [
+      "Trzymaj pliki dyktatów (dictation-*.xlsx), mapę (mapa-*.xlsx) i rejestry (4-without-ai/registers.xlsx) w uporządkowanym folderze.",
+      "Oddzielaj własne notatki od propozycji asystenta i zapisuj luki jako pytania do własnego namysłu.",
+      "Przed oddaniem lub publikacją przejdź kroki kontroli z method/protocols/ oraz 3-templates/."
+    ]
+  },
+  cli: {
+    badge: "Wybrano: Poziom 4 · Lokalny Python i CLI / Scripts & verification",
+    title: "Lokalna weryfikacja skrótów, walidacja mapy i testy pakietu",
+    summary: "Odpowiednie dla osób pracujących lokalnie w terminalu, które chcą niezależnie sprawdzić pliki i integralność pakietu.",
+    steps: [
+      "Uruchom skrypty w tools/ (dictation_ledger.py, context.py, search.py, office.py) w lokalnym środowisku Python.",
+      "Zweryfikuj skróty SHA-256 oraz zgodność struktury przed planowanym wydaniem pakietu.",
+      "Utrzymuj ręczny porządek przy synchronizacji z chmurą i nie publikuj bez własnego sprawdzenia."
+    ]
+  }
+};
+
+function renderTier(key) {
+  const t = TIERS[key];
+  document.getElementById("rec-badge").textContent = t.badge;
+  document.getElementById("rec-title").textContent = t.title;
+  document.getElementById("rec-summary").textContent = t.summary;
+  const ol = document.getElementById("rec-steps");
+  ol.innerHTML = "";
+  t.steps.forEach((s) => {
+    const li = document.createElement("li");
+    li.textContent = s;
+    ol.appendChild(li);
+  });
+  document.querySelectorAll(".persona-card").forEach((btn) => {
+    const active = btn.dataset.tier === key;
+    btn.classList.toggle("active", active);
+    btn.setAttribute("aria-pressed", String(active));
+  });
+}
+
+document.querySelectorAll(".persona-card").forEach((btn) => {
+  btn.addEventListener("click", () => renderTier(btn.dataset.tier));
+});
+
+document.getElementById("btn-theme").addEventListener("click", (e) => {
+  const root = document.documentElement;
+  const isDark = root.getAttribute("data-theme") === "dunkel";
+  const nextTheme = isDark ? "hell" : "dunkel";
+  root.setAttribute("data-theme", nextTheme);
+  e.currentTarget.setAttribute("aria-pressed", String(!isDark));
+  e.currentTarget.textContent = !isDark ? "Motyw: ciemny / Dark" : "Motyw: jasny / Light";
+  const iconWrap = document.getElementById("header-icon");
+  iconWrap.innerHTML = !isDark
+    ? "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 320\" width=\"320\" height=\"320\" role=\"img\" aria-label=\"KAIWA\">\n<title>KAIWA</title>\n<rect width=\"320\" height=\"320\" rx=\"48\" fill=\"#14171F\"></rect>\n<ellipse cx=\"211.2\" cy=\"137.7\" rx=\"18.7\" ry=\"52.0\" transform=\"rotate(-35 211.2 137.7)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"3.4\" opacity=\"1.00\"></ellipse>\n<ellipse cx=\"216.9\" cy=\"133.6\" rx=\"14.2\" ry=\"39.5\" transform=\"rotate(-35 216.9 133.6)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"1.4\" opacity=\"0.87\"></ellipse>\n<ellipse cx=\"220.3\" cy=\"131.2\" rx=\"10.8\" ry=\"30.0\" transform=\"rotate(-35 220.3 131.2)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"2.6\" opacity=\"0.74\"></ellipse>\n<ellipse cx=\"228.4\" cy=\"125.6\" rx=\"8.2\" ry=\"22.8\" transform=\"rotate(-35 228.4 125.6)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"1.3\" opacity=\"0.61\"></ellipse>\n<ellipse cx=\"231.8\" cy=\"123.2\" rx=\"6.2\" ry=\"17.3\" transform=\"rotate(-35 231.8 123.2)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"2.2\" opacity=\"0.48\"></ellipse>\n<ellipse cx=\"239.8\" cy=\"117.6\" rx=\"4.7\" ry=\"13.2\" transform=\"rotate(-35 239.8 117.6)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"1.1\" opacity=\"0.35\"></ellipse>\n<ellipse cx=\"243.9\" cy=\"114.7\" rx=\"3.2\" ry=\"8.5\" transform=\"rotate(-35 243.9 114.7)\" fill=\"#07080C\"></ellipse>\n<g transform=\"translate(5.4 137.2) scale(1.7) rotate(-35 50 50)\"><path fill=\"#F1EFE9\" fill-opacity=\"0.06\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g><g transform=\"translate(17.7 128.6) scale(1.7) rotate(-35 50 50)\"><path fill=\"#F1EFE9\" fill-opacity=\"0.13\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g>\n<g transform=\"translate(30.0 120.0) scale(1.7) rotate(-35 50 50)\" opacity=\"1\"><path fill=\"#F1EFE9\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g>\n<rect x=\"254\" y=\"254\" width=\"22\" height=\"22\" fill=\"#F1EFE9\"></rect>\n</svg>"
+    : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 320\" width=\"320\" height=\"320\" role=\"img\" aria-label=\"KAIWA\">\n<title>KAIWA</title>\n<rect width=\"320\" height=\"320\" rx=\"48\" fill=\"#F1EFE9\"></rect>\n<ellipse cx=\"211.2\" cy=\"137.7\" rx=\"18.7\" ry=\"52.0\" transform=\"rotate(-35 211.2 137.7)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"3.4\" opacity=\"1.00\"></ellipse>\n<ellipse cx=\"216.9\" cy=\"133.6\" rx=\"14.2\" ry=\"39.5\" transform=\"rotate(-35 216.9 133.6)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"1.4\" opacity=\"0.87\"></ellipse>\n<ellipse cx=\"220.3\" cy=\"131.2\" rx=\"10.8\" ry=\"30.0\" transform=\"rotate(-35 220.3 131.2)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"2.6\" opacity=\"0.74\"></ellipse>\n<ellipse cx=\"228.4\" cy=\"125.6\" rx=\"8.2\" ry=\"22.8\" transform=\"rotate(-35 228.4 125.6)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"1.3\" opacity=\"0.61\"></ellipse>\n<ellipse cx=\"231.8\" cy=\"123.2\" rx=\"6.2\" ry=\"17.3\" transform=\"rotate(-35 231.8 123.2)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"2.2\" opacity=\"0.48\"></ellipse>\n<ellipse cx=\"239.8\" cy=\"117.6\" rx=\"4.7\" ry=\"13.2\" transform=\"rotate(-35 239.8 117.6)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"1.1\" opacity=\"0.35\"></ellipse>\n<ellipse cx=\"243.9\" cy=\"114.7\" rx=\"3.2\" ry=\"8.5\" transform=\"rotate(-35 243.9 114.7)\" fill=\"#07080C\"></ellipse>\n<g transform=\"translate(5.4 137.2) scale(1.7) rotate(-35 50 50)\"><path fill=\"#14171F\" fill-opacity=\"0.06\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g><g transform=\"translate(17.7 128.6) scale(1.7) rotate(-35 50 50)\"><path fill=\"#14171F\" fill-opacity=\"0.13\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g>\n<g transform=\"translate(30.0 120.0) scale(1.7) rotate(-35 50 50)\" opacity=\"1\"><path fill=\"#14171F\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g>\n<rect x=\"254\" y=\"254\" width=\"22\" height=\"22\" fill=\"#14171F\"></rect>\n</svg>";
+});
+
+document.getElementById("btn-motion").addEventListener("click", (e) => {
+  const stage = document.querySelector(".intro-stage");
+  const reduced = stage.classList.toggle("reduced-motion");
+  e.currentTarget.setAttribute("aria-pressed", String(reduced));
+  e.currentTarget.textContent = reduced ? "Animacja: wstrzymana / Motion off" : "Animacja: włączona / Motion on";
+});
+
+document.getElementById("btn-replay").addEventListener("click", () => {
+  document.querySelectorAll(".anim-ring-a, .anim-ring-b, .anim-craft").forEach((el) => {
+    el.style.animation = "none";
+    void el.offsetWidth;
+    el.style.animation = "";
+  });
+});
+
+renderTier("chat");
+</script>
+</body>
+</html>

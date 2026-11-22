@@ -1,0 +1,124 @@
+/* KAIWA SUITE — generated from tokens.json */
+:root, [data-theme="hell"] {
+  --tinte: #14171f; /* Fester Ton aus dem KAIWA-Logo (Tinte). Gleich in beiden Themes. Kopfzeile der Tabelle mit Text papier, dunkle Logokachel. Nicht als Seitenhintergrund verwenden, dafür gibt es flaeche. */
+  --papier: #f1efe9; /* Fester Ton aus dem KAIWA-Logo (Papier). Gleich in beiden Themes. Text auf tinte, helle Logokachel, Seitenhintergrund im Theme hell. */
+  --flaeche: var(--papier); /* Seitenhintergrund aller Dokumente und Vorschauen. Grund für text, text-gedaempft, linie und entwurf. */
+  --text: var(--tinte); /* Fließtext, Überschriften, Fokusring (2px, durchgezogen) auf flaeche und flaeche-hinweis. */
+  --text-gedaempft: #4a4f5a; /* Zweisprachige Gegenbezeichnung (Englisch hinter Polnisch), Fußzeile, Tabellenunterschrift. Auf flaeche und flaeche-hinweis mindestens 4,5 zu 1 in beiden Themes. */
+  --linie: #7c796f; /* Haarlinien, Tabellenlinien, Rand des Hinweisfelds. Mindestens 3 zu 1 auf flaeche. Nie als Textfarbe. */
+  --flaeche-hinweis: #e6e2d4; /* Grund des Hinweisfelds und des Begleitblatt-Kastens. Text darauf: text, text-gedaempft, entwurf. */
+  --entwurf: #8a3b12; /* Entwurfsmarke (wersja robocza) und Markierung zu prüfender Stellen. Text und gestrichelter Rand auf flaeche und flaeche-hinweis, mindestens 4,5 zu 1 in beiden Themes. Immer mit Wort, nie nur als Farbe. */
+  --signal: #ffed00; /* Signalgelb, aus der Flaggenpalette des Logos. Fläche für Aufmerksamkeit: Entwurfsaufkleber, Band, Hervorhebung, Tabellenkante. Fest in beiden Themes. Darauf immer `tinte` (14,8 zu 1). Nie als Textfarbe auf `flaeche` im Theme hell (1,1 zu 1), im Theme dunkel als Text möglich (14,8 zu 1). */
+  --status-aktiv: #3fb97a; /* Zustand „aktywny / active“ des Leuchtquadrats im KAIWA-Logo, Form Quadrat mit Haken. Fest in beiden Themes, gezeichnet auf `tinte` (7,2 zu 1). Nicht als Textfarbe auf `flaeche` (unter 3 zu 1 auf `papier`). Immer mit Wort daneben. */
+  --status-laeuft: #5b9bf0; /* Zustand „w toku / running“ des Leuchtquadrats im KAIWA-Logo, Form Rahmen mit Punkt. Fest in beiden Themes, gezeichnet auf `tinte` (6,3 zu 1). Nicht als Textfarbe auf `flaeche` (unter 3 zu 1 auf `papier`). Immer mit Wort daneben. */
+  --status-pausiert: #e6b84a; /* Zustand „wstrzymany / paused“ des Leuchtquadrats im KAIWA-Logo, Form zwei Balken. Fest in beiden Themes, gezeichnet auf `tinte` (9,7 zu 1). Nicht als Textfarbe auf `flaeche` (unter 3 zu 1 auf `papier`). Immer mit Wort daneben. */
+  --status-warnung: #f0883e; /* Zustand „ostrzeżenie / warning“ des Leuchtquadrats im KAIWA-Logo, Form Quadrat mit Ausrufezeichen. Fest in beiden Themes, gezeichnet auf `tinte` (7,1 zu 1). Nicht als Textfarbe auf `flaeche` (unter 3 zu 1 auf `papier`). Immer mit Wort daneben. */
+  --status-fehler: #ef5a52; /* Zustand „błąd / error“ des Leuchtquadrats im KAIWA-Logo, Form Quadrat mit Kreuz. Fest in beiden Themes, gezeichnet auf `tinte` (5,3 zu 1). Nicht als Textfarbe auf `flaeche` (unter 3 zu 1 auf `papier`). Immer mit Wort daneben. */
+  --status-aus: #8a919b; /* Zustand „wyłączony / off“ des Leuchtquadrats im KAIWA-Logo, Form nur Rahmen. Fest in beiden Themes, gezeichnet auf `tinte` (5,6 zu 1). Nicht als Textfarbe auf `flaeche` (unter 3 zu 1 auf `papier`). Immer mit Wort daneben. */
+  --status-neutral: #f1efe9; /* Zustand „neutralny / neutral“ des Leuchtquadrats im KAIWA-Logo, Form volles Quadrat. Fest in beiden Themes, gezeichnet auf `tinte` (15,6 zu 1). Nicht als Textfarbe auf `flaeche` (unter 3 zu 1 auf `papier`). Immer mit Wort daneben. */
+  --schatten-hart: 6px 6px 0 #14171f; /* Harter Versatz ohne Weichzeichnung, in der Textfarbe des Themes. Für Hinweisfeld, Aufkleber, Kopfplatte. Nie mit Weichzeichnung kombinieren. */
+}
+[data-theme="dunkel"] {
+  --flaeche: var(--tinte);
+  --text: var(--papier);
+  --text-gedaempft: #b9b6ad;
+  --linie: #6f737e;
+  --flaeche-hinweis: #222631;
+  --entwurf: #f0a070;
+  --schatten-hart: 6px 6px 0 #f1efe9;
+}
+:root {
+  --space-1: 4px; /* Abstand zwischen Marker und Wort, zwischen Etikett und Wert. */
+  --space-2: 8px; /* Zellenpolster vertikal, Abstand in Zeilen. */
+  --space-3: 12px; /* Zellenpolster horizontal, Innenabstand der Marke. */
+  --space-4: 16px; /* Innenabstand von Hinweisfeld und Begleitblatt-Kasten. */
+  --space-6: 24px; /* Abstand zwischen Komponenten, Logo zu Produktname. */
+  --space-8: 32px; /* Seitenrand in der Vorschau, Abstand zwischen Abschnitten. */
+  --space-12: 48px; /* Schutzraum um das Logo bei Mindestgröße ist space-4, bei Titelgröße space-12. */
+  --radius-0: 0; /* Tabellen, Hinweisfeld, Begleitblatt, Fußzeile. Dokumente bleiben eckig. */
+  --radius-klein: 4px; /* Entwurfsmarke. */
+  --radius-logo: 15%; /* Nur Logokachel: 48 auf 320 px, also 15 Prozent. Skaliert mit dem Logo. */
+  --font-kopf: 'warp', "Space Grotesk", system-ui, Arial, sans-serif;
+  --font-text: 'warp', "Space Grotesk", system-ui, Arial, sans-serif;
+  --font-warp: 'warp', "Space Grotesk", system-ui, Arial, sans-serif;
+  --text-display: 700 72px/68px var(--font-kopf); /* Wortmarke und Titelseiten. Versalien, Gewicht 700, eng gesetzt. Nur groß verwenden, nie unter 56px. */
+  --text-titel: 700 44px/44px var(--font-warp); /* Produktname im Dokumentkopf. Standardschrift warp 500. */
+  --text-ueberschrift: 700 28px/32px var(--font-kopf); /* Abschnittsüberschrift, Titel des Begleitblatts. */
+  --text-unterueberschrift: 500 17px/24px var(--font-kopf); /* Zweite Überschriftenebene. */
+  --text-etikett: 500 11px/16px var(--font-kopf); /* Feldbezeichnung über Werten, Entwurfsmarke, Tabellenkopf. Versalien, polnisch zuerst, englisch dahinter. */
+  --text-nummer: 700 32px/36px var(--font-kopf); /* Wert von Produktnummer und Version. Standardschrift warp 500. */
+  --text-text: 400 16px/25px var(--font-text); /* Fließtext von Arbeiten und Notizblättern in der Standardschrift warp 400. Die polnischen Zeichen ą ć ę ł ń ó ś ź ż sind für warp nicht belegt, der Rückfall Space Grotesk deckt sie ab. */
+  --text-text-klein: 400 13px/19px var(--font-text); /* Hinweisfeld, Begleitblatt, englische Gegenbezeichnung. */
+  --text-tabelle: 400 14px/20px var(--font-text); /* Tabellenzellen. */
+  --text-fussnote: 400 11px/16px var(--font-text); /* Fußzeile. Kleinster zulässiger Text. */
+}
+.display {
+  font-family: var(--font-kopf);
+  font-size: 72px;
+  line-height: 68px;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+.titel {
+  font-family: var(--font-warp);
+  font-size: 44px;
+  line-height: 44px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+}
+.ueberschrift {
+  font-family: var(--font-kopf);
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.unterueberschrift {
+  font-family: var(--font-kopf);
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.etikett {
+  font-family: var(--font-kopf);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.nummer {
+  font-family: var(--font-kopf);
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.text {
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.text-klein {
+  font-family: var(--font-text);
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.tabelle {
+  font-family: var(--font-text);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fussnote {
+  font-family: var(--font-text);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}

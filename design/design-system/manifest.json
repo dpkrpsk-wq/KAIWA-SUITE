@@ -1,0 +1,167 @@
+{
+  "manifestVersion": 3,
+  "name": "KAIWA SUITE",
+  "namespace": "KAIWA",
+  "files": [
+    "assets/Logos/README.md",
+    "assets/Modi/README.md",
+    "components/Begleitblatt/README.md",
+    "components/Dokumentkopf/README.md",
+    "components/Fusszeile/README.md",
+    "components/Hinweisfeld/README.md",
+    "components/Produktlogo/README.md",
+    "components/Status/README.md",
+    "components/Tabelle/README.md",
+    "components/bundle.js",
+    "tokens.css"
+  ],
+  "libraries": [],
+  "components": [
+    {
+      "name": "Begleitblatt",
+      "group": "Dokument",
+      "summary": "Das Begleitblatt hält fest, wer welchen Teil eines Dokuments verfasst hat, und liegt neben dem Dokument."
+    },
+    {
+      "name": "Dokumentkopf",
+      "group": "Dokument",
+      "summary": "Der Dokumentkopf eröffnet jede Seite eines Produkts der KAIWA SUITE mit Logo, Produktname, Produktnummer, Version, Stand und Entwurfsmarke."
+    },
+    {
+      "name": "Fusszeile",
+      "group": "Dokument",
+      "summary": "Die Fußzeile trägt auf jeder Seite Produktname, Nummer, Version, Commit und Seitenzahl."
+    },
+    {
+      "name": "Hinweisfeld",
+      "group": "Dokument",
+      "summary": "Das Hinweisfeld hebt eine Aussage über das Dokument hervor: einen Hinweis, eine Stelle zur Prüfung oder den Entwurfsstand."
+    },
+    {
+      "name": "Produktlogo",
+      "group": "Logo",
+      "summary": "Das Produktlogo zeigt „KAIWA, warp mode“ in zwei Formen und zwei Fassungen (Schwarzweiß-Modus, die Voreinstellung), dazu Größenleiter und Schutzraum."
+    },
+    {
+      "name": "Status",
+      "group": "Logo",
+      "summary": "Das Status-Zeichen ist das Leuchtquadrat unten rechts im KAIWA-Logo."
+    },
+    {
+      "name": "Tabelle",
+      "group": "Dokument",
+      "summary": "Die Tabelle ordnet Daten in Zeilen und Spalten mit Kopfzeile in tinte, Haarlinien und fluchtenden Ziffern."
+    }
+  ],
+  "assetGroups": [
+    {
+      "name": "Logos",
+      "tile": "l",
+      "order": [
+        "kaiwa-logo-dunkel.svg",
+        "kaiwa-logo-hell.svg",
+        "kaiwa-icon-dunkel.svg",
+        "kaiwa-icon-hell.svg"
+      ],
+      "files": [
+        {
+          "path": "assets/Logos/kaiwa-logo-dunkel.svg",
+          "id": "49fdfa48c15278148c0baef48cda8d4a"
+        },
+        {
+          "path": "assets/Logos/kaiwa-logo-hell.svg",
+          "id": "f80b2fd4dd1ba4ba6f38c07ad9add38a"
+        },
+        {
+          "path": "assets/Logos/kaiwa-icon-dunkel.svg",
+          "id": "f0252361bcf5a37fdaee5c4906b919e0"
+        },
+        {
+          "path": "assets/Logos/kaiwa-icon-hell.svg",
+          "id": "1742849ce8af6de697b7a2b51c72bac5"
+        }
+      ]
+    },
+    {
+      "name": "Modi",
+      "tile": "l",
+      "order": [
+        "kaiwa-logo-spectrum.svg",
+        "kaiwa-logo-shift.svg",
+        "kaiwa-icon-spectrum.svg",
+        "kaiwa-icon-shift.svg"
+      ],
+      "files": [
+        {
+          "path": "assets/Modi/kaiwa-logo-spectrum.svg",
+          "id": "adc0340cc9b0a0eedf4ca970d5fb49e4"
+        },
+        {
+          "path": "assets/Modi/kaiwa-logo-shift.svg",
+          "id": "61c6bed906fb97452f43af5cff47e781"
+        },
+        {
+          "path": "assets/Modi/kaiwa-icon-spectrum.svg",
+          "id": "510100f092807ff38861d0c5efd924ac"
+        },
+        {
+          "path": "assets/Modi/kaiwa-icon-shift.svg",
+          "id": "483050f2d5c0a773c02a0a3bc06fe4a4"
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "files": {
+      "assets/Logos/kaiwa-icon-dunkel.svg": {
+        "store": "blob",
+        "id": "f0252361bcf5a37fdaee5c4906b919e0",
+        "bytes": 2236,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/kaiwa-icon-hell.svg": {
+        "store": "blob",
+        "id": "1742849ce8af6de697b7a2b51c72bac5",
+        "bytes": 2236,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/kaiwa-logo-dunkel.svg": {
+        "store": "blob",
+        "id": "49fdfa48c15278148c0baef48cda8d4a",
+        "bytes": 2613,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/kaiwa-logo-hell.svg": {
+        "store": "blob",
+        "id": "f80b2fd4dd1ba4ba6f38c07ad9add38a",
+        "bytes": 2613,
+        "type": "image/svg+xml"
+      },
+      "assets/Modi/kaiwa-icon-shift.svg": {
+        "store": "blob",
+        "id": "483050f2d5c0a773c02a0a3bc06fe4a4",
+        "bytes": 2707,
+        "type": "image/svg+xml"
+      },
+      "assets/Modi/kaiwa-icon-spectrum.svg": {
+        "store": "blob",
+        "id": "510100f092807ff38861d0c5efd924ac",
+        "bytes": 2787,
+        "type": "image/svg+xml"
+      },
+      "assets/Modi/kaiwa-logo-shift.svg": {
+        "store": "blob",
+        "id": "61c6bed906fb97452f43af5cff47e781",
+        "bytes": 3084,
+        "type": "image/svg+xml"
+      },
+      "assets/Modi/kaiwa-logo-spectrum.svg": {
+        "store": "blob",
+        "id": "adc0340cc9b0a0eedf4ca970d5fb49e4",
+        "bytes": 3164,
+        "type": "image/svg+xml"
+      }
+    },
+    "blobBytesUsed": 21440
+  }
+}

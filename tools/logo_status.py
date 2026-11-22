@@ -1,7 +1,7 @@
-"""Baut aus logo/kaiwa-icon.svg und logo/kaiwa-logo.svg je Zustand eine Fassung mit gefärbtem Leuchtquadrat.
+"""Baut aus design/logo/kaiwa-icon.svg und design/logo/kaiwa-logo.svg je Zustand eine Fassung mit gefärbtem Leuchtquadrat.
 
-Aufruf: python -I tools/logo_status.py   (schreibt nach logo/status/, gleiche Eingabe ergibt gleiche Bytes)
-Die Zustände stehen in logo/status.json. Jeder Zustand hat eine Farbe und eine Form, damit er auch ohne Farbsehen erkennbar ist.
+Aufruf: python -I tools/logo_status.py   (schreibt nach design/logo/status/, gleiche Eingabe ergibt gleiche Bytes)
+Die Zustände stehen in design/logo/status.json. Jeder Zustand hat eine Farbe und eine Form, damit er auch ohne Farbsehen erkennbar ist.
 """
 import json
 import re
@@ -44,14 +44,14 @@ def kontrast(a, b):
 
 
 def bauen():
-    daten = json.loads((ROOT / "logo" / "status.json").read_text(encoding="utf-8"))
-    ziel = ROOT / "logo" / "status"
+    daten = json.loads((ROOT / "design/logo" / "status.json").read_text(encoding="utf-8"))
+    ziel = ROOT / "design/logo" / "status"
     ziel.mkdir(exist_ok=True)
     for alt in ziel.glob("*.svg"):  # alte Fassungen entfernen, damit nur der aktuelle Stand liegt
         alt.unlink()
     geschrieben = []
     for basis in ("kaiwa-icon", "kaiwa-logo"):
-        quelle = (ROOT / "logo" / f"{basis}.svg").read_text(encoding="utf-8")
+        quelle = (ROOT / "design/logo" / f"{basis}.svg").read_text(encoding="utf-8")
         assert quelle.count(LED) == 1, f"Leuchtquadrat in {basis}.svg nicht eindeutig"
         for z in daten["zustaende"]:
             text = quelle.replace(LED, led(z["farbe"], z["form"]))
@@ -59,7 +59,7 @@ def bauen():
             datei = ziel / f"{basis}-{z['id']}.svg"
             datei.write_text(text, encoding="utf-8", newline="\n")
             geschrieben.append(datei.name)
-    themen = json.loads((ROOT / "logo" / "themen.json").read_text(encoding="utf-8"))
+    themen = json.loads((ROOT / "design/logo" / "themes.json").read_text(encoding="utf-8"))
     tinte, papier, k = themen["tinte"], themen["papier"], themen["aufhellung"]
 
     def hell(h):  # Flaggenfarbe mit Papier mischen, Anteil k Papier
@@ -68,7 +68,7 @@ def bauen():
         return "#" + "".join(f"{round(x * (1 - k) + y * k):02X}" for x, y in zip(a, p))
 
     for basis in ("kaiwa-icon", "kaiwa-logo"):
-        quelle = (ROOT / "logo" / f"{basis}.svg").read_text(encoding="utf-8")
+        quelle = (ROOT / "design/logo" / f"{basis}.svg").read_text(encoding="utf-8")
         for th in themen["themen"]:
             n = len(th["farben"])
             hoehe = 446 / n

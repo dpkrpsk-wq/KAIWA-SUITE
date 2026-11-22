@@ -1,0 +1,9 @@
+/* KAIWA SUITE: Schriftdateien. Space Grotesk ist der Rückfall hinter warp im Font-Stack von tokens.css.
+   Eine Datei für warp liegt nicht vor (F-0030). Lizenz: OFL.txt in diesem Ordner. */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("SpaceGrotesk%5Bwght%5D.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,11 @@
+# Prompty: pochodzenie i licencja / prompts: source and licence
+
+Pliki w tym folderze to kopie z repozytorium prompt-library: https://github.com/mentalpinG-Ops/prompt-library, stan z commitu 10c8947 (22.11.2026), folder `prompts/`. Licencjodawca: mentalpinG-Ops. Licencja: Creative Commons Uznanie autorstwa, Na tych samych warunkach 4.0 (CC BY-SA 4.0), https://creativecommons.org/licenses/by-sa/4.0/deed.pl.
+
+Zmiany: w trzech plikach (`core/artifact-triage.md`, `cultural-scientific/source-criticism.md`, `social-science/conversation-analysis.md`) linki względne do plików spoza pakietu zamieniono na tekst, który podaje ścieżkę pliku w repozytorium prompt-library. Treść poza linkami jest bez zmian. Plik `SHA256SUMS` zawiera skróty kopii w tym folderze, plik `SHA256SUMS.10c8947` skróty oryginałów z commitu 10c8947 do porównania. Jeśli zmieniasz te prompty i udostępniasz zmienioną wersję, udostępniasz ją na tej samej licencji i podajesz źródło.
+
+The files in this folder are copies from the prompt-library repository (link above), commit 10c8947 of 22 November 2026, licensor mentalpinG-Ops, licensed under CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. Changes: in three files (`core/artifact-triage.md`, `cultural-scientific/source-criticism.md`, `social-science/conversation-analysis.md`) relative links to files outside this package were replaced by text naming the file in the prompt-library repository. Nothing else was changed. `SHA256SUMS` lists the hashes of the copies in this folder, `SHA256SUMS.10c8947` the hashes of the originals at commit 10c8947 for comparison.
+
+Katalog ram `framework-catalog.md` jest wygenerowany w tym samym repozytorium (narzędzie `tools/build-webapp-skills.ps1`) z deklaracji ram w folderze `prompts/` i obejmuje 16 ram, także filozoficzne. Ta sama licencja, bez zmian. The framework catalog is generated in the same repository from the framework files and covers 16 frameworks, same licence, unchanged.
+
+Wybór dla pakietu: triaż (`core/artifact-triage.md`) oraz ramy kulturoznawcze (`cultural-scientific/`) i nauk społecznych (`social-science/`). Ramy filozoficzne z tego samego repozytorium nie są włączone.
