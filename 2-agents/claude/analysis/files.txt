@@ -1,0 +1,6 @@
+method/prompts/core/artifact-triage.md
+method/prompts/framework-catalog.md
+3-templates/after-triage.pl.md
+3-templates/cultural-check.pl.md
+3-templates/research-problem-card.pl.md
+3-templates/tool-disclosure.pl.md

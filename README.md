@@ -36,6 +36,12 @@ Konfiguracja: `1-start/setup.pl.md` (wszyscy agenci) i `1-start/setup.en.md` (st
 |---|---|---|
 | `2-agents/chatgpt/` | Te same cztery moduły jako projekty ChatGPT (konto Go), z `2-agents/chatgpt/setup.pl.md` i `2-agents/chatgpt/setup.en.md`, w każdym folderze `PROJECT.md`, `INSTRUCTIONS.txt` i `files.txt` / the same four modules as ChatGPT projects (Go account) | roboczy, nieprzetestowany w ChatGPT / draft, untested in ChatGPT |
 
+## Projekty Claude i skille / Claude projects and skills
+
+| Folder | Projekt albo skill / project or skill | Stan / status |
+|---|---|---|
+| `2-agents/claude/` | Te same cztery moduły jako projekty w claude.ai (w przeglądarce i w aplikacji desktopowej) oraz jako skille w Claude Code (`2-agents/claude/code/kaiwa-*/SKILL.md`), z `2-agents/claude/setup.pl.md` i `2-agents/claude/setup.en.md`, w każdym folderze `PROJECT.md`, `INSTRUCTIONS.txt` i `files.txt` / the same four modules as projects in claude.ai (in the browser and in the desktop app) and as skills in Claude Code, with the setup guides in Polish and English | roboczy, nieprzetestowany w Claude / draft, untested in Claude |
+
 ## Pozostałe pliki / other files
 
 | Plik albo folder / file or folder | Treść / content |
@@ -44,7 +50,7 @@ Konfiguracja: `1-start/setup.pl.md` (wszyscy agenci) i `1-start/setup.en.md` (st
 | `design/design-system/` | System wizualny KAIWA SUITE (Claude Design): tokeny i manifest, licencja czcionki warp do wyjaśnienia / visual system: tokens and manifest, licence of the warp font still open |
 | `DISCLOSURE.md` | Ujawnienie narzędzi AI użytych przy powstaniu pakietu, wersja robocza / disclosure of the AI tools used to make the package, draft |
 | `design/video-prompt.pl.md`, `design/video-prompt.en.md` | Blok do filmów 10 s w Gemini: kolory, opis znaku, ruch warp mode / prompt block for 10 second videos in Gemini |
-| `index.html` | Strona pakietu (GitHub Pages) z czterema poziomami i trzema dostawcami, linki do plików / package page for GitHub Pages |
+| `index.html` | Strona pakietu (GitHub Pages) z czterema poziomami i czterema dostawcami, linki do plików / package page for GitHub Pages |
 | `1-start/first-contact.html` | Strona pierwszego kontaktu w systemie wizualnym / first-contact page in the visual system |
 | `1-start/context.pl.md` | Mapa kontekstu: opis metody / context map: method |
 | `3-templates/research-problem-card.pl.md` | Karta problemu badawczego: osiem pól i lista kryteriów / research problem card |

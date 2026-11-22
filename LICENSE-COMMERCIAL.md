@@ -4,7 +4,7 @@ KAIWA SUITE 26.01, wersja 0.2.0 (robocza / draft), 22.11.2026.
 
 **Copyright © 2026 Denis Pokropski. Wszelkie prawa zastrzeżone poza zakresem licencji publicznej / all rights reserved outside the scope of the public licence.**
 
-Po polsku w skrócie: treść własna pakietu ma dwie licencje. Domyślnie jest dostępna na licencji CC BY-NC-SA 4.0 (plik [`LICENSE`](LICENSE)): do nauki, badań i innego użytku niekomercyjnego bez pytania, z podaniem autora i na tych samych warunkach. Użycie komercyjne treści własnej wymaga osobnej licencji komercyjnej, udzielanej na piśmie po zapytaniu: mentalpingoperator@gmail.com. Foldery `method/prompts/`, `method/protocols/` i `design/fonts/` mają własne licencje i nie są objęte tym dokumentem. Skrót nie zastępuje tekstu poniżej.
+Po polsku w skrócie: treść własna pakietu ma dwie licencje. Domyślnie jest dostępna na licencji CC BY-NC-SA 4.0 (plik [`LICENSE`](LICENSE)): do nauki, badań i innego użytku niekomercyjnego bez pytania, z podaniem autora i na tych samych warunkach. Użycie komercyjne treści własnej wymaga osobnej licencji komercyjnej. Udziela jej na piśmie mentalpinG-Ops w imieniu autora, po zapytaniu: mentalpingoperator@gmail.com. Foldery `method/prompts/`, `method/protocols/` i `design/fonts/` mają własne licencje i nie są objęte tym dokumentem. Skrót nie zastępuje tekstu poniżej.
 
 ---
 
@@ -12,13 +12,13 @@ Po polsku w skrócie: treść własna pakietu ma dwie licencje. Domyślnie jest 
 
 The package's own content is dual-licensed. By default it is made available under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** licence. See [`LICENSE`](LICENSE) for the scope by folder and the full licence text. The terms NonCommercial and Adapted Material are used here as defined in Section 1 of that licence, ShareAlike as set out in its Section 3(b).
 
-This document describes the **Commercial Licence**, a separate, proprietary licence available on request from the copyright holder. The Commercial Licence is not self-service. It must be explicitly granted.
+This document describes the **Commercial Licence**, a separate, proprietary licence available on request. mentalpinG-Ops grants it on behalf of the copyright holder, Denis Pokropski. The Commercial Licence is not self-service. It must be explicitly granted.
 
 ---
 
 ## 2. Scope
 
-The Commercial Licence covers only the material that `LICENSE` lists under CC BY-NC-SA 4.0 (copyright holder and licensor: Denis Pokropski). It does not cover:
+The Commercial Licence covers only the material that `LICENSE` lists under CC BY-NC-SA 4.0 (copyright holder and licensor under that licence: Denis Pokropski). It does not cover:
 
 - `method/prompts/`: CC BY-SA 4.0, licensor mentalpinG-Ops. That licence already permits commercial use under its own conditions. mentalpinG-Ops offers other commercial terms for this material in the file `LICENSE-COMMERCIAL.md` of its source repository `https://github.com/mentalpinG-Ops/prompt-library`.
 - `method/protocols/`: CC BY-SA 4.0 (see `method/protocols/LICENSE.md`). That licence already permits commercial use under its own conditions. Other commercial terms for this material are set out in the file `LICENSE-COMMERCIAL.md` of the source repository `https://github.com/mentalpinG-Ops/humanities-ai-methodology`.
@@ -48,7 +48,7 @@ The purpose of the use decides, not the type of institution. Both lists are exam
 
 ## 4. What the Commercial Licence Grants
 
-Subject to payment of any agreed fee and compliance with the agreed terms, the copyright holder grants the licensee a
+Subject to payment of any agreed fee and compliance with the agreed terms, mentalpinG-Ops, on behalf of the copyright holder, grants the licensee a
 
 - **non-exclusive**,
 - **non-transferable**,
@@ -64,7 +64,7 @@ The Commercial Licence does **not** permit:
 
 - **resale of the package itself**, or of a substantially similar package, as a standalone product,
 - **removal of attribution** (see Section 6),
-- **transfer** of the licence to third parties, subsidiaries, or successor entities without written consent of the copyright holder,
+- **transfer** of the licence to third parties, subsidiaries, or successor entities without written consent of mentalpinG-Ops,
 - **sublicensing**,
 - use of the name KAIWA SUITE or its logo beyond what is needed for attribution. Trademark rights are not licensed.
 
@@ -85,7 +85,7 @@ Attribution may appear in documentation, an about page, a credits file, or anoth
 
 Commercial licences are granted on request, case by case. To enquire, write to **mentalpingoperator@gmail.com** with the subject "Commercial Licence Enquiry". Please describe the intended use, the material you wish to use, and whether the licence is for a single project or ongoing use.
 
-A Commercial Licence takes effect only when explicitly confirmed in writing by the copyright holder.
+A Commercial Licence takes effect only when explicitly confirmed in writing by mentalpinG-Ops.
 
 ---
 
@@ -97,13 +97,13 @@ Without an explicit written confirmation of a Commercial Licence, only the terms
 
 ## 9. No Warranty
 
-The covered material is provided **"as is"**, without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. In no event shall the copyright holder be liable for any claim, damages, or other liability arising from the use of the covered material.
+The covered material is provided **"as is"**, without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. In no event shall the copyright holder or mentalpinG-Ops be liable for any claim, damages, or other liability arising from the use of the covered material.
 
 ---
 
 ## 10. Governing Terms
 
-A Commercial Licence is governed by the terms agreed in writing between the copyright holder and the licensee at the time of grant. In the absence of such an agreement, Section 8 applies.
+A Commercial Licence is governed by the terms agreed in writing between mentalpinG-Ops and the licensee at the time of grant. In the absence of such an agreement, Section 8 applies.
 
 ---
 

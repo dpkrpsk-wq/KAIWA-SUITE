@@ -575,5 +575,61 @@ class ChatGPTTest(unittest.TestCase):
                 self.assertTrue((self.BASE / a / n).is_file(), "%s/%s" % (a, n))
 
 
+class ClaudeTest(unittest.TestCase):
+    """Claude-Weg (studium F-0069): Projekte in claude.ai (Browser, Desktop-App) und Skills in Claude Code.
+    Skill-Regeln nach platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+    (name: höchstens 64 Zeichen, nur a-z, 0-9 und Bindestrich, ohne „claude“ und „anthropic“;
+    description: nicht leer, höchstens 1024 Zeichen) und code.claude.com/docs/en/skills
+    (SKILL.md unter 500 Zeilen), geprüft 22.11.2026."""
+    BASE = ROOT / "2-agents/claude"
+    AGENTS = ("stream", "map", "analysis", "sources")
+
+    def test_project_files_complete(self):
+        for a in self.AGENTS:
+            for n in ("PROJECT.md", "INSTRUCTIONS.txt", "files.txt"):
+                self.assertTrue((self.BASE / a / n).is_file(), "%s/%s" % (a, n))
+
+    def test_file_lists(self):
+        for a in self.AGENTS:
+            files = [l.strip() for l in (self.BASE / a / "files.txt").read_text(encoding="utf-8").splitlines() if l.strip()]
+            self.assertTrue(files, a)
+            for p in files:
+                self.assertTrue((ROOT / p).is_file(), p)
+
+    def test_instruction_length(self):
+        for a in self.AGENTS:
+            t = (self.BASE / a / "INSTRUCTIONS.txt").read_text(encoding="utf-8")
+            self.assertLessEqual(len(t), 8000, a)  # gleiche Obergrenze wie bei ChatGPT und Copilot
+
+    def test_no_other_vendor(self):
+        # Die Setup-Texte nennen die Herkunft aus dem ChatGPT-Weg, geprüft werden die Texte für das Modell.
+        for p in self.BASE.rglob("*"):
+            if p.is_file() and not p.name.startswith("setup."):
+                t = p.read_text(encoding="utf-8").lower()
+                for w in ("chatgpt", "openai"):
+                    self.assertNotIn(w, t, "%s: %s" % (p.relative_to(self.BASE), w))
+
+    def test_skills(self):
+        skills = sorted((self.BASE / "code").glob("kaiwa-*/SKILL.md"))
+        self.assertEqual([p.parent.name for p in skills], ["kaiwa-analysis", "kaiwa-map", "kaiwa-sources", "kaiwa-stream"])
+        for p in skills:
+            text = p.read_text(encoding="utf-8")
+            lines = text.splitlines()
+            self.assertEqual(lines[0], "---", p.parent.name)
+            end = lines.index("---", 1)
+            fields = {}
+            for l in lines[1:end]:
+                key, _, value = l.partition(":")
+                fields[key.strip()] = value.strip()
+            self.assertEqual(sorted(fields), ["description", "name"], p.parent.name)
+            self.assertEqual(fields["name"], p.parent.name)
+            self.assertRegex(fields["name"], r"^[a-z0-9-]{1,64}$")
+            for w in ("claude", "anthropic"):
+                self.assertNotIn(w, fields["name"])
+            self.assertTrue(fields["description"], p.parent.name)
+            self.assertLessEqual(len(fields["description"]), 1024, p.parent.name)
+            self.assertLess(len(lines), 500, p.parent.name)
+
+
 if __name__ == "__main__":
     unittest.main()
