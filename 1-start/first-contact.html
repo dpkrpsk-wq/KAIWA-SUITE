@@ -202,7 +202,11 @@ html, body {
   transform-origin: center;
   animation: craftGlide 3.2s ease-in-out infinite;
 }
-@media (prefers-reduced-motion: reduce), .reduced-motion .anim-ring-a, .reduced-motion .anim-ring-b, .reduced-motion .anim-craft {
+/* Reduced motion: system setting or the page button (class .reduced-motion on the stage). Two rules, a selector list cannot sit inside a media query. */
+@media (prefers-reduced-motion: reduce) {
+  .anim-ring-a, .anim-ring-b, .anim-craft { animation: none !important; }
+}
+.reduced-motion .anim-ring-a, .reduced-motion .anim-ring-b, .reduced-motion .anim-craft {
   animation: none !important;
 }
 
