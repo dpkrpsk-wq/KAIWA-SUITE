@@ -1038,8 +1038,19 @@ class PagesTest(unittest.TestCase):
 
     def test_copilot_page_names_the_upload_ways_and_their_status(self):
         t = (ROOT / "get/copilot.html").read_text(encoding="utf-8")
-        for s in ("Which upload goes where", "Upload skill", "Upload plugin", "not verified", "Untested in Copilot (version 8)", "TAR", "Do not</strong> drag a ZIP"):
+        for s in ("Which upload goes where", "Hochladen", "copilot-skill", "“Plug-Ins” &gt; “Add” (Hinzufügen) &gt; “Upload” (Hochladen)",
+                  "Neue Fähigkeit", "not verified", "Untested in Copilot (version 8)", "TAR", "Do not</strong> drag a ZIP",
+                  "The uploaded package must contain a 'SKILL.md' file.", "exactly one 'SKILL.md' file, but found 4"):
             self.assertIn(s.lower(), t.lower(), s)
+
+    def test_copilot_download_buttons_say_what_they_are_for(self):
+        # X1 lud das Buendel im Dialog "Skill hochladen" hoch (25.11.2026): die Knoepfe nennen ihren Zweck
+        t = (ROOT / "get/copilot.html").read_text(encoding="utf-8")
+        for pkg, label in (("copilot", "Bundle to unpack (not for Upload)"), ("copilot-skill", "Skill ZIP (for Plug-Ins &gt; Upload)"),
+                           ("copilot-plugin", "Plugin ZIP (not verified)")):
+            self.assertRegex(t, r'data-pkg="%s" data-label="%s"' % (re.escape(pkg), re.escape(label)))
+        self.assertIn('data-pkg="copilot" data-label="Bundle to unpack (not for Upload)"', (ROOT / "index.html").read_text(encoding="utf-8"))
+        self.assertIn('data-label', (ROOT / "get/pages.js").read_text(encoding="utf-8"))
 
     def test_script_reads_only_its_own_manifest_and_has_a_fallback(self):
         t = (ROOT / "get/pages.js").read_text(encoding="utf-8")

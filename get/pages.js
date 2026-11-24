@@ -51,8 +51,8 @@
         for (var k = 0; k < m.dateien.length; k++) if (m.dateien[k].name === name) found = m.dateien[k];
       }
       if (found) {
-        var a = el("a", "btn", "Download ZIP");
-        altSpan(a, "pobierz ZIP");
+        var a = el("a", "btn", box.getAttribute("data-label") || "Download ZIP");
+        altSpan(a, box.getAttribute("data-label-pl") || "pobierz ZIP");
         a.href = REPO + "/releases/download/v" + m.version + "/" + found.name;
         box.appendChild(a);
         box.appendChild(el("span", null, found.name + " · " + size(found.bytes) + " · " + found.dateien + " files"));
