@@ -244,7 +244,7 @@ document.querySelectorAll("[data-vendor]").forEach(b => b.addEventListener("clic
 /* Download: one ZIP per vendor (studium F-0068). The file list comes from the GitHub tree of the branch,
    the files from this site (GitHub Pages), the ZIP is built in the browser with JSZip. "all" links the archive of the branch.
    A vendor ZIP holds the vendor's items, all "any" items and the files every user needs (licence, disclosure, logo). */
-const ALWAYS = ["README.md", "LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md", "product.json", "design/logo/kaiwa-logo.svg", "design/logo/kaiwa-icon-192.png", "design/fonts/OFL.txt", "1-start/first-contact.html", "tools/"];
+const ALWAYS = ["README.md", "LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md", "product.json", "design/logo/kaiwa-logo.svg", "design/logo/kaiwa-icon-192.png", "design/fonts/OFL.txt", "design/fonts/fonts.css", "design/fonts/SpaceGrotesk[wght].ttf", "design/fonts/README.md", "design/design-system/tokens.css", "1-start/first-contact.html", "tools/"];
 const JSZIP_URL = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
 function loadJSZip(){
   if (window.JSZip) return Promise.resolve(window.JSZip);
