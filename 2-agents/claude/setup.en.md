@@ -2,6 +2,8 @@
 
 <img src="../../design/logo/kaiwa-logo.svg" alt="KAIWA" width="96">
 
+**Languages / języki:** [English](setup.en.md) · [Polski](setup.pl.md)
+
 Product 26.01, version 0.2.0 (draft), 22 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław.
 
 Status: draft, untested in Claude. This guide covers two ways: projects in claude.ai (in the browser, the Claude desktop app is untested) and skills in Claude Code. The instructions were derived from the ChatGPT way of this package.
