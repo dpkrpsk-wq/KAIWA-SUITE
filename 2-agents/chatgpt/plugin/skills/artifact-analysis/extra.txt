@@ -1,0 +1,15 @@
+method/prompts/cultural-scientific/feminist-theory.md
+method/prompts/cultural-scientific/multimodal-analysis.md
+method/prompts/cultural-scientific/postcolonial-theory.md
+method/prompts/cultural-scientific/semiotics.md
+method/prompts/cultural-scientific/source-criticism.md
+method/prompts/cultural-scientific/structuralism.md
+method/prompts/social-science/content-analysis.md
+method/prompts/social-science/conversation-analysis.md
+method/prompts/social-science/systems-theory.md
+method/protocols/falsification-protocol.md
+method/protocols/provenance-protocol.md
+method/protocols/read-write-boundary-protocol.md
+method/protocols/source-protocol.md
+method/protocols/tool-protocol.md
+method/protocols/writing-protocol.md

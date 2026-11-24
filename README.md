@@ -35,6 +35,7 @@ Konfiguracja: `1-start/setup.pl.md` (wszyscy agenci) i `1-start/setup.en.md` (te
 | Folder | Projekt / project | Stan / status |
 |---|---|---|
 | `2-agents/chatgpt/` | Te same cztery moduły jako projekty ChatGPT (konto Go), z `2-agents/chatgpt/setup.pl.md` i `2-agents/chatgpt/setup.en.md`, w każdym folderze `PROJECT.md`, `INSTRUCTIONS.txt` i `files.txt` / the same four modules as ChatGPT projects (Go account) | roboczy, nieprzetestowany w ChatGPT / draft, untested in ChatGPT |
+| `2-agents/chatgpt/plugin/` | Te same cztery moduły jako jedna wtyczka ChatGPT z czterema skillami, dostępna w każdym czacie konta, budowa: `python tools/chatgpt_plugin.py` / the same four modules as one ChatGPT plugin with four skills, available in every chat of the account | roboczy, nieprzetestowany w ChatGPT / draft, untested in ChatGPT |
 
 ## Projekty Claude i skille / Claude projects and skills
 

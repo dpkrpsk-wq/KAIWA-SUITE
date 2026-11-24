@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "author": {
+    "email": "denis.pokropski@googlemail.com",
+    "name": "Denis Pokropski"
+  },
+  "description": "KAIWA workflows for artefact analysis, context mapping, verbatim recording and scholarly source research.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "capabilities": [],
+        "category": "Education",
+        "defaultPrompt": "Use KAIWA Suite to guide this inquiry through the matching KAIWA module.",
+        "developerName": "mentalpinG-Ops",
+        "displayName": "KAIWA Suite",
+        "longDescription": "Four KAIWA skills for staged artefact analysis, a provenance-aware context map, verbatim dictation records and scholarly source research. The method files are unchanged copies from the KAIWA SUITE package. No MCP tools, no local scripts.",
+        "shortDescription": "Academic inquiry workflows"
+      }
+    }
+  },
+  "keywords": [
+    "academic-research",
+    "cultural-studies",
+    "semiotics",
+    "source-criticism",
+    "research-methods"
+  ],
+  "license": "CC-BY-NC-SA-4.0",
+  "name": "kaiwa-suite",
+  "repository": "https://github.com/dpkrpsk-wq/KAIWA-SUITE",
+  "version": "0.2.0-chatgpt.1"
+}

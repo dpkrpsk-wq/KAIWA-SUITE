@@ -659,6 +659,65 @@ class ChatGPTTest(unittest.TestCase):
                 self.assertTrue((self.BASE / a / n).is_file(), "%s/%s" % (a, n))
 
 
+@braucht("2-agents/chatgpt/plugin")
+class ChatGPTPluginTest(unittest.TestCase):
+    """ChatGPT-Wtyczka (X1 24.11.2026): vier Skills kontoweit statt vier Projekten. Aufbau nach dem Plugin,
+    das ChatGPT am 24.11.2026 selbst exportiert hat. Die Referenzen sind unveraenderte Paketdateien."""
+    import chatgpt_plugin as P  # noqa: E402
+
+    def test_same_bytes_twice(self):
+        self.assertEqual(self.P.build(), self.P.build())
+
+    def test_archive_matches_package(self):
+        with tempfile.TemporaryDirectory() as d:
+            z = Path(d) / "p.zip"
+            z.write_bytes(self.P.build())
+            same, different, missing, extra = self.P.check(z)
+        self.assertEqual((different, missing, extra), ([], [], []))
+        self.assertEqual(len(same), len(self.P.entries()))
+
+    def test_module_files_in_skill(self):
+        names = set(self.P.entries())
+        for skill, module in self.P.SKILLS.items():
+            need = ["2-agents/chatgpt/%s/INSTRUCTIONS.txt" % module]
+            need += [l.strip() for l in (ROOT / "2-agents/chatgpt" / module / "files.txt").read_text(encoding="utf-8").splitlines() if l.strip()]
+            for p in need:
+                self.assertIn("skills/%s/references/%s" % (skill, p), names)
+
+    def test_paths_named_in_skills_exist(self):
+        names = set(self.P.entries())
+        for skill in self.P.SKILLS:
+            text = (self.P.PLUGIN / "skills" / skill / "SKILL.md").read_text(encoding="utf-8")
+            for p in re.findall(r"`(references/[^`]+)`", text):
+                if p.endswith("/"):
+                    self.assertTrue(any(n.startswith("skills/%s/%s" % (skill, p)) for n in names), p)
+                else:
+                    self.assertIn("skills/%s/%s" % (skill, p), names)
+
+    def test_skill_heads(self):
+        for skill in self.P.SKILLS:
+            lines = (self.P.PLUGIN / "skills" / skill / "SKILL.md").read_text(encoding="utf-8").splitlines()
+            self.assertEqual(lines[0], "---", skill)
+            end = lines.index("---", 1)
+            fields = dict((k.strip(), v.strip()) for k, _, v in (l.partition(":") for l in lines[1:end]))
+            self.assertEqual(sorted(fields), ["description", "name"], skill)
+            self.assertEqual(fields["name"], skill)
+            self.assertRegex(skill, r"^[a-z0-9-]{1,64}$")
+            self.assertTrue(0 < len(fields["description"]) <= 1024, skill)
+
+    def test_manifests(self):
+        a = json.loads((self.P.PLUGIN / "plugin.json").read_text(encoding="utf-8"))
+        b = json.loads((self.P.PLUGIN / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
+        product = json.loads((ROOT / "product.json").read_text(encoding="utf-8"))
+        for k in ("name", "version", "license", "author", "repository"):
+            self.assertEqual(a[k], b[k], k)
+        self.assertEqual(a["extensions"]["com.openai"]["interface"], b["interface"])
+        self.assertTrue(a["version"].startswith(product["version"] + "-chatgpt."), a["version"])
+        self.assertEqual(a["license"], "CC-BY-NC-SA-4.0")
+        self.assertIn("Użycie niekomercyjne", (ROOT / "LICENSE").read_text(encoding="utf-8"))
+        self.assertEqual(b["skills"], "./skills")
+
+
 @braucht("2-agents/claude")
 class ClaudeTest(unittest.TestCase):
     """Claude-Weg (studium F-0069): Projekte in claude.ai (Browser, Desktop-App) und Skills in Claude Code.
