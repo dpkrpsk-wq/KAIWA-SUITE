@@ -1,0 +1,59 @@
+# KAIWA SUITE: Release bei einem Tag v*. Nur dieses Repo, kein Drittanbieter, keine Secrets ausser dem
+# automatischen Token des Laufs. Der Tag muss zu product.json passen (Tag v0.2.0 gilt fuer "version": "0.2.0").
+# Gebaut wird aus dem getaggten Commit mit tools/release.py (Standardbibliothek). Veroeffentlichen heisst: Tag pushen.
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write   # noetig fuer das Anlegen des Releases, sonst nichts
+
+concurrency:
+  group: release-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.repository == 'dpkrpsk-wq/KAIWA-SUITE'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TAG: ${{ github.ref_name }}
+      SHA: ${{ github.sha }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout (offizielle Aktion)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Python (offizielle Aktion)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tag passt zu product.json
+        run: |
+          ver=$(python -c "import json;print(json.load(open('product.json', encoding='utf-8'))['version'])")
+          if [ "$TAG" != "v$ver" ]; then
+            echo "Tag $TAG passt nicht zu product.json (version $ver)"; exit 1
+          fi
+
+      - name: Tests
+        run: |
+          python -m pip install --disable-pip-version-check openpyxl==3.1.5
+          python -X utf8 tools/test_package.py
+
+      - name: ZIPs bauen und pruefen (zweimal gebaut, gleiche Pruefsummen)
+        run: python -X utf8 -I tools/release.py pruefen --stand "$SHA" --ausgabe dist/release
+
+      - name: Release anlegen und Dateien hochladen
+        run: |
+          gh release create "$TAG" dist/release/* \
+            --title "KAIWA SUITE $TAG" \
+            --notes-file release/release-notes.md \
+            --verify-tag
