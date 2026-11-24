@@ -924,5 +924,140 @@ class ReleaseBuildTest(unittest.TestCase):
             self.assertEqual(text[kopf.end():], body, m)
 
 
+class _PageParser(__import__("html.parser", fromlist=["HTMLParser"]).HTMLParser):
+    """Sammelt aus einer Seite: Links, data-pkg, Absaetze ohne zweite Sprache, sichtbaren Text ohne Script und Style."""
+    TARGET = ("p", "h1", "h2", "h3", "li", "summary")
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.links, self.pkgs, self.unpaired, self.text = [], [], [], []
+        self.stack, self.skip, self.steps_li = [], 0, 0
+        self.list_depth, self.steps_level = 0, 0
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag in ("script", "style"):
+            self.skip += 1
+        for k in ("href", "src"):
+            if a.get(k):
+                self.links.append(a[k])
+        if a.get("data-pkg"):
+            self.pkgs.append(a["data-pkg"])
+        if tag in ("ol", "ul"):
+            self.list_depth += 1
+            if tag == "ol" and "steps" in (a.get("class") or "").split():
+                self.steps_level = self.list_depth
+        if tag == "li" and self.steps_level and self.list_depth == self.steps_level:
+            self.steps_li += 1
+        if tag in self.TARGET:
+            self.stack.append({"tag": tag, "alt": False, "nolang": "data-nolang" in a, "text": ""})
+        if "alt" in (a.get("class") or "").split():
+            for s in self.stack:
+                s["alt"] = True
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style"):
+            self.skip -= 1
+        if tag in ("ol", "ul"):
+            if self.list_depth == self.steps_level:
+                self.steps_level = 0
+            self.list_depth -= 1
+        if tag in self.TARGET and self.stack and self.stack[-1]["tag"] == tag:
+            s = self.stack.pop()
+            if s["text"].strip() and not s["alt"] and not s["nolang"]:
+                self.unpaired.append(s["text"].strip()[:60])
+
+    def handle_data(self, data):
+        if self.skip:
+            return
+        self.text.append(data)
+        for s in self.stack:
+            s["text"] += data
+
+
+@braucht("index.html", "get/pages.js")
+class PagesTest(unittest.TestCase):
+    """Paketseite und Anbieterseiten (F-0086 bis F-0095): kein JSZip, kein GitHub-API-Abruf, Englisch mit Polnisch, Links loesen sich auf."""
+    VENDOR_PAGES = ("get/copilot.html", "get/gemini.html", "get/chatgpt.html", "get/claude.html")
+    PAGES = ("index.html",) + VENDOR_PAGES
+    PAGES_URL = "https://dpkrpsk-wq.github.io/KAIWA-SUITE/"
+    REPO_URL = "https://github.com/dpkrpsk-wq/KAIWA-SUITE/"
+
+    def parse(self, rel):
+        p = _PageParser()
+        p.feed((ROOT / rel).read_text(encoding="utf-8"))
+        return p
+
+    def test_no_jszip_no_github_api_no_placeholder(self):
+        for rel in self.PAGES + ("get/pages.js", "get/pages.css"):
+            t = (ROOT / rel).read_text(encoding="utf-8").lower()
+            for w in ("jszip", "api.github.com", "⟨commit⟩"):
+                self.assertNotIn(w, t, rel + ": " + w)
+
+    def test_every_text_block_has_both_languages(self):
+        for rel in self.PAGES:
+            self.assertEqual(self.parse(rel).unpaired, [], rel)
+
+    def test_visible_text_has_no_semicolon_or_dash(self):
+        for rel in self.PAGES:
+            text = "".join(self.parse(rel).text)
+            self.assertEqual(re.findall(r"[;—–]", text), [], rel)
+
+    def test_links_resolve(self):
+        for rel in self.PAGES + ("1-start/first-contact.html",):
+            for link in self.parse(rel).links:
+                if link.startswith(("#", "mailto:", "data:")):
+                    continue
+                if link.startswith(self.PAGES_URL):
+                    ziel = link[len(self.PAGES_URL):].split("#")[0]
+                    self.assertTrue(ziel == "" or (ROOT / ziel).exists(), rel + ": " + link)
+                elif link.startswith(self.REPO_URL):
+                    rest = link[len(self.REPO_URL):]
+                    for pre in ("blob/main/", "tree/main/"):
+                        if rest.startswith(pre):
+                            self.assertTrue((ROOT / rest[len(pre):]).exists(), rel + ": " + link)
+                elif link.startswith("http"):
+                    continue
+                else:
+                    ziel = (ROOT / rel).parent / link.split("#")[0].split("?")[0]
+                    self.assertTrue(ziel.exists(), rel + ": " + link)
+
+    def test_download_boxes_name_real_packages(self):
+        import release as REL
+        gueltig = set(REL.ANBIETER) | {"copilot-skill", "copilot-plugin"}
+        for rel in self.PAGES:
+            for pkg in self.parse(rel).pkgs:
+                self.assertIn(pkg, gueltig, rel)
+        for rel, v in zip(self.VENDOR_PAGES, ("copilot", "gemini", "chatgpt", "claude")):
+            self.assertIn(v, self.parse(rel).pkgs, rel)
+        self.assertEqual({p for p in self.parse("index.html").pkgs}, set(REL.ANBIETER))
+
+    def test_vendor_pages_have_the_six_steps(self):
+        for rel in self.VENDOR_PAGES:
+            self.assertEqual(self.parse(rel).steps_li, 6, rel)
+
+    def test_copilot_page_names_the_upload_ways_and_their_status(self):
+        t = (ROOT / "get/copilot.html").read_text(encoding="utf-8")
+        for s in ("Which upload goes where", "Upload skill", "Upload plugin", "not verified", "Untested in Copilot (version 8)", "TAR", "Do not</strong> drag a ZIP"):
+            self.assertIn(s.lower(), t.lower(), s)
+
+    def test_script_reads_only_its_own_manifest_and_has_a_fallback(self):
+        t = (ROOT / "get/pages.js").read_text(encoding="utf-8")
+        self.assertIn("release/manifest.json", t)
+        self.assertIn("archive/refs/heads/main.zip", t)
+        self.assertEqual(re.findall(r"fetch\(([^)]*)\)", t), ['base + "release/manifest.json", { cache: "no-cache" }', 'base + "release/sets.json"'])
+
+    def test_first_contact_links_the_vendor_pages(self):
+        t = (ROOT / "1-start/first-contact.html").read_text(encoding="utf-8")
+        for v in ("copilot", "gemini", "chatgpt", "claude"):
+            self.assertIn(self.PAGES_URL + "get/%s.html" % v, t)
+
+    def test_contact_is_only_the_university_address(self):
+        for rel in self.PAGES:
+            t = (ROOT / rel).read_text(encoding="utf-8").lower()
+            self.assertNotIn("mentalping", t, rel)
+            self.assertNotIn("gmail", t, rel)
+
+
 if __name__ == "__main__":
     unittest.main()
