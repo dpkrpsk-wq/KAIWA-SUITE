@@ -99,15 +99,17 @@ def dateisatz(q, s, anbieter):
     return sorted(out - aus)
 
 
-def contents(name, files, ver, stand):
+def contents(name, files, ver, stand, anbieter):
+    start = {"copilot": "1-start/setup.en.md", "any": "4-without-ai/README.pl.md"}.get(anbieter, "2-agents/%s/setup.en.md" % anbieter)
     return "\n".join([
-        "# KAIWA SUITE: pakiet %s / package for %s" % (name, name), "",
-        "Ten plik ZIP zawiera tylko pliki dla dostawcy %s, pliki bez dostawcy, licencje i skrypty. README.md opisuje caly pakiet, foldery innych dostawcow sa w repozytorium https://github.com/dpkrpsk-wq/KAIWA-SUITE." % name, "",
+        "# KAIWA SUITE: package for %s / pakiet %s" % (name, name), "",
         "This ZIP holds only the files for %s, the files without vendor, the licences and the scripts. README.md describes the whole package, the folders of the other vendors are in the repository https://github.com/dpkrpsk-wq/KAIWA-SUITE." % name, "",
-        "Wersja / version: %s, commit %s." % (ver, stand), "",
-        "Testy / tests: python tools/test_package.py (pomija czesci, ktorych nie ma w tym pakiecie / skips parts not in this package).", "",
-        "tools/pdf.py i tools/logo_status.py potrzebuja plikow z design/, ktore sa tylko w pelnym pakiecie. / tools/pdf.py and tools/logo_status.py need files from design/ that are only in the full package.", "",
-        "Liczba plikow bez tego pliku / files without this file: %d" % len(files), "",
+        "Ten plik ZIP zawiera tylko pliki dla dostawcy %s, pliki bez dostawcy, licencje i skrypty. README.md opisuje caly pakiet, foldery innych dostawcow sa w repozytorium https://github.com/dpkrpsk-wq/KAIWA-SUITE." % name, "",
+        "Start with / zacznij od: %s (Polish / po polsku: setup.pl.md)." % start, "",
+        "Version / wersja: %s, commit %s." % (ver, stand), "",
+        "Tests / testy: python tools/test_package.py (skips parts not in this package / pomija czesci, ktorych nie ma w tym pakiecie).", "",
+        "tools/pdf.py and tools/logo_status.py need files from design/ that are only in the full package. / tools/pdf.py i tools/logo_status.py potrzebuja plikow z design/, ktore sa tylko w pelnym pakiecie.", "",
+        "Files without this file / liczba plikow bez tego pliku: %d" % len(files), "",
         *["- `" + p + "`" for p in files], ""])
 
 
@@ -134,7 +136,7 @@ def anbieter_zip(q, s, anbieter, ver):
             data = data.replace(PLATZHALTER.encode("utf-8"), q.hash.encode("utf-8"))
         eintr.append((wurzel + p, data))
     name = {"copilot": "Microsoft 365 Copilot", "gemini": "Google Gemini", "chatgpt": "ChatGPT", "claude": "Claude", "any": "bez dostawcy / any"}[anbieter]
-    eintr.append((wurzel + "ZIP-CONTENTS.md", contents(name, files, ver, q.hash).encode("utf-8")))
+    eintr.append((wurzel + "ZIP-CONTENTS.md", contents(name, files, ver, q.hash, anbieter).encode("utf-8")))
     eintr.sort(key=lambda e: e[0])
     return zip_bytes(eintr, q.zeit), len(files) + 1
 
