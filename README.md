@@ -1,6 +1,6 @@
 # KAIWA
 
-<img src="design/logo/kaiwa-logo.svg" alt="KAIWA" width="96">
+<picture><source media="(prefers-color-scheme: dark)" srcset="design/logo/kaiwa-logo-hell.svg"><img src="design/logo/kaiwa-logo.svg" alt="KAIWA" width="240"></picture>
 
 **Strona pakietu / package page:** [https://dpkrpsk-wq.github.io/KAIWA-SUITE/](https://dpkrpsk-wq.github.io/KAIWA-SUITE/)
 
@@ -46,10 +46,10 @@ Konfiguracja: `1-start/setup.pl.md` (wszyscy agenci) i `1-start/setup.en.md` (te
 
 | Plik albo folder / file or folder | Treść / content |
 |---|---|
-| `design/logo/` | Logo KAIWA „warp mode”: domyślnie czarno-białe, do wyboru tryby spectrum i SHIFT, wskaźnik stanu w prawym dolnym rogu (`status/`, `tools/logo_status.py`) / logo “warp mode”: black and white by default, spectrum and SHIFT modes as options, status indicator bottom right |
+| `design/logo/` | Logo KAIWA „K.”: znak K z kwadratem, napis KAIWA i podpis, domyślnie czarno-białe, do wyboru tryby spectrum i SHIFT, wskaźnik stanu w kwadracie (`status/`, `tools/logo_status.py`) / logo “K.”: K mark with a square, KAIWA wordmark and tagline, black and white by default, spectrum and SHIFT modes as options, status indicator in the square |
 | `design/design-system/` | System wizualny KAIWA SUITE (Claude Design): tokeny i manifest, licencja czcionki warp do wyjaśnienia / visual system: tokens and manifest, licence of the warp font still open |
 | `DISCLOSURE.md` | Ujawnienie narzędzi AI użytych przy powstaniu pakietu, wersja robocza / disclosure of the AI tools used to make the package, draft |
-| `design/video-prompt.pl.md`, `design/video-prompt.en.md` | Blok do filmów 10 s w Gemini: kolory, opis znaku, ruch warp mode / prompt block for 10 second videos in Gemini |
+| `design/video-prompt.pl.md`, `design/video-prompt.en.md` | Blok do filmów 10 s w Gemini: kolory, opis znaku, ruch / prompt block for 10 second videos in Gemini |
 | `index.html` | Strona pakietu (GitHub Pages) z czterema poziomami i czterema dostawcami, linki do plików / package page for GitHub Pages |
 | `1-start/first-contact.html` | Strona pierwszego kontaktu w systemie wizualnym / first-contact page in the visual system |
 | `1-start/context.pl.md` | Mapa kontekstu: opis metody / context map: method |

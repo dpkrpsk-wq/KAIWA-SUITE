@@ -85,7 +85,7 @@ html, body {
   white-space: nowrap;
 }
 
-/* Animated warp-tunnel intro banner */
+/* Animated intro banner */
 .intro-stage {
   margin-top: var(--space-6, 24px);
   background: var(--flaeche-hinweis, #e6e2d4);
@@ -166,60 +166,44 @@ html, body {
   outline-offset: 2px;
 }
 
-/* Tunnel animation SVG */
-.tunnel-box {
+/* Intro animation: the K stays, the square lights up */
+.mark-box {
   border: 3px solid var(--text, #14171f);
   background: var(--tinte, #14171f);
   padding: var(--space-3, 12px);
 }
-.tunnel-svg {
+.mark-svg {
   width: 100%;
   height: auto;
   display: block;
 }
-@keyframes tunnelPulse {
-  0%   { transform: scale(0.88); opacity: 0.45; }
-  50%  { transform: scale(1.04); opacity: 1; }
-  100% { transform: scale(0.88); opacity: 0.45; }
+@keyframes squarePulse {
+  0%   { opacity: 0.45; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.45; }
 }
-@keyframes craftGlide {
-  0%   { transform: translate(0px, 0px); }
-  50%  { transform: translate(10px, -6px); }
-  100% { transform: translate(0px, 0px); }
-}
-.anim-ring-a {
+.anim-k, .anim-sq {
   transform-box: fill-box;
   transform-origin: center;
-  animation: tunnelPulse 4.2s ease-in-out infinite;
 }
-.anim-ring-b {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: tunnelPulse 4.2s ease-in-out 0.6s infinite;
-}
-.anim-craft {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: craftGlide 3.2s ease-in-out infinite;
-}
+.anim-sq { animation: squarePulse 4.2s ease-in-out infinite; }
 /* Intro (plays once on load and on "Odtwórz intro / Replay"), then the loop continues. */
-@keyframes introRing {
-  0%   { transform: scale(0.15); opacity: 0; }
-  100% { transform: scale(0.88); opacity: 0.45; }
-}
-@keyframes introCraft {
-  0%   { transform: translate(-70px, 28px); opacity: 0; }
+@keyframes introK {
+  0%   { transform: translate(-24px, 0px); opacity: 0; }
   100% { transform: translate(0px, 0px); opacity: 1; }
 }
-.intro-play .anim-ring-a { animation: introRing 1.4s ease-out both, tunnelPulse 4.2s ease-in-out 1.4s infinite; }
-.intro-play .anim-ring-b { animation: introRing 1.4s ease-out 0.3s both, tunnelPulse 4.2s ease-in-out 2s infinite; }
-.intro-play .anim-craft { animation: introCraft 1.6s cubic-bezier(.2,.7,.2,1) 0.5s both, craftGlide 3.2s ease-in-out 2.1s infinite; }
+@keyframes introSq {
+  0%   { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.intro-play .anim-k { animation: introK 1s cubic-bezier(.2,.7,.2,1) both; }
+.intro-play .anim-sq { animation: introSq 0.5s ease-out 0.9s both, squarePulse 4.2s ease-in-out 1.4s infinite; }
 
 /* Reduced motion: system setting or the page button (class .reduced-motion on the stage). Two rules, a selector list cannot sit inside a media query. */
 @media (prefers-reduced-motion: reduce) {
-  .anim-ring-a, .anim-ring-b, .anim-craft { animation: none !important; }
+  .anim-k, .anim-sq { animation: none !important; }
 }
-.reduced-motion .anim-ring-a, .reduced-motion .anim-ring-b, .reduced-motion .anim-craft {
+.reduced-motion .anim-k, .reduced-motion .anim-sq {
   animation: none !important;
 }
 
@@ -368,20 +352,7 @@ html, body {
 <div class="page" id="app">
   <header class="doc-head">
     <div class="doc-head-band" aria-hidden="true"></div>
-    <div id="header-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="KAIWA">
-<title>KAIWA</title>
-<rect width="320" height="320" rx="48" fill="#F1EFE9"></rect>
-<ellipse cx="211.2" cy="137.7" rx="18.7" ry="52.0" transform="rotate(-35 211.2 137.7)" fill="none" stroke="#14171F" stroke-width="3.4" opacity="1.00"></ellipse>
-<ellipse cx="216.9" cy="133.6" rx="14.2" ry="39.5" transform="rotate(-35 216.9 133.6)" fill="none" stroke="#14171F" stroke-width="1.4" opacity="0.87"></ellipse>
-<ellipse cx="220.3" cy="131.2" rx="10.8" ry="30.0" transform="rotate(-35 220.3 131.2)" fill="none" stroke="#14171F" stroke-width="2.6" opacity="0.74"></ellipse>
-<ellipse cx="228.4" cy="125.6" rx="8.2" ry="22.8" transform="rotate(-35 228.4 125.6)" fill="none" stroke="#14171F" stroke-width="1.3" opacity="0.61"></ellipse>
-<ellipse cx="231.8" cy="123.2" rx="6.2" ry="17.3" transform="rotate(-35 231.8 123.2)" fill="none" stroke="#14171F" stroke-width="2.2" opacity="0.48"></ellipse>
-<ellipse cx="239.8" cy="117.6" rx="4.7" ry="13.2" transform="rotate(-35 239.8 117.6)" fill="none" stroke="#14171F" stroke-width="1.1" opacity="0.35"></ellipse>
-<ellipse cx="243.9" cy="114.7" rx="3.2" ry="8.5" transform="rotate(-35 243.9 114.7)" fill="#07080C"></ellipse>
-<g transform="translate(5.4 137.2) scale(1.7) rotate(-35 50 50)"><path fill="#14171F" fill-opacity="0.06" d="M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z"></path></g><g transform="translate(17.7 128.6) scale(1.7) rotate(-35 50 50)"><path fill="#14171F" fill-opacity="0.13" d="M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z"></path></g>
-<g transform="translate(30.0 120.0) scale(1.7) rotate(-35 50 50)" opacity="1"><path fill="#14171F" d="M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z"></path></g>
-<rect x="254" y="254" width="22" height="22" fill="#14171F"></rect>
-</svg></div>
+    <div id="header-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="KAIWA"><title>KAIWA</title><rect width="320" height="320" rx="48" fill="#F1EFE9"/><g transform="translate(-126.44 -52.76) scale(0.71111)"><path fill="#14171F" d="M275 175H349V277L448 175H522L409 292L469 354V410H446L349 317V410H275Z"/><rect fill="#14171F" x="488" y="353" width="57" height="57"/></g></svg></div>
     <div class="wordmark"><span>KAIWA</span><span>SUITE</span></div>
     <div class="draft-sticker">wersja robocza / draft</div>
   </header>
@@ -401,24 +372,11 @@ html, body {
       </div>
     </div>
 
-    <div class="tunnel-box">
-      <svg class="tunnel-svg" viewBox="0 0 420 220" role="img" aria-label="Animowany tunel KAIWA warp mode">
-        <rect x="0" y="0" width="420" height="220" fill="#14171f"/>
-        <g class="anim-ring-a">
-          <ellipse cx="225" cy="110" rx="155" ry="74" fill="none" stroke="#f1efe9" stroke-width="3"/>
-          <ellipse cx="225" cy="110" rx="125" ry="58" fill="none" stroke="#ffed00" stroke-width="2.5"/>
-        </g>
-        <g class="anim-ring-b">
-          <ellipse cx="225" cy="110" rx="95" ry="43" fill="none" stroke="#f1efe9" stroke-width="2"/>
-          <ellipse cx="225" cy="110" rx="66" ry="29" fill="none" stroke="#f1efe9" stroke-width="1.5"/>
-          <ellipse cx="225" cy="110" rx="38" ry="16" fill="none" stroke="#f1efe9" stroke-width="1.2"/>
-        </g>
-        <ellipse cx="225" cy="110" rx="18" ry="8" fill="#07080c"/>
-        <g class="anim-craft">
-          <path transform="translate(86 126) rotate(-11.6) scale(1.7) translate(-6 -50)" d="M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z" fill="#f1efe9"/>
-        </g>
-        <rect x="376" y="176" width="22" height="22" fill="#3fb97a" stroke="#14171f" stroke-width="2"/>
-        <path d="M380 186 L385 191 L394 180" fill="none" stroke="#14171f" stroke-width="2.5"/>
+    <div class="mark-box">
+      <svg class="mark-svg" viewBox="165 150 490 285" role="img" aria-label="Animowany znak KAIWA „K.” / animated KAIWA “K.” mark">
+        <rect x="165" y="150" width="490" height="285" fill="#14171f"/>
+        <path class="anim-k" fill="#f1efe9" d="M275 175H349V277L448 175H522L409 292L469 354V410H446L349 317V410H275Z"/>
+        <rect class="anim-sq" fill="#ffed00" x="488" y="353" width="57" height="57"/>
       </svg>
     </div>
   </section>
@@ -550,6 +508,8 @@ document.querySelectorAll(".persona-card").forEach((btn) => {
   btn.addEventListener("click", () => renderTier(btn.dataset.tier));
 });
 
+const ICON_HELL = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 320\" width=\"320\" height=\"320\" role=\"img\" aria-label=\"KAIWA\"><title>KAIWA</title><rect width=\"320\" height=\"320\" rx=\"48\" fill=\"#F1EFE9\"/><g transform=\"translate(-126.44 -52.76) scale(0.71111)\"><path fill=\"#14171F\" d=\"M275 175H349V277L448 175H522L409 292L469 354V410H446L349 317V410H275Z\"/><rect fill=\"#14171F\" x=\"488\" y=\"353\" width=\"57\" height=\"57\"/></g></svg>";
+const ICON_DUNKEL = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 320\" width=\"320\" height=\"320\" role=\"img\" aria-label=\"KAIWA\"><title>KAIWA</title><rect width=\"320\" height=\"320\" rx=\"48\" fill=\"#14171F\"/><g transform=\"translate(-126.44 -52.76) scale(0.71111)\"><path fill=\"#F1EFE9\" d=\"M275 175H349V277L448 175H522L409 292L469 354V410H446L349 317V410H275Z\"/><rect fill=\"#FFED00\" x=\"488\" y=\"353\" width=\"57\" height=\"57\"/></g></svg>";
 document.getElementById("btn-theme").addEventListener("click", (e) => {
   const root = document.documentElement;
   const isDark = root.getAttribute("data-theme") === "dunkel";
@@ -558,9 +518,7 @@ document.getElementById("btn-theme").addEventListener("click", (e) => {
   e.currentTarget.setAttribute("aria-pressed", String(!isDark));
   e.currentTarget.textContent = !isDark ? "Motyw: ciemny / Dark" : "Motyw: jasny / Light";
   const iconWrap = document.getElementById("header-icon");
-  iconWrap.innerHTML = !isDark
-    ? "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 320\" width=\"320\" height=\"320\" role=\"img\" aria-label=\"KAIWA\">\n<title>KAIWA</title>\n<rect width=\"320\" height=\"320\" rx=\"48\" fill=\"#14171F\"></rect>\n<ellipse cx=\"211.2\" cy=\"137.7\" rx=\"18.7\" ry=\"52.0\" transform=\"rotate(-35 211.2 137.7)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"3.4\" opacity=\"1.00\"></ellipse>\n<ellipse cx=\"216.9\" cy=\"133.6\" rx=\"14.2\" ry=\"39.5\" transform=\"rotate(-35 216.9 133.6)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"1.4\" opacity=\"0.87\"></ellipse>\n<ellipse cx=\"220.3\" cy=\"131.2\" rx=\"10.8\" ry=\"30.0\" transform=\"rotate(-35 220.3 131.2)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"2.6\" opacity=\"0.74\"></ellipse>\n<ellipse cx=\"228.4\" cy=\"125.6\" rx=\"8.2\" ry=\"22.8\" transform=\"rotate(-35 228.4 125.6)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"1.3\" opacity=\"0.61\"></ellipse>\n<ellipse cx=\"231.8\" cy=\"123.2\" rx=\"6.2\" ry=\"17.3\" transform=\"rotate(-35 231.8 123.2)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"2.2\" opacity=\"0.48\"></ellipse>\n<ellipse cx=\"239.8\" cy=\"117.6\" rx=\"4.7\" ry=\"13.2\" transform=\"rotate(-35 239.8 117.6)\" fill=\"none\" stroke=\"#F1EFE9\" stroke-width=\"1.1\" opacity=\"0.35\"></ellipse>\n<ellipse cx=\"243.9\" cy=\"114.7\" rx=\"3.2\" ry=\"8.5\" transform=\"rotate(-35 243.9 114.7)\" fill=\"#07080C\"></ellipse>\n<g transform=\"translate(5.4 137.2) scale(1.7) rotate(-35 50 50)\"><path fill=\"#F1EFE9\" fill-opacity=\"0.06\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g><g transform=\"translate(17.7 128.6) scale(1.7) rotate(-35 50 50)\"><path fill=\"#F1EFE9\" fill-opacity=\"0.13\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g>\n<g transform=\"translate(30.0 120.0) scale(1.7) rotate(-35 50 50)\" opacity=\"1\"><path fill=\"#F1EFE9\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g>\n<rect x=\"254\" y=\"254\" width=\"22\" height=\"22\" fill=\"#F1EFE9\"></rect>\n</svg>"
-    : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 320\" width=\"320\" height=\"320\" role=\"img\" aria-label=\"KAIWA\">\n<title>KAIWA</title>\n<rect width=\"320\" height=\"320\" rx=\"48\" fill=\"#F1EFE9\"></rect>\n<ellipse cx=\"211.2\" cy=\"137.7\" rx=\"18.7\" ry=\"52.0\" transform=\"rotate(-35 211.2 137.7)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"3.4\" opacity=\"1.00\"></ellipse>\n<ellipse cx=\"216.9\" cy=\"133.6\" rx=\"14.2\" ry=\"39.5\" transform=\"rotate(-35 216.9 133.6)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"1.4\" opacity=\"0.87\"></ellipse>\n<ellipse cx=\"220.3\" cy=\"131.2\" rx=\"10.8\" ry=\"30.0\" transform=\"rotate(-35 220.3 131.2)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"2.6\" opacity=\"0.74\"></ellipse>\n<ellipse cx=\"228.4\" cy=\"125.6\" rx=\"8.2\" ry=\"22.8\" transform=\"rotate(-35 228.4 125.6)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"1.3\" opacity=\"0.61\"></ellipse>\n<ellipse cx=\"231.8\" cy=\"123.2\" rx=\"6.2\" ry=\"17.3\" transform=\"rotate(-35 231.8 123.2)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"2.2\" opacity=\"0.48\"></ellipse>\n<ellipse cx=\"239.8\" cy=\"117.6\" rx=\"4.7\" ry=\"13.2\" transform=\"rotate(-35 239.8 117.6)\" fill=\"none\" stroke=\"#14171F\" stroke-width=\"1.1\" opacity=\"0.35\"></ellipse>\n<ellipse cx=\"243.9\" cy=\"114.7\" rx=\"3.2\" ry=\"8.5\" transform=\"rotate(-35 243.9 114.7)\" fill=\"#07080C\"></ellipse>\n<g transform=\"translate(5.4 137.2) scale(1.7) rotate(-35 50 50)\"><path fill=\"#14171F\" fill-opacity=\"0.06\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g><g transform=\"translate(17.7 128.6) scale(1.7) rotate(-35 50 50)\"><path fill=\"#14171F\" fill-opacity=\"0.13\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g>\n<g transform=\"translate(30.0 120.0) scale(1.7) rotate(-35 50 50)\" opacity=\"1\"><path fill=\"#14171F\" d=\"M93 50L80 39.5L73 43.5L73 56.5L80 60.5ZM74 44.5L50 46C46.5 46.4 45 48.2 45 50C45 51.8 46.5 53.6 50 54L74 55.5ZM47 46.5L14 32.3L14 33.7L47 48.3ZM11.9 33a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 47.5L9 39.8L9 41.2L47 49.3ZM6.9 40.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 48.5L6 46.8L6 48.2L47 50.3ZM3.9 47.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 49.7L6 51.8L6 53.2L47 51.5ZM3.9 52.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 50.7L9 58.8L9 60.2L47 52.5ZM6.9 59.5a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0ZM47 51.7L14 66.3L14 67.7L47 53.5ZM11.9 67a2.1 2.1 0 1 0 4.2 0a2.1 2.1 0 1 0 -4.2 0Z\"></path></g>\n<rect x=\"254\" y=\"254\" width=\"22\" height=\"22\" fill=\"#14171F\"></rect>\n</svg>";
+  iconWrap.innerHTML = !isDark ? ICON_DUNKEL : ICON_HELL;
 });
 
 document.getElementById("btn-motion").addEventListener("click", (e) => {

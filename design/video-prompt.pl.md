@@ -13,13 +13,12 @@ Styl: płaska grafika, ostre krawędzie, twarde kształty. Bez gradientów, bez 
 Kolory (hex), tylko te:
 tło #F1EFE9 (papier) albo #14171F (tinte),
 kształty i linie #14171F na jasnym tle, #F1EFE9 na ciemnym tle,
-sygnał #FFED00 (żółty) tylko jako pasy i plamy, nigdy jako tło całego kadru,
-rdzeń tunelu #07080C,
-zielony stan #3FB97A tylko w małym kwadracie w prawym dolnym rogu.
+sygnał #FFED00 (żółty) tylko jako pasy, plamy i kwadrat w znaku, nigdy jako tło całego kadru,
+zielony stan #3FB97A tylko w małym kwadracie znaku i tylko wtedy, gdy pokazany jest stan.
 
-Znak KAIWA, warp mode: ciemna kafelka z zaokrąglonymi rogami (promień 15 procent boku). Na niej tunel z sześciu zagnieżdżonych elips o nierównych odstępach i zmiennej grubości linii, z ciemnym rdzeniem. Do tunelu płynie ośmiornica: ciało z płetwami skierowanymi ku tunelowi, z tyłu sześć ramion z okrągłymi końcami, jedno oko. Za ośmiornicą dwie blade kopie jako echo. W prawym dolnym rogu kafelki mały kwadrat (wskaźnik stanu).
+Znak KAIWA „K.”: ciemna kafelka z zaokrąglonymi rogami (promień 15 procent boku). Na niej duża litera K o prostych, twardych krawędziach w kolorze #F1EFE9, a u stopy K, na prawo od jego nogi, mały żółty kwadrat #FFED00 (wskaźnik stanu). Nic więcej nie leży na kafelce.
 
-Ruch warp mode: ośmiornica płynie po prostej linii pod kątem 35 stopni w górę w prawo, w stronę tunelu. Echo podąża za nim w stałych odstępach. Elipsy tunelu przybliżają się skokami, bez płynnego rozmycia. Na końcu ośmiornica wchodzi w ciemny rdzeń. W ostatniej sekundzie kadr zatrzymuje się na nieruchomym znaku na środku, z wolnym miejscem dookoła (co najmniej jedna czwarta boku znaku).
+Ruch: K stoi nieruchomo. Kwadrat pojawia się twardym cięciem, potem dwa razy włącza się i wyłącza twardym cięciem, bez zanikania. Pasy pod kątem 35 stopni przebiegają raz przez kadr od lewej do prawej skokami, bez płynnego rozmycia. W ostatniej sekundzie kadr zatrzymuje się na nieruchomym znaku na środku, z wolnym miejscem dookoła (co najmniej jedna czwarta boku znaku).
 
 Pasy sygnałowe: równoległe pasy #FFED00 pod kątem 35 stopni, twarde krawędzie, stałe szerokości.
 
@@ -34,7 +33,7 @@ Tło: [papier #F1EFE9 | tinte #14171F]
 Tryb kolorów znaku: [czarno-biały (domyślny) | spectrum | SHIFT]
 ```
 
-Tryby spectrum i SHIFT mają własne kolory pasów, pierścieni i echa. Lista: `design/logo/themes.json`. Kwadrat w trybach spectrum i SHIFT ma kolor #14171F i nie pokazuje stanu.
+Tryby spectrum i SHIFT mają własne kolory poziomych pasów kafelki. Lista: `design/logo/themes.json`. K i kwadrat w trybach spectrum i SHIFT mają kolor #14171F, a kwadrat nie pokazuje stanu.
 
 ## Po wygenerowaniu
 
@@ -47,5 +46,4 @@ Tryby spectrum i SHIFT mają własne kolory pasów, pierścieni i echa. Lista: `
 | `tinte` | #14171F | ciemne tło, kształty na jasnym tle |
 | `papier` | #F1EFE9 | jasne tło, kształty na ciemnym tle |
 | `signal` | #FFED00 | pasy pod kątem 35 stopni |
-| rdzeń | #07080C | środek tunelu |
-| `status-aktiv` | #3FB97A | kwadrat stanu, tylko w trybie czarno-białym |
+| `status-aktiv` | #3FB97A | kwadrat stanu, tylko w trybie czarno-białym i tylko gdy pokazany jest stan |

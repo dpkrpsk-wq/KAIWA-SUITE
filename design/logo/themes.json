@@ -1,16 +1,12 @@
 {
-  "hinweis": "Personalisierung des KAIWA-Logos (X1 2026-11-06 01:09): Voreinstellung ist der Schwarzweiß-Modus (kaiwa-logo.svg, kaiwa-icon.svg), wählbar sind der Modus spectrum (Regenbogen) und der Modus SHIFT (trans). Farbthemen des KAIWA-Logos. Komposition Ton in Ton: die Bänder sind aufgehellte Flaggenfarben (Mischung mit Papier), die Symbole tragen die vollen Flaggenfarben, der Krake und die Beschriftung bleiben in Tinte als ruhiger Anker. Gängige Hex-Werte der Flaggen, nicht an einer Primärquelle geprüft.",
+  "hinweis": "Farbmodi des KAIWA-Logos „K.“. Voreinstellung ist der Schwarzweiß-Modus (kaiwa-icon.svg, kaiwa-logo.svg), wählbar sind der Modus spectrum (Regenbogen) und der Modus SHIFT (trans). Kachel aus waagrechten Streifen: aufgehellte Flaggenfarben (Mischung mit Papier), K und Quadrat in Tinte. Gängige Hex-Werte der Flaggen, nicht an einer Primärquelle geprüft. Entscheidung von X1 (2026-11-24): je Modus genau eine Fassung.",
   "tinte": "#14171F",
   "papier": "#F1EFE9",
   "aufhellung": 0.55,
   "themen": [
     {"id": "spectrum", "pl": "spectrum", "en": "spectrum", "flagge": "tęcza / rainbow",
-     "farben": ["#E40303", "#FF8C00", "#FFED00", "#008026", "#24408E", "#732982"],
-     "ringe": ["#E40303", "#FF8C00", "#008026", "#24408E", "#732982", "#732982"],
-     "echo": ["#732982", "#E40303"]},
+     "farben": ["#E40303", "#FF8C00", "#FFED00", "#008026", "#24408E", "#732982"]},
     {"id": "shift", "pl": "SHIFT", "en": "SHIFT", "flagge": "trans",
-     "farben": ["#5BCEFA", "#F5A9B8", "#FFFFFF", "#F5A9B8", "#5BCEFA"],
-     "ringe": ["#1F8FC4", "#D9667F", "#1F8FC4", "#D9667F", "#1F8FC4", "#D9667F"],
-     "echo": ["#1F8FC4", "#D9667F"]}
+     "farben": ["#5BCEFA", "#F5A9B8", "#FFFFFF", "#F5A9B8", "#5BCEFA"]}
   ]
 }

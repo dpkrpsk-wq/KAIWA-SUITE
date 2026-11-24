@@ -13,13 +13,12 @@ Style: flat graphics, sharp edges, hard shapes. No gradients, no blur, no soft s
 Colours (hex), only these:
 background #F1EFE9 (paper) or #14171F (ink),
 shapes and lines #14171F on the light background, #F1EFE9 on the dark background,
-signal #FFED00 (yellow) only as stripes and patches, never as the background of the whole frame,
-tunnel core #07080C,
-green state #3FB97A only in the small square at the bottom right.
+signal #FFED00 (yellow) only as stripes, patches and the square in the mark, never as the background of the whole frame,
+green state #3FB97A only in the small square of the mark, and only when a state is shown.
 
-The KAIWA, warp mode mark: a dark tile with rounded corners (radius 15 percent of the side). On it a tunnel of six nested ellipses with uneven gaps and varying line weight, with a dark core. An octopus swims towards the tunnel: a body with fins pointing at the tunnel, six arms with round tips trailing behind, one eye. Behind the octopus two pale copies as an echo. At the bottom right of the tile a small square (state indicator).
+The KAIWA "K." mark: a dark tile with rounded corners (radius 15 percent of the side). On it a large letter K with straight, hard edges in #F1EFE9, and at the foot of the K, to the right of its leg, a small yellow square #FFED00 (state indicator). Nothing else is on the tile.
 
-Warp mode motion: the octopus swims along a straight line at 35 degrees up and to the right, towards the tunnel. The echo follows at fixed distances. The ellipses of the tunnel come closer in steps, without smooth blur. At the end the octopus enters the dark core. In the last second the frame holds on the still mark in the centre, with free space around it (at least a quarter of the side of the mark).
+Motion: the K holds still. The square appears with a hard cut, then switches on and off twice with hard cuts, without fading. The stripes at 35 degrees run once across the frame from left to right in steps, without smooth blur. In the last second the frame holds on the still mark in the centre, with free space around it (at least a quarter of the side of the mark).
 
 Signal stripes: parallel #FFED00 stripes at 35 degrees, hard edges, fixed widths.
 
@@ -34,7 +33,7 @@ Background: [paper #F1EFE9 | ink #14171F]
 Colour mode of the mark: [black and white (default) | spectrum | SHIFT]
 ```
 
-The spectrum and SHIFT modes have their own colours for stripes, rings and echo. List: `design/logo/themes.json`. In the spectrum and SHIFT modes the square is #14171F and shows no state.
+The spectrum and SHIFT modes have their own colours for the horizontal stripes of the tile. List: `design/logo/themes.json`. In the spectrum and SHIFT modes the K and the square are #14171F and the square shows no state.
 
 ## After generating
 
@@ -47,5 +46,4 @@ The spectrum and SHIFT modes have their own colours for stripes, rings and echo.
 | `tinte` (ink) | #14171F | dark background, shapes on the light background |
 | `papier` (paper) | #F1EFE9 | light background, shapes on the dark background |
 | `signal` | #FFED00 | stripes at 35 degrees |
-| core | #07080C | centre of the tunnel |
-| `status-aktiv` | #3FB97A | state square, black and white mode only |
+| `status-aktiv` | #3FB97A | state square, black and white mode only, only when a state is shown |

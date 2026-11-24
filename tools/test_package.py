@@ -466,7 +466,7 @@ class LogoStatusTest(unittest.TestCase):
         self.assertEqual(erster, zweiter)
         daten = json.loads((ROOT / "design/logo" / "status.json").read_text(encoding="utf-8"))
         themen = json.loads((ROOT / "design/logo" / "themes.json").read_text(encoding="utf-8"))
-        self.assertEqual(len(erster), 2 * (len(daten["zustaende"]) + len(themen["themen"])))
+        self.assertEqual(len(erster), len(daten["zustaende"]) + len(themen["themen"]))  # nur das Icon, je Zustand und je Modus eine Datei
         for z in daten["zustaende"]:
             with self.subTest(zustand=z["id"]):
                 self.assertGreaterEqual(s.kontrast(z["farbe"], daten["hintergrund"]), 3.0)

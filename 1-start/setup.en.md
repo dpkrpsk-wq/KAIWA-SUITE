@@ -1,6 +1,6 @@
 # KAIWA: setup guide (Microsoft 365 Copilot)
 
-<img src="../design/logo/kaiwa-logo.svg" alt="KAIWA" width="96">
+<picture><source media="(prefers-color-scheme: dark)" srcset="../design/logo/kaiwa-logo-hell.svg"><img src="../design/logo/kaiwa-logo.svg" alt="KAIWA" width="240"></picture>
 
 Product 26.01, version 0.2.0 (draft), 22 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, contact: 285421@student.uwr.edu.pl. The package invites you to test a method: thoughts spoken aloud are recorded word for word, and every entry gets a SHA-256 hash that later shows whether the text in the file matches the hash.
 

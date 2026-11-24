@@ -77,8 +77,6 @@ a{color:inherit}
 .empty{padding:0 16px 16px;font-size:14px;color:var(--text-gedaempft,#4a4f5a)}
 
 .note{background:var(--flaeche-hinweis,#e6e2d4);border:3px dashed var(--entwurf,#8a3b12);padding:16px;font-size:14px;line-height:20px}
-.kopf{margin:24px 0 0;display:flex;justify-content:center}
-.kopf img{display:block;width:100%;max-width:420px;height:auto;box-shadow:var(--schatten-hart)}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:11px;line-height:16px;border-top:3px solid var(--text,#14171f);padding-top:8px}
 
 @media (max-width:720px){
@@ -99,10 +97,6 @@ a{color:inherit}
     </div>
     <div class="sticker">wersja robocza / draft</div>
   </header>
-
-  <figure class="kopf">
-    <img id="kopf" src="design/logo/kalmar/kaiwa-suite-kalmar.png" width="2048" height="2048" alt="KAIWA SUITE: znak ośmiornicy z tunelem / octopus mark with tunnel">
-  </figure>
 
   <section class="controls" aria-label="Ustawienia widoku / View settings">
     <div class="ctl" role="group" aria-labelledby="l-mode">
@@ -235,12 +229,9 @@ function render(){
   }).join("");
 }
 const LOGO = {sw:"design/design-system/assets/Logos/kaiwa-icon-hell.svg", spectrum:"design/logo/status/kaiwa-icon-spectrum.svg", shift:"design/logo/status/kaiwa-icon-shift.svg"};
-/* Header image per logo mode, see design/logo/kalmar/README.md. */
-const KOPF = {sw:"design/logo/kalmar/kaiwa-suite-kalmar.png", spectrum:"design/logo/kalmar/kaiwa-suite-kalmar-spectrum.png", shift:"design/logo/kalmar/kaiwa-suite-kalmar-shift.png"};
 function setMode(m){
   document.documentElement.dataset.mode = m;
   document.getElementById("logo").src = LOGO[m];
-  document.getElementById("kopf").src = KOPF[m];
   document.querySelectorAll("[data-mode].chip").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
   try { localStorage.setItem("kaiwa-mode", m); } catch (e) {}
 }

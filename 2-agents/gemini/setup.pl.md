@@ -1,6 +1,6 @@
 # KAIWA: instrukcja konfiguracji (Google Gemini)
 
-<img src="../../design/logo/kaiwa-logo.svg" alt="KAIWA" width="96">
+<picture><source media="(prefers-color-scheme: dark)" srcset="../../design/logo/kaiwa-logo-hell.svg"><img src="../../design/logo/kaiwa-logo.svg" alt="KAIWA" width="240"></picture>
 
 Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl. Pakiet przenosi metodę KAIWA do Google Gemini (Skills i Gems to zapisane w Gemini stałe instrukcje, które można wywołać w rozmowie, oraz dowolny czat Gemini z załącznikami).
 

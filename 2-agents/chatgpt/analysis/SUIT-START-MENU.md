@@ -57,7 +57,7 @@ Wpisz numer albo nazwę.
 
 ## Obraz / picture
 
-`kaiwa-start-menu.png` shows the same menu in the KAIWA SUITE visual system: black header with the logo, yellow signal stripes at 35 degrees, cards with a hard shadow, font Space Grotesk. Its source is `start-menu.html` in this folder. It uses only the tokens and components of `design/design-system/` and the octopus mark from `design/logo/kalmar/`. The picture is bilingual, Polish and English. If the picture and this file differ, this file applies.
+`kaiwa-start-menu.png` shows the same menu in the KAIWA SUITE visual system: black header with the logo, yellow signal stripes at 35 degrees, cards with a hard shadow, font Space Grotesk. Its source is `start-menu.html` in this folder. It uses only the tokens and components of `design/design-system/` and the mark "K." from `design/design-system/assets/Logos/`. The picture is bilingual, Polish and English. If the picture and this file differ, this file applies.
 
 ## Test / acceptance test
 

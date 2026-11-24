@@ -1,5 +1,5 @@
 {
-  "hinweis": "Zustände des Leuchtquadrats im KAIWA-Logo. Farbe allein trägt keine Bedeutung, jede Stufe hat eine eigene Form (WCAG 1.4.1). Farbbedeutung angelehnt an die übliche Ampel-Logik für Anzeigeleuchten (grün normal, gelb Abweichung, rot Fehler, blau Hinweis oder laufend, grau aus), nicht am Normtext geprüft.",
+  "hinweis": "Zustände des Leuchtquadrats im KAIWA-Logo „K.“ (Icon, Kachel dunkel). Farbe allein trägt keine Bedeutung, jede Stufe hat eine eigene Form (WCAG 1.4.1). Farbbedeutung angelehnt an die übliche Ampel-Logik für Anzeigeleuchten (grün normal, gelb Abweichung, rot Fehler, blau Hinweis oder laufend, grau aus), nicht am Normtext geprüft.",
   "hintergrund": "#14171F",
   "zustaende": [
     {"id": "aktiv",    "pl": "aktywny",      "en": "active",  "farbe": "#3FB97A", "form": "haken"},
