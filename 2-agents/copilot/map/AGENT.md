@@ -20,7 +20,7 @@ Cała zawartość pliku `INSTRUCTIONS.txt` w tym folderze.
 
 ## Wiedza (Knowledge)
 
-Nic nie dodawaj. Pliki dyktatów i mapę dołączasz do rozmowy. Pliki z OneDrive lub SharePoint jako wiedza wymagają licencji Copilot albo płatnego rozliczenia za użycie.
+Nic nie dodawaj. Pliki dyktatów i mapę dołączasz do rozmowy, do polecenia „sprawdź mapę” także plik `sprawdz-mape.md` z tego folderu. Pliki z OneDrive lub SharePoint jako wiedza wymagają licencji Copilot albo płatnego rozliczenia za użycie.
 
 ## Podpowiedzi startowe (Starter prompts)
 

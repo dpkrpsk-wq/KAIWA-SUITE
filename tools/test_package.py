@@ -218,6 +218,26 @@ class MapaTest(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(K.main(["sprawdz", path]), 1)
 
+    def test_file_without_map_sheets_is_not_ok(self):
+        """Befund V13: eine Datei ohne Kartenblaetter darf nicht als MAPA OK gelten."""
+        try:
+            import openpyxl
+        except ImportError:
+            self.skipTest("openpyxl missing")
+        import context as K
+        start = mapa_blocks()[0]
+        verify = CODE.findall((MAPA.parent / "sprawdz-mape.md").read_text(encoding="utf-8"))[0]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "bez-mapy.xlsx")
+            wb = openpyxl.Workbook()
+            wb.active.title = "entries"
+            wb.save(path)
+            self.assertIn("brak arkusza: tematy", K.sprawdz(path))
+            check = start + "\n" + verify.replace('PLIK = "mapa.xlsx"', "PLIK = %r" % path)
+            out = run(check, tmp).stdout
+            self.assertIn("brak arkusza: tematy", out)
+            self.assertNotIn("MAPA OK", out)
+
     def test_errors_save_nothing(self):
         start, write = mapa_blocks()[:2]
         with tempfile.TemporaryDirectory() as tmp:

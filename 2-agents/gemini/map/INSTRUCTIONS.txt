@@ -129,6 +129,7 @@ def arkusz(n):
     return list(wb[n].iter_rows(min_row=2, values_only=True)) if n in wb.sheetnames else []
 T, P, C = arkusz("tematy"), arkusz("połączenia"), arkusz("cele")
 b = bledy(T, P, C)
+b += ["brak arkusza: " + n for n in ("tematy", "połączenia", "cele", "rejestr") if n not in wb.sheetnames]
 reg = {(str(r[0]), str(r[1])): str(r[2]) for r in arkusz("rejestr") if r and r[0]}
 for a, i, tekst in wiersze(T, P, C):
     if reg.pop((a, i), None) != h(tekst):

@@ -54,7 +54,7 @@ Opcjonalnie. Opis metody: `1-start/context.pl.md`. Ta część nie była jeszcze
 3. W sekcji wiedzy nic nie dodawaj. Pliki dołączasz do rozmowy.
 4. Napisz „start“. Agent powinien odpowiedzieć „Mapa gotowa. Skróty działają.“
 5. Dołącz plik dyktatu z pierwszego agenta i napisz „dodaj dołączone dyktaty do mapy“. Zatwierdź propozycje numerami, potem napisz „zapisz“.
-6. Sprawdzenie w Copilot: dołącz plik mapy i plik `2-agents/copilot/map/sprawdz-mape.md`, napisz „sprawdź mapę”. Na własnym komputerze: `python tools/context.py sprawdz <plik mapy>` (wymaga pakietu openpyxl).
+6. Sprawdzenie w Copilot: dołącz plik mapy i plik `2-agents/copilot/map/sprawdz-mape.md`, napisz „sprawdź mapę”. Test 24.11.2026: agent może napisać własny kod albo go nie uruchomić i wtedy nie wykryje zmiany w mapie. Zaufaj tylko odpowiedzi „MAPA OK” albo liście błędów z uruchomionego kodu (otwórz panel rozumowania w odpowiedzi i sprawdź, że kod z pliku się wykonał). Pewne jest tylko sprawdzenie na własnym komputerze: `python tools/context.py sprawdz <plik mapy>` (wymaga pakietu openpyxl).
 
 ## Trzeci agent: analiza
 
@@ -90,7 +90,7 @@ Sprawdzone 22.11.2026 w dokumentacji Microsoft Learn:
 2. Bez licencji Copilot działają agenci z instrukcjami i stronami publicznymi, inni tylko w płatnym rozliczeniu: https://learn.microsoft.com/copilot/plan/copilot-overview
 3. Microsoft nie publikuje liczbowych limitów użycia: https://learn.microsoft.com/partner-center/announcements/2026-november
 
-Długość instrukcji agentów (znaki, granica 8000): strumień 6018, mapa 7495, analiza 6496, źródła 4198. Wklejaj z pliku bez zmian, edytor z końcami wierszy CRLF może dodać znaki.
+Długość instrukcji agentów (znaki, granica 8000): strumień 6163, mapa 7579, analiza 6580, źródła 4282. Wklejaj z pliku bez zmian, edytor z końcami wierszy CRLF może dodać znaki.
 
 ## Uwagi do testu
 

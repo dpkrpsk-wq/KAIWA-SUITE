@@ -1,6 +1,6 @@
 # Sprawdzenie mapy / map check (KAIWA, mapa kontekstu)
 
-KAIWA SUITE 26.01, wersja 0.2.0 (robocza / draft), 22.11.2026. Plik do dołączenia w rozmowie z agentem Copilot „KAIWA: mapa kontekstu”. Kod dla polecenia „sprawdź mapę”. Używa funkcji h, bledy i wiersze z bloku startowego instrukcji projektu. W PLIK wpisz ścieżkę dołączonego pliku mapy. / Code for the command “sprawdź mapę”. It uses the functions h, bledy and wiersze from the start block of the project instructions. Put the path of the attached map file into PLIK.
+KAIWA SUITE 26.01, wersja 0.2.0 (robocza / draft), 22.11.2026. Plik do dołączenia w rozmowie z agentem Copilot „KAIWA: mapa kontekstu”. Kod dla polecenia „sprawdź mapę”. Używa funkcji h, bledy i wiersze z bloku startowego instrukcji agenta. W PLIK wpisz ścieżkę dołączonego pliku mapy. / Code for the command “sprawdź mapę”. It uses the functions h, bledy and wiersze from the start block of the agent instructions. Put the path of the attached map file into PLIK.
 
 ```python
 import openpyxl
@@ -10,6 +10,7 @@ def arkusz(n):
     return list(wb[n].iter_rows(min_row=2, values_only=True)) if n in wb.sheetnames else []
 T, P, C = arkusz("tematy"), arkusz("połączenia"), arkusz("cele")
 b = bledy(T, P, C)
+b += ["brak arkusza: " + n for n in ("tematy", "połączenia", "cele", "rejestr") if n not in wb.sheetnames]
 reg = {(str(r[0]), str(r[1])): str(r[2]) for r in arkusz("rejestr") if r and r[0]}
 for a, i, tekst in wiersze(T, P, C):
     if reg.pop((a, i), None) != h(tekst):

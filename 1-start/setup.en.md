@@ -43,7 +43,7 @@ Each session gives one file `dictation-YYYY-MM-DD-HHMM.xlsx` with three sheets: 
 ## Checking
 
 1. In Copilot, attach a session file to a conversation with the agent and write "verify this file". The agent computes the hashes again and reports for each entry whether the text changed.
-2. On your own computer, if you keep a journal in Markdown files: `python tools/dictation_ledger.py init <folder>`, then `scan <folder>` and `verify <folder>`. The script uses the same hash rule as the agent.
+2. On your own computer, if you keep a journal in Markdown files: `python tools/dictation_ledger.py init <folder>`, then `scan <folder>` and `verify <folder>`. The script reads files `journal/YYYY-MM-DD.md` with lines `Dosłownie (dyktowane): „...”` and does not read the `.xlsx` files from the agent. The script uses the same hash rule as the agent.
 
 ## Second agent: context map
 
@@ -54,7 +54,7 @@ Optional. Method: `1-start/context.pl.md` (Polish). This part has not been teste
 3. Add nothing as knowledge. You attach files to the conversation.
 4. Write "start". The agent should answer "Mapa gotowa. Skróty działają." (map ready, hashes work).
 5. Attach a dictation file from the first agent and write "dodaj dołączone dyktaty do mapy" (add the attached dictations to the map). Approve the proposals by number, then write "zapisz" (save).
-6. Check in Copilot: attach the map file and `2-agents/copilot/map/sprawdz-mape.md` and write "sprawdź mapę" (check the map). On your own computer: `python tools/context.py sprawdz <map file>` (needs openpyxl).
+6. Check in Copilot: attach the map file and `2-agents/copilot/map/sprawdz-mape.md` and write "sprawdź mapę" (check the map). Test of 24 November 2026: the agent may write its own code or not run any, and then it does not detect a changed map. Trust only the answer "MAPA OK" or a list of errors from code that actually ran (open the reasoning panel and check that the code from the file was executed). Only the check on your own computer is reliable: `python tools/context.py sprawdz <map file>` (needs openpyxl).
 
 ## Third agent: analysis
 
@@ -74,7 +74,7 @@ Optional. This part has not been tested in Copilot yet.
 3. The instructions hold a short form of the source protocol. You can attach the full file `method/protocols/source-protocol.md` to the conversation.
 4. On your own computer you can search without Copilot: `python tools/search.py "term" --csv result.csv`. The file has the columns of the sheet "zrodla" in `4-without-ai/registers.xlsx`.
 
-Length of the agent instructions (characters, limit 8,000): stream 6018, map 7495, analysis 6496, sources 4198. Paste them from the file unchanged, an editor with CRLF line endings can add characters.
+Length of the agent instructions (characters, limit 8,000): stream 6163, map 7579, analysis 6580, sources 4282. Paste them from the file unchanged, an editor with CRLF line endings can add characters.
 
 ## Other platforms
 
