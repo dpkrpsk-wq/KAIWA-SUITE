@@ -39,7 +39,7 @@ In the project "KAIWA: analiza" attach a file and write "start" (also in Polish 
 ## First test
 
 1. In the project "stream of consciousness" write "start". The agent should run a short piece of Python code and show "OK". The "OK" alone does not prove that the code runs, so check the file after the session.
-2. Enter two test sentences, then write "koniec". Download the file `dictation-YYYY-MM-DD-HHMM.xlsx` and check the sheets "entries", "register" and "tool".
+2. Enter two test sentences, then write "koniec" (end). Download the file `dictation-YYYY-MM-DD-HHMM.xlsx` and check the sheets "entries", "register" and "tool".
 
 ## Files between sessions
 

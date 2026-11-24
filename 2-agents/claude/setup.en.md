@@ -64,7 +64,7 @@ The skills are written for Claude Code. In claude.ai use the projects of way A.
 1. A message dictated by voice counts as your original words. The transcription can still differ from what you said, so read the file after the session.
 2. The SHA-256 hash shows whether the text in the file matches the hash. It does not show that the model copied your words exactly. The hash "sha256" is computed after Unicode normalisation (NFC) and collapsing whitespace and line breaks. The second hash "sha256_raw" is computed from the exact bytes of the text. Compared by hand with the text it shows changes in whitespace too, the check in the agent compares only "sha256". Both hashes protect the text as the model took it over, not what you said.
 3. Keep the "tool" row (sheet "tool", line "Narzędzie") separately for each chat or session. The model name comes from the chat and is no independent proof.
-4. The block "Kontrola kulturowa" in the analysis is the model's self-report, not an independent check.
+4. The block "Kontrola kulturowa" (cultural check) in the analysis is the model's self-report, not an independent check.
 5. The open access sites in the sources module are a search preference, not a technical restriction. Web search in claude.ai depends on the account and its settings (unverified for this package).
 6. Run the script `tools/search.py` on your own computer. It is only in the full package, a release without scripts leaves it out.
 

@@ -22,7 +22,7 @@ Pakiet do przetestowania metody pracy z AI w naukach humanistycznych i społeczn
 | `2-agents/copilot/analysis/` | KAIWA: analiza (triaż, dalszy krok, język wyniku i kontekst kulturowy, ramy, blok kontroli kulturowej) | roboczy, nieprzetestowany / draft, untested |
 | `2-agents/copilot/sources/` | KAIWA: źródła (otwarty dostęp) | roboczy, nieprzetestowany / draft, untested |
 
-Konfiguracja: `1-start/setup.pl.md` (wszyscy agenci) i `1-start/setup.en.md` (strumień świadomości i jedna uwaga o agencie analizy). Setup: `1-start/setup.pl.md` covers all agents, `1-start/setup.en.md` the stream of consciousness agent and one note on the analysis agent.
+Konfiguracja: `1-start/setup.pl.md` (wszyscy agenci) i `1-start/setup.en.md` (też wszyscy agenci). Setup: `1-start/setup.pl.md` covers all agents, `1-start/setup.en.md` covers all four agents too.
 
 ## Moduły Gemini / Gemini modules
 
@@ -79,4 +79,4 @@ Treść własna pakietu jest na licencji CC BY-NC-SA 4.0 (Creative Commons Uznan
 
 Tryby „sprint“ i „przekład na polski“ dojdą po decyzjach autora. Sprint and transfer into Polish follow after the author's decisions.
 
-Przed wydaniem / before release: sprawdzenie polskiego tekstu przez autora, test agentów w Copilot, kontrola przed publikacją.
+Przed wydaniem / before release: sprawdzenie polskiego tekstu przez autora, test agentów w Copilot, kontrola przed publikacją / the author checks the Polish text, the agents are tested in Copilot, a check before publication.
