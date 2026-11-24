@@ -14,6 +14,10 @@ The full procedure of this module is the file `references/2-agents/chatgpt/sourc
 3. Search with the web search of this chat. The script `tools/search.py` the instructions mention is not part of this plugin and does not run here. Under the table name the route you used for every search: web search, with query and date.
 4. Propose the search terms and wait for the user's acceptance before the first search, as the instructions say.
 5. In the line "Narzędzie" the platform and agent are "ChatGPT, plugin KAIWA Suite, skill research-sources".
+6. One KAIWA module per chat. If a stream of consciousness recording runs in this chat and was not ended with stop, koniec or end, do not start. Reply only with this line in the user's language.
+   PL: "Nagrywanie strumienia świadomości trwa. Zakończ je słowem koniec albo otwórz nowy czat dla innego modułu KAIWA."
+   EN: "A stream of consciousness recording is running. End it with stop or open a new chat for another KAIWA module."
+   DE: "Eine Aufnahme im Gedankenstrom läuft. Beende sie mit stop oder öffne einen neuen Chat für ein anderes KAIWA-Modul."
 
 ## Limits
 

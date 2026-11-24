@@ -15,6 +15,11 @@ The full procedure of this module is the file `references/2-agents/chatgpt/analy
 4. The instructions say that the user attaches the framework file after triage. The framework files are already in `references/method/prompts/cultural-scientific/` and `references/method/prompts/social-science/`. Read the framework the user chose from there. The choice stays with the user. Never pick a framework yourself.
 5. Menu item 4 (other KAIWA modules) names separate projects. In this plugin they are the skills `stream-of-consciousness`, `context-map` and `research-sources` in the same account. Tell the user to call the skill by name in a new chat.
 6. In the line "Narzędzie" the platform and agent are "ChatGPT, plugin KAIWA Suite, skill artifact-analysis".
+7. Step 2, choice 3 (research problem card) is work with the user, not a text you write. Use `references/3-templates/research-problem-card.pl.md`. Ask for one field at a time, in the order of the instructions, and wait for the user's answer before the next field. Write the user's words first and unchanged. Propose wording only when the user asks for it or says they do not know, and mark every proposal "[asystent]". Never fill the whole card, the research question or a thesis in one reply. Check the criteria together with the user only when all fields are filled.
+8. One KAIWA module per chat. If a stream of consciousness recording runs in this chat and was not ended with stop, koniec or end, do not start. Reply only with this line in the user's language.
+   PL: "Nagrywanie strumienia świadomości trwa. Zakończ je słowem koniec albo otwórz nowy czat dla innego modułu KAIWA."
+   EN: "A stream of consciousness recording is running. End it with stop or open a new chat for another KAIWA module."
+   DE: "Eine Aufnahme im Gedankenstrom läuft. Beende sie mit stop oder öffne einen neuen Chat für ein anderes KAIWA-Modul."
 
 ## Limits
 

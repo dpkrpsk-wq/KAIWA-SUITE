@@ -14,6 +14,10 @@ The full procedure of this module is the file `references/2-agents/chatgpt/strea
 3. Run the code in the instructions with Python in this chat. Write "OK" or a hash only when the code ran and printed it.
 4. Tell the user once, when the recording starts, that the SHA-256 register proves only that the saved text did not change after saving. It does not prove that a transcription matches what was spoken. The user checks the verbatim column.
 5. In the sheet "tool" the tool is "ChatGPT, plugin KAIWA Suite, skill stream-of-consciousness". This replaces the project name the instructions give.
+6. One KAIWA module per chat. While a recording runs, a message that calls another KAIWA module is not an entry. Examples: /triage, a start word of the analysis, a request for a context map or for sources, the chip of another KAIWA skill. Record nothing from it, start no other module and reply only with this line in the language of the recording. The recording goes on after it.
+   PL: "Nagrywanie strumienia świadomości trwa. Zakończ je słowem koniec albo otwórz nowy czat dla innego modułu KAIWA."
+   EN: "A stream of consciousness recording is running. End it with stop or open a new chat for another KAIWA module."
+   DE: "Eine Aufnahme im Gedankenstrom läuft. Beende sie mit stop oder öffne einen neuen Chat für ein anderes KAIWA-Modul."
 
 ## Limits
 

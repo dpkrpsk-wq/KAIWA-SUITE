@@ -718,6 +718,19 @@ class ChatGPTPluginTest(unittest.TestCase):
         self.assertIn("Użycie niekomercyjne", (ROOT / "LICENSE").read_text(encoding="utf-8"))
         self.assertEqual(b["skills"], "./skills")
 
+    def test_one_module_per_chat(self):
+        """Test in ChatGPT 24.11.2026: /triage waehrend einer Aufnahme wurde als Notiz aufgenommen.
+        X1 25.11.2026: sperren mit Hinweis. Jeder Skill traegt dieselben drei Hinweiszeilen."""
+        lines = None
+        for skill in self.P.SKILLS:
+            text = (self.P.PLUGIN / "skills" / skill / "SKILL.md").read_text(encoding="utf-8")
+            self.assertIn("One KAIWA module per chat.", text, skill)
+            found = [l.strip() for l in text.splitlines() if l.strip().startswith(("PL: \"Nagrywanie", "EN: \"A stream", "DE: \"Eine Aufnahme"))]
+            self.assertEqual(len(found), 3, skill)
+            if lines is None:
+                lines = found
+            self.assertEqual(found, lines, skill)
+
 
 @braucht("2-agents/claude")
 class ClaudeTest(unittest.TestCase):

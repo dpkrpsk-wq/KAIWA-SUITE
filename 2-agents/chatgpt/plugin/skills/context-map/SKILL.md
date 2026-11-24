@@ -14,6 +14,10 @@ The full procedure of this module is the file `references/2-agents/chatgpt/map/I
 3. For "sprawdź mapę" run the code from `references/2-agents/chatgpt/map/sprawdz-mape.md` with Python on the attached map. Report "verified" only when that code ran and printed its result.
 4. Before you offer a new map file that replaces an existing one, compare the row counts of every sheet in the old and the new workbook and show them to the user.
 5. In the sheet "tool" or the line "Narzędzie" the platform and agent are "ChatGPT, plugin KAIWA Suite, skill context-map".
+6. One KAIWA module per chat. If a stream of consciousness recording runs in this chat and was not ended with stop, koniec or end, do not start. Reply only with this line in the user's language.
+   PL: "Nagrywanie strumienia świadomości trwa. Zakończ je słowem koniec albo otwórz nowy czat dla innego modułu KAIWA."
+   EN: "A stream of consciousness recording is running. End it with stop or open a new chat for another KAIWA module."
+   DE: "Eine Aufnahme im Gedankenstrom läuft. Beende sie mit stop oder öffne einen neuen Chat für ein anderes KAIWA-Modul."
 
 ## Limits
 
