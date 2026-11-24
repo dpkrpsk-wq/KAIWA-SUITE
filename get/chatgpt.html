@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="hell" data-mode="sw" data-base="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAIWA SUITE · ChatGPT · Steps / Kroki</title>
+<link rel="icon" href="../design/logo/kaiwa-icon-32.png">
+<link rel="stylesheet" href="../design/fonts/fonts.css">
+<link rel="stylesheet" href="../design/design-system/tokens.css">
+<link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<a class="skip" href="#steps">Skip to the steps <span class="alt">/ przejdź do kroków</span></a>
+<div class="page">
+  <header class="doc-head">
+    <div class="band" aria-hidden="true"></div>
+    <img id="logo" src="../design/design-system/assets/Logos/kaiwa-icon-hell.svg" alt="KAIWA">
+    <div>
+      <div class="wordmark"><span>KAIWA</span><span>SUITE</span></div>
+      <div class="meta">ChatGPT · package 26.01 · version 0.2.0 <span class="alt">/ pakiet 26.01 · wersja 0.2.0</span></div>
+    </div>
+    <div class="sticker">draft / wersja robocza</div>
+  </header>
+  <p class="crumb"><a href="../index.html">All assistants <span class="alt">/ wszyscy asystenci</span></a></p>
+
+  <section class="stack">
+    <h1>KAIWA SUITE in ChatGPT <span class="alt">/ KAIWA SUITE w ChatGPT</span></h1>
+    <p>From the download to four projects on a ChatGPT Go account. Draft, untested in ChatGPT. <span class="alt">Od pobrania do czterech projektów na koncie ChatGPT Go. Wersja robocza, nieprzetestowana w ChatGPT.</span></p>
+  </section>
+
+  <ol class="steps" id="steps">
+<li><h2>Download <span class="alt">Pobierz</span></h2><p>This is the bundle for ChatGPT. <span class="alt">To pakiet dla ChatGPT.</span></p><div class="dl" data-pkg="chatgpt" aria-live="polite" data-nolang>Loading… / ładowanie…</div></li>
+<li><h2>Unpack <span class="alt">Rozpakuj</span></h2><p>Unpack the ZIP file into a folder of your choice. Windows: right-click the file, then “Extract all”. Mac: double-click the file. You get one folder named <code>KAIWA-SUITE-chatgpt</code>. All paths on this page start in that folder. <span class="alt">Rozpakuj plik ZIP do wybranego folderu. Windows: prawy przycisk, „Wyodrębnij wszystko”. Mac: dwukrotne kliknięcie. Powstaje jeden folder <code>KAIWA-SUITE-chatgpt</code>. Wszystkie ścieżki na tej stronie zaczynają się w tym folderze.</span></p></li>
+<li><h2>Create the projects <span class="alt">Utwórz projekty</span></h2><p>You need a ChatGPT Go account with Projects. Each module is one project: stream of consciousness, context map, analysis, sources. Each folder in <code>2-agents/chatgpt/</code> holds <code>PROJECT.md</code> (name, description, first message), <code>INSTRUCTIONS.txt</code> and <code>files.txt</code>. <span class="alt">Potrzebujesz konta ChatGPT Go z Projects. Każdy moduł to jeden projekt. Każdy folder w <code>2-agents/chatgpt/</code> ma <code>PROJECT.md</code> (nazwa, opis, pierwsza wiadomość), <code>INSTRUCTIONS.txt</code> i <code>files.txt</code>.</span></p><ol><li>In ChatGPT create a new project and give it the name from <code>PROJECT.md</code>. <span class="alt">W ChatGPT utwórz nowy projekt i nadaj mu nazwę z <code>PROJECT.md</code>.</span></li><li>In the project menu choose “Project settings” and paste the whole content of <code>INSTRUCTIONS.txt</code> into the instructions. The stream instructions are in English on purpose, because they are a prompt for the model. <span class="alt">W menu projektu wybierz „Project settings” i wklej całą zawartość <code>INSTRUCTIONS.txt</code> do instrukcji. Instrukcje strumienia są po angielsku celowo, bo to prompt dla modelu.</span></li><li>Add the files listed in <code>files.txt</code> to the project. Each list has at most 10 files, so one upload is enough. <span class="alt">Dodaj do projektu pliki z listy <code>files.txt</code>. Każda lista ma najwyżej 10 plików, wystarczy jedno wgranie.</span></li><li>Start a new chat in the project with the first message from <code>PROJECT.md</code>. <span class="alt">Rozpocznij nowy czat w projekcie pierwszą wiadomością z <code>PROJECT.md</code>.</span></li><li>Repeat for the three other modules. <span class="alt">Powtórz dla trzech pozostałych modułów.</span></li></ol><p>Whether a limit for the length of the instructions exists is unverified. Our instructions have at most about 7,500 characters. <span class="alt">Czy istnieje limit długości instrukcji, jest niesprawdzone. Nasze instrukcje mają najwyżej około 7500 znaków.</span></p></li>
+<li><h2>First test <span class="alt">Pierwszy test</span></h2><ol><li>In the project “stream of consciousness” write “start”. The agent should run a short piece of Python code and show “OK”. Check the file after the session, the “OK” alone proves nothing. <span class="alt">W projekcie „strumień świadomości” napisz „start”. Agent powinien uruchomić krótki kod w Pythonie i pokazać „OK”. Sprawdź plik po sesji, samo „OK” niczego nie dowodzi.</span></li><li>Enter two test sentences, then write “koniec” (end). Download the file <code>dictation-YYYY-MM-DD-HHMM.xlsx</code> and check the sheets “entries”, “register” and “tool”. <span class="alt">Wpisz dwa zdania testowe, potem „koniec”. Pobierz plik <code>dictation-RRRR-MM-DD-GGMM.xlsx</code> i sprawdź arkusze „entries”, „register” i „tool”.</span></li><li>In the project “analysis” attach a file and write “start”. ChatGPT should show a start menu first and analyse nothing before you choose. <span class="alt">W projekcie „analiza” dołącz plik i napisz „start”. ChatGPT powinien najpierw pokazać menu startowe i niczego nie analizować przed twoim wyborem.</span></li></ol></li>
+<li><h2>Known limits <span class="alt">Znane ograniczenia</span></h2><ul><li>All four projects are drafts and untested in ChatGPT. <span class="alt">Wszystkie cztery projekty są robocze i nieprzetestowane w ChatGPT.</span></li><li>Download the files the agent creates right away. Do not assume they stay available after the chat ends (unverified). <span class="alt">Pobieraj pliki od razu. Nie zakładaj, że zostaną po zakończeniu czatu (niesprawdzone).</span></li><li>For the context map agree at the start of each session which map file applies and attach it to the chat. <span class="alt">Dla mapy kontekstu na początku sesji ustal, który plik mapy obowiązuje, i dołącz go do czatu.</span></li><li>A hash shows that the text in the file did not change after it was recorded. It does not show that the model copied your words exactly. <span class="alt">Skrót pokazuje, że tekst w pliku nie zmienił się po zapisie. Nie pokazuje, że model przepisał dokładnie.</span></li><li>Earlier chats of a project are no proof of provenance. Provenance stands only in the columns of the map file. <span class="alt">Wcześniejsze czaty projektu nie dowodzą pochodzenia. Pochodzenie stoi tylko w kolumnach pliku mapy.</span></li></ul></li>
+<li><h2>Help <span class="alt">Pomoc</span></h2><p>The full guide in English: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/2-agents/chatgpt/setup.en.md">2-agents/chatgpt/setup.en.md</a>. In Polish: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/2-agents/chatgpt/setup.pl.md">2-agents/chatgpt/setup.pl.md</a>. <span class="alt">Pełna instrukcja po angielsku i po polsku, linki wyżej.</span></p><p>Questions and findings: Denis Pokropski, 285421@student.uwr.edu.pl. What AI tools helped to make the package is listed in <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/DISCLOSURE.md">DISCLOSURE</a>. <span class="alt">Pytania i uwagi: Denis Pokropski, 285421@student.uwr.edu.pl. Udział narzędzi AI opisuje DISCLOSURE.</span></p></li>
+  </ol>
+
+  <footer class="foot">
+    <span><b>KAIWA</b> · 26.01 · version 0.2.0 · <span id="release-stamp">release not published yet</span></span>
+    <span>Own content CC BY-NC-SA 4.0, except <code>method/</code> (CC BY-SA 4.0) and <code>design/fonts/</code> (OFL), see <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/LICENSE">LICENSE</a> · AI use: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/DISCLOSURE.md">DISCLOSURE</a> · Feedback: Denis Pokropski, 285421@student.uwr.edu.pl</span>
+  </footer>
+</div>
+<script src="pages.js"></script>
+</body>
+</html>

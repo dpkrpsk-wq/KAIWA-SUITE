@@ -281,6 +281,10 @@ html, body {
 }
 
 /* Recommended path box */
+.vendor-links { margin: 24px 0; }
+.vendor-links h2 { margin: 0 0 8px; }
+.vendor-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.vendor-row .btn { display: inline-block; text-decoration: none; color: inherit; }
 .recommendation-box {
   margin-top: var(--space-6, 24px);
   background: var(--flaeche-hinweis, #e6e2d4);
@@ -429,6 +433,17 @@ html, body {
     <h3 id="rec-title" style="margin:0 0 8px;">Szybki start bez konfiguracji konta</h3>
     <p id="rec-summary" style="margin:0;"></p>
     <ol class="rec-list" id="rec-steps"></ol>
+  </section>
+
+  <section class="vendor-links" aria-labelledby="vendors-h">
+    <h2 id="vendors-h">2. Steps for your assistant <span class="en">/ Kroki dla twojego asystenta</span></h2>
+    <p>One page per assistant, from the download to a running agent. <span class="en">Jedna strona na asystenta, od pobrania do działającego agenta.</span></p>
+    <div class="vendor-row">
+      <a class="btn" href="https://dpkrpsk-wq.github.io/KAIWA-SUITE/get/copilot.html">Microsoft 365 Copilot</a>
+      <a class="btn" href="https://dpkrpsk-wq.github.io/KAIWA-SUITE/get/gemini.html">Google Gemini</a>
+      <a class="btn" href="https://dpkrpsk-wq.github.io/KAIWA-SUITE/get/chatgpt.html">ChatGPT</a>
+      <a class="btn" href="https://dpkrpsk-wq.github.io/KAIWA-SUITE/get/claude.html">Claude</a>
+    </div>
   </section>
 
   <aside class="check-notice" role="note">

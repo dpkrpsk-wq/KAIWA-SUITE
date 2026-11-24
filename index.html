@@ -1,357 +1,99 @@
 <!doctype html>
-<html lang="pl" data-theme="hell" data-mode="sw">
+<html lang="en" data-theme="hell" data-mode="sw" data-base="">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KAIWA SUITE · 26.01 · Pakiet / Package</title>
+<title>KAIWA SUITE · 26.01 · Package / Pakiet</title>
 <link rel="icon" href="design/logo/kaiwa-icon-32.png">
 <link rel="stylesheet" href="design/fonts/fonts.css">
 <link rel="stylesheet" href="design/design-system/tokens.css">
-<style>
-/* Tokens from design/design-system/tokens.css, plus three logo modes (design/logo/themes.json):
-   sw (default, signal yellow), spectrum (rainbow), shift (trans). A mode colours only bands and highlights,
-   text stays ink on light surfaces. Layout: header, mode choice, vendor filter, four levels as a grid. */
-:root{
-  --band-1:var(--signal,#ffed00); --band-2:transparent;
-  --bands:repeating-linear-gradient(-35deg,var(--signal,#ffed00) 0 18px,transparent 18px 44px);
-  --hl:var(--signal,#ffed00);          /* highlight ground, text on it always ink */
-  --strip:var(--signal,#ffed00);       /* edge above each level */
-}
-[data-mode="spectrum"]{
-  --bands:repeating-linear-gradient(-35deg,#E40303 0 14px,#FF8C00 14px 28px,#FFED00 28px 42px,#008026 42px 56px,#24408E 56px 70px,#732982 70px 84px);
-  --hl:linear-gradient(90deg,#EB8582,#F7C280,#F7EE80,#85BD91,#95A0C0,#B896BB);
-  --strip:linear-gradient(90deg,#E40303 0 16.66%,#FF8C00 0 33.33%,#FFED00 0 50%,#008026 0 66.66%,#24408E 0 83.33%,#732982 0);
-}
-[data-mode="shift"]{
-  --bands:repeating-linear-gradient(-35deg,#5BCEFA 0 14px,#F5A9B8 14px 28px,#FFFFFF 28px 42px,#F5A9B8 42px 56px,#5BCEFA 56px 70px);
-  --hl:linear-gradient(90deg,#AEE0F1,#F3D0D3,#F7F6F3,#F3D0D3,#AEE0F1);
-  --strip:linear-gradient(90deg,#5BCEFA 0 20%,#F5A9B8 0 40%,#FFFFFF 0 60%,#F5A9B8 0 80%,#5BCEFA 0);
-}
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;background:var(--flaeche,#f1efe9);color:var(--text,#14171f);
-  font-family:var(--font-text,"Space Grotesk",system-ui,Arial,sans-serif);font-size:16px;line-height:24px}
-.page{max-width:1120px;margin:0 auto;padding:24px 24px 48px;display:grid;gap:32px}
-.en{color:var(--text-gedaempft,#4a4f5a);font-weight:400}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--text,#14171f);outline-offset:2px}
-
-/* Header as in 1-start/first-contact.html */
-.doc-head{position:relative;overflow:hidden;display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:center;
-  background:var(--tinte,#14171f);color:var(--papier,#f1efe9);padding:24px;box-shadow:var(--schatten-hart)}
-.doc-head .band{position:absolute;inset:0 0 0 auto;width:38%;background:var(--bands);pointer-events:none}
-.doc-head>*:not(.band){position:relative;z-index:1}
-.doc-head img{width:80px;height:80px;display:block}
-.wordmark{font-family:var(--font-kopf);font-weight:700;font-size:40px;line-height:40px;letter-spacing:-.03em;text-transform:uppercase}
-.wordmark span{display:block}
-.meta{font-size:13px;line-height:19px;margin-top:8px}
-.meta .en{color:#b9b6ad}
-.sticker{background:var(--hl);color:var(--tinte,#14171f);border:3px solid var(--tinte,#14171f);padding:6px 12px;
-  font:700 12px/16px var(--font-kopf);letter-spacing:.06em;text-transform:uppercase;transform:rotate(-3deg);white-space:nowrap}
-
-/* Controls */
-.controls{display:grid;gap:16px}
-.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.ctl-label{font:500 11px/16px var(--font-kopf);letter-spacing:.06em;text-transform:uppercase;min-width:150px}
-.chip{appearance:none;font:inherit;font-size:14px;line-height:20px;cursor:pointer;background:var(--flaeche,#f1efe9);color:var(--text,#14171f);
-  border:3px solid var(--text,#14171f);padding:6px 12px;border-radius:0}
-.chip[aria-pressed="true"]{background:var(--hl);color:var(--tinte,#14171f);border-color:var(--tinte,#14171f);box-shadow:3px 3px 0 var(--tinte,#14171f);font-weight:600}
-.chip .en{font-size:12px}
-.chip[aria-pressed="true"] .en{color:#2b2f38}
-
-/* Levels */
-.levels{display:grid;gap:32px}
-.level{border:3px solid var(--text,#14171f);box-shadow:var(--schatten-hart);background:var(--flaeche,#f1efe9)}
-.level-strip{height:10px;background:var(--strip)}
-.level-head{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;padding:16px 16px 12px;align-items:baseline}
-.level-no{font:700 32px/36px var(--font-kopf);grid-row:span 2}
-.level-head h2{margin:0;font:700 22px/28px var(--font-kopf)}
-.level-head p{margin:0;font-size:14px;line-height:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;padding:0 16px 16px}
-.item{display:grid;gap:4px;align-content:start;background:var(--flaeche-hinweis,#e6e2d4);padding:12px;border:1px solid var(--linie,#7c796f);text-decoration:none}
-.item:hover{outline:3px solid var(--text,#14171f);outline-offset:-1px}
-.item-vendor{font:500 11px/16px var(--font-kopf);letter-spacing:.06em;text-transform:uppercase;display:flex;gap:6px;align-items:center}
-.sq{width:10px;height:10px;background:var(--text,#14171f);display:inline-block}
-.item-title{font-weight:600;font-size:15px;line-height:21px}
-.item-path{font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:17px;color:var(--text-gedaempft,#4a4f5a);word-break:break-all}
-.status{font-size:12px;line-height:17px;color:var(--entwurf,#8a3b12);border-top:1px dashed var(--entwurf,#8a3b12);padding-top:4px;margin-top:4px}
-.empty{padding:0 16px 16px;font-size:14px;color:var(--text-gedaempft,#4a4f5a)}
-
-.note{background:var(--flaeche-hinweis,#e6e2d4);border:3px dashed var(--entwurf,#8a3b12);padding:16px;font-size:14px;line-height:20px}
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:11px;line-height:16px;border-top:3px solid var(--text,#14171f);padding-top:8px}
-
-@media (max-width:720px){
-  .doc-head{grid-template-columns:64px 1fr}.doc-head img{width:64px;height:64px}
-  .sticker{grid-column:1/-1;justify-self:start}.ctl-label{min-width:0;width:100%}
-}
-@media (prefers-reduced-motion:no-preference){.chip,.item{transition:background-color .15s,box-shadow .15s}}
-</style>
+<link rel="stylesheet" href="get/pages.css">
 </head>
 <body>
+<a class="skip" href="#vendors">Skip to the downloads <span class="alt">/ przejdź do pobierania</span></a>
 <div class="page">
   <header class="doc-head">
     <div class="band" aria-hidden="true"></div>
     <img id="logo" src="design/design-system/assets/Logos/kaiwa-icon-hell.svg" alt="KAIWA">
     <div>
       <div class="wordmark"><span>KAIWA</span><span>SUITE</span></div>
-      <div class="meta">Pakiet 26.01 · wersja 0.2.0 <span class="en">/ package 26.01 · version 0.2.0</span></div>
+      <div class="meta">Package 26.01 · version 0.2.0 <span class="alt">/ pakiet 26.01 · wersja 0.2.0</span></div>
     </div>
-    <div class="sticker">wersja robocza / draft</div>
+    <div class="sticker">draft / wersja robocza</div>
   </header>
 
-  <section class="controls" aria-label="Ustawienia widoku / View settings">
-    <div class="ctl" role="group" aria-labelledby="l-mode">
-      <span class="ctl-label" id="l-mode">Tryb logo <span class="en">/ logo mode</span></span>
-      <button type="button" class="chip" data-mode="sw" aria-pressed="true">czarno-biały <span class="en">/ black &amp; white</span></button>
-      <button type="button" class="chip" data-mode="spectrum" aria-pressed="false">spectrum <span class="en">/ rainbow</span></button>
-      <button type="button" class="chip" data-mode="shift" aria-pressed="false">SHIFT <span class="en">/ trans</span></button>
-    </div>
-    <div class="ctl" role="group" aria-labelledby="l-vendor">
-      <span class="ctl-label" id="l-vendor">Dostawca <span class="en">/ vendor</span></span>
-      <button type="button" class="chip" data-vendor="all" aria-pressed="true">wszyscy <span class="en">/ all</span></button>
-      <button type="button" class="chip" data-vendor="copilot" aria-pressed="false">Microsoft 365 Copilot</button>
-      <button type="button" class="chip" data-vendor="gemini" aria-pressed="false">Google Gemini</button>
-      <button type="button" class="chip" data-vendor="chatgpt" aria-pressed="false">ChatGPT</button>
-      <button type="button" class="chip" data-vendor="claude" aria-pressed="false">Claude</button>
-      <button type="button" class="chip" data-vendor="any" aria-pressed="false">bez dostawcy <span class="en">/ any or none</span></button>
-    </div>
-    <div class="ctl" role="group" aria-labelledby="l-dl" id="dl">
-      <span class="ctl-label" id="l-dl">Pobierz <span class="en">/ download</span></span>
-      <button type="button" class="chip" id="dl-btn">cały pakiet (ZIP) <span class="en">/ whole package (ZIP)</span></button>
-      <span class="status" id="dl-status" role="status" aria-live="polite"></span>
+  <section class="stack" aria-labelledby="what">
+    <h1 id="what">Work with AI and keep track of who thought what <span class="alt">/ Praca z AI z zapisem, kto co pomyślał</span></h1>
+    <p class="lead">KAIWA is a package of four modules for students and researchers: it records your thoughts word for word with a hash, builds a context map, analyses an artefact with declared frameworks and lists open access sources with a level of verification.
+      <span class="alt">KAIWA to pakiet czterech modułów dla studentów i badaczy: zapisuje myśli dosłownie ze skrótem, buduje mapę kontekstu, analizuje artefakt według zadeklarowanych ram i podaje źródła w otwartym dostępie z poziomem weryfikacji.</span></p>
+    <div class="note" role="note">
+      <p><strong>To be checked.</strong> This is a draft that nobody has reviewed from outside. The Copilot stream agent had a first test without a record, everything else is untested. Features depend on your account and its administrator.
+        <span class="alt"><strong>Do sprawdzenia.</strong> To wersja robocza, której nikt z zewnątrz nie sprawdził. Agent Copilot „strumień świadomości” miał pierwszy test bez protokołu, reszta jest nieprzetestowana. Dostępność funkcji zależy od konta i ustawień administratora.</span></p>
     </div>
   </section>
 
-  <main class="levels" id="levels"></main>
+  <section class="stack" id="vendors" aria-labelledby="pick">
+    <h2 id="pick">Pick your assistant <span class="alt">/ Wybierz asystenta</span></h2>
+    <p>Each card leads to a page with the steps from the download to the running agent. <span class="alt">Każda karta prowadzi do strony z krokami od pobrania do działającego agenta.</span></p>
+    <div class="cards">
+      <article class="card"><div class="strip" aria-hidden="true"></div><div class="body">
+        <span class="badge">Microsoft 365 Copilot</span>
+        <h2>Copilot Chat <span class="alt">/ Agent Builder</span></h2>
+        <p>Four agents, university account, no Copilot licence needed. <span class="alt">Czterej agenci, konto uczelniane, licencja Copilot niepotrzebna.</span></p>
+        <div class="dl" data-pkg="copilot" aria-live="polite" data-nolang>Loading… / ładowanie…</div>
+        <a class="btn plain" href="get/copilot.html">Steps for Copilot <span class="alt">/ kroki dla Copilot</span></a>
+      </div></article>
+      <article class="card"><div class="strip" aria-hidden="true"></div><div class="body">
+        <span class="badge">Google Gemini</span>
+        <h2>Gemini <span class="alt">/ Skill or Gem</span></h2>
+        <p>Chat with an attachment or a persistent Skill or Gem. Untested. <span class="alt">Czat z załącznikiem albo stały Skill lub Gem. Nieprzetestowane.</span></p>
+        <div class="dl" data-pkg="gemini" aria-live="polite" data-nolang>Loading… / ładowanie…</div>
+        <a class="btn plain" href="get/gemini.html">Steps for Gemini <span class="alt">/ kroki dla Gemini</span></a>
+      </div></article>
+      <article class="card"><div class="strip" aria-hidden="true"></div><div class="body">
+        <span class="badge">ChatGPT</span>
+        <h2>ChatGPT <span class="alt">/ Projects</span></h2>
+        <p>Four projects on a Go account. Untested. <span class="alt">Cztery projekty na koncie Go. Nieprzetestowane.</span></p>
+        <div class="dl" data-pkg="chatgpt" aria-live="polite" data-nolang>Loading… / ładowanie…</div>
+        <a class="btn plain" href="get/chatgpt.html">Steps for ChatGPT <span class="alt">/ kroki dla ChatGPT</span></a>
+      </div></article>
+      <article class="card"><div class="strip" aria-hidden="true"></div><div class="body">
+        <span class="badge">Claude</span>
+        <h2>Claude <span class="alt">/ projects or Claude Code</span></h2>
+        <p>Projects in claude.ai or skills in Claude Code. Untested. <span class="alt">Projekty w claude.ai albo skille w Claude Code. Nieprzetestowane.</span></p>
+        <div class="dl" data-pkg="claude" aria-live="polite" data-nolang>Loading… / ładowanie…</div>
+        <a class="btn plain" href="get/claude.html">Steps for Claude <span class="alt">/ kroki dla Claude</span></a>
+      </div></article>
+      <article class="card"><div class="strip" aria-hidden="true"></div><div class="body">
+        <span class="badge">Without AI / bez AI</span>
+        <h2>Templates, protocols, scripts <span class="alt">/ szablony, protokoły, skrypty</span></h2>
+        <p>Word and Excel files and Python scripts. Works with any assistant or without one. <span class="alt">Pliki Word i Excel oraz skrypty Python. Działa z dowolnym asystentem albo bez niego.</span></p>
+        <div class="dl" data-pkg="any" aria-live="polite" data-nolang>Loading… / ładowanie…</div>
+        <a class="btn plain" href="1-start/first-contact.html">Which way fits me? <span class="alt">/ która droga pasuje?</span></a>
+      </div></article>
+    </div>
+    <p>Whole package with every vendor: <a data-whole href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/archive/refs/heads/main.zip">ZIP of the repository</a>. <span class="alt">Cały pakiet ze wszystkimi dostawcami: ZIP repozytorium.</span></p>
+  </section>
 
-  <aside class="note" role="note">
-    <strong>Do sprawdzenia / to be checked.</strong> Wszystkie moduły są robocze. Agent Copilot „strumień świadomości” miał pierwszy test bez protokołu, reszta jest nieprzetestowana. Dostępność funkcji zależy od konta i ustawień administratora.
-    <span class="en">All modules are drafts. The Copilot stream agent had a first test without a record, everything else is untested. Features depend on the account and its admin settings.</span>
-  </aside>
+  <section class="stack" aria-labelledby="mode">
+    <h2 id="mode">Logo mode <span class="alt">/ tryb logo</span></h2>
+    <div class="chips" role="group" aria-labelledby="mode">
+      <button type="button" class="chip" data-mode="sw" aria-pressed="true">black &amp; white <span class="alt">/ czarno-biały</span></button>
+      <button type="button" class="chip" data-mode="spectrum" aria-pressed="false">spectrum <span class="alt">/ rainbow</span></button>
+      <button type="button" class="chip" data-mode="shift" aria-pressed="false">SHIFT <span class="alt">/ trans</span></button>
+    </div>
+  </section>
+
+  <details>
+    <summary>What is inside <span class="alt">/ co jest w środku</span></summary>
+    <div id="inside"><p data-nolang>Loading the file list… / ładowanie listy plików…</p></div>
+  </details>
 
   <footer class="foot">
-    <span><b>KAIWA</b> · 26.01 · wersja 0.2.0 · commit ⟨commit⟩</span>
-    <span>Treść własna: CC BY-NC-SA 4.0, poza <code>method/</code> (CC BY-SA 4.0) i <code>design/fonts/</code> (OFL), zob. <a href="LICENSE" id="lic">LICENSE</a> · udział AI: <a href="DISCLOSURE.md" id="disc">DISCLOSURE</a> <span class="en">/ own content CC BY-NC-SA 4.0, except method/ and design/fonts/ · AI use</span></span>
+    <span><b>KAIWA</b> · 26.01 · version 0.2.0 · <span id="release-stamp">release not published yet</span></span>
+    <span>Own content CC BY-NC-SA 4.0, except <code>method/</code> (CC BY-SA 4.0) and <code>design/fonts/</code> (OFL), see <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/LICENSE">LICENSE</a> · AI use: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/DISCLOSURE.md">DISCLOSURE</a> · Feedback: Denis Pokropski, 285421@student.uwr.edu.pl</span>
   </footer>
 </div>
-
-<script>
-/* Levels follow README.md and 1-start/first-contact.html (Poziom 1 to 4), as of 2026-11-22. */
-const LEVELS = [
-  {no:1, pl:"Bez konfiguracji: rozmowa w czacie", en:"No setup: chat and attach",
-   d:"Dołączasz plik do rozmowy i piszesz „start”.", den:"Attach a file to a chat and write “start”."},
-  {no:2, pl:"Stały moduł: agent, Skill, Gem, projekt", en:"Configured assistant",
-   d:"Cztery moduły w kolejności metody: strumień, mapa, analiza, źródła.", den:"Four modules in method order: stream, map, analysis, sources."},
-  {no:3, pl:"Pliki i rejestry", en:"Files and registers",
-   d:"Protokoły, szablony i arkusze. Działa z każdym asystentem albo bez AI.", den:"Protocols, templates and sheets. Works with any assistant or without AI."},
-  {no:4, pl:"Skrypty i testy", en:"Scripts and verification",
-   d:"Python, opcjonalnie, tylko w pełnym pakiecie.", den:"Python, optional, full package only."}
-];
-const VENDORS = {copilot:"Microsoft 365 Copilot", gemini:"Google Gemini", chatgpt:"ChatGPT", claude:"Claude", any:"każdy / any"};
-const U = "nieprzetestowany / untested";
-const ITEMS = [
-  // Poziom 1
-  {l:1, v:"gemini", t:"Dialog startowy / setup dialog", p:"2-agents/gemini/setup-dialog.md", s:"nieprzetestowany w Gemini / untested in Gemini"},
-  {l:1, v:"any", t:"Szablony do wklejenia / paste templates", p:"3-templates/", dir:true},
-  // Poziom 2: Copilot
-  {l:2, v:"copilot", t:"Konfiguracja PL / setup PL", p:"1-start/setup.pl.md"},
-  {l:2, v:"copilot", t:"Konfiguracja EN (wszyscy agenci) / setup EN (all agents)", p:"1-start/setup.en.md"},
-  {l:2, v:"copilot", t:"Strumień świadomości / stream", p:"2-agents/copilot/stream/", dir:true, s:"pierwszy test bez protokołu / first test without a record"},
-  {l:2, v:"copilot", t:"Mapa kontekstu / context map", p:"2-agents/copilot/map/", dir:true, s:U},
-  {l:2, v:"copilot", t:"Analiza / analysis", p:"2-agents/copilot/analysis/", dir:true, s:U},
-  {l:2, v:"copilot", t:"Źródła / sources", p:"2-agents/copilot/sources/", dir:true, s:U},
-  // Poziom 2: Gemini
-  {l:2, v:"gemini", t:"Konfiguracja PL / setup PL", p:"2-agents/gemini/setup.pl.md"},
-  {l:2, v:"gemini", t:"Konfiguracja EN / setup EN", p:"2-agents/gemini/setup.en.md"},
-  {l:2, v:"gemini", t:"Skill pakietu / package skill", p:"2-agents/gemini/SKILL.md", s:U},
-  {l:2, v:"gemini", t:"Strumień świadomości / stream", p:"2-agents/gemini/stream/", dir:true, s:U},
-  {l:2, v:"gemini", t:"Mapa kontekstu / context map", p:"2-agents/gemini/map/", dir:true, s:U},
-  {l:2, v:"gemini", t:"Analiza / analysis", p:"2-agents/gemini/analysis/", dir:true, s:U},
-  {l:2, v:"gemini", t:"Źródła / sources", p:"2-agents/gemini/sources/", dir:true, s:U},
-  // Poziom 2: ChatGPT
-  {l:2, v:"chatgpt", t:"Konfiguracja PL / setup PL", p:"2-agents/chatgpt/setup.pl.md", s:"konto Go / Go account"},
-  {l:2, v:"chatgpt", t:"Konfiguracja EN / setup EN", p:"2-agents/chatgpt/setup.en.md", s:"konto Go / Go account"},
-  {l:2, v:"chatgpt", t:"Strumień świadomości / stream", p:"2-agents/chatgpt/stream/", dir:true, s:U},
-  {l:2, v:"chatgpt", t:"Mapa kontekstu / context map", p:"2-agents/chatgpt/map/", dir:true, s:U},
-  {l:2, v:"chatgpt", t:"Analiza / analysis", p:"2-agents/chatgpt/analysis/", dir:true, s:U},
-  {l:2, v:"chatgpt", t:"Źródła / sources", p:"2-agents/chatgpt/sources/", dir:true, s:U},
-  // Poziom 2: Claude
-  {l:2, v:"claude", t:"Konfiguracja PL / setup PL", p:"2-agents/claude/setup.pl.md", s:"claude.ai i Claude Code"},
-  {l:2, v:"claude", t:"Konfiguracja EN / setup EN", p:"2-agents/claude/setup.en.md", s:"claude.ai i Claude Code"},
-  {l:2, v:"claude", t:"Strumień świadomości / stream", p:"2-agents/claude/stream/", dir:true, s:U},
-  {l:2, v:"claude", t:"Mapa kontekstu / context map", p:"2-agents/claude/map/", dir:true, s:U},
-  {l:2, v:"claude", t:"Analiza / analysis", p:"2-agents/claude/analysis/", dir:true, s:U},
-  {l:2, v:"claude", t:"Źródła / sources", p:"2-agents/claude/sources/", dir:true, s:U},
-  {l:2, v:"claude", t:"Skille dla Claude Code / Claude Code skills", p:"2-agents/claude/code/", dir:true, s:U},
-  // Poziom 3
-  {l:3, v:"any", t:"Mapa kontekstu: metoda / context map method", p:"1-start/context.pl.md"},
-  {l:3, v:"any", t:"Protokoły metody / method protocols", p:"method/protocols/", dir:true},
-  {l:3, v:"any", t:"Triaż i ramy analizy / triage and frameworks", p:"method/prompts/", dir:true, s:"triaż = wstępna ocena, które ramy pasują / triage = first sorting of frameworks"},
-  {l:3, v:"any", t:"Karta problemu badawczego / research problem card", p:"3-templates/research-problem-card.pl.md"},
-  {l:3, v:"any", t:"Po triażu / after triage", p:"3-templates/after-triage.pl.md"},
-  {l:3, v:"any", t:"Kontrola kulturowa / cultural check", p:"3-templates/cultural-check.pl.md"},
-  {l:3, v:"any", t:"Ujawnienie narzędzia / tool disclosure", p:"3-templates/tool-disclosure.pl.md"},
-  {l:3, v:"any", t:"Bez AI: instrukcja / without AI: guide", p:"4-without-ai/README.pl.md"},
-  {l:3, v:"any", t:"Rejestry Excel / Excel registers", p:"4-without-ai/registers.xlsx"},
-  {l:3, v:"any", t:"Szablon Word / Word template", p:"4-without-ai/kaiwa-template.docx"},
-  // Poziom 4
-  {l:4, v:"any", t:"Rejestr skrótów SHA-256 / hash ledger", p:"tools/dictation_ledger.py", s:"skrót = odcisk tekstu, zmiana tekstu zmienia skrót / hash = fingerprint of the text"},
-  {l:4, v:"any", t:"Sprawdzenie mapy / map check", p:"tools/context.py", s:"wymaga openpyxl / needs openpyxl"},
-  {l:4, v:"any", t:"Szukanie w otwartym dostępie / open access search", p:"tools/search.py"},
-  {l:4, v:"any", t:"Testy pakietu / package tests", p:"tools/test_package.py"}
-];
-
-/* On GitHub Pages a card downloads: a file directly, a folder as ZIP (see itemZip). Locally a card opens the file. */
-const REPO = "https://github.com/dpkrpsk-wq/KAIWA-SUITE", BRANCH = "main";
-const onPages = /\.github\.io$/.test(location.hostname);
-const href = it => onPages && it.dir ? `${REPO}/tree/${BRANCH}/${it.p.replace(/\/$/,"")}` : it.p;
-if (onPages) {
-  document.getElementById("lic").href = `${REPO}/blob/${BRANCH}/LICENSE`;
-  document.getElementById("disc").href = `${REPO}/blob/${BRANCH}/DISCLOSURE.md`;
-}
-
-const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let vendor = "all";
-function render(){
-  document.getElementById("levels").innerHTML = LEVELS.map(L => {
-    const list = ITEMS.filter(i => i.l === L.no && (vendor === "all" || i.v === vendor));
-    const cards = list.map(i => `<a class="item" href="${href(i)}" data-i="${ITEMS.indexOf(i)}"${!i.dir && onPages ? " download" : ""}>
-        <span class="item-vendor"><span class="sq" aria-hidden="true"></span>${esc(VENDORS[i.v])}</span>
-        <span class="item-title">${esc(i.t)}</span>
-        <span class="item-path">${esc(i.p)}</span>
-        ${i.s ? `<span class="status">${esc(i.s)}</span>` : ""}</a>`).join("");
-    return `<section class="level" aria-labelledby="lv${L.no}">
-      <div class="level-strip" aria-hidden="true"></div>
-      <div class="level-head"><span class="level-no">${L.no}</span>
-        <h2 id="lv${L.no}">${esc(L.pl)} <span class="en">/ ${esc(L.en)}</span></h2>
-        <p>${esc(L.d)} <span class="en">${esc(L.den)}</span></p></div>
-      ${list.length ? `<div class="grid">${cards}</div>` : `<p class="empty">Na tym poziomie ten dostawca nie ma osobnych plików. Pliki „bez dostawcy” działają także z nim. <span class="en">No vendor-specific files at this level. The “any or none” files work with this vendor too.</span></p>`}
-    </section>`;
-  }).join("");
-}
-const LOGO = {sw:"design/design-system/assets/Logos/kaiwa-icon-hell.svg", spectrum:"design/logo/status/kaiwa-icon-spectrum.svg", shift:"design/logo/status/kaiwa-icon-shift.svg"};
-function setMode(m){
-  document.documentElement.dataset.mode = m;
-  document.getElementById("logo").src = LOGO[m];
-  document.querySelectorAll("[data-mode].chip").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
-  try { localStorage.setItem("kaiwa-mode", m); } catch (e) {}
-}
-document.querySelectorAll("[data-mode].chip").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode)));
-document.querySelectorAll("[data-vendor]").forEach(b => b.addEventListener("click", () => {
-  vendor = b.dataset.vendor;
-  document.querySelectorAll("[data-vendor]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-  render(); dlLabel();
-}));
-/* Download: one ZIP per vendor (studium F-0068). The file list comes from the GitHub tree of the branch,
-   the files from this site (GitHub Pages), the ZIP is built in the browser with JSZip. "all" links the archive of the branch.
-   A vendor ZIP holds the vendor's items, all "any" items and the files every user needs (licence, disclosure, logo). */
-const ALWAYS = ["README.md", "LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md", "product.json", "design/logo/kaiwa-logo.svg", "design/logo/kaiwa-icon-192.png", "design/fonts/OFL.txt", "design/fonts/fonts.css", "design/fonts/SpaceGrotesk[wght].ttf", "design/fonts/README.md", "design/design-system/tokens.css", "1-start/first-contact.html", "tools/"];
-const JSZIP_URL = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
-function loadJSZip(){
-  if (window.JSZip) return Promise.resolve(window.JSZip);
-  return new Promise((ok, fail) => { const s = document.createElement("script"); s.src = JSZIP_URL; s.integrity = "sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="; s.crossOrigin = "anonymous";
-    s.onload = () => ok(window.JSZip); s.onerror = () => fail(new Error("JSZip")); document.head.appendChild(s); });
-}
-function vendorFiles(paths, v){
-  const want = ITEMS.filter(i => i.v === v || i.v === "any");
-  const out = new Set();
-  for (const a of ALWAYS) {
-    if (a.endsWith("/")) paths.filter(p => p.startsWith(a)).forEach(p => out.add(p));
-    else if (paths.includes(a)) out.add(a);
-  }
-  for (const i of want) {
-    if (i.dir) paths.filter(p => p.startsWith(i.p)).forEach(p => out.add(p));
-    else if (paths.includes(i.p)) out.add(i.p);
-  }
-  return [...out].sort();
-}
-function dlLabel(){
-  const b = document.getElementById("dl-btn");
-  b.innerHTML = vendor === "all" ? 'cały pakiet (ZIP) <span class="en">/ whole package (ZIP)</span>'
-    : vendor === "any" ? 'pakiet bez dostawcy (ZIP) <span class="en">/ package without vendor (ZIP)</span>'
-    : `pakiet ${esc(VENDORS[vendor])} (ZIP) <span class="en">/ package for ${esc(VENDORS[vendor])} (ZIP)</span>`;
-  document.getElementById("dl-status").textContent = "";
-}
-/* ZIP-CONTENTS.md says what this partial package holds. tools/test_package.py skips tests for parts that are not in it. */
-function contents(v, files){
-  const name = VENDORS[v];
-  return [`# KAIWA SUITE: pakiet ${name} / package for ${name}`, "",
-    `Ten plik ZIP zawiera tylko pliki dla dostawcy ${name}, pliki bez dostawcy, licencje i skrypty. README.md opisuje cały pakiet, foldery innych dostawców są w repozytorium ${REPO}.`, "",
-    `This ZIP holds only the files for ${name}, the files without vendor, the licences and the scripts. README.md describes the whole package, the folders of the other vendors are in the repository ${REPO}.`, "",
-    v === "any" ? "Zacznij od / start with: 4-without-ai/README.pl.md." : `Zacznij od / start with: ${v === "copilot" ? "1-start/setup.pl.md" : "2-agents/" + v + "/setup.pl.md"} (EN: setup.en.md).`, "",
-    `Testy / tests: python tools/test_package.py (pomija części, których nie ma w tym pakiecie / skips parts not in this package).`, "",
-    "tools/pdf.py i tools/logo_status.py potrzebują plików z design/, które są tylko w pełnym pakiecie. / tools/pdf.py and tools/logo_status.py need files from design/ that are only in the full package.", "",
-    `Pobrano / downloaded: ${new Date().toISOString().slice(0, 10)}, gałąź / branch ${BRANCH}, ${files.length} plików bez tego pliku / files without this file.`, "",
-    ...files.map(p => "- `" + p + "`"), ""].join("\n");
-}
-async function repoPaths(){
-  const r = await fetch(`https://api.github.com/repos/dpkrpsk-wq/KAIWA-SUITE/git/trees/${BRANCH}?recursive=1`);
-  if (!r.ok) throw new Error("tree " + r.status);
-  const tree = await r.json();
-  if (tree.truncated) throw new Error("tree truncated");
-  return tree.tree.filter(t => t.type === "blob").map(t => t.path);
-}
-async function saveZip(files, name, extra){
-  const st = document.getElementById("dl-status");
-  const JSZip = await loadJSZip();
-  const zip = new JSZip();
-  let n = 0;
-  for (const p of files) {
-    const r = await fetch(p.split("/").map(encodeURIComponent).join("/"));
-    if (!r.ok) throw new Error(p + " " + r.status);
-    zip.file(p, await r.arrayBuffer());
-    st.textContent = `${name}: ${++n} / ${files.length}`;
-  }
-  if (extra) zip.file("ZIP-CONTENTS.md", extra);
-  const blob = await zip.generateAsync({type: "blob"});
-  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
-  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 60000);
-  st.textContent = `${name}: ${files.length} plików / files`;
-}
-/* A folder card: the folder, the files its files.txt lists (they belong in the same project) and the licence files. */
-async function itemZip(it){
-  const st = document.getElementById("dl-status");
-  const name = "KAIWA-SUITE-" + it.p.replace(/\/$/, "").replace(/\//g, "-") + ".zip";
-  try {
-    st.textContent = `${name}: przygotowuję… / preparing…`;
-    const paths = await repoPaths();
-    const out = new Set(paths.filter(p => p.startsWith(it.p)));
-    for (const p of [...out].filter(p => p.endsWith("/files.txt"))) {
-      const r = await fetch(p);
-      if (r.ok) (await r.text()).split(/\r?\n/).map(x => x.trim()).filter(x => x && paths.includes(x)).forEach(x => out.add(x));
-    }
-    ["LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md"].filter(p => paths.includes(p)).forEach(p => out.add(p));
-    const files = [...out].sort();
-    await saveZip(files, name, [`# KAIWA SUITE: ${it.p}`, "",
-      `Ten plik ZIP zawiera folder ${it.p}, pliki z jego listy files.txt i licencje. Cały pakiet: ${REPO}.`, "",
-      `This ZIP holds the folder ${it.p}, the files of its files.txt and the licences. Whole package: ${REPO}.`, "",
-      ...files.map(p => "- `" + p + "`"), ""].join("\n"));
-  } catch (e) {
-    st.textContent = `Nie udało się (${e.message}). / Failed. ${REPO}/tree/${BRANCH}/${it.p}`;
-  }
-}
-document.getElementById("levels").addEventListener("click", ev => {
-  const a = ev.target.closest("a.item");
-  if (!a || !onPages) return;
-  const it = ITEMS[Number(a.dataset.i)];
-  if (it && it.dir) { ev.preventDefault(); itemZip(it); }
-});
-async function download(){
-  const st = document.getElementById("dl-status");
-  if (vendor === "all") { location.href = `${REPO}/archive/refs/heads/${BRANCH}.zip`; return; }
-  if (!onPages) { st.textContent = "Pobieranie działa na stronie GitHub Pages. / Download works on the GitHub Pages site."; return; }
-  const v = vendor, name = `KAIWA-SUITE-${v}.zip`;
-  try {
-    st.textContent = "Przygotowuję… / preparing…";
-    const files = vendorFiles(await repoPaths(), v);
-    await saveZip(files, name, contents(v, files));
-  } catch (e) {
-    st.textContent = `Nie udało się (${e.message}). Cały pakiet: / Failed. Whole package: ${REPO}/archive/refs/heads/${BRANCH}.zip`;
-  }
-}
-document.getElementById("dl-btn").addEventListener("click", download);
-let saved = null; try { saved = localStorage.getItem("kaiwa-mode"); } catch (e) {}
-setMode(LOGO[saved] ? saved : "sw");
-render();
-</script>
+<script src="get/pages.js"></script>
 </body>
 </html>

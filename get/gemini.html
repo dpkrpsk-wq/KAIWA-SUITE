@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="hell" data-mode="sw" data-base="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAIWA SUITE · Google Gemini · Steps / Kroki</title>
+<link rel="icon" href="../design/logo/kaiwa-icon-32.png">
+<link rel="stylesheet" href="../design/fonts/fonts.css">
+<link rel="stylesheet" href="../design/design-system/tokens.css">
+<link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<a class="skip" href="#steps">Skip to the steps <span class="alt">/ przejdź do kroków</span></a>
+<div class="page">
+  <header class="doc-head">
+    <div class="band" aria-hidden="true"></div>
+    <img id="logo" src="../design/design-system/assets/Logos/kaiwa-icon-hell.svg" alt="KAIWA">
+    <div>
+      <div class="wordmark"><span>KAIWA</span><span>SUITE</span></div>
+      <div class="meta">Google Gemini · package 26.01 · version 0.2.0 <span class="alt">/ pakiet 26.01 · wersja 0.2.0</span></div>
+    </div>
+    <div class="sticker">draft / wersja robocza</div>
+  </header>
+  <p class="crumb"><a href="../index.html">All assistants <span class="alt">/ wszyscy asystenci</span></a></p>
+
+  <section class="stack">
+    <h1>KAIWA SUITE in Google Gemini <span class="alt">/ KAIWA SUITE w Google Gemini</span></h1>
+    <p>From the download to a first test in Gemini. Draft, untested in Gemini. <span class="alt">Od pobrania do pierwszego testu w Gemini. Wersja robocza, nieprzetestowana w Gemini.</span></p>
+  </section>
+
+  <ol class="steps" id="steps">
+<li><h2>Download <span class="alt">Pobierz</span></h2><p>This is the bundle for Google Gemini. <span class="alt">To pakiet dla Google Gemini.</span></p><div class="dl" data-pkg="gemini" aria-live="polite" data-nolang>Loading… / ładowanie…</div></li>
+<li><h2>Unpack <span class="alt">Rozpakuj</span></h2><p>Unpack the ZIP file into a folder of your choice. Windows: right-click the file, then “Extract all”. Mac: double-click the file. You get one folder named <code>KAIWA-SUITE-gemini</code>. All paths on this page start in that folder. <span class="alt">Rozpakuj plik ZIP do wybranego folderu. Windows: prawy przycisk, „Wyodrębnij wszystko”. Mac: dwukrotne kliknięcie. Powstaje jeden folder <code>KAIWA-SUITE-gemini</code>. Wszystkie ścieżki na tej stronie zaczynają się w tym folderze.</span></p></li>
+<li><h2>Choose a route and set it up <span class="alt">Wybierz drogę i skonfiguruj</span></h2><p>You need a Google account with access to Gemini. Account types and all menu names below are unverified. <span class="alt">Potrzebujesz konta Google z dostępem do Gemini. Rodzaje kont i wszystkie nazwy menu poniżej są niesprawdzone.</span></p><ol><li><strong>Route 1, chat with an attachment (no setup, untested).</strong> Attach <code>2-agents/gemini/setup-dialog.md</code> to a new Gemini chat and write “start”. The assistant guides you through the modules. <span class="alt"><strong>Droga 1, czat z załącznikiem (bez konfiguracji, nieprzetestowana).</strong> Dołącz <code>2-agents/gemini/setup-dialog.md</code> do nowego czatu Gemini i napisz „start”.</span></li><li><strong>Route 2, Skill or Gem (persistent).</strong> Personal account 18+: open “Customize / Skills”, choose “Create” or “Upload” and create the Skills from the folders <code>stream</code>, <code>map</code>, <code>analysis</code>, <code>sources</code> in <code>2-agents/gemini/</code>. Google Workspace education or work account where Gems are active: “Explore Gems”, “New Gem”, paste name, description and instructions from a module folder. <span class="alt"><strong>Droga 2, Skill lub Gem (stała).</strong> Konto prywatne 18+: „Customize / Skills”, „Create” albo „Upload”, skille z folderów <code>stream</code>, <code>map</code>, <code>analysis</code>, <code>sources</code> w <code>2-agents/gemini/</code>. Konto Workspace: „Explore Gems”, „New Gem”, wklej nazwę, opis i instrukcje z folderu modułu.</span></li><li>Routes 3 (Google Drive folder) and 4 (scripts on your computer, no AI) are in the full guide. <span class="alt">Drogi 3 (folder Google Drive) i 4 (skrypty na komputerze, bez AI) są w pełnej instrukcji.</span></li></ol><p>If Gemini lets you set an icon, use <code>design/logo/kaiwa-icon-192.png</code> (not checked in Gemini). <span class="alt">Jeśli Gemini pozwala ustawić ikonę, użyj <code>design/logo/kaiwa-icon-192.png</code> (nie sprawdzono w Gemini).</span></p></li>
+<li><h2>First test <span class="alt">Pierwszy test</span></h2><ol><li>Open the Skill or Gem (or the chat with the attachment) and write “start”. <span class="alt">Otwórz Skill lub Gem (albo czat z załącznikiem) i napisz „start”.</span></li><li>For the stream and the map Gemini should run a short Python check and print “OK”. If code execution is off in your region or tenant, it must warn you and save without hashes. It must never invent a hash. <span class="alt">Dla strumienia i mapy Gemini powinien uruchomić krótki test w Pythonie i wypisać „OK”. Jeśli wykonywanie kodu jest wyłączone, musi ostrzec i zapisać bez skrótów. Nigdy nie może zmyślić skrótu.</span></li><li>Enter two test sentences and write “end”. Check the topic list, the downloadable Excel file, the “Tool” line and the version footer. <span class="alt">Wpisz dwa zdania testowe i napisz „end”. Sprawdź listę tematów, plik Excel do pobrania, wiersz „Narzędzie” i stopkę z wersją.</span></li></ol></li>
+<li><h2>Known limits <span class="alt">Znane ograniczenia</span></h2><ul><li>All four modules are drafts and untested in Gemini. <span class="alt">Wszystkie cztery moduły są robocze i nieprzetestowane w Gemini.</span></li><li>In some regions (including parts of the EEA) and in managed Workspace tenants Skills, Drive extensions or code execution may be switched off (unverified). Use Route 1 or the scripts. <span class="alt">W niektórych regionach i w zarządzanych tenantach Workspace Skille, rozszerzenia Drive albo wykonywanie kodu mogą być wyłączone (niesprawdzone). Użyj Drogi 1 albo skryptów.</span></li><li>Files that the code interpreter creates must be downloaded from the chat answer by hand (unverified). <span class="alt">Pliki z interpretera kodu trzeba pobrać z odpowiedzi w czacie ręcznie (niesprawdzone).</span></li><li>A hash shows that the text in the file did not change after it was recorded. It does not show that the model copied your words exactly. Read the file once after each session. <span class="alt">Skrót pokazuje, że tekst w pliku nie zmienił się po zapisie. Nie pokazuje, że model przepisał dokładnie. Przeczytaj plik po każdej sesji.</span></li><li>End a recording after twenty entries. <span class="alt">Zakończ zapis po dwudziestu wpisach.</span></li></ul></li>
+<li><h2>Help <span class="alt">Pomoc</span></h2><p>The full guide in English: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/2-agents/gemini/setup.en.md">2-agents/gemini/setup.en.md</a>. In Polish: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/2-agents/gemini/setup.pl.md">2-agents/gemini/setup.pl.md</a>. <span class="alt">Pełna instrukcja po angielsku i po polsku, linki wyżej.</span></p><p>Questions and findings: Denis Pokropski, 285421@student.uwr.edu.pl. What AI tools helped to make the package is listed in <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/DISCLOSURE.md">DISCLOSURE</a>. <span class="alt">Pytania i uwagi: Denis Pokropski, 285421@student.uwr.edu.pl. Udział narzędzi AI opisuje DISCLOSURE.</span></p></li>
+  </ol>
+
+  <footer class="foot">
+    <span><b>KAIWA</b> · 26.01 · version 0.2.0 · <span id="release-stamp">release not published yet</span></span>
+    <span>Own content CC BY-NC-SA 4.0, except <code>method/</code> (CC BY-SA 4.0) and <code>design/fonts/</code> (OFL), see <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/LICENSE">LICENSE</a> · AI use: <a href="https://github.com/dpkrpsk-wq/KAIWA-SUITE/blob/main/DISCLOSURE.md">DISCLOSURE</a> · Feedback: Denis Pokropski, 285421@student.uwr.edu.pl</span>
+  </footer>
+</div>
+<script src="pages.js"></script>
+</body>
+</html>
