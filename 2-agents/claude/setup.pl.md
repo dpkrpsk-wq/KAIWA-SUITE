@@ -70,7 +70,7 @@ Skille są napisane dla Claude Code. W claude.ai używaj projektów z drogi A.
 
 ## Źródła o platformie
 
-Sprawdzone 22.11.2026:
+Odczytane 22.11.2026 przez asystenta AI (autor nie sprawdził ich osobno):
 
 1. „What are projects?”, https://support.claude.com/en/articles/9517075-what-are-projects: projekty we wszystkich planach, konta bezpłatne do pięciu projektów.
 2. „How can I create and manage projects?”, https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects: instrukcje projektu i wiedza projektu.

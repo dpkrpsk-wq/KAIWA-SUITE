@@ -4,10 +4,14 @@
 
 Product 26.01, version 0.2.0 (draft), 22 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, contact: 285421@student.uwr.edu.pl. The package invites you to test a method: thoughts spoken aloud are recorded word for word, and every entry gets a SHA-256 hash that later shows whether the text in the file matches the hash.
 
+## Get the package
+
+Open the package page https://dpkrpsk-wq.github.io/KAIWA-SUITE/, choose the vendor "Microsoft 365 Copilot" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
+
 ## What you need
 
 1. A university account with access to Microsoft 365 Copilot Chat. No Copilot license is needed.
-2. About ten minutes for the setup.
+2. About ten minutes for the setup. Start the conversation in the field that carries the agent's name (in the test: "Nachricht an KAIWA SUITE senden"). If the field only says "Copilot", the conversation is outside the agent and its rules do not apply.
 3. Python 3.8 or newer, only if you want to check files on your own computer. This is optional.
 
 ## Set up the agent
@@ -38,7 +42,7 @@ Button labels can differ with the language of the interface. The labels below ar
 
 ## Where the files are
 
-Each session gives one file `dictation-YYYY-MM-DD-HHMM.xlsx` with three sheets: "entries" (the entries with text), "register" (hashes, numbers of characters and words, no text) and "tool" (see below). Excel files from the code interpreter usually land in your OneDrive by themselves, in the Copilot folder (not confirmed in the Microsoft documentation). This happened in a test on a University of Wrocław account on 17 October 2026, but Microsoft does not guarantee it. The sheet "tool" records the tool, the model (as the chat states it), the number of code runs and the computational effort, with "unknown" where nothing is known. It carries no hash, so read it once (`3-templates/tool-disclosure.pl.md`, Polish). The agent always offers the file as a download too. Copilot does not overwrite files (unverified), so the folder works as a register that only grows. You can move the files to a folder of your own, for example "KAIWA".
+Each session gives one file `dictation-YYYY-MM-DD-HHMM.xlsx` with three sheets: "entries" (the entries with text), "register" (hashes, numbers of characters and words, no text) and "tool" (see below). A file from Copilot carries the full name of the account owner in its properties (author, last modified by, test of 22 November 2026). Check this before you pass it on. Excel files from the code interpreter usually land in your OneDrive by themselves, in the Copilot folder (not confirmed in the Microsoft documentation). This happened in a test on a University of Wrocław account on 17 October 2026, but Microsoft does not guarantee it. The sheet "tool" records the tool, the model (as the chat states it), the number of code runs and the computational effort, with "unknown" where nothing is known. It carries no hash, so read it once (`3-templates/tool-disclosure.pl.md`, Polish). The agent always offers the file as a download too. Copilot does not overwrite files (unverified), so the folder works as a register that only grows. You can move the files to a folder of your own, for example "KAIWA".
 
 ## Checking
 
@@ -47,14 +51,14 @@ Each session gives one file `dictation-YYYY-MM-DD-HHMM.xlsx` with three sheets: 
 
 ## Second agent: context map
 
-Optional. Method: `1-start/context.pl.md` (Polish). This part has not been tested in Copilot yet.
+Optional. Method: `1-start/context.pl.md` (Polish). This part has not been tested in this form (separate agents). A version with one agent and a skill was checked on 24 November 2026, see step 6 below.
 
 1. Create a second agent the same way as the first.
 2. Take name, description and starter prompts from `2-agents/copilot/map/AGENT.md`, the instructions from `2-agents/copilot/map/INSTRUCTIONS.txt`.
 3. Add nothing as knowledge. You attach files to the conversation.
 4. Write "start". The agent should answer "Mapa gotowa. Skróty działają." (map ready, hashes work).
 5. Attach a dictation file from the first agent and write "dodaj dołączone dyktaty do mapy" (add the attached dictations to the map). Approve the proposals by number, then write "zapisz" (save).
-6. Check in Copilot: attach the map file and `2-agents/copilot/map/sprawdz-mape.md` and write "sprawdź mapę" (check the map). Test of 24 November 2026: the agent may write its own code or not run any, and then it does not detect a changed map. Trust only the answer "MAPA OK" or a list of errors from code that actually ran (open the reasoning panel and check that the code from the file was executed). Only the check on your own computer is reliable: `python tools/context.py sprawdz <map file>` (needs openpyxl).
+6. Check in Copilot: attach the map file and `2-agents/copilot/map/sprawdz-mape.md` and write "sprawdź mapę" (check the map). Test of 24 November 2026 (a version with one agent and a skill, not these instructions): the agent may write its own code or not run any, and then it does not detect a changed map. Trust only the answer "MAPA OK" or a list of errors from code that actually ran (open the reasoning panel and check that the code from the file was executed). Only the check on your own computer is reliable: `python tools/context.py sprawdz <map file>` (needs openpyxl).
 
 ## Third agent: analysis
 
@@ -74,7 +78,7 @@ Optional. This part has not been tested in Copilot yet.
 3. The instructions hold a short form of the source protocol. You can attach the full file `method/protocols/source-protocol.md` to the conversation.
 4. On your own computer you can search without Copilot: `python tools/search.py "term" --csv result.csv`. The file has the columns of the sheet "zrodla" in `4-without-ai/registers.xlsx`.
 
-Length of the agent instructions (characters, limit 8,000): stream 6163, map 7579, analysis 6580, sources 4282. Paste them from the file unchanged, an editor with CRLF line endings can add characters.
+Length of the agent instructions (characters, limit 8,000): stream 6223, map 7579, analysis 6601, sources 4282. Paste them from the file unchanged, an editor with CRLF line endings can add characters.
 
 ## Other platforms
 
@@ -86,11 +90,11 @@ Before you use recorded texts in coursework, check the rules of your university 
 
 ## Sources on the platform
 
-Checked on 22 November 2026 in the Microsoft Learn documentation:
+Read on 22 November 2026 in the Microsoft Learn documentation by an AI assistant (the author has not checked them separately):
 
 1. Agent fields and icon (name 30 characters, description 1000, instructions 8000, PNG up to 192 × 192 pixels and 1 MB): https://learn.microsoft.com/plugins/agent-builder-build-agents
 2. Without a Copilot licence, agents with instructions and public websites are included, others only on pay-as-you-go: https://learn.microsoft.com/copilot/plan/copilot-overview
-3. Microsoft does not publish numeric usage limits: https://learn.microsoft.com/partner-center/announcements/2026-november
+3. No numeric usage limits were found in the pages searched (22 November 2026): https://learn.microsoft.com/partner-center/announcements/2026-november
 
 ## Feedback
 

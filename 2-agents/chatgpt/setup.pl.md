@@ -6,6 +6,10 @@ Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Po
 
 Stan: wersja robocza, nieprzetestowana w ChatGPT. Opis dotyczy konta ChatGPT Go. Własnych GPT (Custom GPTs) pakiet nie używa.
 
+## Pobranie pakietu
+
+Otwórz stronę pakietu https://dpkrpsk-wq.github.io/KAIWA-SUITE/, wybierz dostawcę „ChatGPT” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
+
 ## Czego potrzebujesz
 
 1. Konto ChatGPT Go z dostępem do projektów (Projects).
@@ -58,7 +62,7 @@ W projekcie „KAIWA: analiza” dołącz plik i napisz „start” (także po a
 
 ## Źródła informacji o platformie
 
-Sprawdzone 22.11.2026 w pomocy OpenAI „Projects in ChatGPT”, https://help.openai.com/en/articles/10169521-projects-in-chatgpt:
+Odczytane 22.11.2026 przez asystenta AI w pomocy OpenAI „Projects in ChatGPT”, https://help.openai.com/en/articles/10169521-projects-in-chatgpt:
 
 1. Konta Go i Plus: do 25 plików w projekcie. Jednocześnie można wgrać 10 plików.
 2. Instrukcje projektu ustawia się w menu projektu (•••), „Project settings”. Działają tylko w tym projekcie.

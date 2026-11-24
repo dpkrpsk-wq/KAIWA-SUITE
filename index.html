@@ -160,7 +160,7 @@ const ITEMS = [
   {l:1, v:"any", t:"Szablony do wklejenia / paste templates", p:"3-templates/", dir:true},
   // Poziom 2: Copilot
   {l:2, v:"copilot", t:"Konfiguracja PL / setup PL", p:"1-start/setup.pl.md"},
-  {l:2, v:"copilot", t:"Konfiguracja EN (strumień) / setup EN (stream)", p:"1-start/setup.en.md"},
+  {l:2, v:"copilot", t:"Konfiguracja EN (wszyscy agenci) / setup EN (all agents)", p:"1-start/setup.en.md"},
   {l:2, v:"copilot", t:"Strumień świadomości / stream", p:"2-agents/copilot/stream/", dir:true, s:"pierwszy test bez protokołu / first test without a record"},
   {l:2, v:"copilot", t:"Mapa kontekstu / context map", p:"2-agents/copilot/map/", dir:true, s:U},
   {l:2, v:"copilot", t:"Analiza / analysis", p:"2-agents/copilot/analysis/", dir:true, s:U},
@@ -253,7 +253,7 @@ document.querySelectorAll("[data-vendor]").forEach(b => b.addEventListener("clic
 /* Download: one ZIP per vendor (studium F-0068). The file list comes from the GitHub tree of the branch,
    the files from this site (GitHub Pages), the ZIP is built in the browser with JSZip. "all" links the archive of the branch.
    A vendor ZIP holds the vendor's items, all "any" items and the files every user needs (licence, disclosure, logo). */
-const ALWAYS = ["README.md", "LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md", "product.json", "design/logo/kaiwa-logo.svg", "tools/"];
+const ALWAYS = ["README.md", "LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md", "product.json", "design/logo/kaiwa-logo.svg", "design/logo/kaiwa-icon-192.png", "tools/"];
 const JSZIP_URL = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
 function loadJSZip(){
   if (window.JSZip) return Promise.resolve(window.JSZip);

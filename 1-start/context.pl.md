@@ -66,4 +66,4 @@ Autor prowadzi taką mapę dla własnych notatek badawczych i używa jej jako ko
 
 ## Stan
 
-Wersja robocza. Agent mapy nie był jeszcze testowany w Copilot. Uwagi: Denis Pokropski, 285421@student.uwr.edu.pl.
+Wersja robocza. Agent mapy w tej postaci nie był jeszcze testowany w Copilot (wersja ze skillem: test 24.11.2026, zob. `1-start/setup.pl.md`). Uwagi: Denis Pokropski, 285421@student.uwr.edu.pl.

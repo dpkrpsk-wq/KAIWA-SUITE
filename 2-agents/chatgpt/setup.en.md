@@ -6,6 +6,10 @@ Product 26.01, version 0.2.0 (draft), 22 November 2026. Not released. Publisher:
 
 Status: draft, untested in ChatGPT. This guide covers a ChatGPT Go account. The package does not use Custom GPTs.
 
+## Get the package
+
+Open the package page https://dpkrpsk-wq.github.io/KAIWA-SUITE/, choose the vendor "ChatGPT" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
+
 ## What you need
 
 1. A ChatGPT Go account with access to projects (Projects).
@@ -58,7 +62,7 @@ In the project "KAIWA: analiza" attach a file and write "start" (also in Polish 
 
 ## Sources on the platform
 
-Checked on 22 November 2026 in the OpenAI help article "Projects in ChatGPT", https://help.openai.com/en/articles/10169521-projects-in-chatgpt:
+Read on 22 November 2026 by an AI assistant in the OpenAI help article "Projects in ChatGPT", https://help.openai.com/en/articles/10169521-projects-in-chatgpt:
 
 1. Go and Plus accounts: up to 25 files per project. 10 files can be uploaded at the same time.
 2. Project instructions are set in the project menu (•••), "Project settings". They apply only within that project.

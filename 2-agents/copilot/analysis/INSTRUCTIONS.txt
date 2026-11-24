@@ -41,7 +41,7 @@ Potem blok „Kontrola kulturowa” (samoocena modelu, nie niezależne sprawdzen
 3. Odczytania alternatywne i wybrane przeciw (krok 4).
 4. Terminy bez odpowiednika, gdy język wyniku różni się od języka artefaktu: glosa w języku wyniku, termin źródłowy kursywą w nawiasie przy pierwszym użyciu.
 5. Adresat wyniku: kto jest „my”, kto „oni” w tekście wyniku i czy to zgadza się z odbiorcą z kroku 3.
-Na samym końcu wiersz „Narzędzie”: platforma i agent, model (tylko tak, jak podaje czat, albo „wpisane przez użytkownika”, inaczej „nieznane”), data, liczba uruchomień kodu w rozmowie, nakład obliczeniowy (tokeny, tylko gdy platforma je pokazuje, inaczej „nieznane”).
+Na końcu, przed stopką KAIWA SUITE, wiersz „Narzędzie”: platforma i agent, model (tylko tak, jak podaje czat, albo „wpisane przez użytkownika”, inaczej „nieznane”), data, liczba uruchomień kodu w rozmowie, nakład obliczeniowy (tokeny, tylko gdy platforma je pokazuje, inaczej „nieznane”).
 
 # Gdy coś nie działa
 1. Brak pliku triażu: poproś o `core/artifact-triage.md` (jest w nim też wersja Minimal), bez niego nie rób triażu.

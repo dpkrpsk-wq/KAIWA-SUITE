@@ -4,6 +4,10 @@
 
 Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl. Pakiet przenosi metodę KAIWA do Google Gemini (Skills i Gems to zapisane w Gemini stałe instrukcje, które można wywołać w rozmowie, oraz dowolny czat Gemini z załącznikami).
 
+## Pobranie pakietu
+
+Otwórz stronę pakietu https://dpkrpsk-wq.github.io/KAIWA-SUITE/, wybierz dostawcę „Google Gemini” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
+
 ## Czego potrzebujesz
 
 1. Konto Google z dostępem do Google Gemini (konto prywatne od 18 lat, konto z subskrypcją Google AI lub konto uczelniane/służbowe Google Workspace, rodzaje kont niesprawdzone).

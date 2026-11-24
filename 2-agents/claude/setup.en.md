@@ -70,7 +70,7 @@ The skills are written for Claude Code. In claude.ai use the projects of way A.
 
 ## Sources on the platform
 
-Checked on 22 November 2026:
+Read on 22 November 2026 by an AI assistant (the author has not checked them separately):
 
 1. "What are projects?", https://support.claude.com/en/articles/9517075-what-are-projects: projects on all plans, free accounts up to five projects.
 2. "How can I create and manage projects?", https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects: project instructions and project knowledge.
