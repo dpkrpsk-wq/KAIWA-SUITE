@@ -19,12 +19,12 @@ Das Status-Zeichen ist das Leuchtquadrat unten rechts im KAIWA-Logo. Es zeigt ei
 - Die Zustandsfarben stehen nur im Leuchtquadrat auf der dunklen Kachel (`tinte`). Alle erreichen dort mindestens 5 zu 1.
 - Nicht als Text- oder Flächenfarbe auf `flaeche` im Theme hell verwenden. Auf `papier` liegen sie zwischen 1,6 und 2,9 zu 1.
 - Die Marken auf dem Quadrat (Haken, Ausrufezeichen, Kreuz) und der Punkt im Rahmen sind `tinte` bzw. die Zustandsfarbe. Jeder der sieben Zustände hat eine eigene Form, keine teilt sich eine.
-- Die Form ist nach Augenmaß ab etwa 128 px Kantenlänge des Icons lesbar (Quadrat dann rund 9 px). Darunter trägt nur noch die Farbe, dort muss das Wort daneben stehen.
-- Die Zustände wechseln nur am Leuchtquadrat. Krake, Echo und Ringe bleiben.
+- Die Form ist nach Augenmaß ab einem Quadrat von rund 9 px lesbar. Im Icon „K.“ ist das Quadrat 0,127 der Kantenlänge, die Grenze liegt also bei etwa 72 px. Darunter trägt nur noch die Farbe, dort muss das Wort daneben stehen.
+- Die Zustände wechseln nur am Leuchtquadrat. Das K bleibt.
 - Eine Status-Anzeige ersetzt keine Prüfung. Sie meldet, was das Programm zählt, und nicht, ob es stimmt.
 
 ## Hinweise
 
 - Die Farbbedeutung lehnt sich an die übliche Ampel-Logik für Anzeigeleuchten an (grün normal, gelb Abweichung, rot Fehler, blau Hinweis oder laufend, grau aus). Sie ist nicht an einer Norm geprüft.
 - Die Form trägt die Bedeutung mit (WCAG 1.4.1), aber nur dort, wo das Quadrat groß genug zu erkennen ist. In der Praxis steht das Wort daneben.
-- Quelle: `design/logo/status.json`. Die fertigen SVG (7 Zustände und 2 Modi, je als Icon und Logo, zusammen 18 Dateien) liegen unter `design/logo/status/` und entstehen mit `tools/logo_status.py`.
+- Quelle: `output/kaiwa/logo/status.json`. Die Zustands-SVG im Repo zeigen noch das alte Zeichen mit Flugzeug und gelten nicht mehr.

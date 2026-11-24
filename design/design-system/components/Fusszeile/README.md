@@ -8,7 +8,7 @@ Die Fußzeile trägt auf jeder Seite Produktname, Nummer, Version, Commit und Se
 
 ## Was das Produkt liefert
 
-Nummer und Version aus `product.json`, den Kurz-Hash (7 Zeichen) aus dem Git-Stand des Exports, Seitenzahlen aus dem Ausgabeformat.
+Nummer und Version aus `produkt.json`, den Kurz-Hash (7 Zeichen) aus dem Git-Stand des Exports, Seitenzahlen aus dem Ausgabeformat.
 
 ## Regeln
 

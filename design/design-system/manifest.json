@@ -40,7 +40,7 @@
     {
       "name": "Produktlogo",
       "group": "Logo",
-      "summary": "Das Produktlogo zeigt „KAIWA, warp mode“ in zwei Formen und zwei Fassungen (Schwarzweiß-Modus, die Voreinstellung), dazu Größenleiter und Schutzraum."
+      "summary": "Das Produktlogo zeigt das KAIWA-Logo „K.“ als Logo mit Wortmarke und Unterzeile und als Icon, je in Fassung dunkel und hell, dazu Größenleiter und Schutzraum."
     },
     {
       "name": "Status",
@@ -66,19 +66,19 @@
       "files": [
         {
           "path": "assets/Logos/kaiwa-logo-dunkel.svg",
-          "id": "49fdfa48c15278148c0baef48cda8d4a"
+          "id": "b6057b715622a85dc3c4fd098b6eb75a"
         },
         {
           "path": "assets/Logos/kaiwa-logo-hell.svg",
-          "id": "f80b2fd4dd1ba4ba6f38c07ad9add38a"
+          "id": "e6e2e0b59654fa76b38cfcf703e5caef"
         },
         {
           "path": "assets/Logos/kaiwa-icon-dunkel.svg",
-          "id": "f0252361bcf5a37fdaee5c4906b919e0"
+          "id": "ed97b6bdddfdc900d75a9b59c439af30"
         },
         {
           "path": "assets/Logos/kaiwa-icon-hell.svg",
-          "id": "1742849ce8af6de697b7a2b51c72bac5"
+          "id": "c6d58edf386d1172306c7fd2afa74cfa"
         }
       ]
     },
@@ -86,27 +86,17 @@
       "name": "Modi",
       "tile": "l",
       "order": [
-        "kaiwa-logo-spectrum.svg",
-        "kaiwa-logo-shift.svg",
         "kaiwa-icon-spectrum.svg",
         "kaiwa-icon-shift.svg"
       ],
       "files": [
         {
-          "path": "assets/Modi/kaiwa-logo-spectrum.svg",
-          "id": "adc0340cc9b0a0eedf4ca970d5fb49e4"
-        },
-        {
-          "path": "assets/Modi/kaiwa-logo-shift.svg",
-          "id": "61c6bed906fb97452f43af5cff47e781"
-        },
-        {
           "path": "assets/Modi/kaiwa-icon-spectrum.svg",
-          "id": "510100f092807ff38861d0c5efd924ac"
+          "id": "9de62012d52ad38229dba6be30cb6450"
         },
         {
           "path": "assets/Modi/kaiwa-icon-shift.svg",
-          "id": "483050f2d5c0a773c02a0a3bc06fe4a4"
+          "id": "5820e8c2232fe1fea77945851e870a3e"
         }
       ]
     }
@@ -115,53 +105,41 @@
     "files": {
       "assets/Logos/kaiwa-icon-dunkel.svg": {
         "store": "blob",
-        "id": "f0252361bcf5a37fdaee5c4906b919e0",
-        "bytes": 2236,
+        "id": "ed97b6bdddfdc900d75a9b59c439af30",
+        "bytes": 408,
         "type": "image/svg+xml"
       },
       "assets/Logos/kaiwa-icon-hell.svg": {
         "store": "blob",
-        "id": "1742849ce8af6de697b7a2b51c72bac5",
-        "bytes": 2236,
+        "id": "c6d58edf386d1172306c7fd2afa74cfa",
+        "bytes": 408,
         "type": "image/svg+xml"
       },
       "assets/Logos/kaiwa-logo-dunkel.svg": {
         "store": "blob",
-        "id": "49fdfa48c15278148c0baef48cda8d4a",
-        "bytes": 2613,
+        "id": "b6057b715622a85dc3c4fd098b6eb75a",
+        "bytes": 16863,
         "type": "image/svg+xml"
       },
       "assets/Logos/kaiwa-logo-hell.svg": {
         "store": "blob",
-        "id": "f80b2fd4dd1ba4ba6f38c07ad9add38a",
-        "bytes": 2613,
+        "id": "e6e2e0b59654fa76b38cfcf703e5caef",
+        "bytes": 16863,
         "type": "image/svg+xml"
       },
       "assets/Modi/kaiwa-icon-shift.svg": {
         "store": "blob",
-        "id": "483050f2d5c0a773c02a0a3bc06fe4a4",
-        "bytes": 2707,
+        "id": "5820e8c2232fe1fea77945851e870a3e",
+        "bytes": 810,
         "type": "image/svg+xml"
       },
       "assets/Modi/kaiwa-icon-spectrum.svg": {
         "store": "blob",
-        "id": "510100f092807ff38861d0c5efd924ac",
-        "bytes": 2787,
-        "type": "image/svg+xml"
-      },
-      "assets/Modi/kaiwa-logo-shift.svg": {
-        "store": "blob",
-        "id": "61c6bed906fb97452f43af5cff47e781",
-        "bytes": 3084,
-        "type": "image/svg+xml"
-      },
-      "assets/Modi/kaiwa-logo-spectrum.svg": {
-        "store": "blob",
-        "id": "adc0340cc9b0a0eedf4ca970d5fb49e4",
-        "bytes": 3164,
+        "id": "9de62012d52ad38229dba6be30cb6450",
+        "bytes": 884,
         "type": "image/svg+xml"
       }
     },
-    "blobBytesUsed": 21440
+    "blobBytesUsed": 36236
   }
 }

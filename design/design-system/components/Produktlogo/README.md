@@ -1,20 +1,22 @@
-Das Produktlogo zeigt „KAIWA, warp mode“ in zwei Formen und zwei Fassungen (Schwarzweiß-Modus, die Voreinstellung), dazu Größenleiter und Schutzraum. Ein Krake schwimmt auf den Tunnel zu. Kraken gelten als sehr intelligent, und das Flugzeug passte nicht zum Zeichen. Der Übergang durch den Tunnel ist der warp mode.
+Das Produktlogo zeigt das KAIWA-Logo „K.“ als Logo mit Wortmarke und Unterzeile und als Icon, je in Fassung dunkel und hell, dazu Größenleiter und Schutzraum.
 
 ## Formen
 
-- **Logo mit Beschriftung** („warp mode“ zweizeilig oben links) ab 128 px Kantenlänge.
-- **Icon ohne Beschriftung** unter 128 px, Mindestgröße 32 px. Es ist die Form für Favicon, Agenten-Icon und den Dokumentkopf (64 px).
+- **Logo** (Zeichen, KAIWA, „KIT FOR ACADEMIC INQUIRY WITH AI“) ab 400 px Breite.
+- **Icon** (Kachel mit Zeichen) unter 400 px, Mindestgröße 32 px. Es ist die Form für Favicon, Agenten-Icon und den Dokumentkopf (64 px).
+
+## Was die Anwendung liefert
+
+- Das Bild aus Gruppe `Logos` als `<img>` mit `alt="KAIWA"`. Die Fassung wählt die Anwendung nach dem Grund: dunkel auf `flaeche` im Theme hell, hell auf `flaeche` im Theme dunkel.
+- Den Schutzraum als Abstand um das Bild.
 
 ## Größen
 
-- Bei 24 px bleibt vom Icon nur ein Umriss mit Krakenfleck. Nicht verwenden.
-- Bei 32 und 48 px liest man Krake und Tunnel als Halo mit dunklem Kern.
-- Ab etwa 64 px erscheinen das Echo hinter dem Kraken und die einzelnen Ringe.
-- Die Beschriftung ist bei 128 px etwa 11 px hoch. Das ist die Grenze.
+- Bei 400 px Breite ist die Unterzeile etwa 8 px hoch. Das ist die Grenze für das Logo.
+- Das Icon liest sich ab 32 px als „K.“. Das Quadrat ist dort etwa 4 px groß.
 
 ## Regeln
 
-- Fassung dunkel auf hellem Grund, Fassung hell auf dunklem Grund. Sie unterscheiden sich nur in den Tönen von Kachel und Zeichen.
-- Schutzraum ein Viertel der Kantenlänge.
-- Der Name „KAIWA“ steht neben dem Logo als Text. Das Logo trägt ihn nicht.
+- Das Quadrat steht in `signal` nur auf `tinte`. Auf `papier` steht es in `tinte`.
+- Schutzraum beim Icon ein Viertel der Kantenlänge, beim Logo mindestens die Kante des Quadrats.
 - Keine Verläufe, keine Schatten, kein Einfärben mit `entwurf`. Der Entwurfsstand steht in der Marke daneben.
