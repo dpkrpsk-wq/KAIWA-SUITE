@@ -46,13 +46,13 @@
       <tbody>
         <tr><td>Chat attachment</td><td>single files, <strong>not</strong> a ZIP or TAR</td><td>Copilot Chat, paperclip</td><td>formats on the Microsoft list</td><td>ZIP rejected, single files accepted</td></tr>
         <tr><td>Agent Builder</td><td>nothing: paste name, description and <code>INSTRUCTIONS.txt</code>, choose the icon</td><td>“Agents”, “New agent”, “Configure”</td><td>Copilot Chat, no add-on licence</td><td>built in the test (this page, step 3)</td></tr>
-        <tr><td>Upload skill</td><td><code>KAIWA-SUITE-copilot-skill</code> ZIP: exactly one <code>SKILL.md</code> in the root of the ZIP</td><td>“Agents”, “More agents”, “Add”, “Upload skill”</td><td>skill rules of the page</td><td>dialog exists, the skill can be chosen, it works as a skill of an agent and not in the normal chat. <strong>Untested in Copilot (version 8).</strong></td></tr>
+        <tr><td>Upload skill</td><td><code>KAIWA-SUITE-copilot-skill</code> ZIP: exactly one <code>SKILL.md</code> in the root of the ZIP. <strong>Not</strong> the bundle <code>KAIWA-SUITE-copilot</code>: it holds no <code>SKILL.md</code> and the dialog answers “The uploaded package must contain a SKILL.md file”.</td><td>“Agents”, “More agents”, “Add”, “Upload skill”</td><td>skill rules of the page</td><td>dialog exists, the skill can be chosen, it works as a skill of an agent and not in the normal chat. <strong>Untested in Copilot (version 8).</strong></td></tr>
         <tr><td>Upload plugin</td><td><code>KAIWA-SUITE-copilot-plugin</code> ZIP (app package)</td><td>Cowork (“Customize”, “Plugins”, “Upload plugin”), Admin Center (“Agents”, “Tools”, “Registry”, “Upload”, or “Manage apps”, “Upload custom app”), or <code>atk install</code></td><td>Cowork: a Microsoft 365 Copilot licence. Admin Center: an administrator.</td><td><strong>Not verified.</strong> Whether your account has this way depends on the licence and the administrator.</td></tr>
         <tr><td>TAR</td><td>none</td><td>none</td><td>not named on any page we read</td><td>treat as not supported</td></tr>
       </tbody>
     </table></div>
-    <p><strong>Do not</strong> drag a ZIP file into the chat. <strong>Do not</strong> upload the plugin ZIP in the “Upload skill” dialog, it holds four skills and the dialog takes exactly one (“must contain exactly one SKILL.md”).
-      <span class="alt"><strong>Nie</strong> przeciągaj ZIP do czatu. <strong>Nie</strong> wgrywaj ZIP pluginu w oknie „Upload skill”, ma cztery skille, a okno przyjmuje dokładnie jeden.</span></p>
+    <p><strong>Do not</strong> drag a ZIP file into the chat. <strong>Do not</strong> upload the bundle <code>KAIWA-SUITE-copilot</code> in the “Upload skill” dialog, it holds no <code>SKILL.md</code>. <strong>Do not</strong> upload the plugin ZIP there either, it holds four skills and the dialog takes exactly one (“must contain exactly one SKILL.md”).
+      <span class="alt"><strong>Nie</strong> przeciągaj ZIP do czatu. <strong>Nie</strong> wgrywaj pakietu <code>KAIWA-SUITE-copilot</code> w oknie „Upload skill”, nie ma <code>SKILL.md</code>. <strong>Nie</strong> wgrywaj tam też ZIP pluginu, ma cztery skille, a okno przyjmuje dokładnie jeden.</span></p>
   </section>
 
   <section class="stack" aria-labelledby="oth">
