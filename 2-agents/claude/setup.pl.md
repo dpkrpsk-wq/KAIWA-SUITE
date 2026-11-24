@@ -32,8 +32,8 @@ Każdy folder projektu zawiera `PROJECT.md` (nazwa, opis, pierwsza wiadomość),
 ## Droga A: jeden projekt w claude.ai
 
 1. W claude.ai utwórz nowy projekt i nadaj mu nazwę z `PROJECT.md`. Aplikacja desktop powinna oferować te same projekty, to jest niesprawdzone.
-2. Wybierz „Set project instructions” i wklej całą zawartość `INSTRUCTIONS.txt`. Instrukcje strumienia świadomości (`stream/INSTRUCTIONS.txt`) są po angielsku i tak zostają, bo to tekst dla modelu (prompt), nie dla czytelnika.
-3. Dodaj pliki z listy `files.txt` do wiedzy projektu („+” w obszarze wiedzy projektu).
+2. Wybierz „Set project instructions” (nazwa przycisku w interfejsie niesprawdzona) i wklej całą zawartość `INSTRUCTIONS.txt`. Instrukcje strumienia świadomości (`stream/INSTRUCTIONS.txt`) są po angielsku i tak zostają, bo to tekst dla modelu (prompt), nie dla czytelnika.
+3. Dodaj pliki z listy `files.txt` do wiedzy projektu („+” w obszarze wiedzy projektu, nazwa niesprawdzona).
 4. W projekcie zacznij nową rozmowę pierwszą wiadomością z `PROJECT.md`.
 
 W sprawdzonych stronach pomocy nie znaleźliśmy limitu długości instrukcji projektu. Instrukcje w tym folderze mieszczą się w 8000 znaków, limicie Copilot.

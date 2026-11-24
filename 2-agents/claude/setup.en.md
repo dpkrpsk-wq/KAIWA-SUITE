@@ -32,8 +32,8 @@ Each project folder holds `PROJECT.md` (name, description, first message, in Pol
 ## Way A: set up one project in claude.ai
 
 1. In claude.ai create a new project and give it the name from `PROJECT.md`. The desktop app should offer the same projects, this is unverified.
-2. Choose "Set project instructions" and paste the whole content of `INSTRUCTIONS.txt`. The stream of consciousness instructions (`stream/INSTRUCTIONS.txt`) are in English and stay so, because they are text for the model (a prompt), not for the reader.
-3. Add the files listed in `files.txt` to the project knowledge ("+" in the knowledge area of the project).
+2. Choose "Set project instructions" (the button name in the interface is unverified) and paste the whole content of `INSTRUCTIONS.txt`. The stream of consciousness instructions (`stream/INSTRUCTIONS.txt`) are in English and stay so, because they are text for the model (a prompt), not for the reader.
+3. Add the files listed in `files.txt` to the project knowledge ("+" in the knowledge area of the project, name unverified).
 4. Start a new chat in the project with the first message from `PROJECT.md`.
 
 In the help pages checked we found no length limit for project instructions. The instructions in this folder stay within 8,000 characters, the limit of Copilot.
@@ -51,7 +51,7 @@ The skills are written for Claude Code. In claude.ai use the projects of way A.
 ## First test
 
 1. In the module "stream of consciousness" write "start". Claude should run a short piece of Python code and show "OK". The "OK" alone does not prove that the code runs, so check the file after the session.
-2. Enter two test sentences, then write "koniec". Check the file `dictation-YYYY-MM-DD-HHMM.xlsx` and its sheets "entries", "register" and "tool".
+2. Enter two test sentences, then write "koniec" (end). Check the file `dictation-YYYY-MM-DD-HHMM.xlsx` and its sheets "entries", "register" and "tool".
 
 ## Files between sessions
 
