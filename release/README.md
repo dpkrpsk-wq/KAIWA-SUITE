@@ -19,3 +19,5 @@ python -I tools/release.py pruefen --ausgabe dist/release
 ## Publish / Publikacja
 
 Pushing a tag `v<version>` (the version from `product.json`) starts `.github/workflows/release.yml`. It runs the tests, builds the ZIPs and creates the release with `release/release-notes.md`. Nothing is published before the tag is pushed.
+
+After the release is created, copy `release-manifest.json` from the release files to `release/manifest.json` in the repository, commit and push. The package page reads this file to show the download buttons, without it the page shows the fallback. / Po utworzeniu wydania skopiuj `release-manifest.json` z plików wydania do `release/manifest.json`, zatwierdź i wypchnij. Strona pakietu czyta ten plik.
