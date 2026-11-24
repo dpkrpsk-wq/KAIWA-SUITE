@@ -1,0 +1,21 @@
+# Release of KAIWA SUITE / Wydanie
+
+`sets.json` is the single source for the file set of every release ZIP (and for the package page). `tools/release.py` builds the ZIPs from it. / `sets.json` to jedyne źródło zestawu plików każdego ZIP.
+
+## Build locally / Budowa lokalna
+
+```
+python -I tools/release.py pruefen --ausgabe dist/release
+```
+
+`pruefen` builds twice from the commit `HEAD`, compares both builds byte for byte and checks each ZIP against its sources. `bauen` only builds. `--stand <commit>` builds from another commit, `--arbeitsbaum` reads the files from the disk (used by the tests). The output goes to `dist/release/` (not in Git). / `pruefen` buduje dwa razy i porównuje wyniki.
+
+## What it builds / Co powstaje
+
+- `KAIWA-SUITE-<vendor>-<version>.zip` for copilot, gemini, chatgpt, claude and any, one root folder each, with `ZIP-CONTENTS.md`.
+- `KAIWA-SUITE-copilot-skill-<version>.zip` (one `SKILL.md` in the root) and `KAIWA-SUITE-copilot-plugin-<version>.zip` (`manifest.json`, two icons, four skills), sources in `2-agents/copilot/skill/` and `2-agents/copilot/plugin/`, references taken from `method/` at build time.
+- The same files without the version in the name, `SHA256SUMS.txt` and `release-manifest.json`.
+
+## Publish / Publikacja
+
+Pushing a tag `v<version>` (the version from `product.json`) starts `.github/workflows/release.yml`. It runs the tests, builds the ZIPs and creates the release with `release/release-notes.md`. Nothing is published before the tag is pushed.

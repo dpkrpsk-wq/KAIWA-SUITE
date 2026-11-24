@@ -1,0 +1,541 @@
+{
+ "_hinweis": "Einzige Quelle fuer den Dateisatz der Release-ZIPs (tools/release.py) und der Paketseite. Aenderungen hier, nicht in index.html. Siehe release/README.md.",
+ "version_aus": "product.json",
+ "immer": [
+  "README.md",
+  "LICENSE",
+  "LICENSE-COMMERCIAL.md",
+  "DISCLOSURE.md",
+  "product.json",
+  "design/logo/kaiwa-logo.svg",
+  "design/logo/kaiwa-icon-192.png",
+  "design/fonts/OFL.txt",
+  "design/fonts/fonts.css",
+  "design/fonts/SpaceGrotesk[wght].ttf",
+  "design/fonts/README.md",
+  "design/design-system/tokens.css",
+  "1-start/first-contact.html",
+  "tools/"
+ ],
+ "ausschluss": [
+  "tools/release.py"
+ ],
+ "eintraege": [
+  {
+   "l": 1,
+   "v": "gemini",
+   "t": "Dialog startowy / setup dialog",
+   "p": "2-agents/gemini/setup-dialog.md",
+   "s": "nieprzetestowany w Gemini / untested in Gemini"
+  },
+  {
+   "l": 1,
+   "v": "any",
+   "t": "Szablony do wklejenia / paste templates",
+   "p": "3-templates/",
+   "dir": true
+  },
+  {
+   "l": 2,
+   "v": "copilot",
+   "t": "Konfiguracja PL / setup PL",
+   "p": "1-start/setup.pl.md"
+  },
+  {
+   "l": 2,
+   "v": "copilot",
+   "t": "Konfiguracja EN (wszyscy agenci) / setup EN (all agents)",
+   "p": "1-start/setup.en.md"
+  },
+  {
+   "l": 2,
+   "v": "copilot",
+   "t": "Strumień świadomości / stream",
+   "p": "2-agents/copilot/stream/",
+   "dir": true,
+   "s": "pierwszy test bez protokołu / first test without a record"
+  },
+  {
+   "l": 2,
+   "v": "copilot",
+   "t": "Mapa kontekstu / context map",
+   "p": "2-agents/copilot/map/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "copilot",
+   "t": "Analiza / analysis",
+   "p": "2-agents/copilot/analysis/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "copilot",
+   "t": "Źródła / sources",
+   "p": "2-agents/copilot/sources/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "gemini",
+   "t": "Konfiguracja PL / setup PL",
+   "p": "2-agents/gemini/setup.pl.md"
+  },
+  {
+   "l": 2,
+   "v": "gemini",
+   "t": "Konfiguracja EN / setup EN",
+   "p": "2-agents/gemini/setup.en.md"
+  },
+  {
+   "l": 2,
+   "v": "gemini",
+   "t": "Skill pakietu / package skill",
+   "p": "2-agents/gemini/SKILL.md",
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "gemini",
+   "t": "Strumień świadomości / stream",
+   "p": "2-agents/gemini/stream/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "gemini",
+   "t": "Mapa kontekstu / context map",
+   "p": "2-agents/gemini/map/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "gemini",
+   "t": "Analiza / analysis",
+   "p": "2-agents/gemini/analysis/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "gemini",
+   "t": "Źródła / sources",
+   "p": "2-agents/gemini/sources/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "chatgpt",
+   "t": "Konfiguracja PL / setup PL",
+   "p": "2-agents/chatgpt/setup.pl.md",
+   "s": "konto Go / Go account"
+  },
+  {
+   "l": 2,
+   "v": "chatgpt",
+   "t": "Konfiguracja EN / setup EN",
+   "p": "2-agents/chatgpt/setup.en.md",
+   "s": "konto Go / Go account"
+  },
+  {
+   "l": 2,
+   "v": "chatgpt",
+   "t": "Strumień świadomości / stream",
+   "p": "2-agents/chatgpt/stream/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "chatgpt",
+   "t": "Mapa kontekstu / context map",
+   "p": "2-agents/chatgpt/map/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "chatgpt",
+   "t": "Analiza / analysis",
+   "p": "2-agents/chatgpt/analysis/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "chatgpt",
+   "t": "Źródła / sources",
+   "p": "2-agents/chatgpt/sources/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "claude",
+   "t": "Konfiguracja PL / setup PL",
+   "p": "2-agents/claude/setup.pl.md",
+   "s": "claude.ai i Claude Code"
+  },
+  {
+   "l": 2,
+   "v": "claude",
+   "t": "Konfiguracja EN / setup EN",
+   "p": "2-agents/claude/setup.en.md",
+   "s": "claude.ai i Claude Code"
+  },
+  {
+   "l": 2,
+   "v": "claude",
+   "t": "Strumień świadomości / stream",
+   "p": "2-agents/claude/stream/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "claude",
+   "t": "Mapa kontekstu / context map",
+   "p": "2-agents/claude/map/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "claude",
+   "t": "Analiza / analysis",
+   "p": "2-agents/claude/analysis/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "claude",
+   "t": "Źródła / sources",
+   "p": "2-agents/claude/sources/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 2,
+   "v": "claude",
+   "t": "Skille dla Claude Code / Claude Code skills",
+   "p": "2-agents/claude/code/",
+   "dir": true,
+   "s": "nieprzetestowany / untested"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Mapa kontekstu: metoda / context map method",
+   "p": "1-start/context.pl.md"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Protokoły metody / method protocols",
+   "p": "method/protocols/",
+   "dir": true
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Triaż i ramy analizy / triage and frameworks",
+   "p": "method/prompts/",
+   "dir": true,
+   "s": "triaż = wstępna ocena, które ramy pasują / triage = first sorting of frameworks"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Karta problemu badawczego / research problem card",
+   "p": "3-templates/research-problem-card.pl.md"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Po triażu / after triage",
+   "p": "3-templates/after-triage.pl.md"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Kontrola kulturowa / cultural check",
+   "p": "3-templates/cultural-check.pl.md"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Ujawnienie narzędzia / tool disclosure",
+   "p": "3-templates/tool-disclosure.pl.md"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Bez AI: instrukcja / without AI: guide",
+   "p": "4-without-ai/README.pl.md"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Rejestry Excel / Excel registers",
+   "p": "4-without-ai/registers.xlsx"
+  },
+  {
+   "l": 3,
+   "v": "any",
+   "t": "Szablon Word / Word template",
+   "p": "4-without-ai/kaiwa-template.docx"
+  },
+  {
+   "l": 4,
+   "v": "any",
+   "t": "Rejestr skrótów SHA-256 / hash ledger",
+   "p": "tools/dictation_ledger.py",
+   "s": "skrót = odcisk tekstu, zmiana tekstu zmienia skrót / hash = fingerprint of the text"
+  },
+  {
+   "l": 4,
+   "v": "any",
+   "t": "Sprawdzenie mapy / map check",
+   "p": "tools/context.py",
+   "s": "wymaga openpyxl / needs openpyxl"
+  },
+  {
+   "l": 4,
+   "v": "any",
+   "t": "Szukanie w otwartym dostępie / open access search",
+   "p": "tools/search.py"
+  },
+  {
+   "l": 4,
+   "v": "any",
+   "t": "Testy pakietu / package tests",
+   "p": "tools/test_package.py"
+  }
+ ],
+ "pakete": {
+  "copilot-skill": {
+   "zip": "KAIWA-SUITE-copilot-skill",
+   "wurzelordner": false,
+   "dateien": [
+    [
+     "SKILL.md",
+     "2-agents/copilot/skill/SKILL.md"
+    ],
+    [
+     "modules/stream.md",
+     "2-agents/copilot/skill/modules/stream.md"
+    ],
+    [
+     "modules/map.md",
+     "2-agents/copilot/skill/modules/map.md"
+    ],
+    [
+     "modules/analysis.md",
+     "2-agents/copilot/skill/modules/analysis.md"
+    ],
+    [
+     "modules/sources.md",
+     "2-agents/copilot/skill/modules/sources.md"
+    ],
+    [
+     "references/LICENSE-prompts.md",
+     "method/prompts/LICENSE.md"
+    ],
+    [
+     "references/LICENSE-protocols.md",
+     "method/protocols/LICENSE.md"
+    ],
+    [
+     "references/LICENSE-suite.txt",
+     "LICENSE"
+    ],
+    [
+     "references/artifact-triage.md",
+     "method/prompts/core/artifact-triage.md"
+    ],
+    [
+     "references/framework-catalog.md",
+     "method/prompts/framework-catalog.md"
+    ],
+    [
+     "references/frameworks/content-analysis.md",
+     "method/prompts/social-science/content-analysis.md"
+    ],
+    [
+     "references/frameworks/conversation-analysis.md",
+     "method/prompts/social-science/conversation-analysis.md"
+    ],
+    [
+     "references/frameworks/feminist-theory.md",
+     "method/prompts/cultural-scientific/feminist-theory.md"
+    ],
+    [
+     "references/frameworks/multimodal-analysis.md",
+     "method/prompts/cultural-scientific/multimodal-analysis.md"
+    ],
+    [
+     "references/frameworks/postcolonial-theory.md",
+     "method/prompts/cultural-scientific/postcolonial-theory.md"
+    ],
+    [
+     "references/frameworks/semiotics.md",
+     "method/prompts/cultural-scientific/semiotics.md"
+    ],
+    [
+     "references/frameworks/source-criticism.md",
+     "method/prompts/cultural-scientific/source-criticism.md"
+    ],
+    [
+     "references/frameworks/structuralism.md",
+     "method/prompts/cultural-scientific/structuralism.md"
+    ],
+    [
+     "references/frameworks/systems-theory.md",
+     "method/prompts/social-science/systems-theory.md"
+    ],
+    [
+     "references/source-protocol.md",
+     "method/protocols/source-protocol.md"
+    ],
+    [
+     "references/sprawdz-mape.md",
+     "2-agents/copilot/map/sprawdz-mape.md"
+    ]
+   ]
+  },
+  "copilot-plugin": {
+   "zip": "KAIWA-SUITE-copilot-plugin",
+   "wurzelordner": false,
+   "dateien": [
+    [
+     "manifest.json",
+     "2-agents/copilot/plugin/manifest.json"
+    ],
+    [
+     "color.png",
+     "2-agents/copilot/plugin/color.png"
+    ],
+    [
+     "outline.png",
+     "2-agents/copilot/plugin/outline.png"
+    ],
+    [
+     "skills/kaiwa-stream/SKILL.md",
+     {
+      "kopf": "2-agents/copilot/plugin/skills.json",
+      "name": "kaiwa-stream",
+      "koerper": "2-agents/copilot/skill/modules/stream.md"
+     }
+    ],
+    [
+     "skills/kaiwa-stream/references/LICENSE-suite.txt",
+     "LICENSE"
+    ],
+    [
+     "skills/kaiwa-map/SKILL.md",
+     {
+      "kopf": "2-agents/copilot/plugin/skills.json",
+      "name": "kaiwa-map",
+      "koerper": "2-agents/copilot/skill/modules/map.md"
+     }
+    ],
+    [
+     "skills/kaiwa-map/references/LICENSE-suite.txt",
+     "LICENSE"
+    ],
+    [
+     "skills/kaiwa-map/references/sprawdz-mape.md",
+     "2-agents/copilot/map/sprawdz-mape.md"
+    ],
+    [
+     "skills/kaiwa-analysis/SKILL.md",
+     {
+      "kopf": "2-agents/copilot/plugin/skills.json",
+      "name": "kaiwa-analysis",
+      "koerper": "2-agents/copilot/skill/modules/analysis.md"
+     }
+    ],
+    [
+     "skills/kaiwa-analysis/references/LICENSE-prompts.md",
+     "method/prompts/LICENSE.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/LICENSE-suite.txt",
+     "LICENSE"
+    ],
+    [
+     "skills/kaiwa-analysis/references/artifact-triage.md",
+     "method/prompts/core/artifact-triage.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/framework-catalog.md",
+     "method/prompts/framework-catalog.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/content-analysis.md",
+     "method/prompts/social-science/content-analysis.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/conversation-analysis.md",
+     "method/prompts/social-science/conversation-analysis.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/feminist-theory.md",
+     "method/prompts/cultural-scientific/feminist-theory.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/multimodal-analysis.md",
+     "method/prompts/cultural-scientific/multimodal-analysis.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/postcolonial-theory.md",
+     "method/prompts/cultural-scientific/postcolonial-theory.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/semiotics.md",
+     "method/prompts/cultural-scientific/semiotics.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/source-criticism.md",
+     "method/prompts/cultural-scientific/source-criticism.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/structuralism.md",
+     "method/prompts/cultural-scientific/structuralism.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/systems-theory.md",
+     "method/prompts/social-science/systems-theory.md"
+    ],
+    [
+     "skills/kaiwa-sources/SKILL.md",
+     {
+      "kopf": "2-agents/copilot/plugin/skills.json",
+      "name": "kaiwa-sources",
+      "koerper": "2-agents/copilot/skill/modules/sources.md"
+     }
+    ],
+    [
+     "skills/kaiwa-sources/references/LICENSE-protocols.md",
+     "method/protocols/LICENSE.md"
+    ],
+    [
+     "skills/kaiwa-sources/references/LICENSE-suite.txt",
+     "LICENSE"
+    ],
+    [
+     "skills/kaiwa-sources/references/source-protocol.md",
+     "method/protocols/source-protocol.md"
+    ]
+   ]
+  }
+ }
+}

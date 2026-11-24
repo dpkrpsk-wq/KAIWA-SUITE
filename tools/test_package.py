@@ -16,6 +16,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -776,6 +777,138 @@ class ClaudeTest(unittest.TestCase):
             self.assertTrue(fields["description"], p.parent.name)
             self.assertLessEqual(len(fields["description"]), 1024, p.parent.name)
             self.assertLess(len(lines), 500, p.parent.name)
+
+
+@braucht("release/sets.json", "tools/release.py")
+class ReleaseSetsTest(unittest.TestCase):
+    """Dateisatz der Release-ZIPs (release/sets.json, einzige Quelle, F-0086): jeder Pfad existiert, Verweise loesen sich auf."""
+
+    @classmethod
+    def setUpClass(cls):
+        import release as REL
+        cls.REL = REL
+        cls.q = REL.Quelle(None)
+        cls.s = REL.sets(cls.q)
+
+    def test_every_path_exists(self):
+        for a in self.s["immer"]:
+            self.assertTrue(a in self.q.set or self.q.unter(a), a)
+        for e in self.s["eintraege"]:
+            self.assertTrue(e["p"] in self.q.set or self.q.unter(e["p"]), e["p"])
+        for name, paket in self.s["pakete"].items():
+            for ziel, quelle in paket["dateien"]:
+                pfade = [quelle] if isinstance(quelle, str) else [quelle["kopf"], quelle["koerper"]]
+                for p in pfade:
+                    self.assertIn(p, self.q.set, name + ": " + ziel)
+
+    def test_files_referenced_by_licences_and_readme_are_in_every_zip(self):
+        # Befund 24.11.2026: LICENSE-COMMERCIAL.md verweist auf design/fonts/OFL.txt, README.md und DISCLOSURE.md auf first-contact.html
+        for a in self.REL.ANBIETER:
+            satz = set(self.REL.dateisatz(self.q, self.s, a))
+            for p in ("design/fonts/OFL.txt", "1-start/first-contact.html", "LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md", "README.md", "product.json"):
+                self.assertIn(p, satz, a + ": " + p)
+
+    def test_files_txt_entries_are_in_the_vendor_zip(self):
+        for a in ("chatgpt", "claude"):
+            satz = set(self.REL.dateisatz(self.q, self.s, a))
+            for f in sorted(x for x in self.q.set if x.startswith("2-agents/%s/" % a) and x.endswith("/files.txt")):
+                for zeile in self.q.lies(f).decode("utf-8").splitlines():
+                    zeile = zeile.strip()
+                    if zeile:
+                        self.assertIn(zeile, satz, a + ": " + f + " nennt " + zeile)
+
+    def test_release_script_is_not_shipped(self):
+        for a in self.REL.ANBIETER:
+            self.assertNotIn("tools/release.py", self.REL.dateisatz(self.q, self.s, a))
+
+    def test_plugin_version_matches_product(self):
+        manifest = json.loads(self.q.lies("2-agents/copilot/plugin/manifest.json").decode("utf-8"))
+        self.assertEqual(manifest["version"], self.REL.version(self.q))
+
+
+@braucht("release/sets.json", "tools/release.py")
+class ReleaseBuildTest(unittest.TestCase):
+    """Die gebauten ZIPs: reproduzierbar, Inhalt gleich Quelle, Copilot-Pakete nach den Regeln aus Microsoft Learn (Meta, 24.11.2026)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import release as REL
+        cls.REL = REL
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.q = REL.Quelle(None)
+        cls.s = REL.sets(cls.q)
+        cls.ver = REL.version(cls.q)
+        cls.out = Path(cls.tmp.name) / "release"
+        cls.befunde, cls.m = REL.pruefe(cls.q, cls.out)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def test_build_is_reproducible_and_matches_sources(self):
+        self.assertEqual(self.befunde, [])
+
+    def test_names_carry_the_version_and_sums_match(self):
+        import hashlib
+        namen = {e["name"] for e in self.m["dateien"]}
+        for basis in ["KAIWA-SUITE-" + a for a in self.REL.ANBIETER] + ["KAIWA-SUITE-copilot-skill", "KAIWA-SUITE-copilot-plugin"]:
+            self.assertIn("%s-%s.zip" % (basis, self.ver), namen)
+            self.assertIn(basis + ".zip", namen)
+        zeilen = (self.out / "SHA256SUMS.txt").read_text(encoding="utf-8").splitlines()
+        self.assertEqual(len(zeilen), len(namen))
+        for z in zeilen:
+            h, n = z.split("  ")
+            self.assertEqual(hashlib.sha256((self.out / n).read_bytes()).hexdigest(), h, n)
+
+    def test_vendor_zip_has_one_root_folder_and_contents_file(self):
+        for a in self.REL.ANBIETER:
+            z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-%s-%s.zip" % (a, self.ver)))
+            wurzeln = {n.split("/")[0] for n in z.namelist()}
+            self.assertEqual(wurzeln, {"KAIWA-SUITE-" + a}, a)
+            self.assertIn("KAIWA-SUITE-%s/ZIP-CONTENTS.md" % a, z.namelist())
+
+    def test_copilot_skill_zip_has_exactly_one_skill_md_in_the_root(self):
+        z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-copilot-skill-%s.zip" % self.ver))
+        namen = z.namelist()
+        self.assertEqual([n for n in namen if n.endswith("SKILL.md")], ["SKILL.md"])
+        self.assertLessEqual(len(namen), 100)
+        self.assertLess(sum(i.compress_size for i in z.infolist()), 10 * 1024 * 1024)
+        kopf = re.match(r'---\nname: (.+)\ndescription: (".*")\n---\n', z.read("SKILL.md").decode("utf-8"))
+        self.assertIsNotNone(kopf)
+        self.assertEqual(kopf.group(1), "kaiwa-suite")
+
+    def test_copilot_plugin_zip_follows_the_package_rules(self):
+        import struct
+        z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-copilot-plugin-%s.zip" % self.ver))
+        namen = z.namelist()
+        for n in ("manifest.json", "color.png", "outline.png"):
+            self.assertIn(n, namen)
+        for n, groesse in (("color.png", 192), ("outline.png", 32)):
+            kopf = z.read(n)
+            self.assertEqual(kopf[:8], b"\x89PNG\r\n\x1a\n")
+            self.assertEqual(struct.unpack(">II", kopf[16:24]), (groesse, groesse), n)
+        m = json.loads(z.read("manifest.json").decode("utf-8"))
+        self.assertEqual(m["version"], self.ver)
+        self.assertLessEqual(len(m["name"]["short"]), 30)
+        self.assertLessEqual(len(m["name"]["full"]), 100)
+        self.assertLessEqual(len(m["description"]["short"]), 80)
+        self.assertLessEqual(len(m["description"]["full"]), 4000)
+        ordner = [a["folder"].replace("./", "") for a in m["agentSkills"]]
+        self.assertEqual(len(ordner), 4)
+        for o in ordner:
+            self.assertIn(o + "/SKILL.md", namen)
+        self.assertEqual(sorted(n for n in namen if n.endswith("SKILL.md")), sorted(o + "/SKILL.md" for o in ordner))
+        self.assertLessEqual(len(namen), 100)
+
+    def test_plugin_skills_carry_the_module_text(self):
+        z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-copilot-plugin-%s.zip" % self.ver))
+        for m in ("stream", "map", "analysis", "sources"):
+            text = z.read("skills/kaiwa-%s/SKILL.md" % m).decode("utf-8")
+            kopf = re.match(r'---\nname: (kaiwa-%s)\ndescription: (".*")\n---\n\n' % m, text)
+            self.assertIsNotNone(kopf, m)
+            self.assertLessEqual(len(json.loads(kopf.group(2))), 1024, m)
+            body = self.q.lies("2-agents/copilot/skill/modules/%s.md" % m).decode("utf-8")
+            self.assertEqual(text[kopf.end():], body, m)
 
 
 if __name__ == "__main__":
