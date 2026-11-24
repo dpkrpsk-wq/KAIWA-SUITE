@@ -30,7 +30,7 @@ Each folder holds `PROJECT.md` (name, description, first message, in Polish), `I
 3. Add the files listed in `files.txt` to the project. Each list has at most 10 files, so one upload is enough.
 4. Start a new chat in the project with the first message from `PROJECT.md`.
 
-Length of the instructions: the OpenAI help "Projects in ChatGPT" (checked 22 November 2026) names no limit. User reports mention about 8,000 characters (unverified), Copilot has this limit. The instructions in this folder have stream 6,356, map 7,466, analysis 7,285 and sources 4,159 characters, at most 7,466. After saving, check that the instructions are complete (unverified in ChatGPT).
+Length of the instructions: the OpenAI help "Projects in ChatGPT" (checked 22 November 2026) names no limit. User reports mention about 8,000 characters (unverified), Copilot has this limit. The instructions in this folder have stream 7,130, map 7,481, analysis 7,300 and sources 4,289 characters, at most 7,481. After saving, check that the instructions are complete (unverified in ChatGPT).
 
 ## Start menu (analysis)
 

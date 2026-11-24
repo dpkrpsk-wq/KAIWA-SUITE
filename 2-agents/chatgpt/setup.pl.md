@@ -30,7 +30,7 @@ W każdym folderze: `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTI
 3. Dodaj do projektu pliki z `files.txt`. Każda lista ma najwyżej 10 plików, więc wystarczy jedno wgranie.
 4. Zacznij nową rozmowę w projekcie od pierwszej wiadomości z `PROJECT.md`.
 
-Długość instrukcji: pomoc OpenAI „Projects in ChatGPT” (sprawdzona 22.11.2026) nie podaje granicy. Użytkownicy piszą o około 8000 znaków (niesprawdzone), taką granicę ma Copilot. Instrukcje w tym folderze mają: strumień 6356, mapa 7466, analiza 7285 i źródła 4159 znaków, najwyżej 7466. Po zapisaniu sprawdź, czy instrukcje są całe (niesprawdzone w ChatGPT).
+Długość instrukcji: pomoc OpenAI „Projects in ChatGPT” (sprawdzona 22.11.2026) nie podaje granicy. Użytkownicy piszą o około 8000 znaków (niesprawdzone), taką granicę ma Copilot. Instrukcje w tym folderze mają: strumień 7130, mapa 7481, analiza 7300 i źródła 4289 znaków, najwyżej 7481. Po zapisaniu sprawdź, czy instrukcje są całe (niesprawdzone w ChatGPT).
 
 ## Menu startowe (analiza)
 

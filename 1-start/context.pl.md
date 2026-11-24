@@ -52,7 +52,7 @@ Konfiguracja drugiego agenta: dla Copilot `1-start/setup.pl.md`, część „Dru
 
 ## Sprawdzanie
 
-W Copilot dołącz plik mapy i napisz „sprawdź mapę“. Na własnym komputerze: `python tools/context.py sprawdz <plik mapy>` (wymaga pakietu openpyxl). Oba sposoby używają tych samych reguł, test pakietu pilnuje, żeby się nie rozjechały.
+W Copilot dołącz plik mapy i napisz „sprawdź mapę“. Na własnym komputerze: `python tools/context.py sprawdz <plik mapy>` (wymaga pakietu openpyxl). W Copilot agent może napisać własny kod albo go nie uruchomić i wtedy nie wykryje zmiany w mapie (test 24.11.2026, zob. `1-start/setup.pl.md`). Pewne jest tylko sprawdzenie na własnym komputerze. Oba sposoby używają tych samych reguł, test pakietu pilnuje, żeby się nie rozjechały.
 
 ## Granice
 

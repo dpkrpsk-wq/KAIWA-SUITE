@@ -40,7 +40,7 @@ Konfiguracja: `1-start/setup.pl.md` (wszyscy agenci) i `1-start/setup.en.md` (st
 
 | Folder | Projekt albo skill / project or skill | Stan / status |
 |---|---|---|
-| `2-agents/claude/` | Te same cztery moduły jako projekty w claude.ai (w przeglądarce, aplikacja desktopowa niesprawdzona) oraz jako skille w Claude Code (`2-agents/claude/code/kaiwa-*/SKILL.md`), z `2-agents/claude/setup.pl.md` i `2-agents/claude/setup.en.md`, w każdym folderze `PROJECT.md`, `INSTRUCTIONS.txt` i `files.txt` / the same four modules as projects in claude.ai (in the browser and in the desktop app) and as skills in Claude Code, with the setup guides in Polish and English | roboczy, nieprzetestowany w Claude / draft, untested in Claude |
+| `2-agents/claude/` | Te same cztery moduły jako projekty w claude.ai (w przeglądarce, aplikacja desktopowa niesprawdzona) oraz jako skille w Claude Code (`2-agents/claude/code/kaiwa-*/SKILL.md`), z `2-agents/claude/setup.pl.md` i `2-agents/claude/setup.en.md`, w każdym folderze `PROJECT.md`, `INSTRUCTIONS.txt` i `files.txt` / the same four modules as projects in claude.ai (in the browser, the desktop app is unverified) and as skills in Claude Code, with the setup guides in Polish and English | roboczy, nieprzetestowany w Claude / draft, untested in Claude |
 
 ## Pozostałe pliki / other files
 
