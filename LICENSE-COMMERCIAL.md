@@ -4,7 +4,7 @@ KAIWA SUITE 26.01, wersja 0.2.0 (robocza / draft), 22.11.2026.
 
 **Copyright © 2026 Denis Pokropski. Wszelkie prawa zastrzeżone poza zakresem licencji publicznej / all rights reserved outside the scope of the public licence.**
 
-Po polsku w skrócie: treść własna pakietu ma dwie licencje. Domyślnie jest dostępna na licencji CC BY-NC-SA 4.0 (plik [`LICENSE`](LICENSE)): do nauki, badań i innego użytku niekomercyjnego bez pytania, z podaniem autora i na tych samych warunkach. Użycie komercyjne treści własnej wymaga osobnej licencji komercyjnej. Udziela jej na piśmie mentalpinG-Ops w imieniu autora, po zapytaniu: mentalpingoperator@gmail.com. Foldery `method/prompts/`, `method/protocols/` i `design/fonts/` mają własne licencje i nie są objęte tym dokumentem. Skrót nie zastępuje tekstu poniżej.
+Po polsku w skrócie: treść własna pakietu ma dwie licencje. Domyślnie jest dostępna na licencji CC BY-NC-SA 4.0 (plik [`LICENSE`](LICENSE)): do nauki, badań i innego użytku niekomercyjnego bez pytania, z podaniem autora i na tych samych warunkach. Użycie komercyjne treści własnej wymaga osobnej licencji komercyjnej. Udziela jej na piśmie mentalpinG-Ops w imieniu autora i za jego zgodą, po zapytaniu: mentalpingoperator@gmail.com. Foldery `method/prompts/`, `method/protocols/` i `design/fonts/` mają własne licencje i nie są objęte tym dokumentem. Skrót nie zastępuje tekstu poniżej.
 
 ---
 
@@ -12,7 +12,7 @@ Po polsku w skrócie: treść własna pakietu ma dwie licencje. Domyślnie jest 
 
 The package's own content is dual-licensed. By default it is made available under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** licence. See [`LICENSE`](LICENSE) for the scope by folder and the full licence text. The terms NonCommercial and Adapted Material are used here as defined in Section 1 of that licence, ShareAlike as set out in its Section 3(b).
 
-This document describes the **Commercial Licence**, a separate, proprietary licence available on request. mentalpinG-Ops grants it on behalf of the copyright holder, Denis Pokropski. The Commercial Licence is not self-service. It must be explicitly granted.
+This document describes the **Commercial Licence**, a separate, proprietary licence available on request. mentalpinG-Ops grants it on behalf of and with the authorisation of the copyright holder, Denis Pokropski. The Commercial Licence is not self-service. It must be explicitly granted.
 
 ---
 
