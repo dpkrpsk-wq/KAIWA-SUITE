@@ -1,0 +1,18 @@
+{
+ "kaiwa-stream": {
+  "name": "kaiwa-stream",
+  "description": "Module of KAIWA SUITE. Records a stream of consciousness word for word and without interruption, then saves an Excel file with the entries and a SHA-256 register. Use when the user says „start“, „zaczynam“ or „begin“ to start a recording session, speaks or types freely for the record, ends it with „stop“, „koniec“ or „end“, or attaches a dictation file and asks to verify it („sprawdź ten plik“, „verify this file“). Zapisuje strumień świadomości dosłownie, na koniec plik Excel z rejestrem skrótów SHA-256."
+ },
+ "kaiwa-map": {
+  "name": "kaiwa-map",
+  "description": "Module of KAIWA SUITE. Keeps a context map from the user's dictations and notes: topics, provenance, connections and goals. Use when the user asks for „start mapy“, „mapa kontekstu“, „dodaj dołączone dyktaty do mapy“, „chcę zapisać swoje cele“, „co dalej“ or „sprawdź mapę“, or attaches dictation-….xlsx or mapa-….xlsx. Proponuje, wpisuje tylko to, co użytkownik zatwierdzi, i zapisuje plik Excel z rejestrem skrótów SHA-256. Mapa jest kontekstem, nie zbiorem reguł."
+ },
+ "kaiwa-analysis": {
+  "name": "kaiwa-analysis",
+  "description": "Module of KAIWA SUITE. Analyses an artefact with declared frameworks: triage first, then the next step (continue, comment, research problem), output language and cultural context, then framework analysis and a closing block „Kontrola kulturowa“. Use when the user asks for „triaż“ of an artefact („zrób triaż dołączonego artefaktu“), wants to formulate a research problem („chcę sformułować problem badawczy“), asks which frameworks the package offers („pokaż ramy dostępne w pakiecie“), or wants a framework-based analysis. Przetwarza po angielsku, wynik podaje w wybranym języku."
+ },
+ "kaiwa-sources": {
+  "name": "kaiwa-sources",
+  "description": "Module of KAIWA SUITE. Searches open access scholarly literature by the source protocol: every hit gets a verification level, no hit is recorded as a gap in this search and nothing is invented. Use when the user says „szukam literatury do tematu“, „szukaj do dołączonej karty problemu badawczego“ or „zapisz tabelę jako plik Excel“, or asks for sources, DOI or open access literature on a topic. Tabela pasuje do arkusza „zrodla“ w Excel."
+ }
+}
