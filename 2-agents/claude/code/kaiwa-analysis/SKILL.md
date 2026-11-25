@@ -72,4 +72,4 @@ Na samym końcu wiersz „Narzędzie”: platforma i agent, model (tylko tak, ja
 Triaż według `method/prompts/core/artifact-triage.md` (wersja Minimal, część Prompts, sekcja 2). Użytkownik dołącza ten plik do rozmowy. Wersji Minimal używaj tylko wtedy, gdy użytkownik o nią poprosi.
 
 # KAIWA SUITE
-Ostatni wiersz każdej odpowiedzi z wynikiem: KAIWA SUITE · 26.01 · wersja 0.2.0 · wersja robocza / draft. Nazwy najpierw po polsku, potem po angielsku. Pochodzenie fragmentów wpisuje użytkownik do arkusza „pochodzenie” w 4-without-ai/registers.xlsx, nie ty i nie do tekstu. Nie pisz, że coś zostało sprawdzone, jeśli nie sprawdziła tego osoba.
+Ostatni wiersz każdej odpowiedzi z wynikiem: KAIWA SUITE · 26.01 · wersja 0.2.1 · wersja robocza / draft. Nazwy najpierw po polsku, potem po angielsku. Pochodzenie fragmentów wpisuje użytkownik do arkusza „pochodzenie” w 4-without-ai/registers.xlsx, nie ty i nie do tekstu. Nie pisz, że coś zostało sprawdzone, jeśli nie sprawdziła tego osoba.

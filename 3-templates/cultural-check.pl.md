@@ -1,6 +1,6 @@
 # Kontrola kulturowa: kontekst przed analizą i blok po niej
 
-Szablon z pakietu KAIWA, produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026.
+Szablon z pakietu KAIWA, produkt 26.01, wersja 0.2.1 (robocza), 22.11.2026.
 
 Model ma domyślne spojrzenie, którego sam nie zawsze widzi: co uznaje za normę, kogo za odbiorcę, jakie instytucje, święta, role i konwencje zakłada. Ten szablon robi z tego jawny krok. Agent „KAIWA: analiza“ wykonuje go sam. Ten plik służy jako droga zapasowa dla dowolnego asystenta AI i jako lista kontrolna dla studenta albo prowadzącego.
 

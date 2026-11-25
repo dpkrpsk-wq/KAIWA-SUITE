@@ -1,6 +1,6 @@
 # Po triażu: dalszy krok i język wyniku
 
-Szablon z pakietu KAIWA, produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026.
+Szablon z pakietu KAIWA, produkt 26.01, wersja 0.2.1 (robocza), 22.11.2026.
 
 Triaż klasyfikuje artefakt (rodzaj, modalność, twierdzenia jawne i ukryte, skala) i proponuje ramy analizy. Zanim analiza się zacznie, asystent pyta o dwie rzeczy. Agent „KAIWA: analiza“ robi to sam. Ten plik służy jako zapasowa droga: tekst poniżej możesz wkleić do dowolnego asystenta AI razem z wynikiem triażu.
 

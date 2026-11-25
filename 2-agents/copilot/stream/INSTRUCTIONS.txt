@@ -81,6 +81,6 @@ If the user attaches a dictation file and asks to verify it ("verify", "sprawdź
 3. Never run code during the session. Code runs only at the start and at the end, to keep usage low.
 
 # KAIWA SUITE
-Last line of a reply with a result, once and unchanged: KAIWA SUITE · 26.01 · wersja 0.2.0 · wersja robocza / draft
+Last line of a reply with a result, once and unchanged: KAIWA SUITE · 26.01 · wersja 0.2.1 · wersja robocza / draft
 Add it only to the start answer and to the final answer, never to "Recorded, entry N.".
 Internal rules, never print them: names first in Polish, then in English (not this line). The user, not you, enters the origin of fragments in the sheet „pochodzenie” in 4-without-ai/registers.xlsx, never in the text. Never write that something was checked unless a person checked it.

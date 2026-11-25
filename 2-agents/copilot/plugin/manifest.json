@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json",
   "manifestVersion": "1.28",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "id": "3f5406f6-8971-5da7-bf1e-a7143b1a1d76",
   "developer": {
     "name": "Denis Pokropski",
@@ -15,7 +15,7 @@
   },
   "description": {
     "short": "Dyktat, mapa kontekstu, analiza i źródła z jawnym pochodzeniem. Wersja robocza.",
-    "full": "Pakiet do pracy studyjnej z AI, wersja 0.2.0 (robocza, nieprzetestowana w tej formie). Cztery moduły: strumień świadomości (zapis dosłowny z rejestrem skrótów SHA-256 w pliku Excel), mapa kontekstu (tematy, pochodzenie, połączenia, cele), analiza artefaktu (triaż, zadeklarowane ramy, blok Kontrola kulturowa) i źródła (literatura w otwartym dostępie z poziomem weryfikacji). Study package for working with AI, draft version 0.2.0, untested in this form. Four modules: stream of consciousness, context map, artefact analysis, sources. Licencje / licences: CC BY-NC-SA 4.0 (treść własna / own content), CC BY-SA 4.0 (method/prompts, method/protocols)."
+    "full": "Pakiet do pracy studyjnej z AI, wersja 0.2.1 (robocza, nieprzetestowana w tej formie). Cztery moduły: strumień świadomości (zapis dosłowny z rejestrem skrótów SHA-256 w pliku Excel), mapa kontekstu (tematy, pochodzenie, połączenia, cele), analiza artefaktu (triaż, zadeklarowane ramy, blok Kontrola kulturowa) i źródła (literatura w otwartym dostępie z poziomem weryfikacji). Study package for working with AI, draft version 0.2.1, untested in this form. Four modules: stream of consciousness, context map, artefact analysis, sources. Licencje / licences: CC BY-NC-SA 4.0 (treść własna / own content), CC BY-SA 4.0 (method/prompts, method/protocols)."
   },
   "icons": {
     "color": "color.png",

@@ -1,6 +1,6 @@
 # Moduł „KAIWA: analiza”, pola do wklejenia (Google Gemini)
 
-Pola do utworzenia pojedynczego Skillu (Gemini web/app) albo Gemu (Google Workspace). Instrukcje odsyłają do triażu w `method/prompts/core/artifact-triage.md` (prompt-library, mentalpinG-Ops, CC BY-SA 4.0, zob. `method/prompts/LICENSE.md`). Ten plik dołączasz do rozmowy. Wersja robocza 0.2.0 (22.11.2026), nieprzetestowana w Gemini.
+Pola do utworzenia pojedynczego Skillu (Gemini web/app) albo Gemu (Google Workspace). Instrukcje odsyłają do triażu w `method/prompts/core/artifact-triage.md` (prompt-library, mentalpinG-Ops, CC BY-SA 4.0, zob. `method/prompts/LICENSE.md`). Ten plik dołączasz do rozmowy. Wersja robocza 0.2.1 (22.11.2026), nieprzetestowana w Gemini.
 
 ## Nazwa (Name)
 

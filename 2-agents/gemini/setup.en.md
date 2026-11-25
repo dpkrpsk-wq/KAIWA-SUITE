@@ -4,7 +4,7 @@
 
 **Languages / języki:** [English](setup.en.md) · [Polski](setup.pl.md)
 
-Product 26.01, version 0.2.0 (draft), 22 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, contact: 285421@student.uwr.edu.pl. This package adapts the KAIWA method for Google Gemini (Skills and Gems are saved standing instructions in Gemini that you call up in a chat, plus plain Gemini chats with file attachments).
+Product 26.01, version 0.2.1 (draft), 22 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, contact: 285421@student.uwr.edu.pl. This package adapts the KAIWA method for Google Gemini (Skills and Gems are saved standing instructions in Gemini that you call up in a chat, plus plain Gemini chats with file attachments).
 
 ## Get the package
 
@@ -63,4 +63,4 @@ Before using recorded texts in coursework, check the rules of your university an
 
 Contact: Denis Pokropski, 285421@student.uwr.edu.pl.
 
-KAIWA SUITE · 26.01 · wersja 0.2.0 · wersja robocza / draft
+KAIWA SUITE · 26.01 · wersja 0.2.1 · wersja robocza / draft

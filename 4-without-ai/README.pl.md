@@ -1,6 +1,6 @@
 # Protokoły w Word i Excel, bez AI
 
-Część pakietu KAIWA, produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026.
+Część pakietu KAIWA, produkt 26.01, wersja 0.2.1 (robocza), 22.11.2026.
 
 Protokoły z folderu `method/protocols/` (po angielsku, CC BY-SA 4.0) opisują, jak pracować z AI odpowiedzialnie: skąd pochodzi myśl, jak dobrze sprawdzone jest źródło, co sprawdzić przed publikacją. Ten folder pozwala stosować je także wtedy, gdy agenci Copilot nie działają albo gdy pracujesz bez AI.
 

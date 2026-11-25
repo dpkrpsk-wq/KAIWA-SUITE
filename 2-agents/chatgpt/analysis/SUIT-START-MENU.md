@@ -1,6 +1,6 @@
 # KAIWA SUITE: menu startowe / start menu (ChatGPT, analiza)
 
-KAIWA SUITE 26.01, wersja 0.2.0 (robocza / draft), 22.11.2026. Plik projektu „KAIWA: analiza” w ChatGPT. Instrukcje projektu odsyłają do tego pliku. / Project file of “KAIWA: analiza” in ChatGPT. The project instructions refer to this file.
+KAIWA SUITE 26.01, wersja 0.2.1 (robocza / draft), 22.11.2026. Plik projektu „KAIWA: analiza” w ChatGPT. Instrukcje projektu odsyłają do tego pliku. / Project file of “KAIWA: analiza” in ChatGPT. The project instructions refer to this file.
 
 ## Kiedy / when
 

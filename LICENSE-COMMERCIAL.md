@@ -1,6 +1,6 @@
 # Licencja komercyjna / Commercial Licence: KAIWA SUITE
 
-KAIWA SUITE 26.01, wersja 0.2.0 (robocza / draft), 22.11.2026.
+KAIWA SUITE 26.01, wersja 0.2.1 (robocza / draft), 22.11.2026.
 
 **Copyright © 2026 Denis Pokropski. Wszelkie prawa zastrzeżone poza zakresem licencji publicznej / all rights reserved outside the scope of the public licence.**
 

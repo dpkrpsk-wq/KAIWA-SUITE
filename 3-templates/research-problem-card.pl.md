@@ -1,6 +1,6 @@
 # Karta problemu badawczego
 
-Szablon z pakietu KAIWA, produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Struktura ośmiu pól i lista kryteriów pochodzą z ćwiczeń metodologicznych na studiach.
+Szablon z pakietu KAIWA, produkt 26.01, wersja 0.2.1 (robocza), 22.11.2026. Struktura ośmiu pól i lista kryteriów pochodzą z ćwiczeń metodologicznych na studiach.
 
 Oznaczenia w polach: tekst bez znacznika to twoje słowa. **[asystent]** oznacza propozycję asystenta AI, którą przyjmujesz, zmieniasz albo skreślasz.
 
