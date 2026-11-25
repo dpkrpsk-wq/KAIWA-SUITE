@@ -771,8 +771,8 @@ class ClaudeTest(unittest.TestCase):
                     self.assertNotIn(w, t, "%s: %s" % (p.relative_to(self.BASE), w))
 
     def test_skills(self):
-        skills = sorted((self.BASE / "code").glob("kaiwa-*/SKILL.md"))
-        self.assertEqual([p.parent.name for p in skills], ["kaiwa-analysis", "kaiwa-map", "kaiwa-sources", "kaiwa-stream"])
+        skills = sorted((self.BASE / "code").glob("kaiwa*/SKILL.md"))
+        self.assertEqual([p.parent.name for p in skills], ["kaiwa", "kaiwa-analysis", "kaiwa-map", "kaiwa-sources", "kaiwa-stream"])
         for p in skills:
             text = p.read_text(encoding="utf-8")
             lines = text.splitlines()

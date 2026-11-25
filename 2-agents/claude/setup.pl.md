@@ -29,7 +29,7 @@ Która droga do ciebie pasuje: droga A wymaga tylko przeglądarki i pasuje więk
 | KAIWA: analiza | `2-agents/claude/analysis/` | `2-agents/claude/code/kaiwa-analysis/` | 8 | wersja robocza, nieprzetestowana w Claude |
 | KAIWA: źródła | `2-agents/claude/sources/` | `2-agents/claude/code/kaiwa-sources/` | 2 | wersja robocza, nieprzetestowana w Claude |
 
-Każdy folder projektu zawiera `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTIONS.txt` (instrukcje projektu) i `files.txt` (pliki projektu). Każdy folder skilla zawiera jeden plik `SKILL.md` z tymi samymi instrukcjami i krótkim wstępem dla Claude Code. Skill to folder z instrukcjami, które Claude Code wczytuje, gdy go wywołasz. Wiedza projektu w claude.ai to pliki, które Claude czyta w każdej rozmowie tego projektu.
+Każdy folder projektu zawiera `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTIONS.txt` (instrukcje projektu) i `files.txt` (pliki projektu). Każdy folder skilla zawiera jeden plik `SKILL.md` z tymi samymi instrukcjami i krótkim wstępem dla Claude Code. W Claude Code piąty skill, `2-agents/claude/code/kaiwa/`, jest punktem wejścia: pyta, którego z czterech modułów chcesz, i go uruchamia. Skill to folder z instrukcjami, które Claude Code wczytuje, gdy go wywołasz. Wiedza projektu w claude.ai to pliki, które Claude czyta w każdej rozmowie tego projektu.
 
 ## Droga A: jeden projekt w claude.ai
 
@@ -43,8 +43,8 @@ W sprawdzonych stronach pomocy nie znaleźliśmy limitu długości instrukcji pr
 ## Droga B: skille w Claude Code
 
 1. Otwórz terminal w folderze pakietu KAIWA (folder z `README.md`).
-2. Skopiuj cztery foldery z `2-agents/claude/code/` do folderu `.claude/skills/` w folderze pakietu, tak aby istniał na przykład `.claude/skills/kaiwa-stream/SKILL.md`. Folder, którego nazwa zaczyna się od kropki, może być ukryty w menedżerze plików. W Windows (PowerShell): `New-Item -ItemType Directory -Force .claude/skills; Copy-Item -Recurse 2-agents/claude/code/* .claude/skills/`. W macOS i Linux: `mkdir -p .claude/skills && cp -r 2-agents/claude/code/* .claude/skills/`.
-3. Uruchom Claude Code w folderze pakietu i napisz na przykład `/kaiwa-stream` albo „start” z krótką informacją, o który moduł chodzi.
+2. Skopiuj pięć folderów z `2-agents/claude/code/` do folderu `.claude/skills/` w folderze pakietu, tak aby istniał na przykład `.claude/skills/kaiwa-stream/SKILL.md`. Folder, którego nazwa zaczyna się od kropki, może być ukryty w menedżerze plików. W Windows (PowerShell): `New-Item -ItemType Directory -Force .claude/skills; Copy-Item -Recurse 2-agents/claude/code/* .claude/skills/`. W macOS i Linux: `mkdir -p .claude/skills && cp -r 2-agents/claude/code/* .claude/skills/`.
+3. Uruchom Claude Code w folderze pakietu i napisz `/kaiwa` i podaj moduł albo wywołaj moduł bezpośrednio, na przykład `/kaiwa-stream`.
 
 Skille czytają pliki projektu z folderu pakietu i zapisują pliki Excel w bieżącym folderze. Niczego nie instalują. Gdy brakuje openpyxl, skill to mówi.
 
