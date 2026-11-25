@@ -58,8 +58,14 @@
         box.appendChild(el("span", null, found.name + " · " + size(found.bytes) + " · " + found.dateien + " files"));
         box.appendChild(el("span", "sum", "SHA-256 " + found.sha256));
       } else {
-        var p = el("p", "none", "The release is not available yet. Until then take the whole package from the main branch.");
-        altSpan(p, "Wydanie nie jest jeszcze dostępne. Do tego czasu pobierz cały pakiet z gałęzi main.");
+        var p;
+        if (m) {
+          p = el("p", "none", "This file is not in release " + m.version + ". It comes with the next release. Until then take the whole package from the main branch.");
+          altSpan(p, "Tego pliku nie ma w wydaniu " + m.version + ". Pojawi się w następnym wydaniu. Do tego czasu pobierz cały pakiet z gałęzi main.");
+        } else {
+          p = el("p", "none", "The release is not available yet. Until then take the whole package from the main branch.");
+          altSpan(p, "Wydanie nie jest jeszcze dostępne. Do tego czasu pobierz cały pakiet z gałęzi main.");
+        }
         var link = el("a", "btn plain", "Whole package (ZIP)");
         altSpan(link, "cały pakiet (ZIP)");
         link.href = REPO + "/archive/refs/heads/main.zip";
