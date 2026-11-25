@@ -14,7 +14,8 @@
         "developerName": "mentalpinG-Ops",
         "displayName": "KAIWA Suite",
         "longDescription": "Four KAIWA skills for staged artefact analysis, a provenance-aware context map, verbatim dictation records and scholarly source research. The method files are unchanged copies from the KAIWA SUITE package. No MCP tools, no local scripts.",
-        "shortDescription": "Academic inquiry workflows"
+        "shortDescription": "Academic inquiry workflows",
+        "websiteURL": "https://github.com/mentalpinG-Ops"
       }
     }
   },
@@ -28,5 +29,5 @@
   "license": "CC-BY-NC-SA-4.0",
   "name": "kaiwa-suite",
   "repository": "https://github.com/dpkrpsk-wq/KAIWA-SUITE",
-  "version": "0.2.0-chatgpt.4"
+  "version": "0.2.0-chatgpt.5"
 }

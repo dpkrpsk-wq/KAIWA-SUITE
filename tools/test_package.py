@@ -723,6 +723,9 @@ class ChatGPTPluginTest(unittest.TestCase):
         self.assertEqual(a["license"], "CC-BY-NC-SA-4.0")
         self.assertIn("Użycie niekomercyjne", (ROOT / "LICENSE").read_text(encoding="utf-8"))
         self.assertEqual(b["skills"], "./skills")
+        # X1 25.11.2026: unter "Website" im ChatGPT-Plugin steht die Organisation mentalpinG-Ops (Feld interface.websiteURL,
+        # nach Drittquellen, die offizielle Seite von OpenAI wurde nicht gelesen)
+        self.assertEqual(b["interface"]["websiteURL"], "https://github.com/mentalpinG-Ops")
 
     def test_one_module_per_chat(self):
         """Test in ChatGPT 24.11.2026: /triage waehrend einer Aufnahme wurde als Notiz aufgenommen.
