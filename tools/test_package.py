@@ -610,6 +610,48 @@ class TextTest(unittest.TestCase):
         self.assertEqual(findings, [])
 
 
+@braucht("2-agents/chatgpt/project-kit")
+class ChatGPTProjectKitTest(unittest.TestCase):
+    """Projekt-Set fuer ChatGPT (X1 25.11.2026): Plugin im ganzen Konto, dazu pro Themenprojekt dieselben Dateien und
+    Anweisungen mit eigenem Stand. Das Plugin ist im Projekt-Chat nutzbar (X1 sah KAIWA Suite im Projekt Master studies)."""
+    BASE = ROOT / "2-agents/chatgpt/project-kit"
+
+    def test_instruction_length(self):
+        t = (self.BASE / "INSTRUCTIONS.txt").read_text(encoding="utf-8")
+        self.assertLessEqual(len(t), 7500)
+        self.assertLessEqual(len(t.encode("utf-8")), 8000)
+
+    def test_instruction_names_every_project_file_and_the_rules(self):
+        t = (self.BASE / "INSTRUCTIONS.txt").read_text(encoding="utf-8")
+        for name in ("registers.xlsx", "kaiwa-template.docx", "README.pl.md", "mapa-", "dictation-"):
+            self.assertIn(name, t, name)
+        for s in ("read only for you", "replace the project file by hand", "One KAIWA module per chat", "of other projects"):
+            self.assertIn(s, t, s)
+        for sheet in ("zrodla", "pochodzenie", "decyzje", "przed_publikacja", "falsyfikacja", "narzedzie"):
+            self.assertIn(sheet, t, sheet)
+
+    def test_file_list_matches_the_zip_and_exists(self):
+        import chatgpt_plugin as P
+        files = [l.strip() for l in (self.BASE / "files.txt").read_text(encoding="utf-8").splitlines() if l.strip()]
+        self.assertLessEqual(len(files), 10)  # one upload
+        for p in files:
+            self.assertTrue((ROOT / p).is_file(), p)
+            self.assertIn(Path(p).name, P.kit_entries(), p)
+
+    def test_kit_has_no_scripts_and_project_md_names_the_files(self):
+        import chatgpt_plugin as P
+        names = set(P.kit_entries())
+        self.assertFalse([n for n in names if n.endswith(".py")])
+        text = (self.BASE / "PROJECT.md").read_text(encoding="utf-8")
+        for n in ("INSTRUCTIONS.txt", "registers.xlsx", "kaiwa-template.docx", "README.pl.md"):
+            self.assertIn(n, text, n)
+
+    def test_registers_workbook_has_the_sheets_the_instruction_names(self):
+        import openpyxl
+        wb = openpyxl.load_workbook(ROOT / "4-without-ai/registers.xlsx")
+        self.assertEqual(wb.sheetnames, ["zrodla", "pochodzenie", "decyzje", "przed_publikacja", "falsyfikacja", "narzedzie"])
+
+
 @braucht("2-agents/chatgpt")
 class ChatGPTTest(unittest.TestCase):
     """ChatGPT-Weg (F-0045, F-0021): Projects auf einem Go-Konto, 25 Dateien je Project, 10 je Upload
@@ -914,7 +956,7 @@ class ReleaseBuildTest(unittest.TestCase):
     def test_names_carry_the_version_and_sums_match(self):
         import hashlib
         namen = {e["name"] for e in self.m["dateien"]}
-        for basis in ["KAIWA-SUITE-" + a for a in self.REL.ANBIETER] + ["KAIWA-SUITE-copilot-skill", "KAIWA-SUITE-copilot-plugin", "KAIWA-SUITE-chatgpt-plugin"]:
+        for basis in ["KAIWA-SUITE-" + a for a in self.REL.ANBIETER] + ["KAIWA-SUITE-copilot-skill", "KAIWA-SUITE-copilot-plugin", "KAIWA-SUITE-chatgpt-plugin", "KAIWA-SUITE-chatgpt-project-kit"]:
             self.assertIn("%s-%s.zip" % (basis, self.ver), namen)
             self.assertIn(basis + ".zip", namen)
         zeilen = (self.out / "SHA256SUMS.txt").read_text(encoding="utf-8").splitlines()
@@ -974,6 +1016,17 @@ class ReleaseBuildTest(unittest.TestCase):
             self.assertEqual(z.read(n), gebaut.read(n), n)
         m = json.loads(z.read("plugin.json").decode("utf-8"))
         self.assertTrue(m["version"].startswith(self.ver + "-chatgpt."), m["version"])
+
+    def test_chatgpt_project_kit_zip_equals_the_builder(self):
+        """X1 25.11.2026: Projekt-Set fuer Themenprojekte. Das Release-ZIP hat dieselben Dateien mit denselben Bytes wie
+        tools/chatgpt_plugin.py --kit und liegt flach, ohne Unterordner."""
+        import chatgpt_plugin as P
+        z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-chatgpt-project-kit-%s.zip" % self.ver))
+        gebaut = zipfile.ZipFile(io.BytesIO(P.build(P.kit_entries())))
+        self.assertEqual(sorted(z.namelist()), sorted(gebaut.namelist()))
+        for n in gebaut.namelist():
+            self.assertEqual(z.read(n), gebaut.read(n), n)
+            self.assertNotIn("/", n)
 
     def test_plugin_skills_carry_the_module_text(self):
         z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-copilot-plugin-%s.zip" % self.ver))
@@ -1086,7 +1139,7 @@ class PagesTest(unittest.TestCase):
 
     def test_download_boxes_name_real_packages(self):
         import release as REL
-        gueltig = set(REL.ANBIETER) | {"copilot-skill", "copilot-plugin", "chatgpt-plugin"}
+        gueltig = set(REL.ANBIETER) | {"copilot-skill", "copilot-plugin", "chatgpt-plugin", "chatgpt-project-kit"}
         for rel in self.PAGES:
             for pkg in self.parse(rel).pkgs:
                 self.assertIn(pkg, gueltig, rel)

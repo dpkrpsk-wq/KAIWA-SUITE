@@ -14,6 +14,7 @@ One ZIP per vendor, unpack it into a folder and follow `1-start/setup.en.md` (Po
 | `KAIWA-SUITE-gemini-<version>.zip` | Google Gemini |
 | `KAIWA-SUITE-chatgpt-<version>.zip` | ChatGPT (Go account, Projects) |
 | `KAIWA-SUITE-chatgpt-plugin-<version>.zip` | ChatGPT plugin with four skills for every chat of the account (Plugins, add, upload plugin archive). Draft, untested in ChatGPT beyond the first runs. |
+| `KAIWA-SUITE-chatgpt-project-kit-<version>.zip` | ChatGPT project kit for every topic project: project instructions, registers, Word template, manual. Draft, untested in ChatGPT. |
 | `KAIWA-SUITE-claude-<version>.zip` | Claude (claude.ai projects, Claude Code skills) |
 | `KAIWA-SUITE-any-<version>.zip` | Without a vendor: templates, protocols, scripts, Word and Excel |
 | `SHA256SUMS.txt`, `release-manifest.json` | Checksums and file list |

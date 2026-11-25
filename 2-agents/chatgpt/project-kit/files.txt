@@ -1,0 +1,3 @@
+4-without-ai/registers.xlsx
+4-without-ai/kaiwa-template.docx
+4-without-ai/README.pl.md

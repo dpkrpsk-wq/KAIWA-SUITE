@@ -15,6 +15,7 @@ python -I tools/release.py pruefen --ausgabe dist/release
 - `KAIWA-SUITE-<vendor>-<version>.zip` for copilot, gemini, chatgpt, claude and any, one root folder each, with `ZIP-CONTENTS.md`.
 - `KAIWA-SUITE-copilot-skill-<version>.zip` (one `SKILL.md` in the root) and `KAIWA-SUITE-copilot-plugin-<version>.zip` (`manifest.json`, two icons, four skills), sources in `2-agents/copilot/skill/` and `2-agents/copilot/plugin/`, references taken from `method/` at build time.
 - `KAIWA-SUITE-chatgpt-plugin-<version>.zip` (`plugin.json`, `.codex-plugin/plugin.json`, four skills with their references), sources in `2-agents/chatgpt/plugin/`, references taken from `2-agents/chatgpt/` and `method/` at build time. `tools/chatgpt_plugin.py` builds the same files.
+- `KAIWA-SUITE-chatgpt-project-kit-<version>.zip` (flat: `INSTRUCTIONS.txt`, `PROJECT.md`, `registers.xlsx`, `kaiwa-template.docx`, `README.pl.md`, licences), sources in `2-agents/chatgpt/project-kit/` and `4-without-ai/`. `tools/chatgpt_plugin.py --kit` builds the same files.
 - The same files without the version in the name, `SHA256SUMS.txt` and `release-manifest.json`.
 
 ## Publish / Publikacja

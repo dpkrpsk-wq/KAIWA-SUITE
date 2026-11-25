@@ -8,6 +8,7 @@ Layout after the plugin ChatGPT itself exported on 24.11.2026 (plugin.json, .cod
 
 Run:  python tools/chatgpt_plugin.py                  writes dist/KAIWA-SUITE-chatgpt-plugin.zip
       python tools/chatgpt_plugin.py --check PLIK.zip  compares an archive with the package
+      python tools/chatgpt_plugin.py --kit             writes dist/KAIWA-SUITE-chatgpt-project-kit.zip
 """
 import argparse
 import hashlib
@@ -34,6 +35,19 @@ ASSETS = {
     "assets/kaiwa-icon-192.png": "design/logo/kaiwa-icon-192.png",
 }
 DATE = (1980, 1, 1, 0, 0, 0)
+# Project kit (X1 25.11.2026): files for every topic project, flat in the ZIP so they upload in one go
+KIT = ROOT / "2-agents/chatgpt/project-kit"
+KIT_OUT = ROOT / "dist/KAIWA-SUITE-chatgpt-project-kit.zip"
+KIT_FILES = {
+    "INSTRUCTIONS.txt": "2-agents/chatgpt/project-kit/INSTRUCTIONS.txt",
+    "PROJECT.md": "2-agents/chatgpt/project-kit/PROJECT.md",
+    "registers.xlsx": "4-without-ai/registers.xlsx",
+    "kaiwa-template.docx": "4-without-ai/kaiwa-template.docx",
+    "README.pl.md": "4-without-ai/README.pl.md",
+    "LICENSE": "LICENSE",
+    "LICENSE-COMMERCIAL.md": "LICENSE-COMMERCIAL.md",
+    "DISCLOSURE.md": "DISCLOSURE.md",
+}
 
 
 def _list(path):
@@ -70,10 +84,19 @@ def entries():
     return dict(sorted(out.items()))
 
 
-def build():
+def kit_entries():
+    """Archive path -> package file of the project kit."""
+    out = {name: ROOT / src for name, src in KIT_FILES.items()}
+    missing = [str(f.relative_to(ROOT)) for f in out.values() if not f.is_file()]
+    if missing:
+        raise FileNotFoundError("missing package files: " + ", ".join(missing))
+    return dict(sorted(out.items()))
+
+
+def build(eintraege=None):
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, "w") as z:
-        for name, src in entries().items():
+        for name, src in (eintraege or entries()).items():
             info = zipfile.ZipInfo(name, DATE)
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
@@ -97,8 +120,16 @@ def check(path):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--check", metavar="ZIP")
-    ap.add_argument("--out", default=str(OUT))
+    ap.add_argument("--kit", action="store_true", help="build the project kit instead of the plugin")
+    ap.add_argument("--out", default=None)
     a = ap.parse_args(argv)
+    if a.kit:
+        data = build(kit_entries())
+        out = Path(a.out or KIT_OUT)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(data)
+        print("%s  %d files  sha256 %s" % (out, len(kit_entries()), hashlib.sha256(data).hexdigest()))
+        return 0
     if a.check:
         same, different, missing, extra = check(a.check)
         print("identical: %d" % len(same))
@@ -108,7 +139,7 @@ def main(argv=None):
                 print("  " + n)
         return 0 if not (different or missing or extra) else 1
     data = build()
-    out = Path(a.out)
+    out = Path(a.out or OUT)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(data)
     print("%s  %d files  sha256 %s" % (out, len(entries()), hashlib.sha256(data).hexdigest()))

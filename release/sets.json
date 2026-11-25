@@ -750,6 +750,44 @@
      "3-templates/tool-disclosure.pl.md"
     ]
    ]
+  },
+  "chatgpt-project-kit": {
+   "zip": "KAIWA-SUITE-chatgpt-project-kit",
+   "wurzelordner": false,
+   "dateien": [
+    [
+     "DISCLOSURE.md",
+     "DISCLOSURE.md"
+    ],
+    [
+     "INSTRUCTIONS.txt",
+     "2-agents/chatgpt/project-kit/INSTRUCTIONS.txt"
+    ],
+    [
+     "LICENSE",
+     "LICENSE"
+    ],
+    [
+     "LICENSE-COMMERCIAL.md",
+     "LICENSE-COMMERCIAL.md"
+    ],
+    [
+     "PROJECT.md",
+     "2-agents/chatgpt/project-kit/PROJECT.md"
+    ],
+    [
+     "README.pl.md",
+     "4-without-ai/README.pl.md"
+    ],
+    [
+     "kaiwa-template.docx",
+     "4-without-ai/kaiwa-template.docx"
+    ],
+    [
+     "registers.xlsx",
+     "4-without-ai/registers.xlsx"
+    ]
+   ]
   }
  }
 }
