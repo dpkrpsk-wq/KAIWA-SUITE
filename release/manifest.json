@@ -90,16 +90,16 @@
   },
   {
    "name": "KAIWA-SUITE-chatgpt-plugin-0.2.0.zip",
-   "bytes": 388079,
-   "sha256": "d883380a27113c64e4b0061f46d127b58141e55513d5507eeedd8c5f9bb36e55",
-   "dateien": 48
+   "bytes": 412273,
+   "sha256": "ff6127ba70d14127d6a8b14603bf71b081094d38a9ca56ed425bafe1b72aeeda",
+   "dateien": 50
   },
   {
    "name": "KAIWA-SUITE-chatgpt-plugin.zip",
-   "bytes": 388079,
-   "sha256": "d883380a27113c64e4b0061f46d127b58141e55513d5507eeedd8c5f9bb36e55",
-   "dateien": 48
+   "bytes": 412273,
+   "sha256": "ff6127ba70d14127d6a8b14603bf71b081094d38a9ca56ed425bafe1b72aeeda",
+   "dateien": 50
   }
  ],
- "nachtrag": "Die Dateien KAIWA-SUITE-chatgpt-plugin (Version 0.2.0-chatgpt.5) wurden am 25.11.2026 aus Commit 718958e in dieses Release geladen, alle anderen Dateien stammen aus dem Commit des Feldes commit."
+ "nachtrag": "Die Dateien KAIWA-SUITE-chatgpt-plugin (Version 0.2.0-chatgpt.6) wurden am 25.11.2026 aus Commit ff85850 in dieses Release geladen, alle anderen Dateien stammen aus dem Commit des Feldes commit."
 }
