@@ -378,6 +378,10 @@
      "method/prompts/cultural-scientific/feminist-theory.md"
     ],
     [
+     "references/frameworks/hermeneutics.md",
+     "method/prompts/philosophical/hermeneutics.md"
+    ],
+    [
      "references/frameworks/multimodal-analysis.md",
      "method/prompts/cultural-scientific/multimodal-analysis.md"
     ],
@@ -490,6 +494,10 @@
     [
      "skills/kaiwa-analysis/references/frameworks/feminist-theory.md",
      "method/prompts/cultural-scientific/feminist-theory.md"
+    ],
+    [
+     "skills/kaiwa-analysis/references/frameworks/hermeneutics.md",
+     "method/prompts/philosophical/hermeneutics.md"
     ],
     [
      "skills/kaiwa-analysis/references/frameworks/multimodal-analysis.md",

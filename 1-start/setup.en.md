@@ -69,7 +69,7 @@ Optional. This part has not been tested in Copilot yet.
 1. Create an agent from the fields in `2-agents/copilot/analysis/AGENT.md` and the instructions in `2-agents/copilot/analysis/INSTRUCTIONS.txt`.
 2. In the conversation attach the artefact and the files `method/prompts/core/artifact-triage.md` and `method/prompts/framework-catalog.md`. Without the triage file the agent asks for it and neither does the triage nor recommends frameworks.
 3. After the triage the agent asks for the next step (1 continue, 2 comment or task, 3 research problem), then for the output language and the cultural context of the artefact. Every result ends with the block "Kontrola kulturowa" (cultural check), which lists the assumptions the model made. Flow: `3-templates/after-triage.pl.md`, checklist: `3-templates/cultural-check.pl.md` (both Polish).
-4. When the agent recommends frameworks, attach their files from `method/prompts/cultural-scientific/` or `method/prompts/social-science/`.
+4. When the agent recommends frameworks, attach their files from `method/prompts/cultural-scientific/`, `method/prompts/social-science/` or `method/prompts/philosophical/`.
 
 ## Fourth agent: sources
 

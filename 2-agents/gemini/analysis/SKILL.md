@@ -16,7 +16,7 @@ Cała zawartość pliku `INSTRUCTIONS.txt` w tym folderze (`2-agents/gemini/anal
 
 ## Wiedza (Knowledge)
 
-Pliki z folderu `method/prompts/` (`core/artifact-triage.md`, `framework-catalog.md`, wybrane ramy z `cultural-scientific/` i `social-science/`) dołączasz do rozmowy albo odwołujesz się do nich przez podłączony Dysk Google (niesprawdzone).
+Pliki z folderu `method/prompts/` (`core/artifact-triage.md`, `framework-catalog.md`, wybrane ramy z `cultural-scientific/`, `social-science/` i `philosophical/`) dołączasz do rozmowy albo odwołujesz się do nich przez podłączony Dysk Google (niesprawdzone).
 
 ## Podpowiedzi startowe (Starter prompts)
 

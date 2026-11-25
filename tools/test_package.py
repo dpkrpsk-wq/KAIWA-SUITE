@@ -299,7 +299,7 @@ class AgentsTest(unittest.TestCase):
             self.assertIn(s, t)
         self.assertLess(t.index("# Krok 2"), t.index("# Krok 3"))
         for f in ("feminist-theory", "multimodal-analysis", "postcolonial-theory", "semiotics", "source-criticism",
-                  "structuralism", "content-analysis", "conversation-analysis", "systems-theory"):
+                  "structuralism", "content-analysis", "conversation-analysis", "systems-theory", "hermeneutics"):
             self.assertIn(f, t)
             self.assertTrue(list((ROOT / "method/prompts").rglob(f + ".md")), f)
 

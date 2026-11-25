@@ -69,7 +69,7 @@ Opcjonalnie. Ta część nie była jeszcze testowana w Copilot.
 1. Utwórz agenta z pól w `2-agents/copilot/analysis/AGENT.md` i instrukcji z `2-agents/copilot/analysis/INSTRUCTIONS.txt`.
 2. W rozmowie dołącz artefakt oraz pliki `method/prompts/core/artifact-triage.md` i `method/prompts/framework-catalog.md`. Bez pliku triażu agent poprosi o niego i nie zrobi triażu ani nie poleci ram.
 3. Po triażu agent pyta o dalszy krok (1 dalej, 2 komentarz albo zlecenie, 3 problem badawczy), potem o język wyniku i o kontekst kulturowy artefaktu. Wynik kończy się blokiem „Kontrola kulturowa“. Przebieg: `3-templates/after-triage.pl.md`, lista kontrolna: `3-templates/cultural-check.pl.md`.
-4. Gdy agent poleci ramy, dołącz ich pliki z `method/prompts/cultural-scientific/` albo `method/prompts/social-science/`.
+4. Gdy agent poleci ramy, dołącz ich pliki z `method/prompts/cultural-scientific/`, `method/prompts/social-science/` albo `method/prompts/philosophical/`.
 
 ## Czwarty agent: źródła
 
