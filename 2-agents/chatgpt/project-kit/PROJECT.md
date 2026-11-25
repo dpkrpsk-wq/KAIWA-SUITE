@@ -2,7 +2,7 @@
 
 Część pakietu KAIWA, produkt 26.01, wersja 0.2.2 (robocza), 25.11.2026. Wersja robocza, nieprzetestowana w ChatGPT.
 
-Wtyczka KAIWA Suite działa w każdym czacie konta, także w projektach. Projekt-Set dodaje to, czego wtyczka nie niesie: stały stan tematu. Każdy projekt tematyczny (na przykład „Konie” i „Misie żelki”) dostaje te same pliki i te same instrukcje, ale ma własny stan, własne mapy i własne rozmowy. / The plugin works in every chat of the account, also in projects. The kit adds the lasting state of a topic. Each topic project gets the same files and instructions and keeps its own state.
+Wtyczka KAIWA Suite działa w każdym czacie konta, także w projektach. Projekt-Set dodaje to, czego wtyczka nie niesie: stały stan tematu. Każdy projekt tematyczny dostaje te same pliki i te same instrukcje, ale ma własny stan, własne mapy i własne rozmowy. / The plugin works in every chat of the account, also in projects. The kit adds the lasting state of a topic. Each topic project gets the same files and instructions and keeps its own state.
 
 ## Przed pierwszym użyciem
 
