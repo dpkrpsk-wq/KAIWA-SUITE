@@ -10,7 +10,7 @@
 
 Kit for Academic Inquiry With AI. In Japanese, *kaiwa* means conversation. Po japońsku *kaiwa* znaczy rozmowa.
 
-Product 26.01, version 0.2.1 (draft), 22 November 2026, not released. Produkt 26.01, wersja 0.2.1 (robocza), 22.11.2026, nie wydana.
+Product 26.01, version 0.2.2 (draft), 22 November 2026, not released. Produkt 26.01, wersja 0.2.2 (robocza), 22.11.2026, nie wydana.
 Publisher / wydawca: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (KMSI), University of Wrocław, leading programme image communication, second discipline cultural studies / lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo. Contact / kontakt: 285421@student.uwr.edu.pl.
 
 A package to test a method of AI-assisted work in the humanities and social sciences: verbatim dictation with SHA-256 hashes, a context map, triage-first framework analysis, and open access search with a verification level for every hit. Pakiet do przetestowania metody pracy z AI w naukach humanistycznych i społecznych: myśli mówione na głos zapisuje się dosłownie ze skrótem SHA-256 (skrót nie dowodzi wierności przepisania, zob. setup), tematy z dyktatów tworzą mapę kontekstu, artefakty analizuje się po triażu (wstępnym rozpoznaniu, czym jest artefakt i które ramy do niego pasują) według deklarowanych ram (opisanych z góry sposobów analizy), literaturę szuka się w otwartym dostępie z poziomem weryfikacji każdego trafienia.

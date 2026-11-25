@@ -5,7 +5,7 @@ description: "KAIWA SUITE, study package with four modules: stream of consciousn
 
 # KAIWA SUITE
 
-KAIWA SUITE 26.01, version 0.2.1 (working draft). This skill has four modules. Each module is one file in `modules/`.
+KAIWA SUITE 26.01, version 0.2.2 (working draft). This skill has four modules. Each module is one file in `modules/`.
 
 # Choose the module
 

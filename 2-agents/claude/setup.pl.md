@@ -4,7 +4,7 @@
 
 **Languages / języki:** [English](setup.en.md) · [Polski](setup.pl.md)
 
-Produkt 26.01, wersja 0.2.1 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski.
+Produkt 26.01, wersja 0.2.2 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski.
 
 Status: wersja robocza, nieprzetestowana w Claude. Instrukcja opisuje dwie drogi: projekty w claude.ai (w przeglądarce, aplikacja desktop Claude niesprawdzona) i skille w Claude Code. Instrukcje powstały na podstawie drogi ChatGPT w tym pakiecie.
 
@@ -89,4 +89,4 @@ Zanim użyjesz zapisanych tekstów w pracy na zajęcia, sprawdź zasady uczelni 
 
 Kontakt: Denis Pokropski, 285421@student.uwr.edu.pl.
 
-KAIWA SUITE · 26.01 · wersja 0.2.1 · wersja robocza / draft
+KAIWA SUITE · 26.01 · wersja 0.2.2 · wersja robocza / draft

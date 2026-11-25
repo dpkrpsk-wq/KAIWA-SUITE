@@ -1,4 +1,4 @@
-KAIWA SUITE 26.01, version 0.2.1 (working draft / wersja robocza)
+KAIWA SUITE 26.01, version 0.2.2 (working draft / wersja robocza)
 
 This is a draft. It has not been reviewed externally and most modules are untested in the assistants named below. / To wersja robocza, nie przeszła zewnętrznego sprawdzenia, a większość modułów nie była testowana w wymienionych asystentach.
 

@@ -1,6 +1,6 @@
 # Sprawdzenie mapy / map check (KAIWA, mapa kontekstu)
 
-KAIWA SUITE 26.01, wersja 0.2.1 (robocza / draft), 22.11.2026. Plik projektu „KAIWA: mapa kontekstu”. Kod dla polecenia „sprawdź mapę”. Używa funkcji h, bledy i wiersze z bloku startowego instrukcji projektu. W PLIK wpisz ścieżkę dołączonego pliku mapy. / Code for the command “sprawdź mapę”. It uses the functions h, bledy and wiersze from the start block of the project instructions. Put the path of the attached map file into PLIK.
+KAIWA SUITE 26.01, wersja 0.2.2 (robocza / draft), 22.11.2026. Plik projektu „KAIWA: mapa kontekstu”. Kod dla polecenia „sprawdź mapę”. Używa funkcji h, bledy i wiersze z bloku startowego instrukcji projektu. W PLIK wpisz ścieżkę dołączonego pliku mapy. / Code for the command “sprawdź mapę”. It uses the functions h, bledy and wiersze from the start block of the project instructions. Put the path of the attached map file into PLIK.
 
 ```python
 import openpyxl

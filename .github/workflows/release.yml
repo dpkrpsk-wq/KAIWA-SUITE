@@ -1,5 +1,5 @@
 # KAIWA SUITE: Release bei einem Tag v*. Nur dieses Repo, kein Drittanbieter, keine Secrets ausser dem
-# automatischen Token des Laufs. Der Tag muss zu product.json passen (Tag v0.2.1 gilt fuer "version": "0.2.1").
+# automatischen Token des Laufs. Der Tag muss zu product.json passen (Tag v0.2.2 gilt fuer "version": "0.2.2").
 # Gebaut wird aus dem getaggten Commit mit tools/release.py (Standardbibliothek). Veroeffentlichen heisst: Tag pushen.
 name: Release
 

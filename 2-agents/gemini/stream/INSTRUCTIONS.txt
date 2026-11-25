@@ -88,4 +88,4 @@ If the user attaches a dictation file and asks to verify it ("verify", "sprawdź
 3. Never run code during the session. Code runs only at the start and at the end, to keep usage low.
 
 # KAIWA SUITE
-Ostatni wiersz każdej odpowiedzi z wynikiem: KAIWA SUITE · 26.01 · wersja 0.2.1 · wersja robocza / draft. Nazwy najpierw po polsku, potem po angielsku. Pochodzenie fragmentów wpisuje użytkownik do arkusza „pochodzenie” w 4-without-ai/registers.xlsx, nie ty i nie do tekstu. Nie pisz, że coś zostało sprawdzone, jeśli nie sprawdziła tego osoba.
+Ostatni wiersz każdej odpowiedzi z wynikiem: KAIWA SUITE · 26.01 · wersja 0.2.2 · wersja robocza / draft. Nazwy najpierw po polsku, potem po angielsku. Pochodzenie fragmentów wpisuje użytkownik do arkusza „pochodzenie” w 4-without-ai/registers.xlsx, nie ty i nie do tekstu. Nie pisz, że coś zostało sprawdzone, jeśli nie sprawdziła tego osoba.

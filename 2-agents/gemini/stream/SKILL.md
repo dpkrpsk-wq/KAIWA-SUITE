@@ -1,6 +1,6 @@
 # Moduł „KAIWA: strumień świadomości”, pola do wklejenia (Google Gemini)
 
-Pola do utworzenia pojedynczego Skillu (Gemini web/app) albo Gemu (Google Workspace). Wersja robocza 0.2.1 (22.11.2026), nieprzetestowana w Gemini.
+Pola do utworzenia pojedynczego Skillu (Gemini web/app) albo Gemu (Google Workspace). Wersja robocza 0.2.2 (22.11.2026), nieprzetestowana w Gemini.
 
 ## Nazwa (Name)
 

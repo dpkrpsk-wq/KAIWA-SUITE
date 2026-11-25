@@ -1,6 +1,6 @@
 # Ujawnienie / Disclosure
 
-KAIWA SUITE 26.01, wersja 0.2.1 (robocza). Wersja robocza tego ujawnienia, do sprawdzenia przez autora. Pola według `3-templates/tool-disclosure.pl.md`. Czego nie zapisano, stoi jako „nie zarejestrowano“. Liczby nie są szacowane.
+KAIWA SUITE 26.01, wersja 0.2.2 (robocza). Wersja robocza tego ujawnienia, do sprawdzenia przez autora. Pola według `3-templates/tool-disclosure.pl.md`. Czego nie zapisano, stoi jako „nie zarejestrowano“. Liczby nie są szacowane.
 
 Draft disclosure, to be checked by the author. Fields follow `3-templates/tool-disclosure.pl.md`. What was not recorded is marked "not recorded". No figure is estimated.
 
