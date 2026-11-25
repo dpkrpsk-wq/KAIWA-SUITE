@@ -1219,7 +1219,8 @@ class PagesTest(unittest.TestCase):
                 self.assertIn(pkg, gueltig, rel)
         for rel, v in zip(self.VENDOR_PAGES, ("copilot", "gemini", "chatgpt", "claude")):
             self.assertIn(v, self.parse(rel).pkgs, rel)
-        self.assertEqual({p for p in self.parse("index.html").pkgs}, set(REL.ANBIETER))
+        self.assertEqual({p for p in self.parse("index.html").pkgs},
+                         set(REL.ANBIETER) | {"chatgpt-plugin", "chatgpt-project-kit", "gemini-skill"})
 
     def test_chatgpt_page_offers_the_plugin_zip(self):
         t = (ROOT / "get/chatgpt.html").read_text(encoding="utf-8")
@@ -1237,6 +1238,52 @@ class PagesTest(unittest.TestCase):
         self.assertIn('data-pkg="gemini-skill" data-label="Skill ZIP (for Skills &gt; Upload)"', t)
         self.assertIn('data-pkg="gemini" data-label="Bundle to unpack (not for skill upload)"', t)
         self.assertIn('href="#skl"', t)
+
+    def test_chatgpt_page_states_the_tested_state_and_the_three_ways(self):
+        # Seitenauftrag 25.11.2026: getesteter Stand und bekannte Befunde, Quelle 2-agents/chatgpt/setup.en.md
+        t = (ROOT / "get/chatgpt.html").read_text(encoding="utf-8")
+        for s in ('id="tst"', 'href="#tst"', "Way 1, plugin", "Way 2, project kit", "Way 3, four projects", "never uploaded",
+                  "0.2.0-chatgpt.4", "menu picture was not shown", "step 2 was skipped", "not taken word for word",
+                  "a framework without a file in the package", "not run live again", "<code>websiteURL</code>",
+                  "refused an earlier local build", "Way 3: create the four projects"):
+            self.assertIn(s.lower(), t.lower(), s)
+        self.assertNotIn("All four projects are drafts", t)
+        kopf = t[t.index('<section class="stack">'):t.index('<ol class="steps"')]
+        self.assertIn("Three ways", kopf)
+
+    def test_gemini_page_states_the_tested_state_and_the_missing_interpreter(self):
+        t = (ROOT / "get/gemini.html").read_text(encoding="utf-8")
+        for s in ('id="tst"', 'href="#tst"', "Google Pro account", "<code>kaiwa-suite</code>", "stream session started",
+                  "no Python interpreter", "a statement of the model, not checked independently", "pseudocode",
+                  "not tested again", "never tried"):
+            self.assertIn(s.lower(), t.lower(), s)
+        self.assertNotIn("All four modules are drafts", t)
+        # der Schritt "First test" darf den Python-Check nicht mehr als sicher voraussetzen
+        test = t[t.index("<h2>First test"):t.index("<h2>Known limits")]
+        self.assertIn("no Python interpreter", test)
+        self.assertIn("must not print", test)
+
+    def test_pages_name_no_internal_test_numbers(self):
+        for rel in self.PAGES + ("get/pages.js",):
+            t = (ROOT / rel).read_text(encoding="utf-8")
+            self.assertIsNone(re.search(r"\bT[0-9]{2}\b", re.sub(r"<[^>]+>", " ", t)), rel)
+
+    def test_index_cards_for_plugin_kit_and_skill_say_what_they_are_for(self):
+        t = (ROOT / "index.html").read_text(encoding="utf-8")
+        for pkg, label in (("chatgpt", "Bundle for four projects (not for plugin upload)"),
+                           ("chatgpt-plugin", "Plugin ZIP (every chat)"),
+                           ("chatgpt-project-kit", "Project kit ZIP (for topic projects)"),
+                           ("gemini", "Bundle to unpack (not for skill upload)"),
+                           ("gemini-skill", "Skill ZIP (for Skills &gt; Upload)")):
+            self.assertRegex(t, r'data-pkg="%s" data-label="%s"' % (re.escape(pkg), re.escape(label)))
+        for s in ("Never uploaded", "Gemini reported no Python interpreter", "Tried only in part"):
+            self.assertIn(s, t, s)
+
+    def test_script_says_when_a_file_is_not_in_the_release_yet(self):
+        # gemini-skill steht erst mit dem naechsten Tag im Manifest: die Karte zeigt dann Text statt eines toten Knopfs
+        t = (ROOT / "get/pages.js").read_text(encoding="utf-8")
+        self.assertIn("This file is not in release", t)
+        self.assertIn("Tego pliku nie ma w wydaniu", t)
 
     def test_vendor_pages_have_the_six_steps(self):
         for rel in self.VENDOR_PAGES:
