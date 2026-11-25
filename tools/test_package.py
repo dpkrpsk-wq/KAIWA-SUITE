@@ -731,6 +731,19 @@ class ChatGPTPluginTest(unittest.TestCase):
                 lines = found
             self.assertEqual(found, lines, skill)
 
+    def test_nine_frameworks_named(self):
+        """Test in ChatGPT 25.11.2026: die Analyse wandte Hermeneutik an, deren Datei nicht im Paket ist.
+        Die SKILL.md nennt genau die Rahmen, deren Dateien in references liegen, und sagt, was mit allen anderen geschieht."""
+        text = (self.P.PLUGIN / "skills/artifact-analysis/SKILL.md").read_text(encoding="utf-8")
+        files = sorted(Path(n).stem for n in self.P.entries()
+                       if n.startswith("skills/artifact-analysis/references/method/prompts/")
+                       and ("/cultural-scientific/" in n or "/social-science/" in n))
+        self.assertEqual(len(files), 9)
+        for f in files:
+            self.assertIn(f, text, f)
+        self.assertIn("poza pakietem", text)
+        self.assertIn("holds the files of nine", text)
+
 
 @braucht("2-agents/claude")
 class ClaudeTest(unittest.TestCase):

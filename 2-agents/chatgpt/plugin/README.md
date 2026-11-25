@@ -21,4 +21,4 @@ W ChatGPT: Plugins, przycisk dodawania, przesłanie archiwum wtyczki, plik `dist
 
 ## Stan / status
 
-Wersja `0.2.0-chatgpt.2`, robocza, nieprzetestowana w ChatGPT. Bez narzędzi MCP i bez skryptów lokalnych. / Version `0.2.0-chatgpt.2`, draft, untested in ChatGPT. No MCP tools and no local scripts.
+Wersja `0.2.0-chatgpt.3`, robocza, nieprzetestowana w ChatGPT. Bez narzędzi MCP i bez skryptów lokalnych. / Version `0.2.0-chatgpt.3`, draft, untested in ChatGPT. No MCP tools and no local scripts.
