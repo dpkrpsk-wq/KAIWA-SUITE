@@ -1202,7 +1202,7 @@ class PagesTest(unittest.TestCase):
     def test_copilot_page_names_the_upload_ways_and_their_status(self):
         t = (ROOT / "get/copilot.html").read_text(encoding="utf-8")
         for s in ("Which upload goes where", "Hochladen", "copilot-skill", "“Plug-Ins” &gt; “Add” (Hinzufügen) &gt; “Upload” (Hochladen)",
-                  "Neue Fähigkeit", "not verified", "Untested in Copilot (version 8)", "TAR", "Do not</strong> drag a ZIP",
+                  "Neue Fähigkeit", "not verified", "Form tested, this ZIP not uploaded", "lost 7 of 10 hits", "Format wird nicht unterstützt", "unverified in this account", "TAR", "Do not</strong> drag a ZIP",
                   "The uploaded package must contain a 'SKILL.md' file.", "exactly one 'SKILL.md' file, but found 4"):
             self.assertIn(s.lower(), t.lower(), s)
 
