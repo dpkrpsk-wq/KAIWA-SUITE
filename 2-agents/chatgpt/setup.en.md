@@ -6,7 +6,7 @@
 
 Product 26.01, version 0.2.2 (draft), 22 November 2026. Not released. Publisher: Denis Pokropski, BA in philosophy (University of Wrocław, 2019), master's student, College of Interdisciplinary Individual Studies (Kolegium Międzydziedzinowych Studiów Indywidualnych, KMSI), University of Wrocław, leading programme image communication (komunikacja wizerunkowa), second discipline cultural studies, contact: 285421@student.uwr.edu.pl. The package brings the KAIWA method to ChatGPT. Each of the four agents is a separate project (Projects), a folder in ChatGPT with its own instructions, files and chats.
 
-Status: draft, untested in ChatGPT. This guide covers a ChatGPT Go account. The package does not use Custom GPTs.
+Status: draft. The section "Tested state" below says what was tried in ChatGPT, everything else is untested in ChatGPT. This guide covers a ChatGPT Go account. The package does not use Custom GPTs.
 
 ## Get the package
 
@@ -17,6 +17,20 @@ Open the package page https://mentalping-ops.github.io/KAIWA-SUITE/, choose the 
 1. A ChatGPT Go account with access to projects (Projects).
 2. About ten minutes for the four projects.
 3. Python 3.8 or newer, only if you want to verify files on your own computer. This is optional.
+
+## Three ways
+
+1. **Plugin for the whole account.** The plugin KAIWA Suite holds the four modules as skills and works in every chat of the account, also inside a project. ZIP `KAIWA-SUITE-chatgpt-plugin-<version>.zip` from the package page (section "Plugin for every chat"), install with Plugins, add, upload plugin archive. Sources in `2-agents/chatgpt/plugin/`, built by `tools/chatgpt_plugin.py`.
+2. **Project kit for each topic project.** What the plugin cannot carry goes into a project: `2-agents/chatgpt/project-kit/` holds the project instructions (`INSTRUCTIONS.txt`), the registers `registers.xlsx`, the Word template and the manual. Each topic project gets the same files and keeps its own state. Steps in `project-kit/PROJECT.md`. ZIP `KAIWA-SUITE-chatgpt-project-kit-<version>.zip`.
+3. **Four projects (the first way of this guide).** One project for each module, the sections below.
+
+## Tested state (25 November 2026)
+
+Tried by the publisher on a ChatGPT Go account on 24 and 25 November 2026, the rest is untested in ChatGPT:
+
+1. Plugin: installed with the upload dialog, appears in the plus menu of a normal chat and of a project chat, the icon shows. "New version" took the release ZIP with a Unix header and refused an earlier local build with a Windows header (same content, cause not proven, `tools/chatgpt_plugin.py` now writes the Unix header, `test_zip_header_says_unix`) and the project bundle ZIP, which has no `plugin.json`.
+2. Analysis in the plugin: run live up to version 0.2.0-chatgpt.4. Findings: the menu picture was not shown, step 2 was skipped, the context was not taken word for word, a framework without a file in the package was applied. The fixes are in `plugin/skills/artifact-analysis/SKILL.md` (items 7 to 13) and in `analysis/INSTRUCTIONS.txt`. They were not run live again.
+3. Never tried: stream of consciousness, context map and sources in the plugin, hashes and `.xlsx` files made by ChatGPT, the project kit (never uploaded), the field `websiteURL` of the plugin, and a comparison of an exported plugin with the repository (`python tools/chatgpt_plugin.py --check`).
 
 ## Four projects
 
@@ -36,7 +50,7 @@ Each folder holds `PROJECT.md` (name, description, first message, in Polish), `I
 3. Add the files listed in `files.txt` to the project. Each list has at most 10 files, so one upload is enough.
 4. Start a new chat in the project with the first message from `PROJECT.md`.
 
-Length of the instructions: the OpenAI help "Projects in ChatGPT" (checked 22 November 2026) names no limit. User reports mention about 8,000 characters (unverified), Copilot has this limit. The instructions in this folder have stream 7,130, map 7,481, analysis 7,300 and sources 4,289 characters, at most 7,481. After saving, check that the instructions are complete (unverified in ChatGPT).
+Length of the instructions: the OpenAI help "Projects in ChatGPT" (checked 22 November 2026) names no limit. User reports mention about 8,000 characters (unverified), Copilot has this limit. The instructions in this folder have stream 7,130, map 7,481, analysis 7,481 and sources 4,289 characters, at most 7,481. After saving, check that the instructions are complete (unverified in ChatGPT).
 
 ## Start menu (analysis)
 

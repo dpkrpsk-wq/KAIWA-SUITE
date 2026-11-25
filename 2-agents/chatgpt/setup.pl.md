@@ -6,7 +6,7 @@
 
 Produkt 26.01, wersja 0.2.2 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Pokropski, lic. filozofii (Uniwersytet Wrocławski, 2019), student studiów II stopnia, Kolegium Międzydziedzinowych Studiów Indywidualnych (KMSI), Uniwersytet Wrocławski, kierunek wiodący komunikacja wizerunkowa, druga dyscyplina kulturoznawstwo, kontakt: 285421@student.uwr.edu.pl. Pakiet przenosi metodę KAIWA do ChatGPT. Każdy z czterech agentów to osobny projekt (Projects), czyli folder w ChatGPT z własnymi instrukcjami, plikami i rozmowami.
 
-Stan: wersja robocza, nieprzetestowana w ChatGPT. Opis dotyczy konta ChatGPT Go. Własnych GPT (Custom GPTs) pakiet nie używa.
+Stan: wersja robocza. Część „Przetestowany stan” poniżej mówi, co sprawdzono w ChatGPT, reszta jest nieprzetestowana w ChatGPT. Opis dotyczy konta ChatGPT Go. Własnych GPT (Custom GPTs) pakiet nie używa.
 
 ## Pobranie pakietu
 
@@ -17,6 +17,20 @@ Otwórz stronę pakietu https://mentalping-ops.github.io/KAIWA-SUITE/, wybierz d
 1. Konto ChatGPT Go z dostępem do projektów (Projects).
 2. Około dziesięciu minut na cztery projekty.
 3. Python 3.8 lub nowszy tylko wtedy, gdy chcesz sprawdzać pliki na własnym komputerze. To jest opcjonalne.
+
+## Trzy drogi
+
+1. **Wtyczka dla całego konta.** Wtyczka KAIWA Suite niesie cztery moduły jako skille i działa w każdym czacie konta, także w projekcie. ZIP `KAIWA-SUITE-chatgpt-plugin-<wersja>.zip` ze strony pakietu (sekcja „Plugin for every chat”), instalacja przez Plugins, dodaj, prześlij archiwum wtyczki. Źródła w `2-agents/chatgpt/plugin/`, budowa przez `tools/chatgpt_plugin.py`.
+2. **Projekt-Set do każdego projektu tematycznego.** To, czego wtyczka nie niesie, trafia do projektu: `2-agents/chatgpt/project-kit/` zawiera instrukcje projektu (`INSTRUCTIONS.txt`), rejestry `registers.xlsx`, szablon Word i instrukcję bez AI. Każdy projekt tematyczny dostaje te same pliki i ma własny stan. Kroki w `project-kit/PROJECT.md`. ZIP `KAIWA-SUITE-chatgpt-project-kit-<wersja>.zip`.
+3. **Cztery projekty (pierwsza droga tej instrukcji).** Jeden projekt na moduł, sekcje poniżej.
+
+## Przetestowany stan (25.11.2026)
+
+Sprawdzone przez wydawcę na koncie ChatGPT Go 24 i 25.11.2026, reszta jest nieprzetestowana w ChatGPT:
+
+1. Wtyczka: zainstalowana oknem wgrywania, widoczna w menu plus zwykłego czatu i czatu w projekcie, ikona się wyświetla. „Nowa wersja” przyjęła ZIP z wydania z nagłówkiem Unix i odrzuciła wcześniejszy lokalny build z nagłówkiem Windows (ta sama zawartość, przyczyna niedowiedziona, `tools/chatgpt_plugin.py` pisze teraz nagłówek Unix, `test_zip_header_says_unix`) oraz ZIP pakietu projektów, który nie ma `plugin.json`.
+2. Analiza we wtyczce: uruchomiona na żywo do wersji 0.2.0-chatgpt.4. Ustalenia: nie pokazano obrazu menu, pominięto krok 2, kontekst nie został wzięty słowo w słowo, zastosowano ramę bez pliku w pakiecie. Poprawki są w `plugin/skills/artifact-analysis/SKILL.md` (punkty 7 do 13) i w `analysis/INSTRUCTIONS.txt`. Nie uruchomiono ich ponownie na żywo.
+3. Nigdy nie sprawdzono: strumienia świadomości, mapy kontekstu i źródeł we wtyczce, skrótów i plików `.xlsx` tworzonych przez ChatGPT, Projekt-Setu (nigdy nie wgrany), pola `websiteURL` wtyczki ani porównania wyeksportowanej wtyczki z repozytorium (`python tools/chatgpt_plugin.py --check`).
 
 ## Cztery projekty
 
@@ -36,7 +50,7 @@ W każdym folderze: `PROJECT.md` (nazwa, opis, pierwsza wiadomość), `INSTRUCTI
 3. Dodaj do projektu pliki z `files.txt`. Każda lista ma najwyżej 10 plików, więc wystarczy jedno wgranie.
 4. Zacznij nową rozmowę w projekcie od pierwszej wiadomości z `PROJECT.md`.
 
-Długość instrukcji: pomoc OpenAI „Projects in ChatGPT” (sprawdzona 22.11.2026) nie podaje granicy. Użytkownicy piszą o około 8000 znaków (niesprawdzone), taką granicę ma Copilot. Instrukcje w tym folderze mają: strumień 7130, mapa 7481, analiza 7300 i źródła 4289 znaków, najwyżej 7481. Po zapisaniu sprawdź, czy instrukcje są całe (niesprawdzone w ChatGPT).
+Długość instrukcji: pomoc OpenAI „Projects in ChatGPT” (sprawdzona 22.11.2026) nie podaje granicy. Użytkownicy piszą o około 8000 znaków (niesprawdzone), taką granicę ma Copilot. Instrukcje w tym folderze mają: strumień 7130, mapa 7481, analiza 7481 i źródła 4289 znaków, najwyżej 7481. Po zapisaniu sprawdź, czy instrukcje są całe (niesprawdzone w ChatGPT).
 
 ## Menu startowe (analiza)
 
