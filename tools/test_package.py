@@ -677,6 +677,12 @@ class ChatGPTPluginTest(unittest.TestCase):
         self.assertEqual((different, missing, extra), ([], [], []))
         self.assertEqual(len(same), len(self.P.entries()))
 
+    def test_zip_header_says_unix(self):
+        """Test in ChatGPT 25.11.2026: 'Neue Version hochladen' lehnte das ZIP mit Erzeugersystem 0 (Windows) ab und nahm
+        dasselbe mit Erzeugersystem 3 (Unix) an. Das Skript schreibt immer 3."""
+        z = zipfile.ZipFile(io.BytesIO(self.P.build()))
+        self.assertEqual({i.create_system for i in z.infolist()}, {3})
+
     def test_module_files_in_skill(self):
         names = set(self.P.entries())
         for skill, module in self.P.SKILLS.items():

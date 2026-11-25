@@ -70,6 +70,7 @@ def build():
             info = zipfile.ZipInfo(name, DATE)
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
+            info.create_system = 3  # Unix, auch unter Windows: ChatGPT lehnte "Neue Version hochladen" mit 0 ab (Test X1 25.11.2026), mit 3 nahm es die Datei an
             z.writestr(info, src.read_bytes(), compresslevel=9)
     return buf.getvalue()
 
