@@ -956,7 +956,7 @@ class ReleaseBuildTest(unittest.TestCase):
     def test_names_carry_the_version_and_sums_match(self):
         import hashlib
         namen = {e["name"] for e in self.m["dateien"]}
-        for basis in ["KAIWA-SUITE-" + a for a in self.REL.ANBIETER] + ["KAIWA-SUITE-copilot-skill", "KAIWA-SUITE-copilot-plugin", "KAIWA-SUITE-chatgpt-plugin", "KAIWA-SUITE-chatgpt-project-kit"]:
+        for basis in ["KAIWA-SUITE-" + a for a in self.REL.ANBIETER] + ["KAIWA-SUITE-copilot-skill", "KAIWA-SUITE-copilot-plugin", "KAIWA-SUITE-chatgpt-plugin", "KAIWA-SUITE-chatgpt-project-kit", "KAIWA-SUITE-gemini-skill"]:
             self.assertIn("%s-%s.zip" % (basis, self.ver), namen)
             self.assertIn(basis + ".zip", namen)
         zeilen = (self.out / "SHA256SUMS.txt").read_text(encoding="utf-8").splitlines()
@@ -1027,6 +1027,37 @@ class ReleaseBuildTest(unittest.TestCase):
         for n in gebaut.namelist():
             self.assertEqual(z.read(n), gebaut.read(n), n)
             self.assertNotIn("/", n)
+
+    def test_gemini_skill_zip_follows_the_upload_rules(self):
+        """Google-Hilfe "Skills fuer Gemini-Apps erstellen und verwalten" und der Dialog "Skill hochladen" (X1 25.11.2026):
+        SKILL.md im Hauptordner, Name in Kleinbuchstaben mit Bindestrich, nur unterstuetzte Dateitypen (der Dialog nennt
+        CSV, PY, TXT, MD, das Paket nimmt nur .md und .txt), hoechstens 100 MB, keine Skripte, keine versteckten Dateien,
+        jede Datei, auf die SKILL.md und die Modulanweisungen verweisen, liegt im Skill."""
+        z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-gemini-skill-%s.zip" % self.ver))
+        namen = z.namelist()
+        self.assertEqual([n for n in namen if n.lower().endswith("skill.md")], ["SKILL.md"])
+        kopf = re.match(r"---\n(.*?)\n---\n", z.read("SKILL.md").decode("utf-8"), re.S)
+        self.assertIsNotNone(kopf)
+        felder = dict((k.strip(), v.strip()) for k, _, v in (l.partition(":") for l in kopf.group(1).splitlines()))
+        self.assertEqual(sorted(felder), ["description", "name"])
+        self.assertEqual(felder["name"], "kaiwa-suite")
+        self.assertRegex(felder["name"], r"^[a-z0-9]+(-[a-z0-9]+)*$")
+        self.assertTrue(0 < len(felder["description"]) <= 1024)
+        self.assertEqual({os.path.splitext(n)[1] for n in namen}, {".md", ".txt"})
+        self.assertLess(sum(i.file_size for i in z.infolist()), 100 * 1024 * 1024)
+        self.assertFalse([n for n in namen if n.startswith(".") or "/." in n or "__pycache__" in n])
+        skill = z.read("SKILL.md").decode("utf-8")
+        for m in ("stream", "map", "analysis", "sources"):
+            self.assertIn("%s/INSTRUCTIONS.txt" % m, skill)
+            self.assertIn("%s/INSTRUCTIONS.txt" % m, namen)
+            self.assertEqual(z.read("%s/INSTRUCTIONS.txt" % m), self.q.lies("2-agents/gemini/%s/INSTRUCTIONS.txt" % m))
+        for p in ("method/prompts/core/artifact-triage.md", "method/prompts/framework-catalog.md", "method/protocols/source-protocol.md"):
+            self.assertIn(p, namen)
+        rahmen = sorted(n.rsplit("/", 1)[1][:-3] for n in namen
+                        if n.startswith("method/prompts/") and n.split("/")[2] in ("cultural-scientific", "social-science", "philosophical"))
+        self.assertEqual(len(rahmen), 10)
+        for r in rahmen:
+            self.assertIn(r, skill)
 
     def test_plugin_skills_carry_the_module_text(self):
         z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-copilot-plugin-%s.zip" % self.ver))
@@ -1139,7 +1170,7 @@ class PagesTest(unittest.TestCase):
 
     def test_download_boxes_name_real_packages(self):
         import release as REL
-        gueltig = set(REL.ANBIETER) | {"copilot-skill", "copilot-plugin", "chatgpt-plugin", "chatgpt-project-kit"}
+        gueltig = set(REL.ANBIETER) | {"copilot-skill", "copilot-plugin", "chatgpt-plugin", "chatgpt-project-kit", "gemini-skill"}
         for rel in self.PAGES:
             for pkg in self.parse(rel).pkgs:
                 self.assertIn(pkg, gueltig, rel)
@@ -1157,6 +1188,12 @@ class PagesTest(unittest.TestCase):
             self.assertIn(s.lower(), t.lower(), s)
         import chatgpt_plugin as P
         self.assertIn(json.loads((P.PLUGIN / "plugin.json").read_text(encoding="utf-8"))["version"], t)
+
+    def test_gemini_page_offers_the_skill_zip(self):
+        t = (ROOT / "get/gemini.html").read_text(encoding="utf-8")
+        self.assertIn('data-pkg="gemini-skill" data-label="Skill ZIP (for Skills &gt; Upload)"', t)
+        self.assertIn('data-pkg="gemini" data-label="Bundle to unpack (not for skill upload)"', t)
+        self.assertIn('href="#skl"', t)
 
     def test_vendor_pages_have_the_six_steps(self):
         for rel in self.VENDOR_PAGES:

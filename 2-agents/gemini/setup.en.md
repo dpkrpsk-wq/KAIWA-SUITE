@@ -20,7 +20,7 @@ Open the package page https://mentalping-ops.github.io/KAIWA-SUITE/, choose the 
 
 1. **Route 1, plain chat with attachment (zero setup, untested in Gemini):** Attach `2-agents/gemini/setup-dialog.md` to a new Gemini chat and write "start". The assistant guides you through module selection and provides ready-to-paste instructions.
 2. **Route 2, Skill or Gem (persistent setup):**
-   - **Personal accounts 18+ (Gemini web/app):** Open **Customize / Skills**, choose **Create** or **Upload** (unverified), and create Skills from the files in `2-agents/gemini/stream/`, `2-agents/gemini/map/`, `2-agents/gemini/analysis/`, `2-agents/gemini/sources/`.
+   - **Personal accounts 18+ (Gemini web/app):** Download `KAIWA-SUITE-gemini-skill-<version>.zip` from the package page. In the Gemini web app open **Skills**, choose **Create** and **Upload**, select the ZIP and finish with **Create**. Google accepts a `SKILL.md` file, a folder or a ZIP with `SKILL.md` in the main folder, up to 100 MB (Google help page on Skills, read on 25 November 2026). The skill holds the four modules, ten frameworks and the protocols, no scripts. Untested in Gemini.
    - **Google Workspace education/work accounts (where Gems are active):** Open **Explore Gems** (menu name unverified), choose **New Gem**, and paste name, description and instructions from the chosen module folder.
 3. **Route 3, connected Google Drive folder (Workspace integration):** When the Google Workspace extension is enabled on your account, keep `method/protocols/` and `method/prompts/` in Google Drive (unverified) and reference them directly in chat.
 4. **Route 4, local verification without AI:** Run the scripts in `tools/` (`dictation_ledger.py`, `context.py`, `search.py`) or use `4-without-ai/registers.xlsx`.

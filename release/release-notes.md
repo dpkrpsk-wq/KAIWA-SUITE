@@ -12,6 +12,7 @@ One ZIP per vendor, unpack it into a folder and follow `1-start/setup.en.md` (Po
 | `KAIWA-SUITE-copilot-skill-<version>.zip` | Copilot dialog "Upload skill", one `SKILL.md` in the root. Not tested in Copilot yet. |
 | `KAIWA-SUITE-copilot-plugin-<version>.zip` | Copilot plugin package (Cowork, Admin Center). Not verified. It needs a licence or an administrator. |
 | `KAIWA-SUITE-gemini-<version>.zip` | Google Gemini |
+| `KAIWA-SUITE-gemini-skill-<version>.zip` | Gemini skill for upload (Skills, Create, Upload), `SKILL.md` in the main folder, only `.md` and `.txt`. Draft, untested in Gemini. |
 | `KAIWA-SUITE-chatgpt-<version>.zip` | ChatGPT (Go account, Projects) |
 | `KAIWA-SUITE-chatgpt-plugin-<version>.zip` | ChatGPT plugin with four skills for every chat of the account (Plugins, add, upload plugin archive). Draft, untested in ChatGPT beyond the first runs. |
 | `KAIWA-SUITE-chatgpt-project-kit-<version>.zip` | ChatGPT project kit for every topic project: project instructions, registers, Word template, manual. Draft, untested in ChatGPT. |
