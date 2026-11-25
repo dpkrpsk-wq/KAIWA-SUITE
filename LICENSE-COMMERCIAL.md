@@ -75,7 +75,7 @@ The Commercial Licence does **not** permit:
 Attribution remains required under the Commercial Licence in all works, products, or services that incorporate or are substantially based on the covered material. Attribution must include:
 
 - the name **KAIWA SUITE** and the author **Denis Pokropski**,
-- a reference to the source repository: `https://github.com/dpkrpsk-wq/KAIWA-SUITE`.
+- a reference to the source repository: `https://github.com/mentalpinG-Ops/KAIWA-SUITE`.
 
 Attribution may appear in documentation, an about page, a credits file, or another reasonably visible location.
 
