@@ -164,7 +164,7 @@ def baue(q, ausgabe):
     for a in ANBIETER:
         daten, n = anbieter_zip(q, s, a, ver)
         dateien.append(("KAIWA-SUITE-%s" % a, daten, n))
-    for key in ("copilot-skill", "copilot-plugin"):
+    for key in ("copilot-skill", "copilot-plugin", "chatgpt-plugin"):
         daten, n = paket_zip(q, s["pakete"][key])
         dateien.append((s["pakete"][key]["zip"], daten, n))
     summen, manifest = [], []

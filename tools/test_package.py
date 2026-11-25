@@ -887,7 +887,7 @@ class ReleaseBuildTest(unittest.TestCase):
     def test_names_carry_the_version_and_sums_match(self):
         import hashlib
         namen = {e["name"] for e in self.m["dateien"]}
-        for basis in ["KAIWA-SUITE-" + a for a in self.REL.ANBIETER] + ["KAIWA-SUITE-copilot-skill", "KAIWA-SUITE-copilot-plugin"]:
+        for basis in ["KAIWA-SUITE-" + a for a in self.REL.ANBIETER] + ["KAIWA-SUITE-copilot-skill", "KAIWA-SUITE-copilot-plugin", "KAIWA-SUITE-chatgpt-plugin"]:
             self.assertIn("%s-%s.zip" % (basis, self.ver), namen)
             self.assertIn(basis + ".zip", namen)
         zeilen = (self.out / "SHA256SUMS.txt").read_text(encoding="utf-8").splitlines()
@@ -935,6 +935,18 @@ class ReleaseBuildTest(unittest.TestCase):
             self.assertIn(o + "/SKILL.md", namen)
         self.assertEqual(sorted(n for n in namen if n.endswith("SKILL.md")), sorted(o + "/SKILL.md" for o in ordner))
         self.assertLessEqual(len(namen), 100)
+
+    def test_chatgpt_plugin_zip_equals_the_plugin_builder(self):
+        """X1 25.11.2026: das ChatGPT-Plugin steht auf der Downloadseite. Das Release-ZIP hat dieselben Dateien mit denselben
+        Bytes wie tools/chatgpt_plugin.py."""
+        import chatgpt_plugin as P
+        z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-chatgpt-plugin-%s.zip" % self.ver))
+        gebaut = zipfile.ZipFile(io.BytesIO(P.build()))
+        self.assertEqual(sorted(z.namelist()), sorted(gebaut.namelist()))
+        for n in gebaut.namelist():
+            self.assertEqual(z.read(n), gebaut.read(n), n)
+        m = json.loads(z.read("plugin.json").decode("utf-8"))
+        self.assertTrue(m["version"].startswith(self.ver + "-chatgpt."), m["version"])
 
     def test_plugin_skills_carry_the_module_text(self):
         z = zipfile.ZipFile(self.out / ("KAIWA-SUITE-copilot-plugin-%s.zip" % self.ver))
@@ -1047,13 +1059,21 @@ class PagesTest(unittest.TestCase):
 
     def test_download_boxes_name_real_packages(self):
         import release as REL
-        gueltig = set(REL.ANBIETER) | {"copilot-skill", "copilot-plugin"}
+        gueltig = set(REL.ANBIETER) | {"copilot-skill", "copilot-plugin", "chatgpt-plugin"}
         for rel in self.PAGES:
             for pkg in self.parse(rel).pkgs:
                 self.assertIn(pkg, gueltig, rel)
         for rel, v in zip(self.VENDOR_PAGES, ("copilot", "gemini", "chatgpt", "claude")):
             self.assertIn(v, self.parse(rel).pkgs, rel)
         self.assertEqual({p for p in self.parse("index.html").pkgs}, set(REL.ANBIETER))
+
+    def test_chatgpt_page_offers_the_plugin_zip(self):
+        t = (ROOT / "get/chatgpt.html").read_text(encoding="utf-8")
+        self.assertRegex(t, r'data-pkg="chatgpt-plugin" data-label="Plugin ZIP \(every chat\)"')
+        for s in ("Plugin-Archiv hochladen", "Hinzufügen", "higher version number", "one KAIWA module per chat"):
+            self.assertIn(s.lower(), t.lower(), s)
+        import chatgpt_plugin as P
+        self.assertIn(json.loads((P.PLUGIN / "plugin.json").read_text(encoding="utf-8"))["version"], t)
 
     def test_vendor_pages_have_the_six_steps(self):
         for rel in self.VENDOR_PAGES:
