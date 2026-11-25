@@ -10,7 +10,7 @@ Stan: wersja robocza, nieprzetestowana w ChatGPT. Opis dotyczy konta ChatGPT Go.
 
 ## Pobranie pakietu
 
-Otwórz stronę pakietu https://dpkrpsk-wq.github.io/KAIWA-SUITE/, wybierz dostawcę „ChatGPT” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
+Otwórz stronę pakietu https://mentalping-ops.github.io/KAIWA-SUITE/, wybierz dostawcę „ChatGPT” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
 
 ## Czego potrzebujesz
 

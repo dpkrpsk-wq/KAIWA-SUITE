@@ -103,8 +103,8 @@ def contents(name, files, ver, stand, anbieter):
     start = {"copilot": "1-start/setup.en.md", "any": "4-without-ai/README.pl.md"}.get(anbieter, "2-agents/%s/setup.en.md" % anbieter)
     return "\n".join([
         "# KAIWA SUITE: package for %s / pakiet %s" % (name, name), "",
-        "This ZIP holds only the files for %s, the files without vendor, the licences and the scripts. README.md describes the whole package, the folders of the other vendors are in the repository https://github.com/dpkrpsk-wq/KAIWA-SUITE." % name, "",
-        "Ten plik ZIP zawiera tylko pliki dla dostawcy %s, pliki bez dostawcy, licencje i skrypty. README.md opisuje caly pakiet, foldery innych dostawcow sa w repozytorium https://github.com/dpkrpsk-wq/KAIWA-SUITE." % name, "",
+        "This ZIP holds only the files for %s, the files without vendor, the licences and the scripts. README.md describes the whole package, the folders of the other vendors are in the repository https://github.com/mentalpinG-Ops/KAIWA-SUITE." % name, "",
+        "Ten plik ZIP zawiera tylko pliki dla dostawcy %s, pliki bez dostawcy, licencje i skrypty. README.md opisuje caly pakiet, foldery innych dostawcow sa w repozytorium https://github.com/mentalpinG-Ops/KAIWA-SUITE." % name, "",
         "Start with / zacznij od: %s (Polish / po polsku: setup.pl.md)." % start, "",
         "Version / wersja: %s, commit %s." % (ver, stand), "",
         "Tests / testy: python tools/test_package.py (skips parts not in this package / pomija czesci, ktorych nie ma w tym pakiecie).", "",

@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   release:
-    if: github.repository == 'dpkrpsk-wq/KAIWA-SUITE'
+    if: github.repository == 'mentalpinG-Ops/KAIWA-SUITE'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:

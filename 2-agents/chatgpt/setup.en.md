@@ -10,7 +10,7 @@ Status: draft, untested in ChatGPT. This guide covers a ChatGPT Go account. The 
 
 ## Get the package
 
-Open the package page https://dpkrpsk-wq.github.io/KAIWA-SUITE/, choose the vendor "ChatGPT" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
+Open the package page https://mentalping-ops.github.io/KAIWA-SUITE/, choose the vendor "ChatGPT" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
 
 ## What you need
 

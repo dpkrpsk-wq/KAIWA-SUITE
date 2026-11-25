@@ -2,11 +2,11 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="design/logo/kaiwa-logo-hell.svg"><img src="design/logo/kaiwa-logo.svg" alt="KAIWA" width="240"></picture>
 
-**Package page / strona pakietu:** [https://dpkrpsk-wq.github.io/KAIWA-SUITE/](https://dpkrpsk-wq.github.io/KAIWA-SUITE/)
+**Package page / strona pakietu:** [https://mentalping-ops.github.io/KAIWA-SUITE/](https://mentalping-ops.github.io/KAIWA-SUITE/)
 
-**First contact / pierwszy kontakt:** [https://dpkrpsk-wq.github.io/KAIWA-SUITE/1-start/first-contact.html](https://dpkrpsk-wq.github.io/KAIWA-SUITE/1-start/first-contact.html)
+**First contact / pierwszy kontakt:** [https://mentalping-ops.github.io/KAIWA-SUITE/1-start/first-contact.html](https://mentalping-ops.github.io/KAIWA-SUITE/1-start/first-contact.html)
 
-**Download / pobieranie:** one ZIP per vendor on the [package page](https://dpkrpsk-wq.github.io/KAIWA-SUITE/) and in the [releases](https://github.com/dpkrpsk-wq/KAIWA-SUITE/releases). Steps per assistant: `get/copilot.html`, `get/gemini.html`, `get/chatgpt.html`, `get/claude.html` on the package page. / Jeden ZIP na dostawcę na stronie pakietu i w wydaniach. Kroki dla każdego asystenta na stronie pakietu.
+**Download / pobieranie:** one ZIP per vendor on the [package page](https://mentalping-ops.github.io/KAIWA-SUITE/) and in the [releases](https://github.com/mentalpinG-Ops/KAIWA-SUITE/releases). Steps per assistant: `get/copilot.html`, `get/gemini.html`, `get/chatgpt.html`, `get/claude.html` on the package page. / Jeden ZIP na dostawcę na stronie pakietu i w wydaniach. Kroki dla każdego asystenta na stronie pakietu.
 
 Kit for Academic Inquiry With AI. In Japanese, *kaiwa* means conversation. Po japońsku *kaiwa* znaczy rozmowa.
 

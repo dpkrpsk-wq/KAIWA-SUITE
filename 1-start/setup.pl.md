@@ -8,7 +8,7 @@ Produkt 26.01, wersja 0.2.0 (robocza), 22.11.2026. Nie wydana. Wydawca: Denis Po
 
 ## Pobranie pakietu
 
-Otwórz stronę pakietu https://dpkrpsk-wq.github.io/KAIWA-SUITE/, wybierz dostawcę „Microsoft 365 Copilot” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
+Otwórz stronę pakietu https://mentalping-ops.github.io/KAIWA-SUITE/, wybierz dostawcę „Microsoft 365 Copilot” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
 
 ## Czego potrzebujesz
 

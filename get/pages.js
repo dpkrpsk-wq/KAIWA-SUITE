@@ -3,7 +3,7 @@
    (written when a release is made, see release/README.md). Without it every download shows the fallback. */
 (function () {
   "use strict";
-  var REPO = "https://github.com/dpkrpsk-wq/KAIWA-SUITE";
+  var REPO = "https://github.com/mentalpinG-Ops/KAIWA-SUITE";
   var base = document.documentElement.getAttribute("data-base") || "";
   var MODES = {
     sw: base + "design/design-system/assets/Logos/kaiwa-icon-hell.svg",

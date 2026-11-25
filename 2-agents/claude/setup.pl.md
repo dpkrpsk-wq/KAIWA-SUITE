@@ -10,7 +10,7 @@ Status: wersja robocza, nieprzetestowana w Claude. Instrukcja opisuje dwie drogi
 
 ## Pobranie pakietu
 
-Otwórz stronę pakietu https://dpkrpsk-wq.github.io/KAIWA-SUITE/, wybierz dostawcę „Claude” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
+Otwórz stronę pakietu https://mentalping-ops.github.io/KAIWA-SUITE/, wybierz dostawcę „Claude” i naciśnij przycisk pobierania. Rozpakuj plik ZIP do wybranego folderu. Wszystkie ścieżki w tej instrukcji zaczynają się w tym folderze.
 
 Która droga do ciebie pasuje: droga A wymaga tylko przeglądarki i pasuje większości osób. Droga B jest dla osób, które już używają Claude Code, programu uruchamiającego Claude w terminalu na własnym komputerze.
 

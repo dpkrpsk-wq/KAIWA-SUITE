@@ -1042,8 +1042,8 @@ class PagesTest(unittest.TestCase):
     """Paketseite und Anbieterseiten (F-0086 bis F-0095): kein JSZip, kein GitHub-API-Abruf, Englisch mit Polnisch, Links loesen sich auf."""
     VENDOR_PAGES = ("get/copilot.html", "get/gemini.html", "get/chatgpt.html", "get/claude.html")
     PAGES = ("index.html",) + VENDOR_PAGES
-    PAGES_URL = "https://dpkrpsk-wq.github.io/KAIWA-SUITE/"
-    REPO_URL = "https://github.com/dpkrpsk-wq/KAIWA-SUITE/"
+    PAGES_URL = "https://mentalping-ops.github.io/KAIWA-SUITE/"
+    REPO_URL = "https://github.com/mentalpinG-Ops/KAIWA-SUITE/"
 
     def parse(self, rel):
         p = _PageParser()
@@ -1139,6 +1139,9 @@ class PagesTest(unittest.TestCase):
     def test_contact_is_only_the_university_address(self):
         for rel in self.PAGES:
             t = (ROOT / rel).read_text(encoding="utf-8").lower()
+            # Seit dem Umzug des Repos in die Organisation (X1 25.11.2026) steht der Organisationsname in den Adressen
+            # (github.com/mentalping-ops/..., mentalping-ops.github.io). Nur Adressen sind ausgenommen, nie Text oder Kontakt (F-0091).
+            t = t.replace("github.com/mentalping-ops/", "").replace("mentalping-ops.github.io", "")
             self.assertNotIn("mentalping", t, rel)
             self.assertNotIn("gmail", t, rel)
 
