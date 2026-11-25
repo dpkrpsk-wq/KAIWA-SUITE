@@ -31,12 +31,12 @@ Google Gemini obsługuje cztery drogi użycia, dopasowane do ustawień włączon
 
 Każdy moduł ma własny podfolder w `2-agents/gemini/` z dwoma plikami: `SKILL.md` z polami konfiguracyjnymi oraz `INSTRUCTIONS.txt` z pełną instrukcją.
 
-Czy Gemini wykonuje kod na twoim koncie, pokazuje dopiero pierwszy test (niesprawdzone).
+Czy Gemini wykonuje kod: w teście na koncie Google Pro 25.11.2026 sam Gemini powiedział, że w czacie ze skillem nie ma interpretera Pythona. To jest wypowiedź modelu, niesprawdzona niezależnie. Może się różnić zależnie od konta, modelu i ustawień. Twój pierwszy test pokaże, co robi twoje konto.
 
 | Moduł | Folder | Wymagany interpreter kodu | Stan / status |
 |---|---|---|---|
-| KAIWA: strumień świadomości | `2-agents/gemini/stream/` | tak (do skrótów SHA-256 i pliku `.xlsx`) | wersja robocza, nieprzetestowana w Gemini |
-| KAIWA: mapa kontekstu | `2-agents/gemini/map/` | tak (do walidacji `kontekst-1`, układu pliku mapy z `1-start/context.pl.md`, i `.xlsx`) | wersja robocza, nieprzetestowana w Gemini |
+| KAIWA: strumień świadomości | `2-agents/gemini/stream/` | tak, do skrótów SHA-256 i pliku `.xlsx`, ale Gemini zgłosił brak interpretera (wypowiedź modelu, niesprawdzona) | skill wgrany i wywołany, sesja rozpoczęta, koniec sesji bez kodu poprawiony w `stream/INSTRUCTIONS.txt` i niesprawdzony ponownie, poza tym wersja robocza |
+| KAIWA: mapa kontekstu | `2-agents/gemini/map/` | tak, do walidacji `kontekst-1`, układu pliku mapy z `1-start/context.pl.md` i `.xlsx`, ale Gemini zgłosił brak interpretera (wypowiedź modelu, niesprawdzona) | wersja robocza, nieprzetestowana w Gemini, przypadek bez kodu dodany w `map/INSTRUCTIONS.txt` |
 | KAIWA: analiza | `2-agents/gemini/analysis/` | nie | wersja robocza, nieprzetestowana w Gemini |
 | KAIWA: źródła | `2-agents/gemini/sources/` | opcjonalnie (do eksportu `.xlsx`) | wersja robocza, nieprzetestowana w Gemini |
 
@@ -52,9 +52,9 @@ Czy Gemini wykonuje kod na twoim koncie, pokazuje dopiero pierwszy test (niespra
 ## Pierwszy test
 
 1. Otwórz skonfigurowany Skill/Gem (albo nowy czat z dołączonym `2-agents/gemini/setup-dialog.md`) i napisz „start”.
-2. W modułach **strumień świadomości** i **mapa kontekstu** Gemini powinien uruchomić krótki kod Python i wypisać „OK”, a następnie potwierdzić aktywność skrótów SHA-256.
+2. W modułach **strumień świadomości** i **mapa kontekstu** instrukcje każą Geminiemu uruchomić krótki kod Python i wypisać „OK”. Jeśli Gemini nie ma interpretera, jak zgłosił 25.11.2026 (wypowiedź modelu, niesprawdzona niezależnie), musi powiedzieć, że ten czat nie liczy skrótów. Nie wolno mu wypisać „OK” ani wymyślić skrótu.
 3. Jeśli w twoim kraju lub na koncie uczelnianym wykonywanie kodu jest wyłączone, Gemini wyświetli ostrzeżenie i zapisze sesję bez skrótów. Nie wolno mu wtedy wymyślać skrótów.
-4. Napisz dwa zdania testowe, a potem „koniec”. Sprawdź, czy pojawia się lista tematów, plik `.xlsx` do pobrania oraz wiersz „Narzędzie” i stopka wersji.
+4. Napisz dwa zdania testowe, a potem „koniec”. Z kodem sprawdź, czy pojawia się lista tematów, plik `.xlsx` do pobrania oraz wiersz „Narzędzie” i stopka wersji. Bez kodu nie ma pliku: strumień daje tabelę Markdown z dosłownymi tekstami i wiersz, że nie powstał plik ani skrót, mapa niczego nie zapisuje.
 
 ## Ostrzeżenia dotyczące użycia i ograniczenia platformy
 
@@ -63,6 +63,7 @@ Czy Gemini wykonuje kod na twoim koncie, pokazuje dopiero pierwszy test (niespra
 3. **Brak automatycznego zapisu na Dysk Google z interpretera kodu:** W odróżnieniu od testowanego konta Microsoft 365 Copilot, pliki `.xlsx` wygenerowane kodem w Gemini są dostępne bezpośrednio do pobrania w oknie rozmowy (niesprawdzone). Zapisz je ręcznie w swoim folderze roboczym (np. `KAIWA/`).
 4. **Długa sesja:** Po dwudziestu wpisach w strumieniu świadomości zakończ sesję i rozpocznij nową, aby uniknąć utraty dosłowności.
 5. **Skrót SHA-256 nie dowodzi wierności przepisania:** Skrót potwierdza tylko, że tekst w pliku `.xlsx` nie zmienił się po zapisie. Skrót „sha256” liczony jest po ujednoliceniu znaków (NFC), odstępów i podziałów wierszy, więc nie wykrywa zmian samych odstępów ani podziałów wierszy. Drugi skrót „sha256_raw” liczony jest z dokładnych bajtów tekstu. Porównany ręcznie z tekstem pokazuje także takie zmiany, sprawdzenie w agencie porównuje tylko „sha256”. Przeczytaj wygenerowany plik raz po zakończeniu sesji.
+6. **Zgłoszony brak interpretera, zachowanie skilla:** W teście 25.11.2026 (konto Google Pro) Gemini powiedział, że w czacie ze skillem nie ma interpretera Pythona (wypowiedź modelu, niesprawdzona niezależnie). Na końcu sesji strumienia napisał wtedy pseudokod i stwierdził, że eksport i rejestr są przechowywane na Dysku Google. Instrukcje tego zabraniają. Od tego czasu strumień i mapa nazywają przypadek bez kodu (tabela z dosłownymi tekstami albo brak zapisu, jeden wiersz, że nie powstał plik ani skrót, nigdy twierdzenie, że coś zapisano). Poprawione w tekście i niesprawdzone ponownie w Gemini.
 
 ## Sprawdzanie na własnym komputerze
 

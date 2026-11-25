@@ -824,6 +824,49 @@ class ChatGPTPluginTest(unittest.TestCase):
                 self.assertIn(p.stem, t, p.name)
 
 
+@braucht("2-agents/gemini")
+class GeminiTest(unittest.TestCase):
+    """Gemini (X1 25.11.2026, Phase A): Test im Skill auf einem Pro-Konto. Gemini meldete keinen Python-Interpreter, das ist
+    eine Aussage des Modells und nicht unabhaengig geprueft. Die Anleitung sagt es so, die Module nennen den Fall ohne Code."""
+    BASE = ROOT / "2-agents/gemini"
+
+    def test_setup_does_not_promise_code_and_names_the_finding(self):
+        for name, key, alt in (("setup.en.md", "no interpreter", "| yes (for SHA-256 hashes and `.xlsx`) |"),
+                               ("setup.pl.md", "brak interpretera", "| tak (do skrótów SHA-256 i pliku `.xlsx`) |")):
+            text = (self.BASE / name).read_text(encoding="utf-8")
+            self.assertIn(key, text, name)
+            self.assertNotIn(alt, text, name)
+            self.assertIn("25", text)
+        en = (self.BASE / "setup.en.md").read_text(encoding="utf-8")
+        for s in ("a statement of the model, not checked independently", "No interpreter reported, behaviour of the skill", "must not invent a hash"):
+            self.assertIn(s, en, s)
+
+    def test_stream_and_map_name_the_case_without_code(self):
+        stream = (self.BASE / "stream/INSTRUCTIONS.txt").read_text(encoding="utf-8")
+        self.assertIn("0. If code cannot run", stream)
+        self.assertIn("not in Google Drive", stream)
+        karte = (self.BASE / "map/INSTRUCTIONS.txt").read_text(encoding="utf-8")
+        self.assertIn("0. Bez kodu", karte)
+        self.assertIn("także nie w Google Drive", karte)
+        self.assertIn("sprawdzenie nie jest możliwe", karte)
+
+    def test_analysis_carries_the_rules_of_the_plugin_test(self):
+        for vendor in ("chatgpt", "gemini"):
+            text = (ROOT / "2-agents" / vendor / "analysis/INSTRUCTIONS.txt").read_text(encoding="utf-8")
+            for s in ("Takiej ramy nie stosuj", "Jedno pole na wiadomość", "nie zastępuje pytania z kroku 2",
+                      "Nie wnioskuj o stanowisku użytkownika", "liczby bez cytatu nie podawaj", "także kroki bez wymaganego pliku"):
+                self.assertIn(s, text, vendor + ": " + s)
+
+    def test_chatgpt_setup_names_the_three_ways_and_the_tested_state(self):
+        for name, keys in (("setup.en.md", ("Three ways", "Tested state", "chatgpt-plugin", "project-kit", "websiteURL", "Never tried")),
+                           ("setup.pl.md", ("Trzy drogi", "Przetestowany stan", "chatgpt-plugin", "project-kit", "websiteURL", "Nigdy nie sprawdzono"))):
+            text = (ROOT / "2-agents/chatgpt" / name).read_text(encoding="utf-8")
+            for s in keys:
+                self.assertIn(s, text, name + ": " + s)
+            self.assertNotRegex(text, r"\bT[0-9]{1,3}\b", name)  # Befundnummern gehoeren nur in Commit-Texte
+        self.assertLessEqual(len((ROOT / "2-agents/chatgpt/analysis/INSTRUCTIONS.txt").read_text(encoding="utf-8")), 7500)
+
+
 @braucht("2-agents/claude")
 class ClaudeTest(unittest.TestCase):
     """Claude-Weg (studium F-0069): Projekte in claude.ai (Browser, Desktop-App) und Skills in Claude Code.
