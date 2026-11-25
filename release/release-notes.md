@@ -9,8 +9,8 @@ One ZIP per vendor, unpack it into a folder and follow `1-start/setup.en.md` (Po
 | File | For |
 |---|---|
 | `KAIWA-SUITE-copilot-<version>.zip` | Microsoft 365 Copilot, Agent Builder (copy name, description and instructions from the files) |
-| `KAIWA-SUITE-copilot-skill-<version>.zip` | Copilot dialog "Upload skill", one `SKILL.md` in the root. Not tested in Copilot yet. |
-| `KAIWA-SUITE-copilot-plugin-<version>.zip` | Copilot plugin package (Cowork, Admin Center). Not verified. It needs a licence or an administrator. |
+| `KAIWA-SUITE-copilot-skill-<version>.zip` | Copilot: "Plug-Ins" > "Add" (Hinzufügen) > "Upload" (Hochladen), one `SKILL.md` in the root. The form (one agent with the skill kaiwa-suite, four modules) ran in a university account on 23 and 24 November 2026 and showed defects: a recording broke off and the agent switched to the map module, the analysis did not apply the frameworks, the export of sources lost 7 of 10 hits. This ZIP was not uploaded (usage limit until 26 November 2026). The corrected version is not in this set. |
+| `KAIWA-SUITE-copilot-plugin-<version>.zip` | Copilot plugin package (Cowork, Admin Center). Not verified. It needs a licence or an administrator. In a university Copilot Chat account the "Upload" dialog takes only skills and rejects this ZIP. |
 | `KAIWA-SUITE-gemini-<version>.zip` | Google Gemini |
 | `KAIWA-SUITE-gemini-skill-<version>.zip` | Gemini skill for upload (Skills, Create, Upload), `SKILL.md` in the main folder, only `.md` and `.txt`. Draft, untested in Gemini. |
 | `KAIWA-SUITE-chatgpt-<version>.zip` | ChatGPT (Go account, Projects) |
@@ -24,7 +24,7 @@ The same files without the version in the name are the stable links. / Te same p
 
 ## Note / Uwaga
 
-- Do not drag a ZIP file into the Copilot chat window, it is not accepted as an attachment. Unpack it first. / Nie przeciągaj ZIP do czatu Copilot, nie jest przyjmowany jako załącznik. Najpierw rozpakuj.
+- Do not drag a ZIP file into the Copilot chat window, it is not accepted as an attachment ("Format wird nicht unterstützt" in a German interface). Unpack it first. / Nie przeciągaj ZIP do czatu Copilot, nie jest przyjmowany jako załącznik. Najpierw rozpakuj.
 - Excel files that Copilot creates carry the account owner's name in the file properties. Check them before you share them. / Pliki Excel z Copilot mają we właściwościach imię i nazwisko właściciela konta.
 - A hash in the register shows that a text did not change after it was recorded, not that it was copied correctly. / Skrót w rejestrze pokazuje, że tekst nie zmienił się po zapisie, nie że przepisano go wiernie.
 
