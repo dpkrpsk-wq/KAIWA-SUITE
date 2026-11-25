@@ -1097,6 +1097,9 @@ class PagesTest(unittest.TestCase):
     def test_chatgpt_page_offers_the_plugin_zip(self):
         t = (ROOT / "get/chatgpt.html").read_text(encoding="utf-8")
         self.assertRegex(t, r'data-pkg="chatgpt-plugin" data-label="Plugin ZIP \(every chat\)"')
+        # X1 lud das Projektpaket in "Neue Version hochladen" (25.11.2026): der obere Knopf nennt seinen Zweck
+        self.assertIn('data-pkg="chatgpt" data-label="Bundle for four projects (not for plugin upload)"', t)
+        self.assertIn('href="#plg"', t)
         for s in ("Plugin-Archiv hochladen", "Hinzufügen", "higher version number", "one KAIWA module per chat"):
             self.assertIn(s.lower(), t.lower(), s)
         import chatgpt_plugin as P
