@@ -13,3 +13,4 @@ method/protocols/read-write-boundary-protocol.md
 method/protocols/source-protocol.md
 method/protocols/tool-protocol.md
 method/protocols/writing-protocol.md
+method/prompts/philosophical/hermeneutics.md

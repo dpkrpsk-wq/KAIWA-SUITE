@@ -8,4 +8,4 @@ The files in this folder are copies from the prompt-library repository (link abo
 
 Katalog ram `framework-catalog.md` jest wygenerowany w tym samym repozytorium (narzędzie `tools/build-webapp-skills.ps1`) z deklaracji ram w folderze `prompts/` i obejmuje 16 ram, także filozoficzne. Ta sama licencja, bez zmian. The framework catalog is generated in the same repository from the framework files and covers 16 frameworks, same licence, unchanged.
 
-Wybór dla pakietu: triaż (`core/artifact-triage.md`) oraz ramy kulturoznawcze (`cultural-scientific/`) i nauk społecznych (`social-science/`). Ramy filozoficzne z tego samego repozytorium nie są włączone.
+Wybór dla pakietu: triaż (`core/artifact-triage.md`) oraz ramy kulturoznawcze (`cultural-scientific/`) i nauk społecznych (`social-science/`). Z ram filozoficznych tego samego repozytorium (`philosophical/`) jest włączona tylko hermeneutyka (`philosophical/hermeneutics.md`, bez zmian), pozostałe nie są włączone. Of the philosophical frameworks of the same repository only hermeneutics (`philosophical/hermeneutics.md`, unchanged) is included, the others are not.

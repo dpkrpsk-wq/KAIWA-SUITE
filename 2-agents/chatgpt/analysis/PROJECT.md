@@ -41,4 +41,4 @@ ChatGPT pokazuje najpierw menu startowe (obraz i menu tekstowe) i czeka na twój
 
 ## Co dołączasz w rozmowie
 
-Artefakt oraz po triażu pliki ram z `method/prompts/cultural-scientific/` albo `method/prompts/social-science/`, które poleca triaż.
+Artefakt oraz po triażu pliki ram z `method/prompts/cultural-scientific/`, `method/prompts/social-science/` albo `method/prompts/philosophical/`, które poleca triaż.

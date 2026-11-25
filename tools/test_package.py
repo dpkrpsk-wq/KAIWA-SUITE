@@ -731,18 +731,28 @@ class ChatGPTPluginTest(unittest.TestCase):
                 lines = found
             self.assertEqual(found, lines, skill)
 
-    def test_nine_frameworks_named(self):
-        """Test in ChatGPT 25.11.2026: die Analyse wandte Hermeneutik an, deren Datei nicht im Paket ist.
-        Die SKILL.md nennt genau die Rahmen, deren Dateien in references liegen, und sagt, was mit allen anderen geschieht."""
+    def test_ten_frameworks_named(self):
+        """Test in ChatGPT 25.11.2026: die Analyse wandte Hermeneutik an, deren Datei nicht im Paket war.
+        X1 25.11.2026: Hermeneutik aufgenommen (zehn Rahmen). Die SKILL.md nennt genau die Rahmen, deren Dateien
+        in references liegen, und sagt, was mit allen anderen geschieht."""
         text = (self.P.PLUGIN / "skills/artifact-analysis/SKILL.md").read_text(encoding="utf-8")
         files = sorted(Path(n).stem for n in self.P.entries()
                        if n.startswith("skills/artifact-analysis/references/method/prompts/")
-                       and ("/cultural-scientific/" in n or "/social-science/" in n))
-        self.assertEqual(len(files), 9)
+                       and ("/cultural-scientific/" in n or "/social-science/" in n or "/philosophical/" in n))
+        self.assertEqual(len(files), 10)
+        self.assertIn("hermeneutics", files)
         for f in files:
             self.assertIn(f, text, f)
         self.assertIn("poza pakietem", text)
-        self.assertIn("holds the files of nine", text)
+        self.assertIn("holds the files of ten", text)
+
+    def test_instruction_names_hermeneutics(self):
+        """Die Projekt-Anweisung der Analyse nennt die zehn Rahmen des Ordners method/prompts."""
+        t = (ROOT / "2-agents/chatgpt/analysis/INSTRUCTIONS.txt").read_text(encoding="utf-8")
+        self.assertIn("philosophical (hermeneutics)", t)
+        for p in (ROOT / "method/prompts").rglob("*.md"):
+            if p.parent.name in ("cultural-scientific", "social-science", "philosophical"):
+                self.assertIn(p.stem, t, p.name)
 
 
 @braucht("2-agents/claude")
