@@ -28,6 +28,11 @@ SKILLS = {
 }
 PLUGIN_FILES = ("plugin.json", ".codex-plugin/plugin.json", "README.md")
 LICENCES = ("LICENSE", "LICENSE-COMMERCIAL.md", "DISCLOSURE.md", "method/prompts/LICENSE.md", "method/protocols/LICENSE.md")
+# Plugin icon (X1 25.11.2026): the agent icon of the design system KAIWA SUITE, dark tile, K in papier, square in signal
+ASSETS = {
+    "assets/kaiwa-icon-512.png": "design/logo/kaiwa-icon-512.png",
+    "assets/kaiwa-icon-192.png": "design/logo/kaiwa-icon-192.png",
+}
 DATE = (1980, 1, 1, 0, 0, 0)
 
 
@@ -53,6 +58,8 @@ def entries():
         out[name] = PLUGIN / name
     for name in LICENCES:
         out[name] = ROOT / name
+    for name, src in ASSETS.items():
+        out[name] = ROOT / src
     for skill in SKILLS:
         out["skills/%s/SKILL.md" % skill] = PLUGIN / "skills" / skill / "SKILL.md"
         for p in references(skill):

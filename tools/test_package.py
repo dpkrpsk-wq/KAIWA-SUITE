@@ -727,6 +727,24 @@ class ChatGPTPluginTest(unittest.TestCase):
         # nach Drittquellen, die offizielle Seite von OpenAI wurde nicht gelesen)
         self.assertEqual(b["interface"]["websiteURL"], "https://github.com/mentalpinG-Ops")
 
+    def test_icon_is_the_design_system_agent_icon(self):
+        """X1 25.11.2026: das Plugin-Icon ist das Agenten-Icon des Design-Systems (Kachel tinte, K papier, Quadrat signal).
+        logo und composerIcon zeigen auf PNG-Dateien, die im Archiv liegen."""
+        import struct
+        names = self.P.entries()
+        for p in ("plugin.json", ".codex-plugin/plugin.json"):
+            m = json.loads((self.P.PLUGIN / p).read_text(encoding="utf-8"))
+            i = m["extensions"]["com.openai"]["interface"] if "extensions" in m else m["interface"]
+            for key, size in (("logo", 512), ("composerIcon", 192)):
+                ziel = i[key][2:] if i[key].startswith("./") else i[key]
+                self.assertIn(ziel, names, p + ": " + key)
+                kopf = names[ziel].read_bytes()[:24]
+                self.assertEqual(kopf[:8], b"\x89PNG\r\n\x1a\n", ziel)
+                self.assertEqual(struct.unpack(">II", kopf[16:24]), (size, size), ziel)
+        svg = (ROOT / "design/logo/kaiwa-icon.svg").read_text(encoding="utf-8")
+        for farbe in ("#14171F", "#F1EFE9", "#FFED00"):
+            self.assertIn(farbe, svg)
+
     def test_one_module_per_chat(self):
         """Test in ChatGPT 24.11.2026: /triage waehrend einer Aufnahme wurde als Notiz aufgenommen.
         X1 25.11.2026: sperren mit Hinweis. Jeder Skill traegt dieselben drei Hinweiszeilen."""
