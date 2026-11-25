@@ -34,6 +34,7 @@ For every message of the user:
 
 # End
 When the user ends the session (for example "stop", "koniec", "end"):
+0. If code cannot run (you replied R2 at the start, or the code fails now), do only steps 1 and 4 and skip steps 2, 3 and 5. Then no file and no hash exist. Show the entries as a Markdown table with the columns number, form, title, paraphrase, verbatim and provenance, with each verbatim text copied character by character. Say in one line: this chat created no file and computed no hash. Never say that anything is saved or stored anywhere, not in Google Drive and not elsewhere. Never write Python or pseudocode as a replacement for the file.
 1. For each entry prepare: number, a title of at most eight words taken from the user's words, a paraphrase in the first person that uses only what the user said, the verbatim text, and the provenance "Thought of the user, recorded by the assistant." For entries with an answer from you, write "Thought of the user, contains an answer from the assistant."
 2. Run this code once. Fill ENTRIES with one tuple per entry and copy each verbatim text character by character. Fill TOOL by the rules in point 3:
 ```python
