@@ -1,104 +1,116 @@
 {
  "produkt": "KAIWA SUITE",
- "version": "0.2.1",
- "commit": "9cf1b8b",
+ "version": "0.2.2",
+ "commit": "2c3322d",
  "stand": "robocza / draft",
  "dateien": [
   {
-   "name": "KAIWA-SUITE-copilot-0.2.1.zip",
-   "bytes": 422383,
-   "sha256": "738d28d0e12daac52ecd79d36439584a3c68a2c554820701a690cf9bfe2eab1d",
+   "name": "KAIWA-SUITE-copilot-0.2.2.zip",
+   "bytes": 423236,
+   "sha256": "7cfcfa1bfc6d24084b1f2f6ccc12bdb325e93fce3200c23584b0d0c7ecd272ca",
    "dateien": 66
   },
   {
    "name": "KAIWA-SUITE-copilot.zip",
-   "bytes": 422383,
-   "sha256": "738d28d0e12daac52ecd79d36439584a3c68a2c554820701a690cf9bfe2eab1d",
+   "bytes": 423236,
+   "sha256": "7cfcfa1bfc6d24084b1f2f6ccc12bdb325e93fce3200c23584b0d0c7ecd272ca",
    "dateien": 66
   },
   {
-   "name": "KAIWA-SUITE-gemini-0.2.1.zip",
-   "bytes": 421950,
-   "sha256": "eccf494d14e8eafc65376ecc9c11e8cac462d6da7e35f05b81f47d60d4aa7bbc",
+   "name": "KAIWA-SUITE-gemini-0.2.2.zip",
+   "bytes": 422803,
+   "sha256": "5746173f856ab8dacb903fbf06dd8f50cb6f0717531f1fb589e6e07da5d6f6cd",
    "dateien": 67
   },
   {
    "name": "KAIWA-SUITE-gemini.zip",
-   "bytes": 421950,
-   "sha256": "eccf494d14e8eafc65376ecc9c11e8cac462d6da7e35f05b81f47d60d4aa7bbc",
+   "bytes": 422803,
+   "sha256": "5746173f856ab8dacb903fbf06dd8f50cb6f0717531f1fb589e6e07da5d6f6cd",
    "dateien": 67
   },
   {
-   "name": "KAIWA-SUITE-chatgpt-0.2.1.zip",
-   "bytes": 566914,
-   "sha256": "4a9d11ff9a1bd75585929afe05113c5707a9f01490543c961c9893cc2a6d41f3",
+   "name": "KAIWA-SUITE-chatgpt-0.2.2.zip",
+   "bytes": 567767,
+   "sha256": "7ad23c37ea413a245d99b8ba7c3b716f3ed97c328b2ecb738f13fb418f0ced9a",
    "dateien": 73
   },
   {
    "name": "KAIWA-SUITE-chatgpt.zip",
-   "bytes": 566914,
-   "sha256": "4a9d11ff9a1bd75585929afe05113c5707a9f01490543c961c9893cc2a6d41f3",
+   "bytes": 567767,
+   "sha256": "7ad23c37ea413a245d99b8ba7c3b716f3ed97c328b2ecb738f13fb418f0ced9a",
    "dateien": 73
   },
   {
-   "name": "KAIWA-SUITE-claude-0.2.1.zip",
-   "bytes": 436228,
-   "sha256": "e7c717a1954320434c5d79c90c25fa4df8a1b3ec3814b575faa20f21cc2628cb",
+   "name": "KAIWA-SUITE-claude-0.2.2.zip",
+   "bytes": 437086,
+   "sha256": "d09f75d59aa5ca49e5f5f0c81956c14ccd06c07e55f2a83518a617c3651f176b",
    "dateien": 74
   },
   {
    "name": "KAIWA-SUITE-claude.zip",
-   "bytes": 436228,
-   "sha256": "e7c717a1954320434c5d79c90c25fa4df8a1b3ec3814b575faa20f21cc2628cb",
+   "bytes": 437086,
+   "sha256": "d09f75d59aa5ca49e5f5f0c81956c14ccd06c07e55f2a83518a617c3651f176b",
    "dateien": 74
   },
   {
-   "name": "KAIWA-SUITE-any-0.2.1.zip",
-   "bytes": 394859,
-   "sha256": "092604cc3752bbf3ae02fb4e54ec2a7c2195014ec2d95b2d714adeeaabb4ed21",
+   "name": "KAIWA-SUITE-any-0.2.2.zip",
+   "bytes": 395706,
+   "sha256": "c2bfe7afa2f0bd517a5d1eaac66c15bbeb079c87a91730b1470fd4a15bbfe363",
    "dateien": 55
   },
   {
    "name": "KAIWA-SUITE-any.zip",
-   "bytes": 394859,
-   "sha256": "092604cc3752bbf3ae02fb4e54ec2a7c2195014ec2d95b2d714adeeaabb4ed21",
+   "bytes": 395706,
+   "sha256": "c2bfe7afa2f0bd517a5d1eaac66c15bbeb079c87a91730b1470fd4a15bbfe363",
    "dateien": 55
   },
   {
-   "name": "KAIWA-SUITE-copilot-skill-0.2.1.zip",
-   "bytes": 145191,
-   "sha256": "4e6d83ef9f5dc785fc55f8b4cc86e73c83d2a57d7b26237b07ddb1e1893d0227",
+   "name": "KAIWA-SUITE-copilot-skill-0.2.2.zip",
+   "bytes": 145197,
+   "sha256": "1579851f4500e613de6c53b6710ac73a7c016c57f5f53e1490c6b11cf330ac65",
    "dateien": 22
   },
   {
    "name": "KAIWA-SUITE-copilot-skill.zip",
-   "bytes": 145191,
-   "sha256": "4e6d83ef9f5dc785fc55f8b4cc86e73c83d2a57d7b26237b07ddb1e1893d0227",
+   "bytes": 145197,
+   "sha256": "1579851f4500e613de6c53b6710ac73a7c016c57f5f53e1490c6b11cf330ac65",
    "dateien": 22
   },
   {
-   "name": "KAIWA-SUITE-copilot-plugin-0.2.1.zip",
-   "bytes": 172534,
-   "sha256": "a578890051972170133ed86526c39711ea4755fc54cad1f8523f70fd60e0e993",
+   "name": "KAIWA-SUITE-copilot-plugin-0.2.2.zip",
+   "bytes": 172543,
+   "sha256": "dd828d369505042e7dd27881a8346fbbc44ba7756a4ee94a892416d4a56bd739",
    "dateien": 27
   },
   {
    "name": "KAIWA-SUITE-copilot-plugin.zip",
-   "bytes": 172534,
-   "sha256": "a578890051972170133ed86526c39711ea4755fc54cad1f8523f70fd60e0e993",
+   "bytes": 172543,
+   "sha256": "dd828d369505042e7dd27881a8346fbbc44ba7756a4ee94a892416d4a56bd739",
    "dateien": 27
   },
   {
-   "name": "KAIWA-SUITE-chatgpt-plugin-0.2.1.zip",
-   "bytes": 411307,
-   "sha256": "c3d8ca27a18b841e5e7bc8db023e8dd48dd81d5ee4d22275ba81b1f92b40b351",
+   "name": "KAIWA-SUITE-chatgpt-plugin-0.2.2.zip",
+   "bytes": 411315,
+   "sha256": "1116cfc5001a79ada82996445acdc97e3b5fe60efae746c629207d477dd245af",
    "dateien": 50
   },
   {
    "name": "KAIWA-SUITE-chatgpt-plugin.zip",
-   "bytes": 411307,
-   "sha256": "c3d8ca27a18b841e5e7bc8db023e8dd48dd81d5ee4d22275ba81b1f92b40b351",
+   "bytes": 411315,
+   "sha256": "1116cfc5001a79ada82996445acdc97e3b5fe60efae746c629207d477dd245af",
    "dateien": 50
+  },
+  {
+   "name": "KAIWA-SUITE-chatgpt-project-kit-0.2.2.zip",
+   "bytes": 64976,
+   "sha256": "94d31538101e08af9cf986d086a987bbbeea706429961bdef9e30349dc0bb355",
+   "dateien": 8
+  },
+  {
+   "name": "KAIWA-SUITE-chatgpt-project-kit.zip",
+   "bytes": 64976,
+   "sha256": "94d31538101e08af9cf986d086a987bbbeea706429961bdef9e30349dc0bb355",
+   "dateien": 8
   }
  ]
 }
